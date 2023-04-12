@@ -12,7 +12,7 @@
  * @link      https://bigbump.fr
  */
 
-class ExtraFieldsTaxonomy{
+class ExtraFieldsTaxonomyTheme{
 
     /**
      * @var string

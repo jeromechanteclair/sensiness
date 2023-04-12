@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 // require_once plugin_dir_path( __FILE__ ).'vendor/autoload.php';
-// require_once 'taxonomies/ExtraFieldsTaxonomy.php';
+require_once 'taxonomies/ExtraFieldsTaxonomy.php';
 // require_once 'taxonomies/VilleTaxonomy.php';
 require_once 'taxonomies/FAQTaxonomy.php';
 require_once 'post-types/MetaboxGenerator.php';
@@ -59,10 +59,10 @@ new FAQ();
 // $modifiedTaxonomy->add_field('term_meta[file]','file','priorité');
 // $modifiedTaxonomy->init();
 
-// $modifiedTaxonomy = new ExtraFieldsTaxonomy('category');
+$modifiedTaxonomy = new ExtraFieldsTaxonomyTheme('thematique_tags');
 
-// $modifiedTaxonomy->add_field('term_meta[custom_order]','number','priorité');
-// $modifiedTaxonomy->init();
+$modifiedTaxonomy->add_field('term_meta[custom_order]','number','priorité');
+$modifiedTaxonomy->init();
 
 
 // function LAC_admin_fcss() {

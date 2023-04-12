@@ -50,7 +50,7 @@ class FAQ extends MetaboxGenerator {
         add_action('admin_init', array( $this, 'searchApiMetabox' ));
         add_action('add_meta_boxes', array( $this, 'addListMetaBox' ));
         add_action('save_post', array( $this, 'saveMetaBox' ), 10, 2);
-        add_shortcode('get_FAQs', array( $this, 'get_FAQs' ),10,1);
+        add_shortcode('FAQ', array( $this, 'FAQ' ),10,1);
         add_filter( 'wpseo_schema_graph',  array( $this,'custom_schema'), 10, 2 );
     }
 
@@ -154,7 +154,7 @@ class FAQ extends MetaboxGenerator {
     /**
      * @return void retourne template part liste des FAQs
      */
-    public function get_FAQs( $atts = []) {
+    public function FAQ( $atts = []) {
 
         ob_start();
         $args=['query'=>$this->getList()];
@@ -175,7 +175,7 @@ class FAQ extends MetaboxGenerator {
 
         global $post;
 
-        if ( has_shortcode( $post->post_content, 'get_FAQs' )) {
+        if ( has_shortcode( $post->post_content, 'FAQ' )) {
         foreach ( $data as $key => $value ) {
 
 

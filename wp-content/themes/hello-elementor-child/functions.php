@@ -23,6 +23,14 @@ function hello_elementor_child_enqueue_scripts() {
 		],
 		'1.0.0'
 	);
+	wp_enqueue_style(
+		'jc-style',
+		get_stylesheet_directory_uri() . '/dist/css/style.css',
+		[
+			'hello-elementor-theme-style',
+		],
+		'1.0.0'
+	);
 	// Scripts
 	$main_script_uri = get_stylesheet_directory_uri() . '/assets/js/main.js';
 	wp_enqueue_script( 'index', $main_script_uri, array ( 'jquery' ), '1.0', false);
