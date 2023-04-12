@@ -23,3 +23,5 @@ node_modules/
 *.log
 *.sql
 *.sqlite
+
+.htaccess
