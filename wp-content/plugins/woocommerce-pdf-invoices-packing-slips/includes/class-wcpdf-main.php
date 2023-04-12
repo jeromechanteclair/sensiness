@@ -22,7 +22,7 @@ class Main {
 
 		// email
 		add_filter( 'woocommerce_email_attachments', array( $this, 'attach_pdf_to_email' ), 99, 4 );
-		add_filter( 'wpo_wcpdf_document_is_allowed', array( $this, 'disable_free'), 10, 2 );
+		add_filter( 'wpo_wcpdf_document_is_allowed', array( $this, 'disable_free' ), 10, 2 );
 		add_filter( 'wp_mail', array( $this, 'set_phpmailer_validator'), 10, 1 );
 
 		if ( isset(WPO_WCPDF()->settings->debug_settings['enable_debug']) ) {
@@ -48,6 +48,7 @@ class Main {
 		if ( apply_filters( 'wpo_wcpdf_remove_order_personal_data', true ) ) {
 			add_action( 'woocommerce_privacy_remove_order_personal_data_meta', array( $this, 'remove_order_personal_data_meta' ), 10, 1 );
 			add_action( 'woocommerce_privacy_remove_order_personal_data', array( $this, 'remove_order_personal_data' ), 10, 1 );
+			add_filter( 'wpo_wcpdf_document_is_allowed', array( $this, 'disable_anonymized' ), 11, 2 );
 		}
 		// export private data
 		add_action( 'woocommerce_privacy_export_order_personal_data_meta', array( $this, 'export_order_personal_data_meta' ), 10, 1 );
@@ -870,6 +871,15 @@ class Main {
 			return $allowed;
 		}
 	}
+	
+	public function disable_anonymized( $allowed, $document ) {
+		if ( ! empty( $document->order ) && ! empty( $anonymized = $document->order->get_meta( '_anonymized' ) ) ) {
+			if ( apply_filters( 'wpo_wcpdf_disallow_anonymized_order_document', wc_string_to_bool( $anonymized ), $this ) ) {
+				$allowed = false;
+			}
+		}
+		return $allowed;
+	}
 
 	public function test_mode_settings( $use_historical_settings, $document ) {
 		if ( isset( WPO_WCPDF()->settings->general_settings['test_mode'] ) ) {
@@ -1266,8 +1276,10 @@ class Main {
 		$error = 0;
 		
 		if ( ! empty( $data['action'] ) && $data['action'] == "printed_wpo_wcpdf" && ! empty( $data['event'] ) && ! empty( $data['document_type'] ) && ! empty( $data['order_id'] ) && ! empty( $data['trigger'] ) ) {
-			$document = wcpdf_get_document( esc_attr( $data['document_type'] ), esc_attr( $data['order_id'] ) );
-			if ( ! empty( $document ) && ! empty( $order = $document->order ) ) {
+			$document        = wcpdf_get_document( esc_attr( $data['document_type'] ), esc_attr( $data['order_id'] ) );
+			$full_permission = WPO_WCPDF()->admin->user_can_manage_document( esc_attr( $data['document_type'] ) );
+			
+			if ( ! empty( $document ) && ! empty( $order = $document->order ) && $full_permission ) {
 				switch ( esc_attr( $data['event'] ) ) {
 					case 'mark':
 						$this->mark_document_printed( $document, esc_attr( $data['trigger'] ) );
@@ -1320,7 +1332,7 @@ class Main {
 	public function document_can_be_manually_marked_printed( $document ) {
 		$can_be_manually_marked_printed = false;
 		
-		if ( empty( $document ) ) {
+		if ( empty( $document ) || ( property_exists( $document, 'is_bulk' ) && $document->is_bulk ) ) {
 			return $can_be_manually_marked_printed;
 		}
 		
