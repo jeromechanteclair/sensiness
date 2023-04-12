@@ -112,9 +112,12 @@ class FAQ extends MetaboxGenerator {
             "SELECT DISTINCT(gt.id) FROM {$wpdb->prefix}posts gt
             INNER JOIN  {$wpdb->prefix}term_relationships t_rel ON  gt.id = t_rel.object_id
             INNER JOIN  {$wpdb->prefix}terms tax ON  t_rel.term_taxonomy_id = tax.term_id
+            LEFT JOIN {$wpdb->prefix}termmeta termmeta ON tax.term_id=termmeta.term_id
+
             WHERE post_type='" . $post_entity . "'
             AND (gt.post_status  NOT LIKE '%draft%' AND gt.post_status  NOT LIKE  '%trash%')
-                ORDER BY tax.name ASC, gt.post_title ASC
+            AND(termmeta.meta_key LIKE '%custom_order%')
+                ORDER BY termmeta.meta_value ASC, gt.post_title ASC
             " ;
         }
         else{
@@ -131,7 +134,7 @@ class FAQ extends MetaboxGenerator {
                 " ;
         }
 
-        
+  
         $result =  $wpdb->get_col( $query  );
    
         if(!empty( $result)){
