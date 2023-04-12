@@ -1,0 +1,61 @@
+{
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/wpovernight/dropbox-php-sdk.git"
+		}
+	],
+	"require": {
+		"iio/libmergepdf": "^4.0",
+		"tightenco/collect": "5.4.*",
+		"kunalvarma05/dropbox-php-sdk": "dev-master#a42c103de1866ed1a1487685752f68b2b7509e56"
+	},
+	"require-dev": {
+		"coenjacobs/mozart": "dev-master",
+		"cweagans/composer-patches": "*"
+	},
+	"extra": {
+		"patches": {
+			"coenjacobs/mozart": {
+				"Move each file only once (classmap)": "https://github.com/coenjacobs/mozart/pull/91.patch"
+			}
+		},
+   		"mozart": {
+			"dep_namespace": "WPO\\WC\\PDF_Invoices_Pro\\Vendor",
+			"dep_directory": "/lib/packages/",
+			"classmap_directory": "/lib/classes/",
+			"classmap_prefix": "WPO_WCPDF_IPS_PRO_",
+			"excluded_packages": [
+				"psr/container",
+				"tecnickcom/tcpdf"
+			],
+			"override_autoload": {
+			},
+			"delete_vendor_directories": true
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"rm -rf vendor/kunalvarma05/dropbox-php-sdk/.git",
+			"vendor/bin/mozart compose",
+			"composer dump-autoload",
+			"composer install -d lib/",
+			"composer dump-autoload -o -d lib/",
+			"rm -rf lib/vendor/tecnickcom/tcpdf/examples",
+			"rm -rf lib/vendor/tecnickcom/tcpdf/tools",
+			"find lib/vendor/tecnickcom/tcpdf/fonts/* -not -name 'helvetica.php' -print0 | xargs -0 rm -rf",
+			"rm -rf vendor/"
+		],
+		"post-update-cmd": [
+			"rm -rf vendor/kunalvarma05/dropbox-php-sdk/.git",
+			"vendor/bin/mozart compose",
+			"composer dump-autoload",
+			"composer install -d lib/",
+			"composer dump-autoload -o -d lib/",
+			"rm -rf lib/vendor/tecnickcom/tcpdf/examples",
+			"rm -rf lib/vendor/tecnickcom/tcpdf/tools",
+			"find lib/vendor/tecnickcom/tcpdf/fonts/* -not -name 'helvetica.php' -print0 | xargs -0 rm -rf",
+			"rm -rf vendor/"
+		]
+	}
+}

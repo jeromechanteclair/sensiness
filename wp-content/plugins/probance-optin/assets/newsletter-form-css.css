@@ -1,0 +1,133 @@
+/* Here the css his auto-generated. Don't remove this file */
+
+div#probance_form_block
+{
+    position: relative;
+    margin: auto;
+}
+
+div#probance_form_block form 
+{
+    margin: auto;
+    width: calc(100% - 30px);
+}
+
+div#btn_block
+{
+    position: relative;
+}
+/* Form */
+div#probance_newsletter_form {
+    max-width: 450px;
+    min-width: 320px;
+}
+
+
+/* Success Message */
+
+div#submit-message-block {
+    overflow: hidden;
+    position: relative;
+    margin: 20px 0px;
+    height: 60px;
+}
+
+div[data-type="message"].hidden {
+    transform: scale(0);
+}
+
+div[data-type="message"] {
+    display: grid;
+    align-items: center;
+    margin: 0;
+}
+
+div[data-type="message"] p.icon_close 
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    width: 25px;
+    height: 25px;
+}
+
+div.probance_message_submit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #dff0d8;
+    color: #3c763d;
+    border-radius: 4px;
+    border: 2px #d6e9c6 solid;
+    transition: 0.3s ease-in-out;
+}
+
+div.probance_message_submit_faillure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #a94442;
+    background-color: #f2dede;
+    border: 2px #ebccd1 solid;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+}
+
+
+/* Field 1col or 2 cols */
+div.fname_block,
+div.lname_block,
+div.email_block {
+    margin-bottom: 10px;
+}
+
+div.email_block {
+    display: grid;
+}
+
+div.names_block.one-col div.fname_block, 
+div.names_block.one-col div.lname_block {
+    display: grid;
+}
+
+div.names_block.two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+}
+
+/* Error & Confirmation Message */
+input[id*="probance_newsletter"].error {
+    border-color: red;
+}
+
+span[data-type="message"].hidden {
+    display: none;
+}
+
+/* Recaptcha */
+div.grecaptcha-badge {
+    z-index: 9999;
+}
+
+div#probance_optin_cb_wrapper {
+    height: 2.5em;
+    line-height: 2.5em;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 0.5em;
+}
+
+div#probance_form_block form input[type="text"]
+{
+    max-width: none;
+}
+

@@ -1,0 +1,373 @@
+@font-face {
+  font-family: "woocommerce-free-shipping-bar";
+  src: url("../fonts/woocommerce-free-shipping-bar.eot");
+  src: url("../fonts/woocommerce-free-shipping-bar.eot?#iefix") format("embedded-opentype"),
+  url("../fonts/woocommerce-free-shipping-bar.woff") format("woff"),
+  url("../fonts/woocommerce-free-shipping-bar.ttf") format("truetype"),
+  url("../fonts/woocommerce-free-shipping-bar.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: "woocommerce-free-shipping-bar";
+    src: url("../fonts/woocommerce-free-shipping-bar.svg") format("svg");
+  }
+}
+
+#wfspb-top-bar {
+  z-index: 9999999;
+  position: relative;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0;
+  line-height: 1;
+  transition: 0.4s;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.wfspb-lining-layer {
+  padding: 10px;
+}
+
+
+#wfspb-top-bar.wfspb-hidden {
+  display: none;
+}
+
+#wfspb-top-bar p {
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+  padding: 0 15px 5px 0;
+}
+
+div#wfspb-close {
+  cursor: pointer;
+  font-family: "woocommerce-free-shipping-bar";
+  font-size: 20px;
+  text-align: center;
+  padding: 0;
+  line-height: 20px;
+  z-index: 2;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  margin: 0;
+  top: 10px;
+  right: 10px;
+
+}
+
+.wfspb-hidden, .wfspb-is-cache {
+  display: none;
+}
+
+div#wfspb-close:before {
+  content: "\f100";
+}
+
+#wfspb-top-bar.top_bar {
+  top: 0;
+}
+
+#wfspb-top-bar.top_bar.wfsb-fixed {
+  position: fixed;
+  animation-name: scrollDown;
+  animation-duration: 1s;
+  max-width: inherit;
+}
+
+#wfspb-top-bar.bottom_bar {
+  position: fixed;
+  bottom: 0;
+}
+
+@keyframes scrollDown {
+  0% {
+    top: -50px
+  }
+  100% {
+    top: 0
+  }
+}
+
+#wfspb-progress {
+  width: 100%;
+  z-index: 12;
+}
+
+#wfspb-top-bar.bottom_bar #wfspb-progress.wfsb-style-1 {
+  position: absolute;
+  top: -20px;
+}
+
+#wfspb-progress.wfsb-style-1 .wfspb-progress-background {
+  background-color: #C9CFD4;
+}
+
+#wfspb-progress.wfsb-style-2 .wfspb-progress-background, #wfspb-progress.wfsb-style-3 .wfspb-progress-background {
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+#wfspb-progress.wfsb-style-2 {
+  width: auto;
+  padding: 10px 20px 10px 20px;
+  position: relative;
+}
+
+
+#wfspb-top-bar.bottom_bar > #wfspb-progress.wfsb-style-2 {
+  position: absolute;
+  width: 100%;
+  top: -40px;
+}
+
+#wfspb-top-bar.bottom_bar > #wfspb-progress.wfsb-style-2 .wfsb-effect-2 {
+  top: -29px;
+}
+
+#wfspb-top-bar.top_bar > #wfspb-progress.wfsb-style-2 .wfsb-effect-2 {
+  bottom: -29px;
+}
+
+#wfspb-top-bar > #wfspb-progress.wfsb-style-2, #wfspb-top-bar > #wfspb-progress.wfsb-style-2 > #wfspb-current-progress {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+#wfspb-top-bar #wfspb-progress.wfsb-style-2::before, #wfspb-top-bar #wfspb-progress.wfsb-style-2::after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 5px 10px 5px;
+  border-color: transparent transparent rgb(18, 25, 49) transparent;
+}
+
+
+#wfspb-top-bar #wfspb-progress.wfsb-style-2::before {
+  left: 10%;
+}
+
+#wfspb-top-bar #wfspb-progress.wfsb-style-2::after {
+  right: 10%;
+}
+
+#wfspb-top-bar.top_bar #wfspb-progress.wfsb-style-2::before, #wfspb-top-bar.top_bar #wfspb-progress.wfsb-style-2::after {
+  top: 0;
+}
+
+#wfspb-top-bar.bottom_bar #wfspb-progress.wfsb-style-2::before, #wfspb-top-bar.bottom_bar #wfspb-progress.wfsb-style-2::after {
+  bottom: 0;
+}
+
+#wfspb-progress.wfsb-style-3 {
+  width: auto;
+  padding: 0 20px 10px 20px;
+}
+
+#wfspb-top-bar.bottom_bar #wfspb-progress.wfsb-style-3 {
+  position: absolute;
+  top: -30px;
+  width: 100%;
+  padding: 10px 20px 0 20px;
+}
+
+
+#wfspb-progress * {
+  box-sizing: border-box;
+}
+
+#wfspb-current-progress {
+  height: 20px;
+  background-color: #0D47A1;
+}
+
+/*Style Progress bar CSS3*/
+#wfspb-progress .wfsb-effect-1 #wfspb-current-progress {
+
+  -webkit-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+  inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+  inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+  inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+#wfspb-progress .wfsb-effect-1 #wfspb-current-progress:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(
+                  -45deg,
+                  rgba(255, 255, 255, .2) 25%,
+                  transparent 25%,
+                  transparent 50%,
+                  rgba(255, 255, 255, .2) 50%,
+                  rgba(255, 255, 255, .2) 75%,
+                  transparent 75%,
+                  transparent
+  );
+  z-index: 1;
+  background-size: 50px 50px;
+  animation: wfsb-move 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+@-webkit-keyframes wfsb-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/*Progress bar Border effect*/
+#wfspb-top-bar > #wfspb-progress .wfsb-effect-2, #wfspb-top-bar > #wfspb-progress .wfsb-effect-2 > #wfspb-current-progress {
+  border-radius: 0;
+}
+
+#wfspb-top-bar > #wfspb-progress .wfsb-effect-2 {
+  border: 1px solid #fff;
+  outline: 1px solid #eee;
+
+}
+
+#wfspb-top-bar .wfspb-loading {
+  width: 90%;
+  background: #666666;
+  display: block;
+  margin: auto;
+  opacity: 0.5;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+#wfspb-top-bar .wfspb-loading .wfspb-progress {
+  height: 12px;
+  background: #afafaf;
+  animation: animLoading 2s ease infinite;
+}
+
+@keyframes animLoading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+#wfspb-label {
+  text-align: center;
+  line-height: 20px;
+  color: #FFFFFF;
+  font-size: 11px;
+  position: relative;
+  white-space: nowrap;
+}
+
+#wfspb-label:before {
+  font-family: "woocommerce-free-shipping-bar";
+  content: "\f101";
+  position: absolute;
+  right: 1%;
+  font-size: 90%;
+}
+
+.wfspb-gift-box {
+  bottom: 0;
+  cursor: pointer;
+  position: fixed;
+  right: 0;
+  z-index: 99;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  opacity: 1 !important;
+}
+
+.wfsb-hidden {
+  display: none;
+}
+
+.wfspb-gift-box.wfsb-hidden {
+  right: -1000px;
+}
+
+#wfspb-main-content {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  z-index: 1;
+  line-height: 1.3;
+}
+
+/*Free shipping bar on cart and checkout page*/
+ul.wfspb_bar_in_mini_cart{
+  list-style-type: none;
+  margin: 0;
+}
+.woocommerce-free-shipping-bar-order {
+  text-align: center;
+  /*display: inline-block;*/
+  width: 100%;
+}
+
+.woocommerce-free-shipping-bar-order .woocommerce-free-shipping-bar-order-content {
+  margin: 0;
+}
+
+.woocommerce-free-shipping-bar-order .woocommerce-free-shipping-bar-message {
+  margin-bottom: 15px;
+}
+
+.woocommerce-free-shipping-bar-order .woocommerce-free-shipping-bar-order-bar {
+  width: 100%;
+  height: 6px;
+  background: #ccc;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.woocommerce-free-shipping-bar-order .woocommerce-free-shipping-bar-order-bar .woocommerce-free-shipping-bar-order-bar-inner {
+  height: 100%;
+  background: #212121;
+  border-radius: 3px;
+}
+
+/*Mobile Responsive*/
+@media screen and (max-width: 768px) {
+  #wfspb-progress {
+    display: none !important;
+  }
+
+  #wfspb-main-content {
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  div#wfspb-close {
+    right: 5px;
+  }
+}
+

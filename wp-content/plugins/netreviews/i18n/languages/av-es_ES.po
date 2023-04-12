@@ -1,0 +1,421 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordpress Plugin Netreviews\n"
+"POT-Creation-Date: 2020-05-05 12:35+0200\n"
+"PO-Revision-Date: 2020-05-05 12:35+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/av_backoffice.php:52
+msgid "Use the voice of your customers and boost your sales"
+msgstr "Usa la voz de tus clientes y aumenta tus ventas"
+
+#: includes/av_backoffice.php:54
+msgid ""
+"Verified Reviews is a trusted third party specialized in the collect of "
+"seller and product reviews, the control and publication of those"
+msgstr ""
+"Opiniones Verificadas es un tercero de confianza especializado en la "
+"recopilación de opiniones de vendedores y productos, su control y publicación"
+
+#: includes/av_backoffice.php:55
+msgid "Measure your shopper satisfaction and improve the customer experience"
+msgstr ""
+"Mida la satisfacción de su comprador y mejore la experiencia del cliente"
+
+#: includes/av_backoffice.php:56
+msgid ""
+"Finally, offer a better visibility to your brand by showing product reviews "
+"and influence the choice of your customers consequently"
+msgstr ""
+"Finalmente, ofrezca una mejor visibilidad de su marca mostrando reseñas de "
+"productos e influya en la elección de sus clientes en consecuencia"
+
+#: includes/av_backoffice.php:68
+msgid "Official partners of"
+msgstr "Socios oficiales de"
+
+#: includes/av_backoffice.php:72
+msgid "http://www.verified-reviews.co.uk/"
+msgstr "http://www.opiniones-verificadas.com/"
+
+#: includes/av_backoffice.php:142 includes/av_backoffice.php:193
+msgid "Changes saved."
+msgstr "Cambios guardados."
+
+#: includes/av_backoffice.php:310
+msgid "Download the export : "
+msgstr "Descargar la exportación: "
+
+#: includes/av_backoffice.php:311
+msgid "Download"
+msgstr "Descargar"
+
+#: includes/av_backoffice.php:316
+msgid "No orders in this time slot."
+msgstr "No hay pedidos en este intervalo de tiempo."
+
+#: includes/av_backoffice.php:336
+msgid "Settings"
+msgstr "Configuraciones"
+
+#: includes/av_backoffice.php:345
+msgid "Module Activation :"
+msgstr "Activación del módulo:"
+
+#: includes/av_backoffice.php:347 includes/av_backoffice.php:362
+#: includes/av_backoffice.php:545 includes/av_backoffice.php:557
+#: includes/av_backoffice.php:569 includes/av_backoffice.php:581
+#: includes/av_backoffice.php:637 includes/review_Pagination.php:145
+msgid "Yes"
+msgstr "Si"
+
+#: includes/av_backoffice.php:349 includes/av_backoffice.php:363
+#: includes/av_backoffice.php:546 includes/av_backoffice.php:558
+#: includes/av_backoffice.php:570 includes/av_backoffice.php:582
+#: includes/av_backoffice.php:638 includes/review_Pagination.php:149
+msgid "No"
+msgstr "No"
+
+#: includes/av_backoffice.php:357
+msgid "Are you using WPML plugin?"
+msgstr "¿Utiliza el plugin WPML?"
+
+#: includes/av_backoffice.php:370
+msgid ""
+"Please, insert your secret key and website id, corresponding to the "
+"backoffice of each shop language."
+msgstr ""
+"Por favor, inserte la clave secreta y el idwebsite correspondiente al back-"
+"office de cada lengua"
+
+#: includes/av_backoffice.php:378 includes/av_backoffice.php:405
+msgid "Secret Key : "
+msgstr "Clave secreta: "
+
+#: includes/av_backoffice.php:384 includes/av_backoffice.php:410
+msgid "ID Website : "
+msgstr "ID Website : "
+
+#: includes/av_backoffice.php:399
+msgid "Please check your customer area on "
+msgstr "Por favor verifique su área de clientes en "
+
+#: includes/av_backoffice.php:401
+msgid "verified-reviews.co.uk"
+msgstr "opiniones-verificadas.com"
+
+#: includes/av_backoffice.php:403
+msgid " to see your login data."
+msgstr " para ver sus datos de acceso."
+
+#: includes/av_backoffice.php:418
+msgid "Product information to associate (required for Google Shopping) :"
+msgstr "Información del producto (Requerido para Google Shopping) :"
+
+#: includes/av_backoffice.php:421
+msgid "MPN : "
+msgstr "MPN: "
+
+#: includes/av_backoffice.php:435
+msgid "GTIN : "
+msgstr "GTIN: "
+
+#: includes/av_backoffice.php:448
+msgid "Brand : "
+msgstr "Marca:"
+
+#: includes/av_backoffice.php:463 includes/av_backoffice.php:596
+msgid "Save"
+msgstr "Guardar"
+
+#: includes/av_backoffice.php:475
+msgid "Design"
+msgstr "Apariencia"
+
+#: includes/av_backoffice.php:483
+msgid "Select a design for product page stars:"
+msgstr "Seleccione un diseño de estrellas para la pagina producto:"
+
+#: includes/av_backoffice.php:501
+msgid "Choose the template of reviews block:"
+msgstr "Seleccione el diseño del bloque de opiniones:"
+
+#: includes/av_backoffice.php:519
+msgid "Change stars colour:"
+msgstr "Modificar el color de las estrellas:"
+
+#: includes/av_backoffice.php:530
+msgid "Number of reviews to display:"
+msgstr "Numero de opiniones a mostrar:"
+
+#: includes/av_backoffice.php:541
+msgid "Display stars in category page:"
+msgstr "Mostrar estrellas en la lista de productos:"
+
+#: includes/av_backoffice.php:553
+msgid "Add helpful option to your reviews"
+msgstr "Agregar opción \"Opinión útil\" a las opiniones:"
+
+#: includes/av_backoffice.php:565
+msgid "Display medias with product reviews"
+msgstr "Mostrar los medias en las opiniones productos:"
+
+#: includes/av_backoffice.php:577
+msgid "Use reduced responsive design in product reviews ?"
+msgstr "Usar el diseño adaptable pequeño ?"
+
+#: includes/av_backoffice.php:588
+msgid "Specific CSS :"
+msgstr "CSS específico:"
+
+#: includes/av_backoffice.php:609
+msgid "Manual export"
+msgstr "Exportación manual"
+
+#: includes/av_backoffice.php:615
+msgid ""
+"Export your recently received orders to collect immediately your first "
+"customer reviews and to show your certificate Verified Reviews."
+msgstr ""
+"Exporte sus pedidos recibidos recientemente para recopilar de inmediato sus "
+"primeras opiniones de clientes y mostrar su certificado Opiniones "
+"Verificadas."
+
+#: includes/av_backoffice.php:617
+msgid "The first date must be older than the second"
+msgstr "La primera fecha debe ser anterior a la segunda"
+
+#: includes/av_backoffice.php:620
+msgid "From"
+msgstr "Desde"
+
+#: includes/av_backoffice.php:625
+msgid "to"
+msgstr "hasta"
+
+#: includes/av_backoffice.php:633
+msgid "Collect Product Reviews :"
+msgstr "Recoger opiniones de productos:"
+
+#: includes/av_backoffice.php:644
+msgid "Orders status :"
+msgstr "Estado de los pedidos:"
+
+#: includes/av_backoffice.php:667
+msgid "export"
+msgstr "exportar"
+
+#: includes/av_backoffice.php:672
+msgid ""
+"Without Product Reviews : Your customers will only be asked for their "
+"reviews regarding the order (obligatory)."
+msgstr ""
+"Sin opiniones de los productos: consultaremos a tus clientes sobre su "
+"experiencia de compra en tu tienda online (obligatorio)."
+
+#: includes/av_backoffice.php:674
+msgid ""
+"With Product Reviews : Your customers will be asked for their review "
+"regarding the order (obligatory) and regarding the purchased products as "
+"well."
+msgstr ""
+"Con opiniones de los productos: consultaremos a tus clientes sobre su "
+"experiencia de compra en tu tienda online (obligatorio) y su satisfacción "
+"con respecto a el/los producto(s) comprados."
+
+#: includes/av_backoffice.php:690
+msgid "Check installation"
+msgstr "Compruebe la instalación"
+
+#: includes/av_backoffice.php:695
+msgid "Tables :"
+msgstr "Tablas:"
+
+#: includes/av_backoffice.php:696
+msgid "Status :"
+msgstr "Estado:"
+
+#: includes/av_backoffice.php:719
+msgid "Index :"
+msgstr "Índice:"
+
+#: includes/av_backoffice.php:720
+msgid "Count :"
+msgstr "Totales:"
+
+#: includes/review_Pagination.php:28 includes/review_Pagination.php:33
+msgid "following an order made on"
+msgstr "tras la compra hecha el"
+
+#: includes/review_Pagination.php:142 includes/review_Pagination.php:259
+msgid "Was this review helpful ?"
+msgstr "Te fue útil esta opinión?"
+
+#: includes/review_Pagination.php:231
+msgid "Reply from "
+msgstr "Respuesta de "
+
+#: includes/review_Pagination.php:232
+msgid "on"
+msgstr "el"
+
+#: includes/review_Pagination.php:247
+msgid "Show exchanges"
+msgstr "Publicar intercambios"
+
+#: includes/review_Pagination.php:253
+msgid "Hide exchanges"
+msgstr "Ocultar intercambios"
+
+#: includes/starsProduct.php:15 includes/starsProduct.php:94
+#: includes/templates/templateV1.php:38 includes/templates/templateV2.php:41
+#: netreviews.php:243
+msgid "Verified Reviews"
+msgstr "Opiniones Verificadas"
+
+#: includes/starsProduct.php:47 includes/starsProduct.php:92
+msgid "See all reviews"
+msgstr "Ver las opiniones"
+
+#: includes/starsProduct.php:88
+msgid "Reviews"
+msgstr "Opiniones"
+
+#: includes/templates/templateV1.php:9 includes/templates/templateV2.php:9
+msgid "An error has occured."
+msgstr "Ha ocurrido un error, por favor reintente más tarde."
+
+#: includes/templates/templateV1.php:10 includes/templates/templateV2.php:10
+msgid "Thank you, your vote will be published soon"
+msgstr "Gracias, su voto sera tomado en cuenta muy pronto"
+
+#: includes/templates/templateV1.php:38 includes/templates/templateV2.php:41
+msgid "logo_full_en.png"
+msgstr "logo_full_es.png"
+
+#: includes/templates/templateV1.php:41 includes/templates/templateV2.php:113
+msgid "Show the Certificate of Trust"
+msgstr "Mostrar el Certificado de Confianza"
+
+#: includes/templates/templateV1.php:43 includes/templates/templateV2.php:116
+msgid "Reviews subject to control"
+msgstr "Opiniones sujetas a un control"
+
+#: includes/templates/templateV1.php:48 includes/templates/templateV2.php:122
+msgid ""
+"For further information on the nature of the review controls, as well as the "
+"possibility of contacting the author of the review please consult our"
+msgstr ""
+"Para más información sobre las características del control de opiniones, y "
+"la posibilidad de contactar al autor de la opinión, por favor consulte "
+"nuestras"
+
+#: includes/templates/templateV1.php:50 includes/templates/templateV1.php:57
+#: includes/templates/templateV2.php:123 includes/templates/templateV2.php:130
+msgid "verified-reviews.com"
+msgstr "opiniones-verificadas.com"
+
+#: includes/templates/templateV1.php:51 includes/templates/templateV2.php:124
+msgid "GCU"
+msgstr "CGU"
+
+#: includes/templates/templateV1.php:52 includes/templates/templateV2.php:126
+msgid "No inducements have been provided for these reviews"
+msgstr ""
+"Ningún descuento ni puntos de fidelidad han sido ofrecidos a cambio de estas "
+"opiniones"
+
+#: includes/templates/templateV1.php:53 includes/templates/templateV2.php:127
+msgid "Reviews are published and kept for a period of five years"
+msgstr ""
+"Las opiniones son publicadas y conservadas durante un periodo de cinco años"
+
+#: includes/templates/templateV1.php:54 includes/templates/templateV2.php:128
+msgid ""
+"Reviews can not be modified: If a customer wishes to modify their review "
+"then they can do so by contacting Verified Reviews directly to remove the "
+"existing review and publish an amended one"
+msgstr ""
+"Las opiniones no pueden ser modificadas: si un cliente desea modificar su "
+"opinión entonces debe contactar al equipo de Opiniones Verificadas para "
+"pedir la eliminación de la opinión y publicar una nueva"
+
+#: includes/templates/templateV1.php:56 includes/templates/templateV2.php:129
+msgid "The reasons for deletion of reviews are available"
+msgstr "Los motivos de la eliminación de las opiniones están disponibles"
+
+#: includes/templates/templateV1.php:58 includes/templates/templateV2.php:130
+msgid "here"
+msgstr "aquí"
+
+#: includes/templates/templateV1.php:73
+msgid "Based on"
+msgstr "Basado en"
+
+#: includes/templates/templateV1.php:74
+msgid "customer(s) reviews"
+msgstr "opiniones de consumidores"
+
+#: includes/templates/templateV1.php:135 includes/templates/templateV2.php:151
+msgid "Sort the reviews display"
+msgstr "Filtrar las Opiniones"
+
+#: includes/templates/templateV1.php:138 includes/templates/templateV2.php:153
+msgid "Newest"
+msgstr "Las más nuevas primero"
+
+#: includes/templates/templateV1.php:139 includes/templates/templateV2.php:154
+msgid "Oldest"
+msgstr "Las más antiguas primero"
+
+#: includes/templates/templateV1.php:140 includes/templates/templateV2.php:156
+msgid "Lowest rating"
+msgstr "Las de menor nota"
+
+#: includes/templates/templateV1.php:141 includes/templates/templateV2.php:157
+msgid "The most helpful"
+msgstr "Las más útiles"
+
+#: includes/templates/templateV1.php:142 includes/templates/templateV2.php:155
+msgid "Highest rating"
+msgstr "Las de mejor nota"
+
+#: includes/templates/templateV1.php:161
+msgid "More reviews"
+msgstr "Más comentarios..."
+
+#: includes/templates/templateV2.php:60 netreviews.php:312 netreviews.php:379
+#: netreviews.php:403 netreviews.php:429 netreviews.php:453
+msgid "review(s)"
+msgstr "opinion(es)"
+
+#: includes/templates/templateV2.php:63
+msgid " customers recommending this product"
+msgstr " de los clientes recomiendan este producto"
+
+#: includes/templates/templateV2.php:140
+msgid "All the reviews"
+msgstr "Todas las opiniones"
+
+#: includes/templates/templateV2.php:158
+msgid "Rate"
+msgstr "Nota"
+
+#: includes/templates/templateV2.php:184
+msgid "Display more reviews"
+msgstr "Más comentarios..."
+
+#: netreviews.php:569
+msgid "Product Reviews"
+msgstr "Opiniones de productos"

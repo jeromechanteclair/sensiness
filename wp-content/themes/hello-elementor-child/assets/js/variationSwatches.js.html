@@ -1,0 +1,89 @@
+<script>
+  // Remove useless plugin's items
+  var VSWRadioItems = document.querySelectorAll("li.variable-item.radio-variable-item");
+  function VSWCleanRadioItem(radioItem) {
+    // Remove the dashes
+    radioItem.innerHTML = radioItem.innerHTML.replaceAll(/\s-\s/ig, "");
+    // Remove the image
+    Array.from(radioItem.querySelectorAll("img")).forEach(img => img.remove());
+  }
+  // Clear old more infos
+  function clearOldMoreInfos() {
+    if (document.querySelector(".mc_radio-item-more")) {
+      document.querySelectorAll(".mc_radio-item-more").forEach(oldMoreInfo => oldMoreInfo.remove());
+    }
+  }
+  // Add a div below the basic infos
+  function VSWAddDivBelow(radioItem) {
+    var radioItemDiv = document.createElement("div");
+    radioItemDiv.classList.add("mc_radio-item-more");
+    radioItem.appendChild(radioItemDiv);
+  }
+  // Get the product type
+  function VSWGetProductType() {
+    var VSWBreadcrumb = document.querySelector(".woocommerce-breadcrumb");
+    if (VSWBreadcrumb) {
+      if (VSWBreadcrumb.innerText.includes("Huile")) {
+        return "d'huile au CBD";
+      } else if (VSWBreadcrumb.innerText.includes("Fleur")) {
+        return "de fleurs de CBD";
+      } else if (VSWBreadcrumb.innerText.includes("Gummies")) {
+        return "de gummies au CBD";
+      } else {
+        return null;
+      }
+    }
+  }
+  // Get the format
+  function VSWGetFormat(productType, quantity = 1) {
+    var VSWFormats = {"d'huile au CBD" : "Flacon", "de gummies au CBD" : "Pot", "de fleurs de CBD" : "Pochon"};
+    if (quantity == 1) {
+      return VSWFormats[productType];
+    }  else {
+      return VSWFormats[productType] + "s";
+    }
+  }
+  // Add the info
+  function VSWAddMoreInfo (radioItem, productType) {
+    if (radioItem.innerText.includes("mois")) {
+      var regex = /(\d+)\smois/;
+      var radioItemQuantity = regex.exec(radioItem.innerText)[1];
+      var radioItemMoreInfoHTML = document.createElement("p");
+      radioItemMoreInfoHTML.classList.add("mc_more-info");
+      radioItemMoreInfoHTML.innerHTML = `${radioItemQuantity} ${VSWGetFormat(productType, radioItemQuantity)} ${productType}`;
+      // Recommendation
+      var recommentation = null;
+      if (radioItemQuantity == "3") {
+        recommentation = "Populaire";
+      } else if (radioItemQuantity == "6") {
+        recommentation = "Recommandé";
+      }
+      if (recommentation) {
+        radioItemMoreInfoHTML.innerHTML += `<p class="mc_radio-item-recommendation">${recommentation}</p>`;
+      }
+      // Append
+      radioItem.querySelector("div.mc_radio-item-more").appendChild(radioItemMoreInfoHTML);
+    }
+  }
+  // Add the sale percent
+  function VSWAddSalePercent(radioItem) {
+    var radioItemIns = radioItem.querySelector("ins");
+    var radioItemDel = radioItem.querySelector("del");
+    if (radioItemIns && radioItemDel) {
+      var radioItemSalePercent = 1.00 - parseInt(radioItemIns.innerText) / parseInt(radioItemDel.innerText);
+      var radioItemSalePercentHTML = document.createElement("p");
+      radioItemSalePercentHTML.classList.add("mc_sale-percent");
+      radioItemSalePercentHTML.innerHTML = `-${Math.round(radioItemSalePercent * 100)}%`;
+      radioItem.querySelector("div.mc_radio-item-more").appendChild(radioItemSalePercentHTML);
+    }
+  }
+  // Init
+  var VSWProductType = VSWGetProductType();
+  clearOldMoreInfos();
+  VSWRadioItems.forEach(radioItem => {
+    VSWCleanRadioItem(radioItem);
+    VSWAddDivBelow(radioItem);
+    VSWAddMoreInfo(radioItem, VSWProductType);
+    VSWAddSalePercent(radioItem);
+  });
+</script>

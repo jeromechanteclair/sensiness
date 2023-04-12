@@ -1,0 +1,811 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2017-11-13 13:46+0000\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: mail-boxes-etc.php:163
+msgid "Settings"
+msgstr ""
+
+#: mail-boxes-etc.php:198 mail-boxes-etc.php:198 mail-boxes-etc.php:213
+msgid "MBE Shipments List"
+msgstr ""
+
+#: mail-boxes-etc.php:236
+msgid "Create MBE shipping"
+msgstr ""
+
+#: mail-boxes-etc.php:288
+msgid "Free"
+msgstr ""
+
+#: mail-boxes-etc.php:317
+msgid "Mail Boxes ETC Tracking"
+msgstr ""
+
+#: mail-boxes-etc.php:322
+msgid "Service"
+msgstr ""
+
+#: mail-boxes-etc.php:323 includes/class-mbe-order.php:166
+msgid "Tracking"
+msgstr ""
+
+#: includes/cron.php:45 includes/class-mbe-order.php:258
+#, php-format
+msgid "%s - Total of %d order(s) without tracking number yet."
+msgstr ""
+
+#: includes/cron.php:48 includes/class-mbe-order.php:261
+#, php-format
+msgid "%s - Total of %d order(s) have been closed."
+msgstr ""
+
+#: includes/cron.php:52 includes/class-mbe-order.php:265
+#, php-format
+msgid "%s - Total of %d order(s) was already closed"
+msgstr ""
+
+#: includes/class-mbe-shipping.php:16
+msgid "Mail Boxes"
+msgstr ""
+
+#: includes/class-mbe-shipping.php:17
+msgid ""
+"Obtains  real time shipping rates and Print shipping labels via MBE Shipping "
+"API."
+msgstr ""
+
+#: includes/class-mbe-shipping.php:100
+msgid "File upload error: only CSV format is allowed"
+msgstr ""
+
+#: includes/class-mbe-shipping.php:155
+#, php-format
+msgid ""
+"File upload error: row %d: \"%s\", COUNTRY column. Use destination Country "
+"in 2 character ISO format (e.g. IT for Italy, ES for Spain, DE for Germany)"
+msgstr ""
+
+#: includes/class-mbe-shipping.php:160
+#, php-format
+msgid ""
+"File upload error: row %d: \"%s\", SHIPMENT TYPE column. Input code is not a "
+"valid MBE Service"
+msgstr ""
+
+#: includes/class-mbe-shipping.php:166 includes/class-mbe-shipping.php:170
+#, php-format
+msgid ""
+"File upload error: row %d: \"%s\", WEIGHT column. Input weight exceeds "
+"allowed"
+msgstr ""
+
+#: includes/class-mbe-shipping.php:188
+msgid "Error executing truncate query"
+msgstr ""
+
+#: includes/class-mbe-shipping.php:195
+msgid "Error executing query"
+msgstr ""
+
+#: includes/data-mbe-settings.php:17
+msgid "Set ws parameters and save to retrieve available shipment types"
+msgstr ""
+
+#: includes/data-mbe-settings.php:21
+msgid "Your user is not active"
+msgstr ""
+
+#: includes/data-mbe-settings.php:25
+msgid "Generic"
+msgstr ""
+
+#: includes/data-mbe-settings.php:28
+msgid "Envelope"
+msgstr ""
+
+#: includes/data-mbe-settings.php:36 includes/data-mbe-settings.php:48
+msgid "Automatically"
+msgstr ""
+
+#: includes/data-mbe-settings.php:37 includes/data-mbe-settings.php:49
+msgid "Manually"
+msgstr ""
+
+#: includes/data-mbe-settings.php:64
+#, php-format
+msgid "Free shipping Thresholds %s"
+msgstr ""
+
+#: includes/data-mbe-settings.php:71
+msgid "Disabled"
+msgstr ""
+
+#: includes/data-mbe-settings.php:72
+msgid "Partial"
+msgstr ""
+
+#: includes/data-mbe-settings.php:73 includes/class-mbe-order.php:164
+msgid "Total"
+msgstr ""
+
+#: includes/data-mbe-settings.php:77
+msgid "With Taxes"
+msgstr ""
+
+#: includes/data-mbe-settings.php:78
+msgid "Without Taxes"
+msgstr ""
+
+#: includes/data-mbe-settings.php:84
+#, php-format
+msgid "Download current file"
+msgstr ""
+
+#: includes/data-mbe-settings.php:87
+#, php-format
+msgid "Download template file"
+msgstr ""
+
+#: includes/data-mbe-settings.php:93 includes/data-mbe-settings.php:96
+msgid "Debug"
+msgstr ""
+
+#: includes/data-mbe-settings.php:95 includes/data-mbe-settings.php:103
+msgid "Yes"
+msgstr ""
+
+#: includes/data-mbe-settings.php:95 includes/data-mbe-settings.php:103
+msgid "No"
+msgstr ""
+
+#: includes/data-mbe-settings.php:97
+msgid "Activate Debug mode to save MBE eShip logs"
+msgstr ""
+
+#: includes/data-mbe-settings.php:101
+msgid "Enabled"
+msgstr ""
+
+#: includes/data-mbe-settings.php:104
+msgid "Enable"
+msgstr ""
+
+#: includes/data-mbe-settings.php:108 includes/data-mbe-settings.php:223
+msgid "Country"
+msgstr ""
+
+#: includes/data-mbe-settings.php:110
+msgid "Italy"
+msgstr ""
+
+#: includes/data-mbe-settings.php:110
+msgid "Spain"
+msgstr ""
+
+#: includes/data-mbe-settings.php:110
+msgid "Germany"
+msgstr ""
+
+#: includes/data-mbe-settings.php:110
+msgid "France"
+msgstr ""
+
+#: includes/data-mbe-settings.php:110
+msgid "Austria"
+msgstr ""
+
+#: includes/data-mbe-settings.php:111
+msgid "Select your MBE Center's country"
+msgstr ""
+
+#: includes/data-mbe-settings.php:115
+msgid "OnlineMBE web-service URL"
+msgstr ""
+
+#: includes/data-mbe-settings.php:117
+msgid ""
+"Italy: http://www.onlinembe.it/wsdl/OnlineMbeSOAP.wsdl - Spain: http://new."
+"onlinembe.es/wsdl/OnlineMbeSOAP.wsdl - Germany: http://www.onlinembe."
+"de/wsdl/OnlineMbeSOAP.wsdl - Austria: http://www.onlinembe."
+"at/wsdl/OnlineMbeSOAP.wsdl - For other countries please contact your MBE "
+"Center\""
+msgstr ""
+
+#: includes/data-mbe-settings.php:120
+msgid "Login MBE e-LINK *"
+msgstr ""
+
+#: includes/data-mbe-settings.php:124
+msgid "Passphrase MBE e-LINK *"
+msgstr ""
+
+#: includes/data-mbe-settings.php:128
+msgid "MBE shipping description"
+msgstr ""
+
+#: includes/data-mbe-settings.php:132 includes/data-mbe-settings.php:133
+msgid "Default Shipment type"
+msgstr ""
+
+#: includes/data-mbe-settings.php:138 includes/data-mbe-settings.php:139
+msgid "MBE Services"
+msgstr ""
+
+#: includes/data-mbe-settings.php:142
+msgid "Select MBE Services available to your Customers"
+msgstr ""
+
+#: includes/data-mbe-settings.php:145 includes/data-mbe-settings.php:147
+msgid "Shipment configuration mode"
+msgstr ""
+
+#: includes/data-mbe-settings.php:146
+msgid ""
+"WARNING: activating the option 'Create one Shipment per Item' with COD "
+"payment, the shopping cart's amount will be split and charged evenly on each "
+"shipment (based on number of items, not on their value)"
+msgstr ""
+
+#: includes/data-mbe-settings.php:150
+msgid "Create one Shipment per Item"
+msgstr ""
+
+#: includes/data-mbe-settings.php:151
+msgid ""
+"Create one Shipment per shopping cart (parcels calculated based on weight)"
+msgstr ""
+
+#: includes/data-mbe-settings.php:152
+msgid "Create one Shipment per shopping cart with one parcel per Item"
+msgstr ""
+
+#: includes/data-mbe-settings.php:156
+msgid "Default Package Length"
+msgstr ""
+
+#: includes/data-mbe-settings.php:160
+msgid "Default Package Width"
+msgstr ""
+
+#: includes/data-mbe-settings.php:164
+msgid "Default Package Height"
+msgstr ""
+
+#: includes/data-mbe-settings.php:168
+msgid "Maximum Package Weight"
+msgstr ""
+
+#: includes/data-mbe-settings.php:170
+msgid "Check if any limitation is applied with your MBE Center"
+msgstr ""
+
+#: includes/data-mbe-settings.php:173
+msgid "Maximum shipment weight"
+msgstr ""
+
+#: includes/data-mbe-settings.php:177
+msgid "Markup - Application rule"
+msgstr ""
+
+#: includes/data-mbe-settings.php:180
+msgid "Percentage"
+msgstr ""
+
+#: includes/data-mbe-settings.php:181
+msgid "Fixed amount"
+msgstr ""
+
+#: includes/data-mbe-settings.php:185
+msgid "Markup - Amount"
+msgstr ""
+
+#: includes/data-mbe-settings.php:188
+msgid "Shipment"
+msgstr ""
+
+#: includes/data-mbe-settings.php:189
+msgid "Parcel"
+msgstr ""
+
+#: includes/data-mbe-settings.php:193
+msgid "Handling Fee"
+msgstr ""
+
+#: includes/data-mbe-settings.php:197
+msgid "Markup - Apply rounding"
+msgstr ""
+
+#: includes/data-mbe-settings.php:200
+msgid "No rounding"
+msgstr ""
+
+#: includes/data-mbe-settings.php:201
+msgid "Round up or down automatically"
+msgstr ""
+
+#: includes/data-mbe-settings.php:202
+msgid "Always round down"
+msgstr ""
+
+#: includes/data-mbe-settings.php:203
+msgid "Always round up"
+msgstr ""
+
+#: includes/data-mbe-settings.php:207
+msgid "Markup - Rounding unit (in €)"
+msgstr ""
+
+#: includes/data-mbe-settings.php:215
+msgid "Ship to Applicable Countries"
+msgstr ""
+
+#: includes/data-mbe-settings.php:218
+msgid "All Allowed Countries"
+msgstr ""
+
+#: includes/data-mbe-settings.php:219
+msgid "Specific Countries"
+msgstr ""
+
+#: includes/data-mbe-settings.php:236
+msgid "Daily shipments closure - Mode"
+msgstr ""
+
+#: includes/data-mbe-settings.php:241
+msgid "Daily shipments closure schedule (automatic mode only)"
+msgstr ""
+
+#: includes/data-mbe-settings.php:246
+msgid "Shipments creation in MBE Online - Mode"
+msgstr ""
+
+#: includes/data-mbe-settings.php:251
+msgid "Custom prices via csv - File upload"
+msgstr ""
+
+#: includes/data-mbe-settings.php:265
+msgid "Custom prices via csv - File mode"
+msgstr ""
+
+#: includes/data-mbe-settings.php:272
+msgid "Custom prices via csv - Min price for insurance extra-service"
+msgstr ""
+
+#: includes/data-mbe-settings.php:276
+msgid ""
+"Custom prices via csv - Percentage for insurance extra-service price "
+"calculation"
+msgstr ""
+
+#: includes/data-mbe-settings.php:280
+msgid "Insurance extra-service - Declared value calculation"
+msgstr ""
+
+#: includes/class-mbe-tracking-admin.php:71
+msgid "Carrier name: "
+msgstr ""
+
+#: includes/class-mbe-tracking-admin.php:75 includes/class-mbe-order.php:77
+msgid "Track all"
+msgstr ""
+
+#: includes/class-mbe-tracking-admin.php:81
+msgid "Tracking id: "
+msgstr ""
+
+#: includes/class-mbe-tracking-admin.php:86 includes/class-mbe-order.php:133
+msgid "Label"
+msgstr ""
+
+#: includes/class-mbe-tracking-admin.php:86
+#: includes/class-mbe-tracking-admin.php:91
+msgid "link"
+msgstr ""
+
+#: includes/class-mbe-tracking-admin.php:91 includes/class-mbe-order.php:139
+msgid "Closure file"
+msgstr ""
+
+#. Italia
+#: includes/translations.php:3
+msgid "MBE Raccomandata 1 Ore 10"
+msgstr ""
+
+#: includes/translations.php:4
+msgid "MBE Raccomandata 1 Ore 12"
+msgstr ""
+
+#: includes/translations.php:5
+msgid "MBE Raccomandata 1 Ore 9"
+msgstr ""
+
+#: includes/translations.php:6
+msgid "MBE Express+"
+msgstr ""
+
+#: includes/translations.php:7
+msgid "MBE Andata e Ritorno"
+msgstr ""
+
+#: includes/translations.php:8
+msgid "MBE Capi Appesi Large"
+msgstr ""
+
+#: includes/translations.php:9
+msgid "MBE Capi Appesi Small"
+msgstr ""
+
+#: includes/translations.php:10
+msgid "MBE Economy"
+msgstr ""
+
+#. Austria
+#: includes/translations.php:11 includes/translations.php:46
+#: includes/translations.php:67 includes/translations.php:90
+msgid "MBE Express"
+msgstr ""
+
+#: includes/translations.php:12
+msgid "MBE Express++"
+msgstr ""
+
+#: includes/translations.php:13
+msgid "MBE Raccomandata 1"
+msgstr ""
+
+#: includes/translations.php:14
+msgid "MBE Raccomandata"
+msgstr ""
+
+#: includes/translations.php:15 includes/translations.php:50
+#: includes/translations.php:70 includes/translations.php:92
+msgid "MBE Standard"
+msgstr ""
+
+#: includes/translations.php:16
+msgid "MBE Raccomandata 1 Ore 10 (R10)"
+msgstr ""
+
+#: includes/translations.php:17
+msgid "MBE Raccomandata 1 Ore 12 (R12)"
+msgstr ""
+
+#: includes/translations.php:18
+msgid "MBE Raccomandata 1 Ore 9 (R19)"
+msgstr ""
+
+#: includes/translations.php:19
+msgid "MBE Express+ (S+E)"
+msgstr ""
+
+#: includes/translations.php:20
+msgid "MBE Andata e Ritorno (SAR)"
+msgstr ""
+
+#: includes/translations.php:21
+msgid "MBE Capi Appesi Large (SCL)"
+msgstr ""
+
+#: includes/translations.php:22
+msgid "MBE Capi Appesi Small (SCS)"
+msgstr ""
+
+#: includes/translations.php:23
+msgid "MBE Economy (SEC)"
+msgstr ""
+
+#: includes/translations.php:24 includes/translations.php:53
+#: includes/translations.php:73 includes/translations.php:97
+msgid "MBE Express (SEE)"
+msgstr ""
+
+#: includes/translations.php:25
+msgid "MBE Express++ (SPE)"
+msgstr ""
+
+#: includes/translations.php:26
+msgid "MBE Raccomandata 1 (SR1)"
+msgstr ""
+
+#: includes/translations.php:27
+msgid "MBE Raccomandata (SRA)"
+msgstr ""
+
+#: includes/translations.php:28 includes/translations.php:57
+#: includes/translations.php:76 includes/translations.php:99
+msgid "MBE Standard (SSE)"
+msgstr ""
+
+#: includes/translations.php:29
+msgid "MBE Raccomandata 1 Ore 10 (R10) + Insurance"
+msgstr ""
+
+#: includes/translations.php:30
+msgid "MBE Raccomandata 1 Ore 12 (R12) + Insurance"
+msgstr ""
+
+#: includes/translations.php:31
+msgid "MBE Raccomandata 1 Ore 9 (R19) + Insurance"
+msgstr ""
+
+#: includes/translations.php:32
+msgid "MBE Express+ (S+E) + Insurance"
+msgstr ""
+
+#: includes/translations.php:33
+msgid "MBE Andata e Ritorno (SAR) + Insurance"
+msgstr ""
+
+#: includes/translations.php:34
+msgid "MBE Capi Appesi Large (SCL) + Insurance"
+msgstr ""
+
+#: includes/translations.php:35
+msgid "MBE Capi Appesi Small (SCS) + Insurance"
+msgstr ""
+
+#: includes/translations.php:36
+msgid "MBE Economy (SEC) + Insurance"
+msgstr ""
+
+#: includes/translations.php:37 includes/translations.php:60
+#: includes/translations.php:79 includes/translations.php:104
+msgid "MBE Express (SEE) + Insurance"
+msgstr ""
+
+#: includes/translations.php:38
+msgid "MBE Express++ (SPE) + Insurance"
+msgstr ""
+
+#: includes/translations.php:39
+msgid "MBE Raccomandata 1 (SR1) + Insurance"
+msgstr ""
+
+#: includes/translations.php:40
+msgid "MBE Raccomandata (SRA) + Insurance"
+msgstr ""
+
+#: includes/translations.php:41 includes/translations.php:64
+#: includes/translations.php:82 includes/translations.php:106
+msgid "MBE Standard (SSE) + Insurance"
+msgstr ""
+
+#. Germania
+#: includes/translations.php:44
+msgid "MBE Classic"
+msgstr ""
+
+#: includes/translations.php:45
+msgid "MBE Early Morning"
+msgstr ""
+
+#: includes/translations.php:47 includes/translations.php:68
+msgid "MBE Freight Express"
+msgstr ""
+
+#: includes/translations.php:48 includes/translations.php:69
+msgid "MBE Morning"
+msgstr ""
+
+#: includes/translations.php:49
+msgid "MBE Overnight"
+msgstr ""
+
+#: includes/translations.php:51
+msgid "MBE Classic (SCL)"
+msgstr ""
+
+#: includes/translations.php:52 includes/translations.php:75
+msgid "MBE Early Morning (SPE)"
+msgstr ""
+
+#: includes/translations.php:54 includes/translations.php:74
+msgid "MBE Freight Express (SEF)"
+msgstr ""
+
+#: includes/translations.php:55 includes/translations.php:72
+msgid "MBE Morning (SEC)"
+msgstr ""
+
+#: includes/translations.php:56
+msgid "MBE Overnight (SON)"
+msgstr ""
+
+#: includes/translations.php:58
+msgid "MBE Classic (SCL) + Insurance"
+msgstr ""
+
+#: includes/translations.php:59 includes/translations.php:78
+msgid "MBE Morning (SEC) + Insurance"
+msgstr ""
+
+#: includes/translations.php:61 includes/translations.php:80
+msgid "MBE Freight Express (SEF) + Insurance"
+msgstr ""
+
+#: includes/translations.php:62
+msgid "MBE Overnight (SON) + Insurance"
+msgstr ""
+
+#: includes/translations.php:63 includes/translations.php:81
+msgid "MBE Early Morning (SPE) + Insurance"
+msgstr ""
+
+#: includes/translations.php:71
+msgid "MBE Weinversand"
+msgstr ""
+
+#: includes/translations.php:77
+msgid "MBE Weinversand (SWE)"
+msgstr ""
+
+#: includes/translations.php:83
+msgid "MBE Weinversand (SWE) + Insurance"
+msgstr ""
+
+#. Spagna
+#: includes/translations.php:86
+msgid "MBE HW EXP"
+msgstr ""
+
+#: includes/translations.php:87
+msgid "MBE HW STD"
+msgstr ""
+
+#: includes/translations.php:88
+msgid "MBE Servicios Especiales"
+msgstr ""
+
+#: includes/translations.php:89
+msgid "MBE Express 9h"
+msgstr ""
+
+#: includes/translations.php:91
+msgid "MBE Express 12"
+msgstr ""
+
+#: includes/translations.php:93
+msgid "MBE HW EXP (HWE)"
+msgstr ""
+
+#: includes/translations.php:94
+msgid "MBE HW STD (HWS)"
+msgstr ""
+
+#: includes/translations.php:95
+msgid "MBE Servicios Especiales (MSE)"
+msgstr ""
+
+#: includes/translations.php:96
+msgid "MBE Express 9h (S+E)"
+msgstr ""
+
+#: includes/translations.php:98
+msgid "MBE Express 12 (SPE)"
+msgstr ""
+
+#: includes/translations.php:100
+msgid "MBE HW EXP (HWE) + Insurance"
+msgstr ""
+
+#: includes/translations.php:101
+msgid "MBE HW STD (HWS) + Insurance"
+msgstr ""
+
+#: includes/translations.php:102
+msgid "MBE Servicios Especiales (MSE) + Insurance"
+msgstr ""
+
+#: includes/translations.php:103
+msgid "MBE Express 9h (S+E) + Insurance"
+msgstr ""
+
+#: includes/translations.php:105
+msgid "MBE Express 12 (SPE) + Insurance"
+msgstr ""
+
+#: includes/class-mbe-order.php:27
+msgid "Edit"
+msgstr ""
+
+#: includes/class-mbe-order.php:118
+msgid "Opened"
+msgstr ""
+
+#: includes/class-mbe-order.php:118
+msgid "Closed"
+msgstr ""
+
+#: includes/class-mbe-order.php:156
+msgid "Id"
+msgstr ""
+
+#: includes/class-mbe-order.php:159
+msgid "Status"
+msgstr ""
+
+#: includes/class-mbe-order.php:161
+msgid "Customer"
+msgstr ""
+
+#: includes/class-mbe-order.php:162
+msgid "Payment"
+msgstr ""
+
+#: includes/class-mbe-order.php:163
+msgid "Date"
+msgstr ""
+
+#: includes/class-mbe-order.php:165
+msgid "Carrier"
+msgstr ""
+
+#: includes/class-mbe-order.php:167
+msgid "Downloads"
+msgstr ""
+
+#: includes/class-mbe-order.php:187
+msgid "Create shipments in MBE Online"
+msgstr ""
+
+#: includes/class-mbe-order.php:192
+msgid "Close shipments in MBE Online"
+msgstr ""
+
+#: includes/class-mbe-order.php:227
+#, php-format
+msgid "Total of %d order shipment(s) have been created."
+msgstr ""
+
+#: includes/class-mbe-order.php:230
+#, php-format
+msgid "Total of %d order shipment(s) was already created."
+msgstr ""
+
+#: includes/class-mbe-order.php:233
+#, php-format
+msgid "WARNING %d shipments couldn't be created due to an error."
+msgstr ""
+
+#: includes/class-mbe-order.php:274
+msgid "Please select items."
+msgstr ""
+
+#. Name of the plugin
+msgid "MBE eShip"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Mail Boxes Etc. Online MBE Plugin integration for main Ecommerce platforms."
+msgstr ""
+
+#. Author of the plugin
+msgid "MBE Worldwide S.p.A."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.mbeglobal.com/"
+msgstr ""
+
+# UAP Backend dropdown label
+msgid "Ship to UAP"
+msgstr ""
+
+# UAP Backend Dropdown description
+msgid "Enable the option to ship to an UAP"
+msgstr ""
+
+# UAP Frontend dropdown description
+msgid "Set Shipping address to UAP"
+msgstr ""
+
+# UAP Frontend dropdown 1st value
+msgid "Select a UAP"
+msgstr ""

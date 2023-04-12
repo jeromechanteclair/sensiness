@@ -1,0 +1,16 @@
+{
+    "name": "probance/probance-optin",
+    "description": "Probance Optin Plugin",
+    "type": "project",
+    "authors": [
+        {
+            "name": "david",
+            "email": "david.rollier@probance.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\" : "./inc"}
+    }
+}

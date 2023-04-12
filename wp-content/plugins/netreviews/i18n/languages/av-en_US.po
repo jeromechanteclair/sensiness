@@ -1,0 +1,415 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordpress Plugin Netreviews\n"
+"POT-Creation-Date: 2020-05-05 12:35+0200\n"
+"PO-Revision-Date: 2021-11-29 17:50+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/av_backoffice.php:52
+msgid "Use the voice of your customers and boost your sales"
+msgstr "Use the voice of your customers and boost your sales"
+
+#: includes/av_backoffice.php:54
+msgid ""
+"Verified Reviews is a trusted third party specialized in the collect of "
+"seller and product reviews, the control and publication of those"
+msgstr ""
+"Verified Reviews is a trusted third party specialized in the collect of "
+"seller and product reviews, the control and publication of those"
+
+#: includes/av_backoffice.php:55
+msgid "Measure your shopper satisfaction and improve the customer experience"
+msgstr "Measure your shopper satisfaction and improve the customer experience"
+
+#: includes/av_backoffice.php:56
+msgid ""
+"Finally, offer a better visibility to your brand by showing product reviews "
+"and influence the choice of your customers consequently"
+msgstr ""
+"Finally, offer a better visibility to your brand by showing product reviews "
+"and influence the choice of your customers consequently"
+
+#: includes/av_backoffice.php:68
+msgid "Official partners of"
+msgstr "Official partners of"
+
+#: includes/av_backoffice.php:72
+msgid "http://www.verified-reviews.co.uk/"
+msgstr "https://www.netreviews.com/"
+
+#: includes/av_backoffice.php:142 includes/av_backoffice.php:193
+msgid "Changes saved."
+msgstr "Changes saved."
+
+#: includes/av_backoffice.php:310
+msgid "Download the export : "
+msgstr "Download the export : "
+
+#: includes/av_backoffice.php:311
+msgid "Download"
+msgstr "Download"
+
+#: includes/av_backoffice.php:316
+msgid "No orders in this time slot."
+msgstr "No orders in this time slot."
+
+#: includes/av_backoffice.php:336
+msgid "Settings"
+msgstr "Settings"
+
+#: includes/av_backoffice.php:345
+msgid "Module Activation :"
+msgstr "Module Activation :"
+
+#: includes/av_backoffice.php:347 includes/av_backoffice.php:362
+#: includes/av_backoffice.php:545 includes/av_backoffice.php:557
+#: includes/av_backoffice.php:569 includes/av_backoffice.php:581
+#: includes/av_backoffice.php:637 includes/review_Pagination.php:145
+msgid "Yes"
+msgstr "Yes"
+
+#: includes/av_backoffice.php:349 includes/av_backoffice.php:363
+#: includes/av_backoffice.php:546 includes/av_backoffice.php:558
+#: includes/av_backoffice.php:570 includes/av_backoffice.php:582
+#: includes/av_backoffice.php:638 includes/review_Pagination.php:149
+msgid "No"
+msgstr "No"
+
+#: includes/av_backoffice.php:357
+msgid "Are you using WPML plugin?"
+msgstr "Are you using WPML plugin?"
+
+#: includes/av_backoffice.php:370
+msgid ""
+"Please, insert your secret key and website id, corresponding to the "
+"backoffice of each shop language."
+msgstr ""
+"Please, insert your secret key and website id, corresponding to the "
+"backoffice of each shop language."
+
+#: includes/av_backoffice.php:378 includes/av_backoffice.php:405
+msgid "Secret Key : "
+msgstr "Secret Key : "
+
+#: includes/av_backoffice.php:384 includes/av_backoffice.php:410
+msgid "ID Website : "
+msgstr "ID Website : "
+
+#: includes/av_backoffice.php:399
+msgid "Please check your customer area on "
+msgstr "Please check your customer area on "
+
+#: includes/av_backoffice.php:401
+msgid "verified-reviews.co.uk"
+msgstr "verified-reviews.co.uk"
+
+#: includes/av_backoffice.php:403
+msgid " to see your login data."
+msgstr " to see your login data."
+
+#: includes/av_backoffice.php:418
+msgid "Product information to associate (required for Google Shopping) :"
+msgstr "Product information to associate (required for Google Shopping) :"
+
+#: includes/av_backoffice.php:421
+msgid "MPN : "
+msgstr "MPN : "
+
+#: includes/av_backoffice.php:435
+msgid "GTIN : "
+msgstr "GTIN : "
+
+#: includes/av_backoffice.php:448
+msgid "Brand : "
+msgstr "Brand : "
+
+#: includes/av_backoffice.php:463 includes/av_backoffice.php:596
+msgid "Save"
+msgstr "Save"
+
+#: includes/av_backoffice.php:475
+msgid "Design"
+msgstr "Design"
+
+#: includes/av_backoffice.php:483
+msgid "Select a design for product page stars:"
+msgstr "Select a design for product page stars:"
+
+#: includes/av_backoffice.php:501
+msgid "Choose the template of reviews block:"
+msgstr "Choose the template of reviews block:"
+
+#: includes/av_backoffice.php:519
+msgid "Change stars colour:"
+msgstr "Change stars colour:"
+
+#: includes/av_backoffice.php:530
+msgid "Number of reviews to display:"
+msgstr "Number of reviews to display:"
+
+#: includes/av_backoffice.php:541
+msgid "Display stars in category page:"
+msgstr "Display stars in category page:"
+
+#: includes/av_backoffice.php:553
+msgid "Add helpful option to your reviews"
+msgstr "Add helpful option to your reviews:"
+
+#: includes/av_backoffice.php:565
+msgid "Display medias with product reviews"
+msgstr "Display medias with product reviews:"
+
+#: includes/av_backoffice.php:577
+msgid "Use reduced responsive design in product reviews ?"
+msgstr "Use reduced responsive design in product reviews ?"
+
+#: includes/av_backoffice.php:588
+msgid "Specific CSS :"
+msgstr "Specific CSS :"
+
+#: includes/av_backoffice.php:609
+msgid "Manual export"
+msgstr "Manual export"
+
+#: includes/av_backoffice.php:615
+msgid ""
+"Export your recently received orders to collect immediately your first "
+"customer reviews and to show your certificate Verified Reviews."
+msgstr ""
+"Export your recently received orders to collect immediately your first "
+"customer reviews and to show your certificate Verified Reviews."
+
+#: includes/av_backoffice.php:617
+msgid "The first date must be older than the second"
+msgstr "The first date must be older than the second"
+
+#: includes/av_backoffice.php:620
+msgid "From"
+msgstr "From"
+
+#: includes/av_backoffice.php:625
+msgid "to"
+msgstr "to"
+
+#: includes/av_backoffice.php:633
+msgid "Collect Product Reviews :"
+msgstr "Collect Product Reviews :"
+
+#: includes/av_backoffice.php:644
+msgid "Orders status :"
+msgstr "Orders status :"
+
+#: includes/av_backoffice.php:667
+msgid "export"
+msgstr "export"
+
+#: includes/av_backoffice.php:672
+msgid ""
+"Without Product Reviews : Your customers will only be asked for their "
+"reviews regarding the order (obligatory)."
+msgstr ""
+"Without Product Reviews : Your customers will only be asked for their "
+"reviews regarding the order (obligatory)."
+
+#: includes/av_backoffice.php:674
+msgid ""
+"With Product Reviews : Your customers will be asked for their review "
+"regarding the order (obligatory) and regarding the purchased products as "
+"well."
+msgstr ""
+"With Product Reviews : Your customers will be asked for their review "
+"regarding the order (obligatory) and regarding the purchased products as "
+"well."
+
+#: includes/av_backoffice.php:690
+msgid "Check installation"
+msgstr "Check installation"
+
+#: includes/av_backoffice.php:695
+msgid "Tables :"
+msgstr "Tables :"
+
+#: includes/av_backoffice.php:696
+msgid "Status :"
+msgstr "Status :"
+
+#: includes/av_backoffice.php:719
+msgid "Index :"
+msgstr "Index :"
+
+#: includes/av_backoffice.php:720
+msgid "Count :"
+msgstr "Count :"
+
+#: includes/review_Pagination.php:28 includes/review_Pagination.php:33
+msgid "following an order made on"
+msgstr "following an order made on"
+
+#: includes/review_Pagination.php:142 includes/review_Pagination.php:259
+msgid "Was this review helpful ?"
+msgstr "Was this review helpful ?"
+
+#: includes/review_Pagination.php:231
+msgid "Reply from "
+msgstr "Reply from "
+
+#: includes/review_Pagination.php:232
+msgid "on"
+msgstr "on"
+
+#: includes/review_Pagination.php:247
+msgid "Show exchanges"
+msgstr "Show exchanges"
+
+#: includes/review_Pagination.php:253
+msgid "Hide exchanges"
+msgstr "Hide exchanges"
+
+#: includes/starsProduct.php:15 includes/starsProduct.php:94
+#: includes/templates/templateV1.php:38 includes/templates/templateV2.php:41
+#: netreviews.php:243
+msgid "Verified Reviews"
+msgstr "Verified Reviews"
+
+#: includes/starsProduct.php:47 includes/starsProduct.php:92
+msgid "See all reviews"
+msgstr "See all reviews"
+
+#: includes/starsProduct.php:88
+msgid "Reviews"
+msgstr "Reviews"
+
+#: includes/templates/templateV1.php:9 includes/templates/templateV2.php:9
+msgid "An error has occured."
+msgstr "An error has occured."
+
+#: includes/templates/templateV1.php:10 includes/templates/templateV2.php:10
+msgid "Thank you, your vote will be published soon"
+msgstr "Thank you, your vote will be published soon"
+
+#: includes/templates/templateV1.php:38 includes/templates/templateV2.php:41
+msgid "logo_full_en.png"
+msgstr "logo_full_en.png"
+
+#: includes/templates/templateV1.php:41 includes/templates/templateV2.php:113
+msgid "Show the Certificate of Trust"
+msgstr "Show the Certificate of Trust"
+
+#: includes/templates/templateV1.php:43 includes/templates/templateV2.php:116
+msgid "Reviews subject to control"
+msgstr "Reviews subject to control"
+
+#: includes/templates/templateV1.php:48 includes/templates/templateV2.php:122
+msgid ""
+"For further information on the nature of the review controls, as well as the "
+"possibility of contacting the author of the review please consult our"
+msgstr ""
+"For further information on the nature of the review controls, as well as the "
+"possibility of contacting the author of the review please consult our"
+
+#: includes/templates/templateV1.php:50 includes/templates/templateV1.php:57
+#: includes/templates/templateV2.php:123 includes/templates/templateV2.php:130
+msgid "verified-reviews.com"
+msgstr "verified-reviews.com"
+
+#: includes/templates/templateV1.php:51 includes/templates/templateV2.php:124
+msgid "GCU"
+msgstr "GCU"
+
+#: includes/templates/templateV1.php:52 includes/templates/templateV2.php:126
+msgid "No inducements have been provided for these reviews"
+msgstr "No inducements have been provided for these reviews"
+
+#: includes/templates/templateV1.php:53 includes/templates/templateV2.php:127
+msgid "Reviews are published and kept for a period of five years"
+msgstr "Reviews are published and kept for a period of five years"
+
+#: includes/templates/templateV1.php:54 includes/templates/templateV2.php:128
+msgid ""
+"Reviews can not be modified: If a customer wishes to modify their review "
+"then they can do so by contacting Verified Reviews directly to remove the "
+"existing review and publish an amended one"
+msgstr ""
+"Reviews can not be modified: If a customer wishes to modify their review "
+"then they can do so by contacting Verified Reviews directly to remove the "
+"existing review and publish an amended one"
+
+#: includes/templates/templateV1.php:56 includes/templates/templateV2.php:129
+msgid "The reasons for deletion of reviews are available"
+msgstr "The reasons for deletion of reviews are available"
+
+#: includes/templates/templateV1.php:58 includes/templates/templateV2.php:130
+msgid "here"
+msgstr "here"
+
+#: includes/templates/templateV1.php:73
+msgid "Based on"
+msgstr "Based on"
+
+#: includes/templates/templateV1.php:74
+msgid "customer(s) reviews"
+msgstr "customer(s) reviews"
+
+#: includes/templates/templateV1.php:135 includes/templates/templateV2.php:151
+msgid "Sort the reviews display"
+msgstr "Sort the reviews display"
+
+#: includes/templates/templateV1.php:138 includes/templates/templateV2.php:153
+msgid "Newest"
+msgstr "Newest"
+
+#: includes/templates/templateV1.php:139 includes/templates/templateV2.php:154
+msgid "Oldest"
+msgstr "Oldest"
+
+#: includes/templates/templateV1.php:140 includes/templates/templateV2.php:156
+msgid "Lowest rating"
+msgstr "Lowest rating"
+
+#: includes/templates/templateV1.php:141 includes/templates/templateV2.php:157
+msgid "The most helpful"
+msgstr "The most helpful"
+
+#: includes/templates/templateV1.php:142 includes/templates/templateV2.php:155
+msgid "Highest rating"
+msgstr "Highest rating"
+
+#: includes/templates/templateV1.php:161
+msgid "More reviews"
+msgstr "More reviews"
+
+#: includes/templates/templateV2.php:60 netreviews.php:312 netreviews.php:379
+#: netreviews.php:403 netreviews.php:429 netreviews.php:453
+msgid "review(s)"
+msgstr "review(s)"
+
+#: includes/templates/templateV2.php:63
+msgid " customers recommending this product"
+msgstr " customers recommending this product"
+
+#: includes/templates/templateV2.php:140
+msgid "All the reviews"
+msgstr "All the reviews"
+
+#: includes/templates/templateV2.php:158
+msgid "Rate"
+msgstr "Rate"
+
+#: includes/templates/templateV2.php:184
+msgid "Display more reviews"
+msgstr "Display more reviews"
+
+#: netreviews.php:569
+msgid "Product Reviews"
+msgstr "Product Reviews"

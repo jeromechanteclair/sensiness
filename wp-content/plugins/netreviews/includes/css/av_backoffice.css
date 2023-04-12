@@ -1,0 +1,2198 @@
+/* ############################### */
+/* FONTS */
+/* ############################### */
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(../fonts/SourceSansPro/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(../fonts/SourceSansPro/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(../fonts/SourceSansPro/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(../fonts/SourceSansPro/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(../fonts/SourceSansPro/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(../fonts/SourceSansPro/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(../fonts/SourceSansPro/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'nr-icons';
+    src: url('../fonts/nr-icons/nr-icons.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* ############################### */
+/* STYLE PRESENTATION */
+/* ############################### */
+
+.avpres_wrap *, .avpres_wrap *:active, .avpres_wrap *:hover {
+    outline: none;
+}
+
+.avpres_wrap {
+    position: relative;
+    overflow: auto;
+    width: 99%;
+    border: 1px solid #E5E5E5;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+    background-color: #FFFFFF;
+    font-size: 13px;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    color: #444;
+}
+
+.avpres_wrap .avpres_logo {
+    width: 100%;
+    padding: 10px 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+.avpres_wrap .avpres_logo div {
+    margin: 0px auto;
+}
+
+.avpres_col_right img {
+    width: 380px;
+    height: auto;
+    float: right;
+    margin-top: -60px;
+}
+
+.avpres_wrap hr {
+    border-top: solid #E89025 6px;
+    padding: 0px;
+    width: 96%;
+    margin: 0px 0px 0px 2%;
+}
+
+.avpres_wrap .avpres_col_left {
+    margin: 20px 92px 0px 163px;
+}
+
+.avpres_wrap .avpictos {
+    width: 770px;
+    margin: 25px auto 0px auto;
+}
+
+.avpres_wrap .avpictos div {
+    display: inline-block;
+}
+
+.avpres_wrap .avpres_vagues_top {
+    width: 0;
+    float: left;
+    margin: 0px;
+}
+
+.avpres_wrap .avpres_col_right {
+    float: right;
+}
+
+.avpres_wrap .avpres_col_bottom {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.avpres_align_bottom.avpres_partn img {
+    width: 100px;
+    height: auto;
+    padding-right: 15px;
+}
+
+.certif {
+    font-weight: 600;
+    margin-top: 50px;
+    margin-left: 15px;
+}
+
+.avpres_align_bottom {
+    width: 33%;
+    float: left;
+    margin-left: 38px;
+    margin-top: 10px;
+}
+
+.avpres_align_left {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.avpres_align_center {
+    display: inline-block;
+    left: calc(50% - 300px/2);
+    position: absolute;
+}
+
+.avpres_align_right {
+    display: inline-block;
+    float: right;
+}
+
+.avpres_wrap .avpres_col_bottom a {
+    text-decoration: none;
+    transition: none;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin: 0;
+    line-height: 30px;
+    width: 151px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.avpres_wrap .avpres_col_bottom a img {
+    width: 300px;
+}
+
+.avpres_wrap .avpres_col_bottom a:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    opacity: 0.8;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.avpres_wrap .avpres_col_bottom p {
+    padding: 20px 0px 0px 0px;
+    margin: 0px;
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+}
+
+.avpres_wrap .avpres_col_left h1 {
+    text-align: left;
+    color: #000;
+    font-size: 25px;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    padding: 0px;
+    margin: 0px;
+    line-height: 32px;
+}
+
+.avpres_wrap .avpres_col_left p {
+    text-align: justify;
+    color: #555555;
+    font-size: 16px;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    padding: 18px 0px 0px 0px;
+    margin: 0px;
+}
+
+.avpres_wrap .avpres_col_left p span {
+    text-align: justify;
+    color: #3e3838;
+    font-size: 16px;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    padding: 18px 0px 0px 0px;
+    margin: 0px;
+    font-weight: bold;
+}
+
+.avpres_wrap .avpres_img_partnership {
+    width: 200px;
+    height: auto;
+    margin-top: 7px;
+    margin-left: 15px;
+}
+
+.tableafnor {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+.tableafnor tr {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+.tableafnor td {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: middle;
+}
+
+.tableafnor td p {
+    font-size: 14px !important;
+    width: 100%;
+    text-align: left;
+    line-height: 23px;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.afnorlogo {
+    width: 50px;
+    text-align: left;
+}
+
+.avpres_wrap .avpres_col_right ul {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    list-style: none;
+}
+
+.avpres_wrap .avpres_col_right ul li {
+    margin: 0px;
+    padding: 0px 0px 0px 30px;
+    width: 100%;
+    list-style: none;
+    float: left;
+    clear: both;
+    background-repeat: no-repeat;
+    min-height: 35px;
+    line-height: 33px;
+    cursor: default;
+    background-position: left center;
+}
+
+.avpres_wrap .avpres_col_right ul li label {
+    font-size: 15px;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    cursor: default;
+}
+
+
+/* ############################### */
+/* ACCORDION */
+/* ############################### */
+
+button.accordion {
+    background-color: #F08C02;
+    /*background-color: #e2e2e2;*/
+    color: #313131;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    border-bottom: solid 2px #CCC;
+    margin-bottom: 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+button.accordion:hover {
+    background-color: #dadada;
+}
+
+button.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 10px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+div.panelaccordion {
+    padding: 15px 18px 0;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+div.panelaccordion.show {
+    display: block;
+}
+
+
+/* ############################### */
+/* STYLE TABS */
+/* ############################### */
+
+.avcontent_wrap {
+    position: relative;
+    overflow: auto;
+    width: 99%;
+    margin: 20px 0px 0px 0px;
+    padding: 0px;
+    border: 1px solid #E5E5E5;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+    background-color: #FFFFFF;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    color: #444;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.panelaccordion form {
+    padding: 20px;
+}
+
+.panelaccordion h2 {
+    font-size: 16px;
+    text-align: left;
+    font-weight: 700;
+    color: #444;
+}
+
+
+/* ############################### */
+/* EXPORT */
+/* ############################### */
+
+.table_export {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.table_export tr {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.table_export tr td {
+    border: none;
+    margin: 0;
+    padding: 5px 0px;
+    vertical-align: top;
+    font-weight: 500;
+}
+
+.export_label_checkbox {
+    margin-left: 5px;
+    line-height: 25px;
+}
+
+.av_help_export {
+    font-size: 15px;
+    line-height: 27px;
+    color: #989898;
+    padding-top: 20px !important;
+}
+
+.av_button {
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    padding: 2px 17px;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin: 0;
+    line-height: 30px;
+    background-color: #f28e1b;
+    background-image: -moz-linear-gradient(top, #f28e1b 0%, #da8018 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f28e1b), color-stop(100%, #da8018));
+    background-image: -webkit-linear-gradient(top, #f28e1b 0%, #da8018 100%);
+    background-image: -o-linear-gradient(top, #f28e1b 0%, #da8018 100%);
+    background-image: -ms-linear-gradient(top, #f28e1b 0%, #da8018 100%);
+    background-image: linear-gradient(to bottom, #f28e1b 0%, #da8018 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f28e1b', endColorstr='#da8018', GradientType=0);
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.av_button:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    opacity: 0.8;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+#av_form_export{
+    font-size: 15px;
+}
+
+.export_form h2{
+    margin: auto !important;
+}
+
+#date_range_datepicker_export{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex !important;
+}
+
+#date_range_datepicker_export > div{
+    margin-right: 15px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+#date_range_datepicker_export > div div{
+    margin-right: 10px;
+}
+
+#date_range_datepicker_export div{
+    font-weight: 400 !important;
+}
+
+.fa-calendar-alt{
+    left: -25px !important;
+    position: relative;
+}
+
+/* ############################### */
+/* CHECK INSTALLATION */
+/* ############################### */
+
+.tablecheckinstall {
+    border: none;
+    margin: 10px 0px;
+    padding: 0;
+}
+
+.tablecheckinstall tr {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tablecheckinstall tr th {
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    color: #444444;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+.tablecheckinstall tr td {
+    text-align: left;
+    font-size: 15px;
+    font-weight: normal;
+    color: #444444;
+    line-height: 34px;
+    vertical-align: middle;
+}
+
+.lebelcount {
+    background: #ecebeb;
+    padding: 0px 0px;
+    text-align: center;
+    width: 93px;
+    display: block;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    line-height: 31px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+/* ############################### */
+/* DESIGN */
+/* ############################### */
+
+.paneldesign .table_design, .paneldesign .table_design_details {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 15px !important;
+}
+
+.paneldesign .table_design_details {
+    margin-top: 10px;
+}
+
+.paneldesign .table_design tr, .paneldesign .table_design_details tr {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.paneldesign .table_design tr td, .paneldesign .table_design_details tr td {
+    border: none;
+    margin: 10px 0 0;
+    padding-bottom: 20px;
+    vertical-align: top;
+    font-weight: 500;
+}
+
+.design-question {
+    display: inline-block;
+}
+
+.design-tr {
+    float: right;
+
+}
+
+input.responsive1 {
+    margin-right: 10px;
+}
+
+input.responsive2 {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#media1 {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#media2 {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#helpful1 {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#helpful2 {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+td.choose_widget_stars{
+    display: flex;
+}
+
+td.choose_widget_stars > div{
+    display: flex;
+}
+
+.choose_widget_stars_question{
+    max-width: 300px;
+}
+
+div.templatewidget_div{
+    width: 225px;
+    height: 90px;
+    cursor: pointer;
+    margin-right: 30px;
+    margin-top: -18px;
+}
+
+div.templatewidget_div_first {
+    width: 180px;
+}
+
+div.img_widget_to_choose:hover{
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(1.25);
+}
+
+.widget-active{
+    border: 2px solid #f9e8b6;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+div.img_widget_to_choose .widget-active:hover{
+    border: none;
+}
+
+td.choose_template{
+    display: flex;
+}
+
+.template_img{
+    border-radius: 5px;
+    border: 2px solid #eee;
+    margin-right: 30px;
+}
+
+.template_img:hover{
+    /*border: 2px solid rgba(25,25,25,0.5) !important;*/
+    cursor: pointer;
+    transform: scale(1.25);
+}
+
+.tpl-active{
+    border: 2px solid #f9e8b6;
+    border-radius: 5px;
+}
+
+.responsive{
+    width: 25%;
+}
+
+
+/* ############################### */
+/* CONFIGURATION */
+/* ############################### */
+
+.panelaccordionconfig .divsecretkeyWPML {
+    border: 3px dashed #b4b9be;
+    width: 520px;
+    padding: 25px 30px;
+    margin-top: 20px;
+}
+
+.panelaccordionconfig .divsecretkey {
+    border: 3px dashed #b4b9be;
+    width: 520px;
+    padding: 25px 30px;
+    margin-top: 20px;
+}
+
+.panelaccordionconfig .paragraphsecretkey {
+    padding: 0px 0px 21px 0px;
+    width: 100%;
+    margin: 0px;
+    line-height: 15px;
+    font-size: 14px;
+}
+
+.panelaccordionconfig .paragraphsecretkeyWpml {
+font-size: 17px;
+}
+
+.panelaccordionconfig .infos {
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+.panelaccordionconfig .champ label {
+    width: 130px;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.panelaccordionconfig .divsecretkey label {
+    width: 115px !important;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.panelaccordionconfig .elem .av_input {
+    color: #e6871a;
+}
+
+.panelaccordionconfig .elem .form-group{
+    margin-bottom: 5px;
+}
+
+.panelaccordionconfig #s_key {
+    margin-bottom: 1%;
+}
+
+.panelaccordionconfig .items {
+    margin-top: 15px;
+}
+
+.panelaccordionconfig .items input + input {
+    margin-left: 2%;
+}
+
+.googleshopingtext {
+    font-size: 15px;
+}
+
+
+/* ############################### */
+/* SPRITE CSS */
+/* ############################### */
+
+.nr-sprite {
+    background-image: url("../images/css_sprite_back.png");
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.nr-sprite-Sceau_65_de {
+    width: 65px;
+    height: 66px;
+    background-position: -5px -5px;
+}
+
+.nr-sprite-Sceau_65_en {
+    width: 65px;
+    height: 66px;
+    background-position: -80px -5px;
+}
+
+.nr-sprite-Sceau_65_es {
+    width: 65px;
+    height: 66px;
+    background-position: -155px -5px;
+}
+
+.nr-sprite-Sceau_65_fr {
+    width: 65px;
+    height: 66px;
+    background-position: -230px -5px;
+}
+
+.nr-sprite-Sceau_65_it {
+    width: 65px;
+    height: 65px;
+    background-position: -305px -5px;
+}
+
+.nr-sprite-Sceau_65_pt {
+    width: 65px;
+    height: 66px;
+    background-position: -380px -5px;
+}
+
+.nr-sprite-Sceau_90_de {
+    width: 90px;
+    height: 92px;
+    background-position: -455px -5px;
+}
+
+.nr-sprite-Sceau_90_en {
+    width: 90px;
+    height: 92px;
+    background-position: -555px -5px;
+}
+
+.nr-sprite-Sceau_90_es {
+    width: 90px;
+    height: 92px;
+    background-position: -655px -5px;
+}
+
+.nr-sprite-Sceau_90_fr {
+    width: 90px;
+    height: 92px;
+    background-position: -755px -5px;
+}
+
+.nr-sprite-Sceau_90_it {
+    width: 90px;
+    height: 90px;
+    background-position: -855px -5px;
+}
+
+.nr-sprite-Sceau_90_pt {
+    width: 90px;
+    height: 92px;
+    background-position: -955px -5px;
+}
+
+.nr-sprite-collecte_multicanal_de {
+    width: 133px;
+    height: 122px;
+    background-position: -5px -107px;
+}
+
+.nr-sprite-collecte_multicanal_en {
+    width: 133px;
+    height: 122px;
+    background-position: -148px -107px;
+}
+
+.nr-sprite-collecte_multicanal_es {
+    width: 133px;
+    height: 122px;
+    background-position: -291px -107px;
+}
+
+.nr-sprite-collecte_multicanal_fr {
+    width: 133px;
+    height: 122px;
+    background-position: -434px -107px;
+}
+
+.nr-sprite-collecte_multicanal_it {
+    width: 133px;
+    height: 122px;
+    background-position: -577px -107px;
+}
+
+.nr-sprite-collecte_multicanal_pt {
+    width: 133px;
+    height: 122px;
+    background-position: -720px -107px;
+}
+
+.nr-sprite-diffusion_de {
+    width: 127px;
+    height: 122px;
+    background-position: -863px -107px;
+}
+
+.nr-sprite-diffusion_en {
+    width: 127px;
+    height: 122px;
+    background-position: -1000px -107px;
+}
+
+.nr-sprite-diffusion_es {
+    width: 127px;
+    height: 122px;
+    background-position: -5px -239px;
+}
+
+.nr-sprite-diffusion_fr {
+    width: 110px;
+    height: 122px;
+    background-position: -142px -239px;
+}
+
+.nr-sprite-diffusion_it {
+    width: 127px;
+    height: 122px;
+    background-position: -262px -239px;
+}
+
+.nr-sprite-diffusion_pt {
+    width: 127px;
+    height: 122px;
+    background-position: -399px -239px;
+}
+
+.nr-sprite-engagement_equipes_de {
+    width: 123px;
+    height: 122px;
+    background-position: -536px -239px;
+}
+
+.nr-sprite-engagement_equipes_en {
+    width: 170px;
+    height: 122px;
+    background-position: -669px -239px;
+}
+
+.nr-sprite-engagement_equipes_es {
+    width: 170px;
+    height: 122px;
+    background-position: -849px -239px;
+}
+
+.nr-sprite-engagement_equipes_fr {
+    width: 170px;
+    height: 122px;
+    background-position: -5px -371px;
+}
+
+.nr-sprite-engagement_equipes_it {
+    width: 170px;
+    height: 122px;
+    background-position: -185px -371px;
+}
+
+.nr-sprite-engagement_equipes_pt {
+    width: 170px;
+    height: 122px;
+    background-position: -365px -371px;
+}
+
+.nr-sprite-logo_full_de {
+    width: 457px;
+    height: 82px;
+    background-position: -545px -371px;
+}
+
+.nr-sprite-logo_full_en {
+    width: 457px;
+    height: 82px;
+    background-position: -545px -463px;
+}
+
+.nr-sprite-logo_full_es {
+    width: 457px;
+    height: 81px;
+    background-position: -5px -555px;
+}
+
+.nr-sprite-logo_full_fr {
+    width: 457px;
+    height: 81px;
+    background-position: -472px -555px;
+}
+
+.nr-sprite-logo_full_gb {
+    width: 457px;
+    height: 82px;
+    background-position: -5px -646px;
+}
+
+.nr-sprite-logo_full_it {
+    width: 457px;
+    height: 80px;
+    background-position: -472px -646px;
+}
+
+.nr-sprite-logo_full_pt {
+    width: 457px;
+    height: 80px;
+    background-position: -472px -736px;
+}
+
+.nr-sprite-mesure_analyse_de {
+    width: 159px;
+    height: 122px;
+    background-position: -939px -555px;
+}
+
+.nr-sprite-mesure_analyse_en {
+    width: 136px;
+    height: 122px;
+    background-position: -1012px -371px;
+}
+
+.nr-sprite-mesure_analyse_es {
+    width: 159px;
+    height: 122px;
+    background-position: -939px -687px;
+}
+
+.nr-sprite-mesure_analyse_fr {
+    width: 136px;
+    height: 122px;
+    background-position: -5px -819px;
+}
+
+.nr-sprite-mesure_analyse_it {
+    width: 143px;
+    height: 122px;
+    background-position: -151px -819px;
+}
+
+.nr-sprite-mesure_analyse_pt {
+    width: 159px;
+    height: 122px;
+    background-position: -939px -819px;
+}
+
+.nr-sprite-no {
+    width: 18px;
+    height: 18px;
+    background-position: -1055px -5px;
+    margin-left: 6px;
+}
+
+.nr-sprite-partnership {
+    width: 200px;
+    height: 38px;
+    background-position: -5px -951px;
+}
+
+.nr-sprite-start_de {
+    width: 300px;
+    height: 90px;
+    background-position: -304px -826px;
+}
+
+.nr-sprite-start_en {
+    width: 300px;
+    height: 90px;
+    background-position: -614px -826px;
+}
+
+.nr-sprite-start_es {
+    width: 300px;
+    height: 90px;
+    background-position: -304px -926px;
+}
+
+.nr-sprite-start_fr {
+    width: 300px;
+    height: 90px;
+    background-position: -614px -926px;
+}
+
+.nr-sprite-start_it {
+    width: 300px;
+    height: 90px;
+    background-position: -5px -1026px;
+}
+
+.nr-sprite-start_pt {
+    width: 300px;
+    height: 90px;
+    background-position: -315px -1026px;
+}
+
+.nr-sprite-vagues_bas {
+    width: 380px;
+    height: 200px;
+    /*background-position: -1137px -5px;*/
+    background-position: 98.6% 0.44%;
+}
+
+.nr-sprite-vagues_haut {
+    width: 300px;
+    height: 158px;
+    /*background-position: -1158px -215px;*/
+    background-position: 94.984% 22.179%;
+}
+
+.nr-sprite-valorisation_client_de {
+    width: 151px;
+    height: 122px;
+    background-position: -1158px -383px;
+}
+
+.nr-sprite-valorisation_client_en {
+    width: 151px;
+    height: 122px;
+    background-position: -1319px -383px;
+}
+
+.nr-sprite-valorisation_client_es {
+    width: 151px;
+    height: 122px;
+    background-position: -1108px -515px;
+}
+
+.nr-sprite-valorisation_client_fr {
+    width: 133px;
+    height: 122px;
+    background-position: -1269px -515px;
+}
+
+.nr-sprite-valorisation_client_it {
+    width: 151px;
+    height: 122px;
+    background-position: -1108px -647px;
+}
+
+.nr-sprite-valorisation_client_pt {
+    width: 151px;
+    height: 122px;
+    background-position: -1269px -647px;
+}
+
+.nr-sprite-yes {
+    width: 18px;
+    height: 18px;
+    background-position: -1083px -5px;
+    margin-left: 6px;
+}
+
+.nr-sprite-widget1{
+    /*width: 200px;*/
+    /*height: 62px;*/
+    width: 150px;
+    height: 47px;
+    background-position: -639px -1050px;
+}
+
+.nr-sprite-widget2{
+    /*width: 230px;*/
+    /*height: 97px;*/
+    width: 173px;
+    height: 73px;
+    background-position: -815px -1037px;
+}
+
+.nr-sprite-widget3{
+    /*width: 272px;*/
+    /*height: 118px;*/
+    width: 204px;
+    height: 89px;
+    background-position: -1003px -1029px;
+}
+
+.nr-sprite-tpl1{
+    width: 180px;
+    height: 137px;
+    background-size: 100% 100%;
+    background-image: url("../images/template1.png");
+}
+
+.nr-sprite-tpl2{
+    width: 177px;
+    height: 137px;
+    background-size: 100% 100%;
+    background-image: url("../images/template2.png");
+}
+
+
+/* ############################### */
+/* RESPONSIVE */
+/* ############################### */
+
+@media (max-width: 960px) {
+    .design-tr {
+        margin-top: 5px;
+        float: none;    }
+}
+
+@media screen and (max-width: 1050px) {
+
+    .avpres_wrap .avpres_col_bottom {
+        padding-top: 20px;
+        clear: both;
+        float: left;
+    }
+    .avpres_wrap .avpres_col_left {
+        margin: 20px 92px 0px 70px;
+    }
+}
+
+@media screen and (max-width: 772px) {
+    div.templatewidget_div_first {
+        height: 65px;
+        margin-left: 30px;
+    }
+    td.choose_template, td.choose_widget_stars{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    td.choose_widget_stars div:last-child{
+        /*margin-left: -5px;*/
+    }
+    .paneldesign .table_design tr td{
+        padding-bottom:10px;
+        margin: 0;
+    }
+    div.templatewidget_div{
+        padding-bottom: 35px;
+    }
+    div.nr-sprite-tpl1{
+        margin-bottom: 10px;
+    }
+    .avpres_wrap .avpres_col_left {
+        margin: 20px 70px 0px 70px;
+    }
+    .avpres_wrap .avpictos{
+        margin-left: -15px !important;
+    }
+    .nr-sprite-vagues_haut
+    {
+        background-size: 414%;
+        background-position: 99.984252% 23.179304%;
+        height: 130px;
+        width: 302px;
+    }
+    .nr-sprite-vagues_bas {
+        background-size: 469%;
+        background-position: 98.984252% 2.179304%;
+        height: 120px;
+        width: 213px;
+    }
+    .nr-sprite-partnership {
+        width: 220px;
+        height: 42px;
+        background-size: 562%;
+        background-position: -2% 88.5%;
+    }
+    .avpres_align_left {
+        margin-left: 5px;
+    }
+    .certif {
+        margin-top: 20px;
+    }
+    .avpres_align_center {
+        left: calc(50% - 200px/2);
+    }
+    .nr-sprite-logo_full_fr{
+        width: 275px;
+        height: 60px;
+        background-size: 342%;
+        background-position: 44% 53.179304%;
+    }
+    .nr-sprite-collecte_multicanal_fr {
+        width: 100px;
+        height: 90px;
+        background-size: 1180%;
+        background-position: 30.984252% 11.179304%;
+    }
+    .nr-sprite-valorisation_client_fr {
+        width: 113px;
+        height: 101px;
+        background-size: 1107%;
+        background-position: 91.2% 51.18%;
+    }
+    .nr-sprite-mesure_analyse_fr {
+        width: 115px;
+        height: 101px;
+        background-size: 1090%;
+        background-position: 0% 81.3%;
+    }
+    .nr-sprite-diffusion_fr {
+        width: 100px;
+        height: 90px;
+        background-size: 1274%;
+        background-position: 9.7% 24.2%;
+    }
+    .nr-sprite-engagement_equipes_fr {
+        width: 134px;
+        height: 101px;
+        background-size: 900%;
+        background-position: 0.5% 36.5%;
+    }
+    .nr-sprite-start_fr {
+        width: 200px;
+        height: 43px;
+        background-size: 562%;
+        background-position: 50.2% 88.5%;
+    }
+
+    .nr-sprite-logo_full_es{
+        width: 275px;
+        height: 60px;
+        background-size: 326%;
+        background-position: 0% 52.179304%;
+    }
+    .nr-sprite-collecte_multicanal_es {
+        width: 100px;
+        height: 90px;
+        background-size: 1110%;
+        background-position: 19.984252% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_es {
+        width: 113px;
+        height: 102px;
+        background-size: 1080%;
+        background-position: 80% 51.18%;
+    }
+    .nr-sprite-mesure_analyse_es {
+        width: 130px;
+        height: 101px;
+        background-size: 986%;
+        background-position: 68.8% 68.4%;
+    }
+    .nr-sprite-diffusion_es {
+        width: 100px;
+        height: 99px;
+        background-size: 1226%;
+        background-position: 0.4% 23.4%;
+    }
+    .nr-sprite-engagement_equipes_es {
+        width: 140px;
+        height: 97px;
+        background-size: 892%;
+        background-position: 63.5% 24.2%;
+    }
+    .nr-sprite-start_es {
+        width: 200px;
+        height: 43px;
+        background-size: 562%;
+        background-position: 25.5% 88.5%;
+    }
+
+    .nr-sprite-logo_full_it{
+        width: 275px;
+        height: 60px;
+        background-size: 326%;
+        background-position: 45% 63.179304%;
+    }
+    .nr-sprite-collecte_multicanal_it {
+        width: 100px;
+        height: 102px;
+        background-size: 1229%;
+        background-position: 41% 10.5%;
+    }
+    .nr-sprite-valorisation_client_it {
+        width: 113px;
+        height: 102px;
+        background-size: 1075%;
+        background-position: 80.4% 64.96%;
+    }
+    .nr-sprite-mesure_analyse_it {
+        width: 130px;
+        height: 101px;
+        background-size: 967%;
+        background-position: 10% 82%;
+    }
+    .nr-sprite-diffusion_it {
+        width: 100px;
+        height: 100px;
+        background-size: 1213%;
+        background-position: 18.4% 23.7%;
+    }
+    .nr-sprite-engagement_equipes_it {
+        width: 140px;
+        height: 102px;
+        background-size: 892%;
+        background-position: 14.6% 37.5%;
+    }
+    .nr-sprite-start_it {
+        width: 200px;
+        height: 43px;
+        background-size: 562%;
+        background-position: 1.6% 98.5%;
+    }
+
+    .nr-sprite-logo_full_pt{
+        width: 275px;
+        height: 60px;
+        background-size: 326%;
+        background-position: 45% 72%;
+    }
+    .nr-sprite-collecte_multicanal_pt {
+        width: 100px;
+        height: 100px;
+        background-size: 1140%;
+        background-position: 50.984252% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_pt {
+        width: 113px;
+        height: 102px;
+        background-size: 1075%;
+        background-position: 92.4% 64.9%;
+    }
+    .nr-sprite-mesure_analyse_pt {
+        width: 130px;
+        height: 101px;
+        background-size: 967%;
+        background-position: 69% 82%;
+    }
+    .nr-sprite-diffusion_pt {
+        width: 100px;
+        height: 106px;
+        background-size: 1380%;
+        background-position: 29.4% 23.8%;
+    }
+    .nr-sprite-engagement_equipes_pt {
+        width: 140px;
+        height: 100px;
+        background-size: 892%;
+        background-position: 28.6% 37.5%;
+    }
+    .nr-sprite-start_pt {
+        width: 200px;
+        height: 43px;
+        background-size: 562%;
+        background-position: 26.3% 98.5%;
+    }
+
+    .nr-sprite-logo_full_de{
+        width: 275px;
+        height: 60px;
+        background-size: 326%;
+        background-position: 51% 35.4%;
+    }
+    .nr-sprite-collecte_multicanal_de {
+        width: 100px;
+        height: 100px;
+        background-size: 1140%;
+        background-position: -1% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_de {
+        width: 113px;
+        height: 102px;
+        background-size: 1075%;
+        background-position: 84.2% 38.1%;
+    }
+    .nr-sprite-mesure_analyse_de {
+        width: 130px;
+        height: 101px;
+        background-size: 967%;
+        background-position: 69% 55.3%;
+    }
+    .nr-sprite-diffusion_de {
+        width: 112px;
+        height: 106px;
+        background-size: 1170%;
+        background-position: 61.58% 10.1%;
+    }
+    .nr-sprite-engagement_equipes_de {
+        width: 140px;
+        height: 100px;
+        background-size: 892%;
+        background-position: 38.6% 24.15%;
+    }
+    .nr-sprite-start_de {
+        width: 200px;
+        height: 43px;
+        background-size: 562%;
+        background-position: 25.5% 79.5%;
+    }
+
+    .nr-sprite-logo_full_en{
+        width: 275px;
+        height: 60px;
+        background-size: 342%;
+        background-position: 51% 44.4%;
+    }
+    .nr-sprite-collecte_multicanal_en {
+        width: 100px;
+        height: 101px;
+        background-size: 1140%;
+        background-position: 10% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_en {
+        width: 113px;
+        height: 103px;
+        background-size: 1047%;
+        background-position: 95.9% 38.1%;
+    }
+    .nr-sprite-mesure_analyse_en {
+        width: 130px;
+        height: 113px;
+        background-size: 1055%;
+        background-position: 73% 36.7%;
+    }
+    .nr-sprite-diffusion_en {
+        width: 112px;
+        height: 100px;
+        background-size: 1170%;
+        background-position: 71.58% 10.85%;
+    }
+    .nr-sprite-engagement_equipes_en {
+        width: 140px;
+        height: 101px;
+        background-size: 892%;
+        background-position: 51.6% 24.15%;
+    }
+    .nr-sprite-start_en {
+        width: 200px;
+        height: 43px;
+        background-size: 562%;
+        background-position: 50.1% 79.5%;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .avpres_wrap .avpres_col_left{
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 0;
+    }
+    .panelaccordionconfig .divsecretkey {
+        width: 100%;
+        padding: 10px 0px;
+        margin-top: 5px;
+    }
+    .panelaccordionconfig .paragraphsecretkey {
+        padding: 0 10px;
+        font-size: 13px;
+    }
+    .panelaccordionconfig .items{
+        font-size: 14px;
+    }
+    .panelaccordionconfig .champ label {
+        font-size: 14px;
+    }
+    .panelaccordionconfig .elem .form-group{
+        padding: 10px 10px;
+        margin-bottom: 0;
+    }
+    .panelaccordionconfig .elem .form-group label{
+        font-size: 14px;
+    }
+    .panelaccordionconfig .elem .form-group input{
+        font-size: 13px;
+    }
+    .panelaccordion form {
+        padding: 10px;
+    }
+    .googleshopingtext {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+    .panelaccordionconfig .elem .form-group{
+        margin-bottom: 2px;
+        padding: 0;
+    }
+    .panelaccordionconfig .elem .form-group select, .panelaccordionconfig .elem .form-group select option{
+        font-size: 13px;
+    }
+    .panelaccordionconfig .elem .form-group select{
+        min-height: 25px !important;
+        padding: 0 24px 0 8px;
+    }
+    .panelaccordionconfig .elem .form-group.responsive-form-group{
+        padding-left: 10px;
+    }
+    .panelaccordionconfig .elem.divsecretkey > div{
+        margin-top: 10px;
+    }
+    .nr-sprite-widget3 {
+        background-position: -1015px -1029px;
+    }
+    #inputNumberReviews{
+        font-size: 13px;
+    }
+    .responsive-specific-css{
+        display: none;
+    }
+    .paneldesign .table_design, .paneldesign .table_design_details{
+        font-size: 13.5px !important;
+    }
+    .paneldesign .table_design tr{
+        border-bottom: 1px solid #ddd !important;
+    }
+    .responsive-td-design{
+        width: 250px;
+    }
+    .responsive-td-design.min-responsive{
+        width: 300px;
+    }
+    .responsive-align{
+        vertical-align: middle !important;
+    }
+    .panelaccordion h2{
+        font-size: 14px;
+    }
+    #date_range_datepicker_export{
+        flex-direction: column;
+        font-size: 14px;
+        margin-bottom: 13px;
+    }
+    #date_range_datepicker_export > div{
+        margin-right: 15px;
+    }
+    #date_range_datepicker_export > div:first-child{
+        margin-bottom: 15px;
+    }
+    #date_range_datepicker_export > div div{
+        margin-right: 10px;
+    }
+    #date_range_datepicker_export input{
+        width: 150px;
+    }
+    div.input-group-addon{
+        width: 60px;
+    }
+    .responsive-td{
+        width: 40%;
+    }
+    #manualExportNr{
+        font-size: 14px;
+    }
+    #manualExportNr select{
+        font-size: 14px;
+        min-height: 25px !important;
+        padding: 0 24px 0 8px;
+    }
+    #manualExportNr input{
+        margin-bottom: 3px;
+    }
+    .av_help_export {
+        font-size: 13px;
+        line-height: 18px;
+    }
+    #manualExportNr td{
+        width: 44%;
+    }
+    .responsive-td-checkInstall{
+        width: 50%;
+    }
+    .panelaccordionconfig input[type="radio"], .paneldesign input[type="radio"]{
+        height: 1rem;
+        width: 1rem;
+    }
+    .panelaccordionconfig input[type="radio"]:checked::before, .paneldesign input[type="radio"]:checked::before{
+        width: 0.5rem;
+        height: 0.5rem;
+        margin: 0.1875rem;
+    }
+    .nr-sprite-vagues_haut
+    {
+        background-size: 344%;
+        background-position: 106.984252% 24.179304%;
+        height: 100px;
+    }
+    .nr-sprite-vagues_bas {
+        background-size: 469%;
+        background-position: 98.984252% 3.179304%;
+        height: 100px;
+        width: 182px;
+    }
+    .nr-sprite-partnership {
+        width: 140px;
+        height: 26px;
+        background-size: 562%;
+        background-position: -2% 88.5%;
+    }
+    .avpres_align_left {
+        margin-left: 5px;
+    }
+    .certif {
+        margin-top: 20px;
+    }
+    .avpres_align_center {
+        left: calc(50% - 160px/2);
+    }
+    .avpres_wrap .avpictos{
+        margin-left: -15px !important;
+        width: 568px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .avpres_wrap .avpictos {
+        margin-left: -8px !important;
+        width: 420px;
+    }
+    .avpres_align_center {
+        left: calc(50% - 110px/2);
+    }
+    .certif{
+        margin-left: 5px !important;
+        font-size: 11px;
+    }
+    .nr-sprite-partnership {
+        width: 130px;
+        height: 26px;
+        background-size: 562%;
+        background-position: -1% 88.5%;
+    }
+    .nr-sprite-vagues_bas {
+        height: 90px;
+        width: 166px;
+    }
+    .avpres_wrap .avpres_logo div {
+        margin: 0 10px 0 auto;
+    }
+    .nr-sprite-logo_full_fr{
+        width: 170px;
+        height: 54px;
+        background-size: 448%;
+        background-position: 48% 53.179304%;
+    }
+    .nr-sprite-collecte_multicanal_fr {
+        width: 65px;
+        height: 65px;
+        background-size: 1140%;
+        background-position: 30.984252% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_fr {
+        width: 65px;
+        height: 65px;
+        background-size: 1083%;
+        background-position: 91.984252% 51.18%;
+    }
+    .nr-sprite-mesure_analyse_fr {
+        width: 75px;
+        height: 65px;
+        background-size: 1060%;
+        background-position: 0% 82%;
+    }
+    .nr-sprite-diffusion_fr {
+        width: 57px;
+        height: 65px;
+        background-size: 1469%;
+        background-position: 10.2% 23.9%;
+    }
+    .nr-sprite-engagement_equipes_fr {
+        width: 90px;
+        height: 65px;
+        background-size: 892%;
+        background-position: 0.5% 37.5%;
+    }
+    .nr-sprite-start_fr {
+        width: 110px;
+        height: 24px;
+    }
+
+    .nr-sprite-logo_full_es{
+        width: 205px;
+        height: 54px;
+        background-size: 326%;
+        background-position: 0% 52.179304%;
+    }
+    .nr-sprite-collecte_multicanal_es {
+        width: 65px;
+        height: 65px;
+        background-size: 1140%;
+        background-position: 19.984252% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_es {
+        width: 65px;
+        height: 65px;
+        background-size: 1230%;
+        background-position: 80% 51.18%;
+    }
+    .nr-sprite-mesure_analyse_es {
+        width: 76px;
+        height: 65px;
+        background-size: 947%;
+        background-position: 68.8% 68.4%;
+    }
+    .nr-sprite-diffusion_es {
+        width: 65px;
+        height: 65px;
+        background-size: 1213%;
+        background-position: 0.4% 23.4%;
+    }
+    .nr-sprite-engagement_equipes_es {
+        width: 90px;
+        height: 65px;
+        background-size: 892%;
+        background-position: 63.5% 24.2%;
+    }
+    .nr-sprite-start_es {
+        width: 110px;
+        height: 24px;
+        background-size: 562%;
+        background-position: 25.5% 88.5%;
+    }
+
+    .nr-sprite-logo_full_it{
+        width: 205px;
+        height: 48px;
+        background-size: 326%;
+        background-position: 45% 63.179304%;
+    }
+    .nr-sprite-collecte_multicanal_it {
+        width: 65px;
+        height: 65px;
+        background-size: 1140%;
+        background-position: 39.984252% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_it {
+        width: 70px;
+        height: 65px;
+        background-size: 1075%;
+        background-position: 80.4% 64.96%;
+    }
+    .nr-sprite-mesure_analyse_it {
+        width: 76px;
+        height: 65px;
+        background-size: 967%;
+        background-position: 10% 82%;
+    }
+    .nr-sprite-diffusion_it {
+        width: 65px;
+        height: 65px;
+        background-size: 1213%;
+        background-position: 18.4% 23.7%;
+    }
+    .nr-sprite-engagement_equipes_it {
+        width: 90px;
+        height: 65px;
+        background-size: 892%;
+        background-position: 14.6% 37.5%;
+    }
+    .nr-sprite-start_it {
+        width: 110px;
+        height: 24px;
+        background-size: 562%;
+        background-position: 1.6% 98.5%;
+    }
+
+    .nr-sprite-logo_full_pt{
+        width: 205px;
+        height: 48px;
+        background-size: 326%;
+        background-position: 45% 72%;
+    }
+    .nr-sprite-collecte_multicanal_pt {
+        width: 65px;
+        height: 65px;
+        background-size: 1140%;
+        background-position: 50.984252% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_pt {
+        width: 70px;
+        height: 65px;
+        background-size: 1075%;
+        background-position: 92.4% 64.9%;
+    }
+    .nr-sprite-mesure_analyse_pt {
+        width: 76px;
+        height: 65px;
+        background-size: 967%;
+        background-position: 69% 82%;
+    }
+    .nr-sprite-diffusion_pt {
+        width: 58px;
+        height: 65px;
+        background-size: 1380%;
+        background-position: 29.4% 23.8%;
+    }
+    .nr-sprite-engagement_equipes_pt {
+        width: 90px;
+        height: 65px;
+        background-size: 892%;
+        background-position: 28.6% 37.5%;
+    }
+    .nr-sprite-start_pt {
+        width: 110px;
+        height: 24px;
+        background-size: 562%;
+        background-position: 26.3% 98.5%;
+    }
+
+    .nr-sprite-logo_full_de{
+        width: 205px;
+        height: 48px;
+        background-size: 326%;
+        background-position: 51% 35.4%;
+    }
+    .nr-sprite-collecte_multicanal_de {
+        width: 65px;
+        height: 65px;
+        background-size: 1140%;
+        background-position: -1% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_de {
+        width: 70px;
+        height: 65px;
+        background-size: 1075%;
+        background-position: 84.2% 38.1%;
+    }
+    .nr-sprite-mesure_analyse_de {
+        width: 76px;
+        height: 65px;
+        background-size: 967%;
+        background-position: 69% 55.3%;
+    }
+    .nr-sprite-diffusion_de {
+        width: 72px;
+        height: 65px;
+        background-size: 1170%;
+        background-position: 61.58% 10.85%;
+    }
+    .nr-sprite-engagement_equipes_de {
+        width: 90px;
+        height: 67px;
+        background-size: 892%;
+        background-position: 39.6% 24.15%;
+    }
+    .nr-sprite-start_de {
+        width: 110px;
+        height: 24px;
+        background-size: 562%;
+        background-position: 25.5% 79.5%;
+    }
+
+    .nr-sprite-logo_full_en{
+        width: 205px;
+        height: 48px;
+        background-size: 342%;
+        background-position: 51% 44.4%;
+    }
+    .nr-sprite-collecte_multicanal_en {
+        width: 65px;
+        height: 65px;
+        background-size: 1140%;
+        background-position: 10% 10.179304%;
+    }
+    .nr-sprite-valorisation_client_en {
+        width: 75px;
+        height: 65px;
+        background-size: 1047%;
+        background-position: 95.9% 38.1%;
+    }
+    .nr-sprite-mesure_analyse_en {
+        width: 76px;
+        height: 65px;
+        background-size: 1055%;
+        background-position: 73% 36.7%;
+    }
+    .nr-sprite-diffusion_en {
+        width: 72px;
+        height: 65px;
+        background-size: 1170%;
+        background-position: 71.58% 10.85%;
+    }
+    .nr-sprite-engagement_equipes_en {
+        width: 90px;
+        height: 67px;
+        background-size: 892%;
+        background-position: 51.6% 24.15%;
+    }
+    .nr-sprite-start_en {
+        width: 110px;
+        height: 24px;
+        background-size: 562%;
+        background-position: 50.1% 79.5%;
+    }
+    .table_design_details td.responsive-td-design{
+        width: 60% !important;
+    }
+    .table_design_details td input.jscolor{
+        width: 90px;
+    }
+    #inputNumberReviews{
+        width: 90px;
+    }
+    input.responsive1 {
+        margin-right: 5px;
+    }
+    input.responsive2 {
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+    span.input-group-addon{
+        width: 200px !important;
+    }
+    #from_datepicker, #to_datepicker{
+        height: 30px;
+        min-height: 30px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .avpres_wrap .avpictos {
+        margin-left: -20px !important;
+    }
+    .panelaccordionconfig .paragraphsecretkeyWpml {
+        font-size: 14px;
+    }
+    .panelaccordionconfig .divsecretkeyWPML {
+        width: 250px;
+        position: relative;
+        padding: 25px 30px 25px 15px;
+    }
+    .divsecretkeyWPML img{
+        height: 30px;
+        position: absolute;
+        top: 5px;
+        right: 20px;
+    }
+}
+
+@media screen and (max-width: 361px){
+    .avpres_wrap .avpictos {
+        margin-left: -27px !important;
+    }
+}
+
+/*--- Manual export---*/
+.ui-dialog > .ui-widget-header {
+    background-color: #F08C02;
+}
+#dialog{
+    display:none;
+}
+.errorDateMessage{
+    display: none;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 10px;
+    margin-top: 10px;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+/*Stars and review rate*/
+.nr-icon.grey {
+    color: #d1d1d1
+}
+
+.nr-icon.gold {
+    color: #ffcd00
+}
+
+.nr-icon {
+    font-family: 'nr-icons';
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.nr-star:before {
+    content: "\e903"
+}
+
+.netreviews_bg_stars_big {
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    height: 20px;
+    width: 100px;
+    vertical-align: bottom;
+}
+
+.netreviews_bg_stars_big div {
+    position: absolute;
+}
+
+.av_product_award{
+    font-family: Nunito, Arial, Helvetica, sans-serif;
+    height: 72px;
+    background: #f0f0f0;
+    border: 1px solid #b6b6b6;
+    border-radius: 15px;
+    position: relative;
+    width: 220px;
+    clear: both;
+}
+
+.av_product_award #top{
+    width: 68%;
+    display: grid;
+    height: 46px;
+    vertical-align: middle;
+    padding-top: 5px;
+}
+.av_product_award .netreviews_review_rate_and_stars{
+    text-align: center;
+}
+
+.av_product_award #top .netreviews_font_stars{
+    display: block;
+    margin: auto;
+    width: 100px;
+    height: 15px;
+}
+.av_product_award #top .netreviews_font_stars div{
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.av_product_award #top .ratingText{
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #3c3d3c;
+    height: 7px;
+
+}
+
+.av_product_award #AV_bottom{
+    height: 27px;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    width: 75%;
+    padding-top: 0;
+    padding-left: 0px;
+    text-align: center;
+    font-size: 11px;
+}
+
+.av_product_award img#sceau{
+    position: absolute !important;
+    right: -12px !important;
+    top: -10px !important;
+    width: 90px !important;
+}
+
+.netreviews_font_stars{
+    display: block !important;
+}
+
+.netreviews_font_stars div {
+    position: absolute;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.ProductWidgetNewRatingWrapper {
+     margin-left: 60px;
+     display: block;
+     width: 100px;
+     line-height: 16px;
+     text-align: left;
+     padding: 0 5px;
+}
+
+.netreviewsProductWidgetNewLogo {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 65px;
+     height: 65px;
+     border: none;
+     outline: 0
+}
+
+ .netreviewsProductWidgetNewRate, .netreviewsProductWidgetNewRate span {
+     color: #363842;
+     font-size: 16px;
+     font-weight: bold;
+     padding: 0;
+     margin: 0;
+}
+
+.av_product_award #AV_button {
+    height: 27px;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    width: 82%;
+    left: -2px;
+    padding-top: 0;
+    padding-left: 0px;
+    text-align: center;
+}
+
+ .netreviewsProductWidgetNew {
+     font-family: "Nunito", Arial, Helvetica, sans-serif;
+     display: block;
+     height: 75px;
+     margin: 0;
+     padding: 5px;
+     background-color: transparent;
+     position: relative;
+     clear: both;
+}
+
+.netreviews_review_rate_and_stars {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 19px;
+    font-size: 14px;
+    position: relative;
+}
+
+.stars_widget_div{
+    top: 18px;
+    position: relative;
+}

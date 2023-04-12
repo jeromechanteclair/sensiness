@@ -1,0 +1,1099 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Mail boxes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-13 13:46+0000\n"
+"PO-Revision-Date: 2023-01-12 16:04+0100\n"
+"Last-Translator: Rafał Borycki <rborycki@mbe.pl>\n"
+"Language-Team: Polish\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: /home/web/php59/woombe/wordpress46/wp-content/plugins/mbe-woocommerce-shipping-method\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-mbe-order.php:118
+msgid "Opened"
+msgstr "Otwarte"
+
+#: includes/class-mbe-order.php:118
+msgid "Closed"
+msgstr "Zamknięte"
+
+#: mail-boxes-etc.php:163
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: mail-boxes-etc.php:198 mail-boxes-etc.php:213
+msgid "MBE Shipments List"
+msgstr "Lista przesyłek MBE"
+
+#: mail-boxes-etc.php:236
+msgid "Create MBE shipping"
+msgstr "Utwórz przesyłkę MBE"
+
+#: mail-boxes-etc.php:288
+msgid "Free"
+msgstr "Darmowe"
+
+#: mail-boxes-etc.php:317
+msgid "Mail Boxes ETC Tracking"
+msgstr "Monitorowanie MBE"
+
+#: mail-boxes-etc.php:322
+msgid "Service"
+msgstr "Serwis"
+
+#: mail-boxes-etc.php:323 includes/class-mbe-order.php:166
+msgid "Tracking"
+msgstr "Śledzenie"
+
+#: includes/cron.php:45 includes/class-mbe-order.php:258
+#, php-format
+msgid "%s - Total of %d order(s) without tracking number yet."
+msgstr "%s su %d przesyłka nie posiada numeru śledzenia."
+
+#: includes/cron.php:48 includes/class-mbe-order.php:261
+#, php-format
+msgid "%s - Total of %d order(s) have been closed."
+msgstr "%s di %d przesyłka musi zostać zamknięta."
+
+#: includes/cron.php:52 includes/class-mbe-order.php:265
+#, php-format
+msgid "%s - Total of %d order(s) was already closed"
+msgstr "%s di %d przesyłka została już zamknięta"
+
+#: includes/class-mbe-shipping.php:16
+msgid "Mail Boxes"
+msgstr "MBE eShip"
+
+#: includes/class-mbe-shipping.php:17
+msgid "Obtains  real time shipping rates and Print shipping labels via MBE Shipping API."
+msgstr "MBE eShip pozwala skupić się na swojej działalności i być bardziejwydajny, delegujący zarządzanie wszystkimi aspektami i powiązanymi procesamido logistyki i wysyłek zgodnie z kompetencjami i doświadczeniem CentrówMail Boxes Etc."
+
+#: includes/class-mbe-shipping.php:100
+msgid "File upload error: only CSV format is allowed"
+msgstr "ERRORE caricamento file: permessi solo file CSV"
+
+#: includes/class-mbe-shipping.php:155
+#, php-format
+msgid "File upload error: row %d: \"%s\", COUNTRY column. Use destination Country in 2 character ISO format (e.g. IT for Italy, ES for Spain, DE for Germany)"
+msgstr "BŁĄD ładowania pliku: wiersz% d: \"% s \\ \", format w kolumnie Kraj.Podaj kraj docelowy w dwuliterowym formacie ISO (np. ITdla Włoch, ES dla Hiszpanii, PL dla Polski)"
+
+#: includes/class-mbe-shipping.php:160
+#, php-format
+msgid "File upload error: row %d: \"%s\", SHIPMENT TYPE column. Input code is not a valid MBE Service"
+msgstr "BŁĄD ładowania pliku: linia% d: \"% s \\ \". Kod usługi MBE nie włączony.Sprawdź konfiguracje i prześlij nowy plik"
+
+#: includes/class-mbe-shipping.php:166 includes/class-mbe-shipping.php:170
+#, php-format
+msgid "File upload error: row %d: \"%s\", WEIGHT column. Input weight exceeds allowed"
+msgstr "BŁĄD ładowania pliku: linia% d: \"%s \\ \". Waga większa niż maksymalnadozwolone w ustawieniach wtyczek"
+
+#: includes/class-mbe-shipping.php:188
+msgid "Error executing truncate query"
+msgstr "BŁĄD: błąd podczas wykonywania przyciętego zapytania. Jeśli problem będzie się powtarzał, takskontaktuj się z pomocą techniczną"
+
+#: includes/class-mbe-shipping.php:195
+msgid "Error executing query"
+msgstr "BŁĄD: błąd podczas wykonywania zapytania. Jeśli problem będzie się powtarzał, proszękontakt z pomocą techniczną"
+
+#: includes/data-mbe-settings.php:17
+msgid "Set ws parameters and save to retrieve available shipment types"
+msgstr "Wprowadź parametry połączenia z usługą internetową i zapisz,zaktualizuj listę dostępnych usług"
+
+#: includes/data-mbe-settings.php:21
+msgid "Your user is not active"
+msgstr "Użytkownik nie jest aktywny"
+
+#: includes/data-mbe-settings.php:25
+msgid "Generic"
+msgstr "Ok"
+
+#: includes/data-mbe-settings.php:28
+msgid "Envelope"
+msgstr "Koperta / Koperta"
+
+#: includes/data-mbe-settings.php:36 includes/data-mbe-settings.php:48
+msgid "Automatically"
+msgstr "Automatyczny"
+
+#: includes/data-mbe-settings.php:37 includes/data-mbe-settings.php:49
+msgid "Manually"
+msgstr "Manualny"
+
+#: includes/data-mbe-settings.php:64
+#, php-format
+msgid "Free shipping Thresholds %s"
+msgstr "Progi dla bezpłatnej wysyłki -%s"
+
+#: includes/data-mbe-settings.php:71
+msgid "Disabled"
+msgstr "Wyłączony"
+
+#: includes/data-mbe-settings.php:84
+#, php-format
+msgid "Download current file"
+msgstr "Pobierz plik"
+
+#: includes/data-mbe-settings.php:87
+#, php-format
+msgid "Download template file"
+msgstr "Pobierz szablon"
+
+#: includes/data-mbe-settings.php:93 includes/data-mbe-settings.php:96
+msgid "Debug"
+msgstr "Debuguj"
+
+#: includes/data-mbe-settings.php:95 includes/data-mbe-settings.php:103
+msgid "Yes"
+msgstr "Tak"
+
+#: includes/data-mbe-settings.php:95 includes/data-mbe-settings.php:103
+msgid "No"
+msgstr "Nie"
+
+#: includes/data-mbe-settings.php:97
+msgid "Activate Debug mode to save MBE eShip logs"
+msgstr "Włącz tryb debugowania, aby zapisać dziennik MBE eShip"
+
+#: includes/data-mbe-settings.php:101
+msgid "Enabled"
+msgstr "Aktywny"
+
+#: includes/data-mbe-settings.php:104
+msgid "Enable"
+msgstr "Aktywuj"
+
+#: includes/data-mbe-settings.php:108 includes/data-mbe-settings.php:223
+msgid "Country"
+msgstr "Kraj"
+
+#: includes/data-mbe-settings.php:110
+msgid "Italy"
+msgstr "Włochy"
+
+#: includes/data-mbe-settings.php:110
+msgid "Spain"
+msgstr "Hiszpania"
+
+#: includes/data-mbe-settings.php:110
+msgid "Germany"
+msgstr "Niemcy"
+
+#: includes/data-mbe-settings.php:110
+msgid "France"
+msgstr "Francja"
+
+#: includes/data-mbe-settings.php:110
+msgid "Austria"
+msgstr "Austria"
+
+#: includes/data-mbe-settings.php:110
+msgid "Poland"
+msgstr "Polska"
+
+#: includes/data-mbe-settings.php:111
+msgid "Select your MBE Center's country"
+msgstr "Wybierz kraj, w którym znajduje się referencyjne centrum MBE"
+
+#: includes/data-mbe-settings.php:115
+msgid "OnlineMBE web-service URL"
+msgstr "Url MBE usługi sieci Web *"
+
+#: includes/data-mbe-settings.php:117
+msgid "Italy: http://www.onlinembe.it/wsdl/OnlineMbeSOAP.wsdl - Spain: http://new.onlinembe.es/wsdl/OnlineMbeSOAP.wsdl - Germany: http://www.onlinembe.de/wsdl/OnlineMbeSOAP.wsdl - Austria: http://www.onlinembe.at/wsdl/OnlineMbeSOAP.wsdl - For other countries please contact your MBE Center\""
+msgstr "W przypadku Włoch należy wskazać: http://www.onlinembe.it/wsdl/OnlineMbeSOAP.wsdl"
+
+#: includes/data-mbe-settings.php:120
+msgid "Login MBE e-LINK *"
+msgstr "Login MBE e-LINK *"
+
+msgid "provided by the MBE Center or created by the customer on MBE Online, if enabled"
+msgstr "dostarczony przez Centrum MBE lub utworzony przez klienta w MBE Online, jeśli jest włączony"
+
+#: includes/data-mbe-settings.php:124
+msgid "Passphrase MBE e-LINK *"
+msgstr "Passphrase MBE e-LINK *"
+
+#: includes/data-mbe-settings.php:128
+msgid "MBE shipping description"
+msgstr "Wstępny opis przesyłek MBE"
+
+#: includes/data-mbe-settings.php:132 includes/data-mbe-settings.php:133
+msgid "Default Shipment type"
+msgstr "Rodzaj predefiniowanych towarów"
+
+#: includes/data-mbe-settings.php:138 includes/data-mbe-settings.php:139
+msgid "MBE Services"
+msgstr "Usługi MBE"
+
+#: includes/data-mbe-settings.php:142
+msgid "Select MBE Services available to your Customers"
+msgstr "Wybierz jedną lub więcej usług, które zamierzasz dodać do wysyłki"
+
+#: includes/data-mbe-settings.php:145 includes/data-mbe-settings.php:147
+msgid "Shipment configuration mode"
+msgstr "Tworzenie przesyłki MBE"
+
+#: includes/data-mbe-settings.php:146
+msgid "WARNING: activating the option 'Create one Shipment per Item' with COD payment, the shopping cart's amount will be split and charged evenly on each shipment (based on number of items, not on their value)"
+msgstr "UWAGA: użycie opcji\" Inna dostawa dla każdego produktu w koszyku\", w przypadku płatności przy odbiorze, łączna kwota z wynagrodzenie zostanie podzielone równomiernie dla każdej przesyłki (na podstawieliczba produktów w koszyku i nie na podstawie ich wartości)"
+
+#: includes/data-mbe-settings.php:150
+msgid "Create one Shipment per Item"
+msgstr "Inna wysyłka dla każdego produktu w koszyku"
+
+#: includes/data-mbe-settings.php:151
+msgid "Create one Shipment per shopping cart (parcels calculated based on weight)"
+msgstr "Inna przesyłka na koszyk (liczba paczek obliczona na podstawiewaga produktu)"
+
+#: includes/data-mbe-settings.php:152
+msgid "Create one Shipment per shopping cart with one parcel per Item"
+msgstr "Inna przesyłka na koszyk (jedna paczka dla każdego produktu wkoszyku)"
+
+#: includes/data-mbe-settings.php:156
+msgid "Default Package Length"
+msgstr "Standardowa długość paczki"
+
+#: includes/data-mbe-settings.php:160
+msgid "Default Package Width"
+msgstr "Standardowa szerokość paczki"
+
+#: includes/data-mbe-settings.php:164
+msgid "Default Package Height"
+msgstr "Standardowa wysokość paczki"
+
+#: includes/data-mbe-settings.php:168
+msgid "Maximum Package Weight"
+msgstr "Maksymalna waga paczki"
+
+#: includes/data-mbe-settings.php:170
+msgid "Check if any limitation is applied with your MBE Center"
+msgstr "Sprawdź ograniczenia w swoim centrum MBE"
+
+#: includes/data-mbe-settings.php:173
+msgid "Maximum shipment weight"
+msgstr "Maksymalna waga przesyłki"
+
+#: includes/data-mbe-settings.php:177
+msgid "Markup - Application rule"
+msgstr "Doładowanie - metoda obliczania"
+
+#: includes/data-mbe-settings.php:180
+msgid "Percentage"
+msgstr "Odsetek"
+
+#: includes/data-mbe-settings.php:181
+msgid "Fixed amount"
+msgstr "Stała kwota"
+
+#: includes/data-mbe-settings.php:185
+msgid "Markup - Amount"
+msgstr "Doładowanie - Kwota"
+
+#: includes/data-mbe-settings.php:188
+msgid "Shipment"
+msgstr "Wysyłka"
+
+#: includes/data-mbe-settings.php:189
+msgid "Parcel"
+msgstr "Paczka"
+
+#: includes/data-mbe-settings.php:193
+msgid "Handling Fee"
+msgstr "Opłata manipulacyjna"
+
+#: includes/data-mbe-settings.php:197
+msgid "Markup - Apply rounding"
+msgstr "Doładowanie - Zastosuj zaokrąglenie"
+
+#: includes/data-mbe-settings.php:200
+msgid "No rounding"
+msgstr "Bez zaokrągleń"
+
+#: includes/data-mbe-settings.php:201
+msgid "Round up or down automatically"
+msgstr "Zastosuj domyślne zaokrąglenie (w dół lub w górę)"
+
+#: includes/data-mbe-settings.php:202
+msgid "Always round down"
+msgstr "Zaokrąglanie w dół"
+
+#: includes/data-mbe-settings.php:203
+msgid "Always round up"
+msgstr "Zaokrąglanie w górę"
+
+#: includes/data-mbe-settings.php:207
+msgid "Markup - Rounding unit (in €)"
+msgstr "Doładowanie - zaokrąglenie kwoty w PLN"
+
+#: includes/data-mbe-settings.php:215
+msgid "Ship to Applicable Countries"
+msgstr "Wysyłka dotyczy krajów"
+
+#: includes/data-mbe-settings.php:218
+msgid "All Allowed Countries"
+msgstr "Wszystkie kraje dostępne"
+
+#: includes/data-mbe-settings.php:219
+msgid "Specific Countries"
+msgstr "Określone kraje"
+
+#: includes/data-mbe-settings.php:236
+msgid "Daily shipments closure - Mode"
+msgstr "Codzienne zamykanie przesyłek - metody"
+
+#: includes/data-mbe-settings.php:241
+msgid "Daily shipments closure schedule (automatic mode only)"
+msgstr "Codzienne zamykanie przesyłek - Harmonogram (tylko w przypadku automatycznego zamykania)"
+
+#: includes/data-mbe-settings.php:246
+msgid "Shipments creation in MBE Online - Mode"
+msgstr "Tworzenie przesyłek - metody"
+
+#: includes/data-mbe-settings.php:251
+msgid "Custom prices via csv - File upload"
+msgstr "Ceny niestandardowe przesłane z plików CSV"
+
+#: includes/data-mbe-settings.php:265
+msgid "Custom prices via csv - File mode"
+msgstr "Niestandardowe ceny wysyłki (CSV) - tryb użycia pliku"
+
+#: includes/data-mbe-settings.php:272
+msgid "Custom prices via csv - Min price for insurance extra-service"
+msgstr "Niestandardowe ceny wysyłki (CSV) - Minimalna cena za ubezpieczenie"
+
+#: includes/data-mbe-settings.php:276
+msgid "Custom prices via csv - Percentage for insurance extra-service price calculation"
+msgstr "Niestandardowe ceny wysyłki (CSV) - procent do obliczenia cenyubezpieczenie"
+
+#: includes/data-mbe-settings.php:280
+msgid "Insurance extra-service - Declared value calculation"
+msgstr "Ubezpieczenia - zadeklarowana wartość"
+
+#: includes/class-mbe-tracking-admin.php:71
+msgid "Carrier name: "
+msgstr "Nazwa przewoźnika "
+
+#: includes/class-mbe-tracking-admin.php:75 includes/class-mbe-order.php:77
+msgid "Track all"
+msgstr "Monitoruj wszystko"
+
+#: includes/class-mbe-tracking-admin.php:81
+msgid "Tracking id: "
+msgstr "Numer śledzenia MBE "
+
+#: includes/class-mbe-tracking-admin.php:86 includes/class-mbe-order.php:133
+msgid "Label"
+msgstr "Etykieta"
+
+#: includes/class-mbe-tracking-admin.php:86
+#: includes/class-mbe-tracking-admin.php:91
+msgid "link"
+msgstr "link"
+
+#: includes/class-mbe-tracking-admin.php:91 includes/class-mbe-order.php:139
+msgid "Closure file"
+msgstr "Plik zamknięcia"
+
+#. Italia
+#: includes/translations.php:3
+msgid "MBE Raccomandata 1 Ore 10"
+msgstr "MBE Raccomandata 1 Ore 10"
+
+#: includes/translations.php:4
+msgid "MBE Raccomandata 1 Ore 12"
+msgstr "MBE Raccomandata 1 Ore 12"
+
+#: includes/translations.php:5
+msgid "MBE Raccomandata 1 Ore 9"
+msgstr "MBE Raccomandata 1 Ore 9"
+
+#: includes/translations.php:6
+msgid "MBE Express+"
+msgstr "MBE Express+"
+
+#: includes/translations.php:7
+msgid "MBE Andata e Ritorno"
+msgstr "MBE Andata e Ritorno"
+
+#: includes/translations.php:8
+msgid "MBE Capi Appesi Large"
+msgstr "MBE Capi Appesi Large"
+
+#: includes/translations.php:9
+msgid "MBE Capi Appesi Small"
+msgstr "MBE Capi Appesi Small"
+
+#: includes/translations.php:10
+msgid "MBE Economy"
+msgstr "MBE Economy"
+
+#. Austria
+#: includes/translations.php:11 includes/translations.php:46
+#: includes/translations.php:67 includes/translations.php:90
+msgid "MBE Express"
+msgstr "MBE Express"
+
+#: includes/translations.php:12
+msgid "MBE Express++"
+msgstr "MBE Express++"
+
+#: includes/translations.php:13
+msgid "MBE Raccomandata 1"
+msgstr "MBE Raccomandata 1"
+
+#: includes/translations.php:14
+msgid "MBE Raccomandata"
+msgstr "MBE Raccomandata"
+
+#: includes/translations.php:15 includes/translations.php:50
+#: includes/translations.php:70 includes/translations.php:92
+msgid "MBE Standard"
+msgstr "MBE Standard"
+
+#: includes/translations.php:16
+msgid "MBE Raccomandata 1 Ore 10 (R10)"
+msgstr "MBE Raccomandata 1 Ore 10 (R10)"
+
+#: includes/translations.php:17
+msgid "MBE Raccomandata 1 Ore 12 (R12)"
+msgstr "MBE Raccomandata 1 Ore 12 (R12)"
+
+#: includes/translations.php:18
+msgid "MBE Raccomandata 1 Ore 9 (R19)"
+msgstr "MBE Raccomandata 1 Ore 9 (R19)"
+
+#: includes/translations.php:19
+msgid "MBE Express+ (S+E)"
+msgstr "MBE Express+ (S+E)"
+
+#: includes/translations.php:20
+msgid "MBE Andata e Ritorno (SAR)"
+msgstr "MBE Andata e Ritorno (SAR)"
+
+#: includes/translations.php:21
+msgid "MBE Capi Appesi Large (SCL)"
+msgstr "MBE Capi Appesi Large (SCL)"
+
+#: includes/translations.php:22
+msgid "MBE Capi Appesi Small (SCS)"
+msgstr "MBE Capi Appesi Small (SCS)"
+
+#: includes/translations.php:23
+msgid "MBE Economy (SEC)"
+msgstr "MBE Economy (SEC)"
+
+#: includes/translations.php:24 includes/translations.php:53
+#: includes/translations.php:73 includes/translations.php:97
+msgid "MBE Express (SEE)"
+msgstr "MBE Express (SEE)"
+
+#: includes/translations.php:25
+msgid "MBE Express++ (SPE)"
+msgstr "MBE Express++ (SPE)"
+
+#: includes/translations.php:26
+msgid "MBE Raccomandata 1 (SR1)"
+msgstr "MBE Raccomandata 1 (SR1)"
+
+#: includes/translations.php:27
+msgid "MBE Raccomandata (SRA)"
+msgstr "MBE Raccomandata (SRA)"
+
+#: includes/translations.php:28 includes/translations.php:57
+#: includes/translations.php:76 includes/translations.php:99
+msgid "MBE Standard (SSE)"
+msgstr "MBE Standard (SSE)"
+
+#: includes/translations.php:29
+msgid "MBE Raccomandata 1 Ore 10 (R10) + Insurance"
+msgstr "MBE Raccomandata 1 Ore 10 (R10) + Assicurazione"
+
+#: includes/translations.php:30
+msgid "MBE Raccomandata 1 Ore 12 (R12) + Insurance"
+msgstr "MBE Raccomandata 1 Ore 12 (R12) + Assicurazione"
+
+#: includes/translations.php:31
+msgid "MBE Raccomandata 1 Ore 9 (R19) + Insurance"
+msgstr "MBE Raccomandata 1 Ore 9 (R19) + Assicurazione"
+
+#: includes/translations.php:32
+msgid "MBE Express+ (S+E) + Insurance"
+msgstr "MBE Express+ (S+E) + Assicurazione"
+
+#: includes/translations.php:33
+msgid "MBE Andata e Ritorno (SAR) + Insurance"
+msgstr "MBE Andata e Ritorno (SAR) + Assicurazione"
+
+#: includes/translations.php:34
+msgid "MBE Capi Appesi Large (SCL) + Insurance"
+msgstr "MBE Capi Appesi Large (SCL) + Assicurazione"
+
+#: includes/translations.php:35
+msgid "MBE Capi Appesi Small (SCS) + Insurance"
+msgstr "MBE Capi Appesi Small (SCS) + Assicurazione"
+
+#: includes/translations.php:36
+msgid "MBE Economy (SEC) + Insurance"
+msgstr "MBE Economy (SEC) + Assicurazione"
+
+#: includes/translations.php:37 includes/translations.php:60
+#: includes/translations.php:79 includes/translations.php:104
+msgid "MBE Express (SEE) + Insurance"
+msgstr "MBE Express (SEE) + Assicurazione"
+
+#: includes/translations.php:38
+msgid "MBE Express++ (SPE) + Insurance"
+msgstr "MBE Express++ (SPE) + Assicurazione"
+
+#: includes/translations.php:39
+msgid "MBE Raccomandata 1 (SR1) + Insurance"
+msgstr "MBE Raccomandata 1 (SR1) + Assicurazione"
+
+#: includes/translations.php:40
+msgid "MBE Raccomandata (SRA) + Insurance"
+msgstr "MBE Raccomandata (SRA) + Assicurazione"
+
+#: includes/translations.php:41 includes/translations.php:64
+#: includes/translations.php:82 includes/translations.php:106
+msgid "MBE Standard (SSE) + Insurance"
+msgstr "MBE Standard (SSE) + Assicurazione"
+
+#. Germania
+#: includes/translations.php:44
+msgid "MBE Classic"
+msgstr "MBE Classic"
+
+#: includes/translations.php:45
+msgid "MBE Early Morning"
+msgstr "MBE Early Morning"
+
+#: includes/translations.php:47 includes/translations.php:68
+msgid "MBE Freight Express"
+msgstr "MBE Freight Express"
+
+#: includes/translations.php:48 includes/translations.php:69
+msgid "MBE Morning"
+msgstr "MBE Morning"
+
+#: includes/translations.php:49
+msgid "MBE Overnight"
+msgstr "MBE Overnight"
+
+#: includes/translations.php:51
+msgid "MBE Classic (SCL)"
+msgstr "MBE Classic (SCL)"
+
+#: includes/translations.php:52 includes/translations.php:75
+msgid "MBE Early Morning (SPE)"
+msgstr "MBE Early Morning (SPE)"
+
+#: includes/translations.php:54 includes/translations.php:74
+msgid "MBE Freight Express (SEF)"
+msgstr "MBE Freight Express (SEF)"
+
+#: includes/translations.php:55 includes/translations.php:72
+msgid "MBE Morning (SEC)"
+msgstr "MBE Morning (SEC)"
+
+#: includes/translations.php:56
+msgid "MBE Overnight (SON)"
+msgstr "MBE Overnight (SON)"
+
+#: includes/translations.php:58
+msgid "MBE Classic (SCL) + Insurance"
+msgstr "MBE Classic (SCL) + Insurance"
+
+#: includes/translations.php:59 includes/translations.php:78
+msgid "MBE Morning (SEC) + Insurance"
+msgstr "MBE Morning (SEC) + Insurance"
+
+#: includes/translations.php:61 includes/translations.php:80
+msgid "MBE Freight Express (SEF) + Insurance"
+msgstr "MBE Freight Express (SEF) + Insurance"
+
+#: includes/translations.php:62
+msgid "MBE Overnight (SON) + Insurance"
+msgstr "MBE Overnight (SON) + Insurance"
+
+#: includes/translations.php:63 includes/translations.php:81
+msgid "MBE Early Morning (SPE) + Insurance"
+msgstr "MBE Early Morning (SPE) + Insurance"
+
+#: includes/translations.php:71
+msgid "MBE Weinversand"
+msgstr "MBE Weinversand"
+
+#: includes/translations.php:77
+msgid "MBE Weinversand (SWE)"
+msgstr "MBE Weinversand (SWE)"
+
+#: includes/translations.php:83
+msgid "MBE Weinversand (SWE) + Insurance"
+msgstr "MBE Weinversand (SWE) + Insurance"
+
+#. Spagna
+#: includes/translations.php:86
+msgid "MBE HW EXP"
+msgstr "MBE HW EXP"
+
+#: includes/translations.php:87
+msgid "MBE HW STD"
+msgstr "MBE HW STD"
+
+#: includes/translations.php:88
+msgid "MBE Servicios Especiales"
+msgstr "MBE Servicios Especiales"
+
+#: includes/translations.php:89
+msgid "MBE Express 9h"
+msgstr "MBE Express 9h"
+
+#: includes/translations.php:91
+msgid "MBE Express 12"
+msgstr "MBE Express 12"
+
+#: includes/translations.php:93
+msgid "MBE HW EXP (HWE)"
+msgstr "MBE HW EXP (HWE)"
+
+#: includes/translations.php:94
+msgid "MBE HW STD (HWS)"
+msgstr "MBE HW STD (HWS)"
+
+#: includes/translations.php:95
+msgid "MBE Servicios Especiales (MSE)"
+msgstr "MBE Servicios Especiales (MSE)"
+
+#: includes/translations.php:96
+msgid "MBE Express 9h (S+E)"
+msgstr "MBE Express 9h (S+E)"
+
+#: includes/translations.php:98
+msgid "MBE Express 12 (SPE)"
+msgstr "MBE Express 12 (SPE)"
+
+#: includes/translations.php:100
+msgid "MBE HW EXP (HWE) + Insurance"
+msgstr "MBE HW EXP (HWE) + Insurance"
+
+#: includes/translations.php:101
+msgid "MBE HW STD (HWS) + Insurance"
+msgstr "MBE HW STD (HWS) + Insurance"
+
+#: includes/translations.php:102
+msgid "MBE Servicios Especiales (MSE) + Insurance"
+msgstr "MBE Servicios Especiales (MSE) + Insurance"
+
+#: includes/translations.php:103
+msgid "MBE Express 9h (S+E) + Insurance"
+msgstr "MBE Express 9h (S+E) + Insurance"
+
+#: includes/translations.php:105
+msgid "MBE Express 12 (SPE) + Insurance"
+msgstr "MBE Express 12 (SPE) + Insurance"
+
+#: includes/class-mbe-order.php:27
+msgid "Edit"
+msgstr "Modyfikuj"
+
+#: includes/class-mbe-order.php:156
+msgid "Id"
+msgstr "Id"
+
+#: includes/class-mbe-order.php:159
+msgid "Status"
+msgstr "Stato"
+
+#: includes/class-mbe-order.php:161
+msgid "Customer"
+msgstr "Klient"
+
+#: includes/class-mbe-order.php:162
+msgid "Payment"
+msgstr "Sposób płatności"
+
+#: includes/class-mbe-order.php:163
+msgid "Date"
+msgstr "Data"
+
+#: includes/class-mbe-order.php:165
+msgid "Carrier"
+msgstr "Kurier"
+
+#: includes/class-mbe-order.php:167
+msgid "Downloads"
+msgstr "Pobieranie"
+
+#: includes/class-mbe-order.php:187
+msgid "Create shipments in MBE Online"
+msgstr "Twórz przesyłki MBE"
+
+#: includes/class-mbe-order.php:192
+msgid "Close shipments in MBE Online"
+msgstr "Zamknij przesyłki MBE"
+
+#: includes/class-mbe-order.php:227
+#, php-format
+msgid "Total of %d order shipment(s) have been created."
+msgstr "Utworzono ogółem %d przesyłek."
+
+#: includes/class-mbe-order.php:230
+#, php-format
+msgid "Total of %d order shipment(s) was already created."
+msgstr "Łącznie %d przesyłek zamówienia zostało już utworzonych."
+
+#: includes/class-mbe-order.php:233
+#, php-format
+msgid "WARNING %d shipments couldn't be created due to an error."
+msgstr "UWAGA: %d przesyłek nie zostało utworzonych z powodu błędu."
+
+#: includes/class-mbe-order.php:274
+msgid "Please select items."
+msgstr "Wybierz elementy."
+
+#. Name of the plugin
+msgid "MBE eShip"
+msgstr "MBE eShip"
+
+#. Description of the plugin
+msgid "Mail Boxes Etc. Online MBE Plugin integration for main Ecommerce platforms."
+msgstr "MBE eShip: darmowa wtyczka do pełnego zarządzania przesyłkami iz Twojej logistyki e-commerce."
+
+#. Author of the plugin
+msgid "MBE Worldwide S.p.A."
+msgstr "MBE Worldwide S.p.A."
+
+#. Author URI of the plugin
+msgid "https://www.mbeglobal.com/"
+msgstr "https://www.mbeglobal.com/"
+
+# UAP Backend dropdown label
+msgid "Ship to UAP"
+msgstr "Wyślij do UAP"
+
+# UAP Backend Dropdown description
+msgid "Enable the option to ship to an UAP"
+msgstr "Włącz opcję wysyłania do punktu dostępu"
+
+# UAP Frontend dropdown description
+msgid "Set Shipping address to UAP"
+msgstr "Wybierz adres punktu dostępu"
+
+# UAP Frontend dropdown 1st value
+msgid "Select a UAP"
+msgstr "Wybierz UAP"
+
+#: includes/data-mbe-settings.php:117
+msgid "Please contact your MBE Center"
+msgstr "Prosimy o kontakt z Centrum MBE"
+
+#: includes/data-mbe-settings.pp:253
+msgid "Add tracking id to email"
+msgstr ""
+
+#: includes/data-mbe-settings.pp:257
+msgid "Select if you want to add the tracking code to the email order detail"
+msgstr "Wybierz, czy chcesz dodać kod śledzenia do szczegółów zamówienia e-mail w kraju"
+
+msgid "Domestic"
+msgstr "Krajowy"
+
+msgid "Rest of the world"
+msgstr "Reszta świata"
+
+msgid "Custom name for"
+msgstr "Nazwa niestandardowa dla"
+
+msgid "Insert the custom name for the shipment method. Leave blank if you don't want to change the default value"
+msgstr "Wstaw niestandardową nazwę metody wysyłki. Pozostaw puste, jeśli nie chcesz zmieniać wartości domyślnej"
+
+msgid "Custom mapping for"
+msgstr "Mapowanie niestandardowe dla"
+
+msgid "Select the custom mapping for the default shipping method. Leave blank if you don't want to map it"
+msgstr "Wybierz niestandardowe mapowanie dla domyślnej metody wysyłki. Pozostaw puste, jeśli nie chcesz go mapować"
+
+msgid "Default shipping methods mapping"
+msgstr "Mapowanie domyślnych metod dostawy"
+
+msgid "Enable the function to map default shipping methods to MBE services (MBE methods will not be available on the frontend)"
+msgstr "Włącz funkcję mapowania domyślnych metod wysyłki do usług MBE (metody MBE nie będą dostępne w interfejsie)"
+
+msgid "Log files deleted"
+msgstr "Pliki dziennika usunięte"
+
+msgid "Delete debug files"
+msgstr "Usuń pliki debugowania"
+
+msgid "Delete now"
+msgstr "Usuń teraz"
+
+msgid "Download debug files"
+msgstr "Pobierz pliki debugowania"
+
+msgid "Download now"
+msgstr "Pobierz teraz"
+
+msgid "Download shipping Labels"
+msgstr "Pobierz etykiety wysyłkowe"
+
+msgid "Error deleting log files"
+msgstr "Błąd podczas usuwania plików dziennika"
+
+msgid "Log files not found"
+msgstr "Nie znaleziono plików dziennika"
+
+msgid "Nothing to delete"
+msgstr "Nic do usunięcia"
+
+msgid "Unexpected error"
+msgstr "Niespodziewany błąd"
+
+msgid "Do you want to permanentely delete the log files ?"
+msgstr "Czy na pewno chcesz usunąć te pliki?"
+
+msgid "Csv for standard packages"
+msgstr "Csv dla przesyłek standardowych"
+
+msgid "Load the standard packages via csv file"
+msgstr "Załaduj standardowe przesyłki poprzez plik csv"
+
+msgid "Packages via csv - File upload"
+msgstr "Przesyłki przez csv - Wysyłanie plików"
+
+msgid "Packages for products via csv - File upload"
+msgstr "Przesyłki dla produktów poprzez csv - Przesyłanie plików"
+
+msgid "Default shipping package"
+msgstr "Domyślna paczka wysyłkowa"
+
+msgid "Set the package to be used as default if the product doesn't have a related one"
+msgstr "Wybierz pakiet standardowy, który będzie używany dla wszystkich produktów, które nie mają określonego pakietu."
+
+msgid "Delete File"
+msgstr "Usuń plik"
+
+msgid "Create return shipment"
+msgstr "Utwórz przesyłkę zwrotną"
+
+msgid "%s - Total of %d return shipping created."
+msgstr "%s — Łącznie utworzonych %d przesyłek zwrotnych"
+
+msgid "%s - Total of %d return shipping were already created"
+msgstr "%s — Utworzono już łącznie %d przesyłek zwrotnych"
+
+msgid "Choose the countries for which you want to enable shipping"
+msgstr "Wybierz kraje, dla których chcesz włączyć wysyłkę"
+
+msgid "Standard Configuration"
+msgstr "Standardowa konfiguracja"
+
+msgid "Advanced configuration"
+msgstr "Zaawansowana konfiguracja"
+
+msgid "In this section it will be possible to configure the CSV files for your standard packages and for your products and finally download the template for the configuration"
+msgstr "W tej sekcji będzie można skonfigurować pliki CSV dla Twoich standardowych paczek i produktów, a na koniec pobrać szablon do konfiguracji"
+
+msgid "CSV for standard packages"
+msgstr "CSV dla paczek standardowych"
+
+msgid "For the correct working of the plugin, at least one option must be selected, and the services available are those set by the MBE Center on the MBE Online user page on HUB. Subsequently, it is possible to define a custom name for each MBE service selected in the field seen above. This set of fields is automatically generated dynamically, based on the values selected in the \"Enabled MBE Services\" list"
+msgstr "Do poprawnego działania pluginu musi zostać wybrana przynajmniej jedna opcja. Dostępne usługi to te ustawione przez Centrum MBE na stronie użytkownika MBE Online. Możliwe jest zdefiniowanie nazwy własnej dla każdej wybranej usługi MBE w polu widocznym powyżej. Ten zestaw pól jest automatycznie generowany dynamicznie, na podstawie wartości wybranych z listy \"Aktywne usługi MBE\"."
+
+msgid "Select at least one of the available MBE services: Select all MBE services that you intend to offer to the buyers of your eCommerce for shipping. For the plugin to work correctly, at least one option must be selected"
+msgstr "Wybierz co najmniej jedną z dostępnych usług MBE: Wybierz wszystkie usługi MBE, które zamierzasz zaoferować nabywcom swojego eCommerce do wysyłki. Aby wtyczka działała poprawnie, musi być wybrana co najmniej jedna opcja"
+
+msgid "Custom prices via csv"
+msgstr "Niestandardowe ceny z pliku csv"
+
+msgid "MBE services"
+msgstr "Usługi MBE"
+
+msgid "Configuration Preferences"
+msgstr "Preferencje konfiguracyjne"
+
+msgid "Setting to \"Enabled\" will enable MBE shipping options for the buyers of your eCommerce."
+msgstr "Ustawienie na \"Aktywny\" włączy opcje wysyłki MBE dla nabywców twojego eCommerce."
+
+msgid "Sign in"
+msgstr "Zaloguj się"
+
+msgid "Missing MBE Online Login Information"
+msgstr "Brakujące informacje o logowaniu do MBE Online"
+
+msgid "Error Logging in. Please enable debug and check the log files for more details"
+msgstr "Błąd logowania. Proszę włączyć debug i sprawdzić pliki dziennika, aby uzyskać więcej szczegółów."
+
+msgid "Reset"
+msgstr "Reset"
+
+msgid "Logged in"
+msgstr "Zalogowano"
+
+msgid "Edit Packages list"
+msgstr "Edycja listy paczek"
+
+msgid "Edit Packages for Products list"
+msgstr "Edycja paczek dla listy produktów"
+
+msgid "Back to settings"
+msgstr "Powrót do ustawień"
+
+msgid "Back to list"
+msgstr "Powrót do listy"
+
+msgid "Missing or wrong csv type"
+msgstr "Brakujący lub niewłaściwy typ csv"
+
+msgid "packages"
+msgstr "paczki"
+
+msgid "packages for products"
+msgstr "opakowania dla produktów"
+
+msgid "package"
+msgstr "paczka"
+
+msgid "package for product"
+msgstr "opakowanie dla produktu"
+
+msgid "Package code"
+msgstr "kod paczki"
+
+msgid "Package label"
+msgstr "etykieta paczki"
+
+msgid "Length"
+msgstr "Długość"
+
+msgid "required"
+msgstr "wymagane"
+
+msgid "exists"
+msgstr "występuje"
+
+msgid "There was an error while updating the item"
+msgstr "Wystąpił błąd podczas aktualizacji pozycji"
+
+msgid "There was an error while saving the item"
+msgstr "Wystąpił błąd podczas zapisywania elementu"
+
+msgid "Item successfully update"
+msgstr "Pozycja została pomyślnie zaktualizowana"
+
+msgid "Item successfully saved"
+msgstr "Pozycja została pomyślnie zapisana"
+
+msgid "used more than once or already set as custom"
+msgstr "użyty więcej niż raz lub już ustawiony jako niestandardowy"
+
+msgid "Reserved package code cannot be used"
+msgstr "Zarezerwowany kod opakowania nie może być użyty"
+
+msgid "In this section it will be possible to update the loaded list for your standard packages and for your products"
+msgstr "W tej sekcji będzie można zaktualizować listę załadowanych paczek standardowych i produktów."
+
+msgid "Give a new impulse to your e-commerce with MBE solutions to digitize shipments and logistics, designed for companies, entrepreneurs but also artisans who are looking for a reliable partner who can support them by successfully bringing their business online with complete and flexible solutions. Are you an MBE client?"
+msgstr "Nadaj nowy impuls swojemu e-commerce dzięki rozwiązaniom MBE do cyfryzacji przesyłek i logistyki, zaprojektowanym dla firm, przedsiębiorców, ale także rzemieślników, którzy szukają niezawodnego partnera, który może ich wesprzeć, skutecznie wprowadzając swój biznes do sieci dzięki kompletnym i elastycznym rozwiązaniom. Czy jesteś klientem MBE?"
+
+msgid "If yes, start the configuration. If not, Contact us."
+msgstr "Jeśli tak, rozpocznij konfigurację. Jeśli nie, skontaktuj się z nami."
+
+msgid "By connecting MBE platform directly to your e-commerce website, you can automate the management of shipments and facilitate sales process."
+msgstr "Łącząc platformę MBE bezpośrednio ze swoim serwisem e-commerce, możesz zautomatyzować zarządzanie przesyłkami i usprawnić proces sprzedaży."
+
+msgid "contact us"
+msgstr "skontaktuj się z nami"
+
+msgid "start the configuration"
+msgstr "rozpocznij konfigurację"
+
+msgid "By connecting the MBE platform directly to your system, you can automate the management of shipments and facilitate the sales process. The solutions designed for the digitalization of shipments and logistics allow you to optimize the customer's \"journey\" and improve the shopping experience to unlock business opportunities and allow you to be competitive even in the face of today's market challenges."
+msgstr "By connecting the MBE platform directly to your system, you can automate the management of shipments and facilitate the sales process. The solutions designed for the digitalization of shipments and logistics allow you to optimize the customer's \"journey\" and improve the shopping experience to unlock business opportunities and allow you to be competitive even in the face of today's market challenges."
+
+msgid "Welcome"
+msgstr "Powitanie"
+
+msgid "Shipping and digitized logistics with MBE"
+msgstr "Wysyłka i cyfrowa logistyka z MBE"
+
+msgid "Give a new impulse to your e-commerce: with MBE solutions to digitize shipments and logistics, designed for companies, entrepreneurs but also artisans who are looking for a reliable partner who can support them by successfully bringing their business online with complete and flexible solutions, even on large marketplaces such as Amazon and e-Bay and are compatible with Magento CE, PrestaShop, Shopify, WooCommerce as well as the ability to customize them via API."
+msgstr "Nadaj nowy impuls swojemu e-commerce dzięki rozwiązaniom MBE do cyfryzacji przesyłek i logistyki, zaprojektowanym dla firm, przedsiębiorców, ale także rzemieślników, którzy szukają niezawodnego partnera, który może ich wesprzeć, skutecznie wprowadzając swój biznes do sieci dzięki kompletnym i elastycznym rozwiązaniom. Czy jesteś klientem MBE?"
+
+msgid "Contact us"
+msgstr "Skontaktuj się z nami"
+
+msgid "Start the configuration"
+msgstr "Rozpocznij konfigurację"
+
+msgid "MBE Digital Solutions"
+msgstr "Rozwiązania cyfrowe MBE"
+
+msgid "Turnkey digital services that help your brand take off. Reach your customers online with digital solutions and web marketing tools that give you more chances to reach your audience by building an effective online presence for your business and being where your customers are. MBE offers you effective solutions to grow your digital channels. Showcase your brand, e-commerce store, or improve your current website to make it more visible on search engines."
+msgstr "Usługi cyfrowe pod klucz, które pomogą Twojej marce wystartować. Docieraj do klientów online dzięki rozwiązaniom cyfrowym i narzędziom marketingu internetowego, które dają większe szanse na dotarcie do odbiorców poprzez budowanie skutecznej obecności online Twojej firmy i bycie tam, gdzie są Twoi klienci. MBE oferuje skuteczne rozwiązania do rozwoju kanałów cyfrowych. Zaprezentuj swoją markę, sklep e-commerce lub ulepsz swoją obecną witrynę, aby była bardziej widoczna w wyszukiwarkach."
+
+msgid "MBE Packing"
+msgstr "MBE Packing"
+
+msgid "The packaging service that gives your business an edge. Your customers deserve a unique experience: surprise them during unboxing with customized packaging solutions for your products. A highly customized solution that enhances your brand and adds a touch of style based on your specific needs. In addition to optimizing time and resources, you can reduce your environmental impact as MBE uses innovative packaging techniques and materials."
+msgstr "Usługa pakowania, która zapewni Twojej firmie przewagę. Twoi klienci zasługują na wyjątkowe doświadczenie: zaskocz ich podczas rozpakowywania spersonalizowanymi rozwiązaniami opakowaniowymi dla Twoich produktów. Wysoce spersonalizowane rozwiązanie, które wzmacnia Twoją markę i dodaje stylu w oparciu o Twoje specyficzne potrzeby. Oprócz optymalizacji czasu i zasobów, możesz zmniejszyć swój wpływ na środowisko, ponieważ MBE wykorzystuje innowacyjne techniki pakowania i materiały."
+
+msgid "Now you know you have a reliable partner by your side!"
+msgstr "Now you know you have a reliable partner by your side!"
+
+msgid "MBE is the right end-to-end partner that supports all realities in the transition to digital by providing complete and turnkey solutions."
+msgstr "MBE to właściwy, kompleksowy partner, który wspiera wszystkie realia w przejściu na technologię cyfrową, dostarczając kompletne i gotowe rozwiązania."
+
+msgid "Contact your MBE Center"
+msgstr "Skontaktuj się ze swoim Centrum MBE"
+
+msgid "General"
+msgstr "Ogólne"
+
+msgid "Couriers and services"
+msgstr "Kurier i usługi"
+
+msgid "Packages"
+msgstr "Paczki"
+
+msgid "Markup"
+msgstr "Marża"
+
+msgid "Shipping"
+msgstr "Wysyłka"
+
+msgid "Or proceed with the"
+msgstr "Lub kontynuuj"
+
+msgid "For the plugin to work correctly, at least one option must be selected, and the services available are those set by the MBE Center on the MOL user page on HUB. Subsequently, it is possible to define a custom name for each MBE service selected in the field seen above. This set of fields is automatically generated dynamically, based on the values selected in the \"Enabled MBE Services\" list"
+msgstr "Aby wtyczka działała poprawnie, należy wybrać co najmniej jedną opcję, a dostępne usługi to te ustawione przez Centrum MBE na stronie użytkownika MOL na HUB. Następnie możliwe jest zdefiniowanie niestandardowej nazwy dla każdej usługi MBE wybranej w powyższym polu. Ten zestaw pól jest automatycznie generowany dynamicznie na podstawie wartości wybranych z listy „Włączone usługi MBE”"
+
+msgid ""
+"Introductory description of MBE shipments: \n"
+" - MBE Standard: is a service that offers you the possibility to ship in Italy and throughout Europe and is the ideal solution for individuals and companies who want to guarantee their customers reliability and punctuality.\n"
+" - MBE Express: is a service that guarantees the delivery of your shipments, in Italy, on average in two working days (within 48 hours of collection)\n"
+" - MBE Delivery Point: it is a service that allows you to send objects, packages, documents and much more, in a convenient and fast way from an MBE Center of your choice, to one of the many authorized and authorized collection points, both in Italy than abroad."
+msgstr ""
+"Wstępny opis przesyłek MBE: \n"
+" - MBE Standard: serwis, który oferuje możliwość wysyłki do Polski i całej Europy i jest idealnym rozwiązaniem dla osób prywatnych i firm, które chcą zagwarantować swoim klientom niezawodność i punktualność.\n"
+" - MBE Ekspres: ten serwis gwarantuje dostawę Twoich przesyłek na terenie kraju średnio w dwa dni robocze (w ciągu 48 godzin od odbioru).\n"
+" - Punkt dostawy MBE: usługa pozwalająca w wygodny i szybki sposób wysłać przedmioty, paczki, dokumenty i wiele innych przedmiotów oferowanych przez Centrum MBE do jednego z wielu autoryzowanych punktów dostaw umożliwiających odbiór, zarówno w kraju jak i za granicą."
+
+msgid "Configuration mode"
+msgstr "Tryb konfiguracji"
+
+msgid "Select all MBE services that you intend to offer to the buyers of your eCommerce for shipping. For the plugin to work correctly, at least one option must be selected"
+msgstr "Wybierz wszystkie usługi MBE, które zamierzasz oferować kupującym Twojego eCommerce do wysyłki. Aby wtyczka działała poprawnie, należy wybrać co najmniej jedną opcję"
+
+msgid "In this section you can define the markup to be made to shipments, both for the entire shipment and for the single package, and any rounding"
+msgstr "W tej sekcji możesz zdefiniować narzut, jaki ma być naniesiony na przesyłki, zarówno dla całej przesyłki, jak i dla pojedynczej paczki oraz dowolne zaokrąglenia"
+
+msgid "Indicate the maximum weight of the shipment , intended as the sum of the weights of all packages shipped. In case of Envelope shipping, a default value will be applied 0.5 kg (not editable)."
+msgstr "Wskaż maksymalną wagę przesyłki, przewidzianą jako suma wag wszystkich wysyłanych paczek. W przypadku wysyłki kopertowej zastosowana zostanie wartość domyślna 0,5 kg (bez możliwości edycji)."

@@ -1,0 +1,134 @@
+<script>
+  class VSWProduct {
+    constructor(target) {
+      this.target = target;
+      this.target.classList.add('mc_vsw-product');
+    }
+
+    // Get radio items
+    get radioItems() {
+      return this.target.querySelectorAll('li.variable-item.radio-variable-item');
+    }
+
+    // Get the product type
+    get productType() {
+      var yoastBreadcrumb = document.querySelector('.woocommerce-breadcrumb');
+      if (yoastBreadcrumb) {
+        if (yoastBreadcrumb.innerText.includes('Box')) {
+          return 'Box';
+        } else if (yoastBreadcrumb.innerText.includes('Huile')) {
+          return 'Huile';
+        } else if (yoastBreadcrumb.innerText.includes('Fleur')) {
+          return 'Fleurs';
+        } else if (yoastBreadcrumb.innerText.includes('Gummies')) {
+          return 'Gummies';
+        } else if (yoastBreadcrumb.innerText.includes('Infusion')) {
+          return 'Infusion';
+        } else if (yoastBreadcrumb.innerText.includes('Bouquet')) {
+          return 'Bouquet';
+        } else if (yoastBreadcrumb.innerText.includes('Miel')) {
+          return 'Miel';
+        } else {
+          return null;
+        }
+      }
+    }
+
+    // Get recipient
+    recipient(quantity = 1) {
+      if (this.productType) {
+        if (this.productType === 'Huile') {
+          return quantity > 1 ? 'Flacons' : 'Flacon';
+        } else if (this.productType === 'Fleur') {
+          return quantity > 1 ? 'Pochons' : 'Pochon';
+        } else if (this.productType === 'Gummies' || this.productType === 'Miel') {
+          return quantity > 1 ? 'Pots' : 'Pot';
+        } else if (this.productType === 'Infusion') {
+          return quantity > 1 ? 'Paquets' : 'Paquet';
+        } else if (this.productType === 'Box') {
+          return quantity > 1 ? 'Boxes' : 'Box';
+        } else if (this.productType === 'Bouquet') {
+          return quantity > 1 ? 'Bouquets' : 'Bouquet';
+        } else {
+          return null;
+        }
+      }
+    }
+
+    // Clear dashes and images
+    clear() {
+      this.radioItems.forEach(radioItem => {
+        // Remove the dashes
+        radioItem.innerHTML = radioItem.innerHTML.replaceAll(/\s-\s/ig, '');
+        // Remove the image
+        Array.from(radioItem.querySelectorAll('img')).forEach(img => img.remove());
+      })
+    }
+
+    // Clear old more infos
+    refresh() {
+      if (this.target.querySelector('.mc_radio-item-more')) {
+        this.target.querySelectorAll('.mc_radio-item-more').forEach(oldMoreInfo => oldMoreInfo.remove());
+      }
+    }
+
+    // Add a div below the basic infos
+    addDivsBelow() {
+      this.radioItems.forEach(radioItem => {
+        var divBelow = document.createElement('div');
+        divBelow.classList.add('mc_radio-item-more');
+        radioItem.appendChild(divBelow);
+      });
+    }
+
+    // Add infos
+    addInfos() {
+      this.radioItems.forEach(radioItem => {
+        if (radioItem.innerText.includes('mois')) {
+          var regex = /(\d+)\smois/;
+          var quantity = regex.exec(radioItem.innerText)[1];
+          var element = document.createElement('p');
+          element.classList.add('mc_more-info');
+          element.innerHTML = `${quantity} ${this.recipient(quantity)} ${this.productType}`;
+
+          // Recommendation
+          var recommentation = null;
+          if (quantity === '3') {
+            recommentation = 'Populaire';
+          } else if (quantity === '6') {
+            recommentation = 'Recommandé';
+          }
+          if (recommentation) {
+            element.innerHTML += `<p class="mc_radio-item-recommendation">${recommentation}</p>`;
+          }
+          // Append
+          radioItem.querySelector('div.mc_radio-item-more').appendChild(element);
+        }
+      })
+    }
+    // Add the sale percent
+    addSalePercents() {
+      this.radioItems.forEach(radioItem => {
+        var ins = radioItem.querySelector('ins');
+        var del = radioItem.querySelector('del');
+        if (ins && del) {
+          var percent = 1.00 - parseInt(ins.innerText) / parseInt(del.innerText);
+          var element = document.createElement('p');
+          element.classList.add('mc_sale-percent');
+          element.innerHTML = `-${Math.round(percent * 100)}%`;
+          radioItem.querySelector('div.mc_radio-item-more').appendChild(element);
+        }
+      });
+    }
+  }
+  // Init
+  var vswTarget = document.querySelector('.elementor-add-to-cart.elementor-product-variable ul.radio-variable-items-wrapper');
+  if (vswTarget) {
+    var vswProduct = new VSWProduct(vswTarget);
+    vswProduct.refresh();
+    vswProduct.clear();
+    vswProduct.addDivsBelow();
+    vswProduct.addInfos();
+    vswProduct.addSalePercents();
+  }
+</script>

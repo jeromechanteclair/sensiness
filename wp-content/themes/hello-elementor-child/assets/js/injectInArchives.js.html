@@ -1,0 +1,57 @@
+<!-- Injector -->
+<script>
+  class mcInjector {
+    constructor(target) {
+      this.target = target;
+      this.target.classList.add("mc_cpt_injector");
+    }
+
+    get wrapper() {
+      return this.target.querySelector("ul.products");
+    }
+
+    get products() {
+      return this.target.querySelectorAll("li.product");
+    }
+
+    createElement(innerHTML = null, classes = "") {
+      var element = document.createElement("li");
+      element.classList.add("mc_cpt_injector_element", classes);
+      element.innerHTML = innerHTML;
+      return element;
+    }
+
+    injectAtIndex(element, index) {
+      var target = this.products[index - 2];
+      target.after(element);
+    }
+
+    injectAtStart(element) {
+      var target = this.products[0];
+      target.before(element);
+    }
+
+    injectAtEnd(element) {
+      var target = this.products[this.products.length - 1];
+      target.after(element);
+    }
+  }
+</script>
+<!-- Elements to inject -->
+<script>
+  // Target
+  var mcInject = new mcInjector(document.querySelector(".mc_cpt_inject-in-archive"));
+  // HTML of element to inject
+  var mcInjectElementHTML = '<a href="https://www.sensiness.com/staging/boutique/categorie/huiles-au-cbd/">';
+  mcInjectElementHTML += '<div class="mc_cpt_injector_element_wrapper">';
+  mcInjectElementHTML += '<img class="mc_cpt_injector_element_image" src="https://www.sensiness.com/staging/wp-content/uploads/2022/07/EXT_SENSINESS_LOW-107-2.jpg" alt="Nos huiles au cbd">';
+  mcInjectElementHTML += '<div class="mc_cpt_injector_element_content">';
+  mcInjectElementHTML += '<span>Découvrez nos huiles au CBD</span>';
+  mcInjectElementHTML += '</div>';
+  mcInjectElementHTML += '</div>';
+  mcInjectElementHTML += '</a>';
+  // Create the element
+  mcInjectElement = mcInject.createElement(mcInjectElementHTML, "mc_cpt_injector_element--huiles");
+  // Inject it
+  mcInject.injectAtIndex(mcInjectElement, 6);
+</script>

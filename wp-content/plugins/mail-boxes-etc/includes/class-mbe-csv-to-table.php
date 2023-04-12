@@ -1,0 +1,210 @@
+<?php
+
+use MbeExceptions\FileUploadException;
+use MbeExceptions\ValidationException;
+
+class Mbe_Shipping_CsvFileToTable // extends \Magento\Config\Model\Config\Backend\File
+{
+
+	/**
+	 * Validate callbacks storage
+	 *
+	 * @var array
+	 * @access protected
+	 */
+	protected $_validateCallbacks = [];
+
+	protected $shippingHelper;
+	protected $entityModelFactory;
+	protected $csvEntityModel;
+	protected $csvHelper;
+	protected $csvHeaderDefinitions = [];
+	protected $fileUpdated;
+	protected $currentFileWpOption = '';
+
+	public function __construct() {
+		$this->shippingHelper = new \Mbe_Shipping_Helper_Data();
+		$this->csvHelper = new Mbe_Shipping_Helper_Csv();
+        $this->entityModelFactory = new Mbe_Csv_Entity_Model_Factory();
+
+		$this->csvEntityModel = $this->entityModelFactory->create($this->csvEntityModelClass);
+		$this->fileUpdated = false;
+	}
+
+	public function save($fileFieldName, $currentFile)
+	{
+		if (isset($_FILES[$fileFieldName])) {
+			$files = $_FILES[ $fileFieldName ];
+			if ( !empty( $files['name'] )) {
+				$this->addValidateCallback('checkColumns', $this, 'checkFileColumns');
+				foreach ( $this->_getValidationCallbacks() as $name => $method ) {
+					$this->addValidateCallback( $name, $this, $method );
+				}
+
+				try {
+					$uploadedFile = $this->getUploadedfile( $files, $this->shippingHelper->mbeCsvUploadDir() );
+				} catch ( ValidationException | FileUploadException $e ) {
+					WC_Admin_Settings::add_error( __( $e->getMessage() ) );
+					return false;
+				}
+
+				if (!$this->insertIntoTable($uploadedFile)) {
+					WC_Admin_Settings::add_error( __('Error while loading CSV to table') );
+					// truncate table and delete file so in case of errors the table is empty and partial or wrong values won't be used
+					$this->csvEntityModel->truncate();
+					wp_delete_file($uploadedFile);
+					return false;
+				}
+
+				if (!$this->shippingHelper->setPostOption( $this->currentFileWpOption, basename( $uploadedFile ) )) {
+					// truncate table so in case of errors the table is empty and partial or wrong values won't be used
+					WC_Admin_Settings::add_error( __('Error while saving file path') );
+					$this->csvEntityModel->truncate();
+					wp_delete_file($uploadedFile);
+					return false;
+				}
+				// Remove the old file if the name is different (so it isn't already overwritten)
+				if ($uploadedFile !== $currentFile) {
+					wp_delete_file($currentFile);
+				}
+
+				WC_Admin_Settings::add_message( __( 'File loaded correctly' ) );
+				return true;
+			}
+		}
+		return false;
+	}
+
+	protected function insertIntoTable($filePath)
+	{
+		if (!$this->csvEntityModel->truncate()) {
+			WC_Admin_Settings::add_error(__('Error executing truncate query '));
+			return false;
+		} else {
+			try {
+				$rows = $this->csvHelper->readFile($filePath, $this->csvHeaderDefinitions);
+				foreach ($rows as $row) {
+					$insertResult = $this->csvEntityModel->insertRow($row);
+					if (!$insertResult) {
+						WC_Admin_Settings::add_error(__('Error inserting row'));
+						return false;
+					}
+				}
+			} catch (FileSystemException $exception) {
+				WC_Admin_Settings::add_error(__('Error reading csv file'));
+				return false;
+			} catch (ValidationException $exception) {
+				WC_Admin_Settings::add_error(__('Error in csv file format:'). $exception->getMessage());
+				return false;
+			}
+		}
+		$this->fileUpdated = true;
+		return true;
+	}
+
+//	protected function _getUploadDir()
+//	{
+//		return $this->shippingHelper->mbeCsvUploadDir();
+//	}
+
+	protected function _getAllowedExtensions()
+	{
+		return ['csv' => 'text/csv'];
+	}
+
+	/**
+	 * This function calls the redFile method that throw a ValidationException if column number is wrong
+	 * This validation method is set to be sure that column number is verified before data are loaded into table
+	 * @param $filePath
+	 *
+	 * @throws ValidationException
+	 */
+	public function checkFileColumns($filePath)
+	{
+		$this->csvHelper->readFile($filePath, $this->csvHeaderDefinitions);
+	}
+
+	protected function getUploadedfile($files, $destination = null) {
+		if ( ! function_exists( 'wp_handle_upload' ) ) {
+			require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		}
+
+		$mimetypes = $this->_getAllowedExtensions();
+
+		$upload_overrides = [
+			'test_form'   => false,
+			'test_size'   => true,
+			'test_upload' => true,
+			'test_type'   => true,
+			'mimes'       => $mimetypes
+		];
+
+		$uploadedFile = wp_handle_upload( $files, $upload_overrides );
+
+		if ( $uploadedFile && ! isset( $uploadedFile['error'] ) ) {
+			$this->_validateFile($uploadedFile['file']);
+			if (!empty($destination)) {
+				$destinationFile = $destination . DIRECTORY_SEPARATOR . basename($uploadedFile['file']);
+				if (rename($uploadedFile['file'], $destinationFile)) {
+					return $destinationFile;
+				} else {
+					wp_delete_file($uploadedFile['file']);
+					WC_Admin_Settings::add_error(__('Error uploading the file'));
+				}
+			}
+			return $uploadedFile;
+		} else {
+			/*
+			 * Error generated by _wp_handle_upload()
+			 * @see _wp_handle_upload() in wp-admin/includes/file.php
+			 */
+			WC_Admin_Settings::add_error(__($uploadedFile['error']));
+			throw new FileUploadException($uploadedFile['error']);
+		}
+
+		// TODO : Multiple file upload - the $_FILE array structure is different
+		// TODO : Not yet used at the moment
+//		foreach ( $files['name'] as $key => $value ) {
+//			if ( $files['name'][ $key ] ) {
+//				$file = array(
+//					'name' => $files['name'][ $key ],
+//					'type' => $files['type'][ $key ],
+//					'tmp_name' => $files['tmp_name'][ $key ],
+//					'error' => $files['error'][ $key ],
+//					'size' => $files['size'][ $key ]
+//				);
+//
+//				$movefile = wp_handle_upload( $file, $upload_overrides );
+//				if (!empty($destination)) {
+//					move_uploaded_file($movefile['file'], $destination);
+//				}
+//			}
+//		}
+	}
+
+	/**
+	 * Validate file before save
+	 *
+	 * @return void
+	 */
+	protected function _validateFile($file)
+	{
+		//run validate callbacks
+		foreach ($this->_validateCallbacks as $params) {
+			if (is_object($params['object'])
+			    && method_exists($params['object'], $params['method'])
+			    && is_callable([$params['object'], $params['method']])
+			) {
+				$params['object']->{$params['method']}($file);
+			}
+		}
+	}
+
+	public function addValidateCallback($callbackName, $callbackObject, $callbackMethod)
+	{
+		$this->_validateCallbacks[$callbackName] = ['object' => $callbackObject, 'method' => $callbackMethod];
+		return $this;
+	}
+
+	protected function afterSave(){}
+}

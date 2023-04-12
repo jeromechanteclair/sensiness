@@ -1,0 +1,15 @@
+{
+    "probance-optin_banner-lbtitle" : "¡Suscríbete a nuestro boletín!",
+    "probance-optin_banner-lbsubtitle" : "",
+    "probance-optin_banner-lbfname" : "Nombre",
+    "probance-optin_banner-fname-error-msg": "Nombre incorrecto.",
+    "probance-optin_banner-lblname" : "Apellido(s)",
+    "probance-optin_banner-lname-error-msg": "Apellido(s) incorrecto.",
+    "probance-optin_banner-lbemail": "Email",
+    "probance-optin_banner-email-error-msg": "Dirección de email incorrecta.",
+    "probance-optin_banner-email-empty-msg" : "La dirección de correo electrónico debe ser completada.",
+    "probance-optin_banner-lbbtn": "Suscribirme",
+    "probance-optin_banner-conf-message": "Tu suscripción ha sido correctamente registrada.",
+    "probance-optin_banner-conf-error-message": "Ocurrió un error durante tu registro.",
+    "probance-optin_webel-cblabel":"Acepto recibir comunicaciones y ofertas comerciales."
+}

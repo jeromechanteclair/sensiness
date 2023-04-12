@@ -1,0 +1,8 @@
+.setting-warning input {
+	border-color: red;
+}
+
+.setting-warning .filename-warning-text {
+	display: block !important;
+	color: red;
+}

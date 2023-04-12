@@ -1,0 +1,15 @@
+{
+    "probance-optin_banner-lbtitle" : "Subscribe to our newsletter !",
+    "probance-optin_banner-lbsubtitle" : "",
+    "probance-optin_banner-lbfname" : "First Name",
+    "probance-optin_banner-fname-error-msg": "Invalid first name.",
+    "probance-optin_banner-lblname" : "Last Name",
+    "probance-optin_banner-lname-error-msg": "Invalid last name.",
+    "probance-optin_banner-lbemail": "Email",
+    "probance-optin_banner-email-error-msg": "Invalid email.",
+    "probance-optin_banner-email-empty-msg" : "Email must be filled in.",
+    "probance-optin_banner-lbbtn": "Sign up",
+    "probance-optin_banner-conf-message": "Thank you for signing up.",
+    "probance-optin_banner-conf-error-message": "An error occurred during your registration.",
+    "probance-optin_webel-cblabel":"I agree to receive communications and commercial offers."
+}

@@ -1,0 +1,766 @@
+/* === © 2022 Maxime Cochini, All rights reserved. === */
+
+/* === 00 - SUMMARY : START === */
+
+/**
+ * 00 - SUMMARY
+ *
+ * 01 - SETTINGS
+ * Colors...............Classes for the color palette colors
+ * Fonts................Any font files, if the project needs specific fonts
+ * Global...............Project-specific, globally available variables
+ *
+ * 02 - TOOLS
+ * Functions............Global functions
+ * Mixins...............Global mixins
+ *
+ * 03 - GENERIC
+ * Breakpoints..........Mixins and variables for responsive styles
+ * Generic Classes......Generic classes to be used anywhere
+ *
+ * 04 - WORDPRESS
+ * 404..................404 styles
+ * Archives.............Archive styles
+ * Comments.............Comment styles
+ * Header...............Header styles
+ * Footer...............Footer styles
+ * Footer Navigation....Footer Navigation styles
+ * Navigation...........Navigation styles
+ * Pagination...........Pagination styles
+ * Posts and pages......Misc, sticky post styles
+ * Search...............Search styles
+ * Single...............Single page and post styles
+ * Widget...............Widget styles
+ *
+ * 05 - WOOCOMMERCE
+ * Account..............Account styles
+ * Cart.................Cart styles
+ * Checkout.............Checkout styles
+ * Messages.............Messages, Notifications & Alerts styles
+ * Products Archives....Product archive styles
+ * Single Product.......Single product styles
+ * Product Loops........Product loops styles
+ *
+ * 06 - ELEMENTOR
+ * Structure
+ * Section..............Section styles
+ * Column...............Column styles
+ *
+ * General widgets
+ * Alert................Alert widget styles
+ * Button...............Button widget styles
+ * Cart.................Cart widget styles
+ * Checkout.............Checkout widget styles
+ * Form.................Form widget styles
+ * Gallery..............Gallery widget styles
+ * Heading..............Heading widget styles
+ * HTML.................HTML widget styles
+ * Icon.................Icon widget styles
+ * Icon List............Icon List widget styles
+ * Image................Image widget styles
+ * Menu Cart............Menu Cart widget styles
+ * Nav Menu.............Nav Menu widget styles
+ * Posts................Posts widget styles
+ * Products.............Products widget styles
+ * Shortcodes...........Shortcodes widget styles
+ * Slides...............Slides widget styles
+ * Social icons.........Social icons widget styles
+ * Text Editor..........Text Editor widget styles
+ * Video................Video widget styles
+ *
+ * Plugin widgets (Yoast, Jet...)
+ * Breadcrumbs..........Breadcrumbs widget styles
+ *
+ * 07 - PLUGINS
+ *
+ * 08 - CUSTOM POSTS & TAXONOMIES
+ *
+/*/
+
+/* === 00 - SUMMARY : END === */
+
+
+
+
+
+
+/* ============================== */
+/* ------------------------------ */
+/* ============================== */
+
+
+
+
+
+
+/* === 01 - SETTINGS : START === */
+
+/* ------------------------------
+ * Colors : Classes for the color palette colors.
+/* -- */
+// Maxime Cochini Orange
+$-color--maxime-cochini: #ff6030;
+// My Padda colors
+$color--pink: #FCA3BB;
+$color--red: #E64B38;
+$color--yellow: #F5CE3E;
+$color--green: #00BC70;
+$color--blue: #54C8E8;
+$color--lightblue: $color--blue;
+$color--navyblue: #003057;
+$color--purple: #863399;
+// Project colors
+$color--primary: #C76B6A;
+$color--primary: #E55F64; // saturated version
+$color--secondary: #525C66;
+$color--text: #303030;
+$color--accent: $color--secondary;
+$color--light: #F8F9FA;
+
+/* ------------------------------
+ * Fonts : Any font files, if the project needs specific fonts.
+/* -- */
+
+// Fonts typographies
+
+// Global fonts
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+$font--nunito: 'Nunito', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Grandstander&display=swap');
+$font--grandstander: 'Grandstander', cursive;
+
+$font--primary: $font--nunito;
+$font--secondary: $font--grandstander;
+
+// Global Fonts Mixins
+
+// Elementor basics
+// Primary Title
+@mixin font_primary {
+    font-family: $font--primary;
+}
+// Secondary Title
+@mixin font_secondary {
+    font-family: $font--primary;
+}
+// Texts : Normal
+@mixin font_texts--normal {
+    font-family: $font--primary;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+}
+// Accent
+@mixin font_accent {
+    font-family: $font--primary;
+}
+
+// Specifics
+// Texts : Large
+@mixin font_texts--large {
+    font-family: $font--primary;
+    font-size: 20px;
+    text-transform: none;
+    font-weight: normal;
+}
+// Texts : Small
+@mixin font_texts--large {
+    font-family: $font--primary;
+    font-size: 14px;
+    text-transform: none;
+    font-weight: normal;
+}
+// Titles : Hero
+@mixin font_titles--hero {
+    font-family: $font--primary;
+    font-size: 42px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+// Titles : Section
+@mixin font_titles--section {
+    font-family: $font--primary;
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+// Titles : Sub-Section
+@mixin font_titles--sub-section {
+    font-family: $font--primary;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+// Titles : Satellites
+@mixin font_titles--satellite {
+    font-family: $font--primary;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+// Titles : Small
+@mixin font_titles--small {
+    font-family: $font--primary;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+// Titles : Navigation
+@mixin font_titles--navigation {
+    font-family: $font--primary;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+// Buttons : Large
+@mixin font_buttons--large {
+    font-family: $font--primary;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+// Buttons : Normal
+@mixin font_buttons--normal {
+    font-family: $font--primary;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+// Buttons : Small
+@mixin font_buttons--small {
+    font-family: $font--primary;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+// Links : Normal
+@mixin font_links--normal {
+    font-family: $font--primary;
+    font-size: 16px;
+    text-transform: none;
+    font-weight: 600;
+}
+// Links : Navigation
+@mixin font_links--navigation {
+    font-family: $font--primary;
+    font-size: 14px;
+    text-transform: none;
+    font-weight: 600;
+}
+// Specifics : Quote
+@mixin font_specifics--quote {
+    font-family: $font--primary;
+    font-size: 18px;
+    text-transform: none;
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* ------------------------------
+ * Global : Project-specific, globally available variables.
+/* -- */
+
+/* === 01 - SETTINGS : END === */
+
+
+
+
+
+
+/* ============================== */
+/* ------------------------------ */
+/* ============================== */
+
+
+
+
+
+
+/* === 02 - TOOLS : START === */
+
+/* ------------------------------
+ * Functions : Global functions.
+/* -- */
+
+/* ------------------------------
+ * Mixins : Global mixins.
+/* -- */
+
+/* === 02 - TOOLS : END === */
+
+
+
+
+
+
+/* ============================== */
+/* ------------------------------ */
+/* ============================== */
+
+
+
+
+
+
+/* === 03 - GENERIC : START === */
+// .mc_gen_*
+
+/* ------------------------------
+ * Breakpoints : Mixins and variables for responsive styles
+/* -- */
+// Breakpoints
+// X-Small devices (portrait phones, less than 576px)
+$screen-xs-min: 0;
+$screen-xs-max: calc($screen-sm-min - 1px);
+// Small devices (landscape phones, 576px and up)
+$screen-sm-min: 576px;
+$screen-sm-max: calc($screen-md-min - 1px);
+// Medium devices (tablets, 768px and up)
+$screen-md-min: 768px; 
+$screen-md-max: calc($screen-lg-min - 1px);
+// Large devices (desktops, 1024px and up)
+$screen-lg-min: 1024px;
+$screen-lg-max: calc($screen-xl-min - 1px);
+// X-Large devices (large desktops, 1140px and up)
+$screen-xl-min: 1140px;
+$screen-xl-max: calc($screen-xxl-min - 1px);
+// XX-Large devices (larger desktops, 1920px and up)
+$screen-xxl-min: 1920px;
+
+// X-Small devices
+@mixin xs {
+  @media (max-width: #{$screen-xs-max}) {
+    @content;
+  }
+}
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) and (max-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+// Mobile generic
+@mixin mobile {
+  @media (max-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) and (max-width: #{$screen-md-max}) {
+    @content;
+  }
+}
+// Tablet generic
+@mixin tablet {
+  @include md {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) and (max-width: #{$screen-lg-max}) {
+    @content;
+  }
+}
+// X-Large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) and (max-width: #{$screen-xl-max}) {
+    @content;
+  }
+}
+// XX-Large devices
+@mixin xxl {
+  @media (min-width: #{$screen-xxl-min}) {
+    @content;
+  }
+}
+// Desktop generic
+@mixin desktop {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+// Usage example
+// @include tablet {
+//   margin-bottom: 20px;
+// }
+// Custom devices
+@mixin device($screen) {
+  @media (min-width: #{$screen+'px'}) {
+    @content;
+  }
+}
+// Usage example
+// @include device(1080) {
+//   margin-bottom: 20px;
+// }
+
+/* ------------------------------
+ * Classes : Generic classes to be used anywhere.
+ * .mc_gen_*
+/* -- */
+
+.mc_gen_text-color--primary {
+    color: $color--primary;
+}
+
+/* === 03 - GENERIC : END === */
+
+
+
+
+
+
+/* ============================== */
+/* ------------------------------ */
+/* ============================== */
+
+
+
+
+
+
+/* === 04 - WORDPRESS : START === */
+// .mc_wp_*
+
+// Body no overflow
+body {
+    overflow-x: hidden !important;
+}
+
+
+/* ------------------------------
+ * 404 : 404 styles.
+ * .mc_wp_404_*
+/* -- */
+
+
+/* ------------------------------
+ * Archive : Archive styles.
+ * .mc_wp_archive_*
+/* -- */
+
+
+/* ------------------------------
+ * Comments : Comments styles.
+ * .mc_wp_comments_*
+/* -- */
+
+
+/* ------------------------------
+* Header : Header styles.
+* .mc_wp_header_*
+/* -- */
+
+
+/* ------------------------------
+* Footer : Footer styles.
+* .mc_wp_footer_*
+/* -- */
+
+
+/* ------------------------------
+* Footer Navigation : Footer Navigation styles.
+* .mc_wp_footer-navigation_*
+/* -- */
+
+
+/* ------------------------------
+* Navigation : Navigation styles.
+* .mc_wp_navigation_*
+/* -- */
+
+
+/* ------------------------------
+* Pagination : Pagination styles.
+* .mc_wp_pagination_*
+/* -- */
+
+
+/* ------------------------------
+* Posts and pages : Misc, sticky post styles.
+* .mc_wp_posts-pages_*
+/* -- */
+
+
+/* ------------------------------
+* Search : Search styles.
+* .mc_wp_search_*
+/* -- */
+
+
+/* ------------------------------
+* Single : Single page and post styles.
+* .mc_wp_single_*
+/* -- */
+
+
+/* ------------------------------
+* Widget : Widget styles.
+* .mc_wp_widget_*
+/* -- */
+
+
+/* === 04 - WORDPRESS : END === */
+
+
+
+
+
+
+/* ============================== */
+/* ------------------------------ */
+/* ============================== */
+
+
+
+
+
+
+/* === 05 - WOOCOMMERCE : START === */
+// .mc_woo_*
+
+/* ------------------------------
+* Account : Account styles.
+* .mc_woo_account_*
+/* -- */
+
+
+/* ------------------------------
+* Cart : Cart styles.
+* .mc_woo_cart_*
+/* -- */
+
+
+/* ------------------------------
+* Checkout : Checkout styles.
+* .mc_woo_checkout_*
+/* -- */
+
+
+/* ------------------------------
+* Messages : Messages, Notifications & Alerts styles.
+* .mc_woo_messages_*
+/* -- */
+
+
+/* ------------------------------
+* Products Archives : Product archive styles.
+* .mc_woo_products-archives_*
+/* -- */
+
+
+/* ------------------------------
+* Single Product : Single product styles.
+* .mc_woo_single-product_*
+/* -- */
+
+
+/* ------------------------------
+* Product Loops : Product loops styles.
+* .mc_woo_product-loops_*
+/* -- */
+
+
+/* === 05 - WOOCOMMERCE : END === */
+
+
+
+
+
+
+/* ============================== */
+/* ------------------------------ */
+/* ============================== */
+
+
+
+
+
+
+/* === 06 - ELEMENTOR : START === */
+// .mc_el_*
+
+//
+
+// Structure
+
+/* ------------------------------
+* Section : Section styles.
+* .mc_el_section_*
+/* -- */
+
+
+/* ------------------------------
+* Column : Column styles.
+* .mc_el_column_*
+/* -- */
+
+//
+
+// General Widgets
+
+/* ------------------------------
+* Alert : Alert widget styles.
+* .mc_el_alert_*
+/* -- */
+
+/* ------------------------------
+* Button : Button widget styles.
+* .mc_el_button_*
+/* -- */
+
+/* ------------------------------
+* Cart : Cart widget styles.
+* .mc_el_cart_*
+/* -- */
+
+/* ------------------------------
+* Checkout : Checkout widget styles.
+* .mc_el_checkout_*
+/* -- */
+
+/* ------------------------------
+* Form : Form widget styles.
+* .mc_el_form_*
+/* -- */
+
+/* ------------------------------
+* Gallery : Gallery widget styles.
+* .mc_el_gallery_*
+/* -- */
+
+/* ------------------------------
+* Heading : Heading widget styles.
+* .mc_el_heading_*
+/* -- */
+
+/* ------------------------------
+* HTML : HTML widget styles.
+* .mc_el_html_*
+/* -- */
+
+/* ------------------------------
+* Icon : Icon widget styles.
+* .mc_el_icon_*
+/* -- */
+
+/* ------------------------------
+* Icon List : Icon List widget styles.
+* .mc_el_icon-list_*
+/* -- */
+
+/* ------------------------------
+* Image : Image widget styles.
+* .mc_el_image_*
+/* -- */
+
+/* ------------------------------
+* Menu Cart : Menu Cart widget styles.
+* .mc_el_menu-cart_*
+/* -- */
+
+/* ------------------------------
+* Nav Menu : Nav Menu widget styles.
+* .mc_el_nav-menu_*
+/* -- */
+
+/* ------------------------------
+* Posts : Posts widget styles.
+* .mc_el_posts_*
+/* -- */
+
+/* ------------------------------
+* Products : Products widget styles.
+* .mc_el_products_*
+/* -- */
+
+/* ------------------------------
+* Shortcodes : Shortcodes widget styles.
+* .mc_el_shortcodes_*
+/* -- */
+
+/* ------------------------------
+* Slides : Slides widget styles.
+* .mc_el_slides_*
+/* -- */
+
+/* ------------------------------
+* Social icons : Social icons widget styles.
+* .mc_el_social-icons_*
+/* -- */
+
+/* ------------------------------
+* Text Editor : Text Editor widget styles.
+* .mc_el_text-editor_*
+/* -- */
+
+/* ------------------------------
+* Video : Video widget styles.
+* .mc_el_video_*
+/* -- */
+
+//
+
+// Plugins widgets (Yoast, Jet...)
+
+/* ------------------------------
+* Breadcrumbs : Breadcrumbs widget styles.
+* .mc_el_breadcrumbs_*
+/* -- */
+
+/* === 06 - ELEMENTOR : END === */
+
+
+
+
+
+
+/* ============================== */
+/* ------------------------------ */
+/* ============================== */
+
+
+
+
+
+
+/* === 07 - PLUGINS : START === */
+// .mc_plugins_*
+
+
+/* === 07 - PLUGINS : END === */
+
+
+
+
+
+
+/* ============================== */
+/* ------------------------------ */
+/* ============================== */
+
+
+
+
+
+
+/* === 08 - CUSTOM POSTS & TAXONOMIES : START === */
+// .mc_cpt_*
+
+/* === 08 - CUSTOM POSTS & TAXONOMIES : END === */
+
+
+
+
+
+
+/* ============================== */
+/* ------------------------------ */
+/* ============================== */
+
+/* === © 2022 Maxime Cochini, All rights reserved. === */

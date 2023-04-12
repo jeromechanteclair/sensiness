@@ -1,0 +1,18 @@
+{
+	"autoload": {
+		"psr-4": {
+			"WPO\\WC\\PDF_Invoices_Pro\\Vendor\\": "packages"
+		},
+		"classmap": [
+			"classes"
+		],
+		"files": [
+			"packages/GuzzleHttp/Promise/functions_include.php",
+			"packages/GuzzleHttp/Psr7/functions_include.php",
+			"packages/GuzzleHttp/functions_include.php"
+		]
+	},
+	"require": {
+		"tecnickcom/tcpdf": "*"
+	}
+}

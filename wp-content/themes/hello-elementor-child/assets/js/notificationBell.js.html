@@ -1,0 +1,13 @@
+<script>
+  var notificationBell = document.getElementById('mc_cc_notification-button');
+  var sensinessNotifications = window.sessionStorage['sensinessNotifications'];
+
+  if ( sensinessNotifications == null ) {
+    notificationBell.classList.add('mc_new-notifications');
+  }
+
+  notificationBell.addEventListener('click', e => {
+    notificationBell.classList.remove('mc_new-notifications');
+    window.sessionStorage.setItem('sensinessNotifications','true');
+  });
+</script>
