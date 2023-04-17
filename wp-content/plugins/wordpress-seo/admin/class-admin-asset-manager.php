@@ -599,6 +599,10 @@ class WPSEO_Admin_Asset_Manager {
 				'deps' => [ 'wp-edit-blocks' ],
 			],
 			[
+				'name' => 'schema-blocks',
+				'src'  => 'schema-blocks-' . $flat_version,
+			],
+			[
 				'name' => 'elementor',
 				'src'  => 'elementor-' . $flat_version,
 			],

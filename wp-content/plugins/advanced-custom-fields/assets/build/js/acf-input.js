@@ -8267,15 +8267,12 @@
         }
       };
 
-      // Clear empty templateSelections, templateResults, or dropdownCssClass.
+      // Clear empty templateSelections or Results.
       if (!options.templateSelection) {
         delete options.templateSelection;
       }
       if (!options.templateResult) {
         delete options.templateResult;
-      }
-      if (!options.dropdownCssClass) {
-        delete options.dropdownCssClass;
       }
 
       // Only use the template if SelectWoo is not loaded to work around https://github.com/woocommerce/woocommerce/pull/30473

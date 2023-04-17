@@ -280,15 +280,13 @@ final class AdSense extends Module
 
 				$metrics = $this->parse_string_list( $data['metrics'] );
 				if ( ! empty( $metrics ) ) {
-					if ( $this->is_shared_data_request( $data ) ) {
-						try {
-							$this->validate_shared_report_metrics( $metrics );
-						} catch ( Invalid_Report_Metrics_Exception $exception ) {
-							return new WP_Error(
-								'invalid_adsense_report_metrics',
-								$exception->getMessage()
-							);
-						}
+					try {
+						$this->validate_report_metrics( $metrics );
+					} catch ( Invalid_Report_Metrics_Exception $exception ) {
+						return new WP_Error(
+							'invalid_adsense_report_metrics',
+							$exception->getMessage()
+						);
 					}
 
 					$args['metrics'] = $metrics;
@@ -296,15 +294,13 @@ final class AdSense extends Module
 
 				$dimensions = $this->parse_string_list( $data['dimensions'] );
 				if ( ! empty( $dimensions ) ) {
-					if ( $this->is_shared_data_request( $data ) ) {
-						try {
-							$this->validate_shared_report_dimensions( $dimensions );
-						} catch ( Invalid_Report_Dimensions_Exception $exception ) {
-							return new WP_Error(
-								'invalid_adsense_report_dimensions',
-								$exception->getMessage()
-							);
-						}
+					try {
+						$this->validate_report_dimensions( $dimensions );
+					} catch ( Invalid_Report_Dimensions_Exception $exception ) {
+						return new WP_Error(
+							'invalid_adsense_report_dimensions',
+							$exception->getMessage()
+						);
 					}
 
 					$args['dimensions'] = $dimensions;
@@ -869,15 +865,18 @@ final class AdSense extends Module
 	}
 
 	/**
-	 * Validates the report metrics for a shared request.
+	 * Validates the report metrics.
 	 *
 	 * @since 1.83.0
-	 * @since 1.98.0 Renamed the method, and moved the check for being a shared request to the caller.
 	 *
 	 * @param string[] $metrics The metrics to validate.
 	 * @throws Invalid_Report_Metrics_Exception Thrown if the metrics are invalid.
 	 */
-	protected function validate_shared_report_metrics( $metrics ) {
+	protected function validate_report_metrics( $metrics ) {
+		if ( false === $this->is_using_shared_credentials ) {
+			return;
+		}
+
 		$valid_metrics = apply_filters(
 			'googlesitekit_shareable_adsense_metrics',
 			array(
@@ -908,7 +907,7 @@ final class AdSense extends Module
 					'Unsupported metric requested: %s',
 					'google-site-kit'
 				),
-				$invalid_metrics[0]
+				$invalid_metrics
 			);
 
 			throw new Invalid_Report_Metrics_Exception( $message );
@@ -916,15 +915,18 @@ final class AdSense extends Module
 	}
 
 	/**
-	 * Validates the report dimensions for a shared request.
+	 * Validates the report dimensions.
 	 *
 	 * @since 1.83.0
-	 * @since 1.98.0 Renamed the method, and moved the check for being a shared request to the caller.
 	 *
 	 * @param string[] $dimensions The dimensions to validate.
 	 * @throws Invalid_Report_Dimensions_Exception Thrown if the dimensions are invalid.
 	 */
-	protected function validate_shared_report_dimensions( $dimensions ) {
+	protected function validate_report_dimensions( $dimensions ) {
+		if ( false === $this->is_using_shared_credentials ) {
+			return;
+		}
+
 		$valid_dimensions = apply_filters(
 			'googlesitekit_shareable_adsense_dimensions',
 			array(
@@ -952,7 +954,7 @@ final class AdSense extends Module
 					'Unsupported dimension requested: %s',
 					'google-site-kit'
 				),
-				$invalid_dimensions[0]
+				$invalid_dimensions
 			);
 
 			throw new Invalid_Report_Dimensions_Exception( $message );
