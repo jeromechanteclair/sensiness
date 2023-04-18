@@ -1,5 +1,10 @@
 
 wp-config.php
+.well-known
+.htaccess
+db/
+.user.ini
+robots.txt
 # ignore everything in the root except the "wp-content" directory.
 !wp-content/
 
@@ -24,6 +29,3 @@ node_modules/
 *.sql
 *.sqlite
 
-.htaccess
-
-.user.ini
