@@ -2,12 +2,7 @@
 /**
  * FAQTaxonomy class File : ajoute le thématique aux thématiques
  *
- * @category  Class
- * @package   150_lillet
- * @author    Bigbump contact@bigbump.fr
- * @copyright Copyright 2015 Company, Inc. All rights reserved.
- * @license   GNU General Public License version 2 or later; see LICENSE
- * @link      https://www.lillet.com/
+
  */
 
 class FAQTaxonomy
