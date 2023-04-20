@@ -3,13 +3,7 @@
 
 /**
  * EntretienTaxonomy class File : ajoute la catégorie au entretien
- *
- * @category  Class
- * @package   Guiti
- * @author    Bigbump contact@bigbump.fr
- * @copyright Copyright 2015 Company, Inc. All rights reserved.
- * @license   GNU General Public License version 2 or later; see LICENSE
- * @link      https://bigbump.fr
+
  */
 
 class ExtraFieldsTaxonomyTheme{
