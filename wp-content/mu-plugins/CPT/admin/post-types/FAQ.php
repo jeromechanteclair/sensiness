@@ -42,7 +42,7 @@ class FAQ extends MetaboxGenerator {
 
         add_action('init', array( $this, 'create' ));
         add_action('init', array( $this, 'rest_meta' ));
-        add_action('admin_init', array( $this, 'searchApiMetabox' ));
+        // add_action('admin_init', array( $this, 'searchApiMetabox' ));
         add_action('add_meta_boxes', array( $this, 'addListMetaBox' ));
         add_action('save_post', array( $this, 'saveMetaBox' ), 10, 2);
         add_shortcode('FAQ', array( $this, 'FAQ' ),10,1);
