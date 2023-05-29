@@ -1,0 +1,40 @@
+{
+    "name": "devkult/sensiness",
+    "description": "sensiness Website",
+    "repositories": {
+
+        "0": {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        }
+    },
+    "require": {
+        "aws/aws-sdk-php": "*",
+
+        "wpackagist-plugin/query-monitor": "3.12.3"
+
+
+    },
+    "autoload": {
+        "psr-0": {
+            "Acme": "src/"
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "wp-content/mu-plugins/{$name}/": [],
+            "wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}
