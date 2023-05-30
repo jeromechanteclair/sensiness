@@ -16,11 +16,11 @@ class Woocommerce  {
 	 * Undocumented function
 	 */
 	public function __construct(){
-		$this->rewards  =new \WC_Points_Rewards_Product();
+		// $this->rewards  =new \WC_Points_Rewards_Product();
 		add_action( 'init',	array($this,'cleanup'));
-		add_action('dk_after_price', array($this->rewards,'add_variation_message_to_product_summary'), 35);
-		add_action('dk_after_price', array($this->rewards,'render_product_message'), 20);
-
+		// add_action('dk_after_price', array($this->rewards,'add_variation_message_to_product_summary'), 35);
+		// add_action('dk_after_price', array($this->rewards,'render_product_message'), 20);
+// woo_variation_swatches_global_item_radio_label_template
 	}
 
 	/**
@@ -32,6 +32,10 @@ class Woocommerce  {
 	
 		$this->remove_filters_with_method_and_class_name('woocommerce_before_add_to_cart_button', 'WC_Points_Rewards_Product', 'add_variation_message_to_product_summary', 25);
 		$this->remove_filters_with_method_and_class_name('woocommerce_before_add_to_cart_button', 'WC_Points_Rewards_Product', 'render_product_message', 15);
+		remove_action('woocommerce_single_product_summary','woocommerce_template_single_excerpt',20);
+		remove_action('woocommerce_before_main_content','woocommerce_breadcrumb',20);
+		remove_action('woocommerce_before_single_product_summary','woocommerce_show_product_sale_flash',10);
+		add_action('woocommerce_single_product_summary','woocommerce_breadcrumb',0);
 	}
 
 	/**

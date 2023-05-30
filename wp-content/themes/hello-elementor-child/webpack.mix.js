@@ -16,7 +16,7 @@ mix.options({
 mix.autoload({
   jquery: ['$', 'window.jQuery', 'jQuery'],
 });
-// mix.js('assets/js/main.js', 'dist/js').setPublicPath('dist');
+mix.js('assets/js/main.js', 'dist/js').setPublicPath('dist');
 mix.sass('assets/scss/style.scss', 'dist/css/style.css').setPublicPath('dist');
 mix.browserSync({
     proxy:'sensiness.local'

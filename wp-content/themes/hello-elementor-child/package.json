@@ -1,13 +1,16 @@
 {
-  "name": "pmu-theme",
+  "name": "sensiness-theme",
   "version": "2.0.0",
   "description": "Themosis framework boilerplate theme.",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress  --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-  },
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production --openssl-legacy-provider",
+    "production": "mix --production"
+    },
   "author": "Themosis",
   "license": "GPL-2.0-or-later",
   "bugs": {
@@ -15,16 +18,21 @@
   },
   "homepage": "https://github.com/themosis/theme#readme",
   "devDependencies": {
-    "browser-sync": "^2.26.1",
-    "browser-sync-webpack-plugin": "^2.0.1",
+    "browser-sync": "^2.29.1",
+    "browser-sync-webpack-plugin": "^2.3.0",
     "cross-env": "^5.2.0",
-    "laravel-mix": "^4.0.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "laravel-mix": "^6.0.0",
+    "laravel-mix-webp": "^0.1.3",
     "resolve-url-loader": "2.3.1",
     "sass": "^1.17.3",
-    "sass-loader": "7.*",
-    "vue-template-compiler": "^2.7.14"
+    "sass-loader": "13.2.2",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "jquery": "^3.6.3"
+    "jquery": "^3.6.3",
+    "laravel-mix-compress-images": "^1.0.4",
+        "webpack": "^5.79.0"
+
   }
 }
