@@ -13,6 +13,23 @@
 require_once(get_stylesheet_directory() . '/inc/Woocommerce.php');
 require_once(get_stylesheet_directory() . '/inc/Images.php');
 
+
+/***
+ * Defer scripts
+ */
+
+
+function add_defer_attribute($tag, $handle)
+{
+    if ('sensiness-theme' !== $handle) {
+        return $tag;
+    }
+    return str_replace(' src', ' defer="defer" src', $tag);
+}
+
+add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
+
+
 /**
  * Load child theme css and optional scripts
  *
@@ -40,7 +57,7 @@ function hello_elementor_child_enqueue_scripts() {
 	);
 	// Scripts
 	$main_script_uri = get_stylesheet_directory_uri() . '/dist/js/main.js';
-	wp_enqueue_script( 'index', $main_script_uri, array ( 'jquery' ), '1.0', false);
+	wp_enqueue_script( 'sensiness-theme', $main_script_uri,[], '1.0', false);
 }
 
 /**
@@ -71,44 +88,46 @@ include get_stylesheet_directory() . '/includes/shortcode_mc_categories-slider-n
 include get_stylesheet_directory() . '/includes/shortcode_mc_effects-slider-navigation.php';
 
 
+/**
+ * Custom variation select output
+ */
+function display_variations($attributes, $available_variations){
 
-function display_variations($attributes, $available_variations)
-{
     global $product;
     // get default variation
-
-
-
     if($product->is_type('variable')) {
         $default_attributes = $product->get_default_attributes();
 
         foreach($default_attributes as $key => $value) {
-
             $default_attributes['attribute_'.$key] = $value;
         }
-
 
     }
 
     $options = array();
     $linkedvariations = array();
-    $prices = array();
+    $datas = array();
+    $datas = array();
     $variations_id = array();
-    // $availables = array();
+
+
 
     foreach($available_variations as $key1=> $variation) {
-        // if(!$variation['is_in_stock']){
-        // 	break;
-        // }
+        // remove attr if not in stock
+        if(!$variation['is_in_stock']){
+        	break;
+        }
+
 
         // if( != $attribute_value){}
         $price_html = json_encode($variation['price_html']);
-$display_price= $variation['display_price'];
-$display_regular_price= $variation['display_regular_price'];
-
-
+        $display_price= $variation['display_price'];
+        $display_regular_price= $variation['display_regular_price'];
+        $description = $variation['variation_description'];
 
         foreach($variation['attributes'] as $key => $value) {
+
+
             if(!array_key_exists($key1, $linkedvariations)) {
                 $linkedvariations[$key1]= array();
 
@@ -116,8 +135,9 @@ $display_regular_price= $variation['display_regular_price'];
             array_push($linkedvariations[$key1], $value);
             if(!array_key_exists($key, $options)) {
                 $options[$key] = array();
-                $prices[$key] = array();
+                $datas[$key] = array();
                 $variations_id[$key] = array();
+
 
                 // $linkedvariations[$key] = array();
             }
@@ -126,13 +146,17 @@ $display_regular_price= $variation['display_regular_price'];
                 // && $variation['is_in_stock']
             ) {
                 array_push($options[$key], $value);
-                array_push($prices[$key], [
+                array_push($datas[$key], [
                     'html'=>$price_html,
                     'display_price'=>$display_price,
                     'display_regular_price'=>$display_regular_price,
-
+                    'availability'=>$variation['is_in_stock'],
+                    'description'=> get_post_meta($variation['variation_id'], 'variation_description', true)?get_post_meta($variation['variation_id'], 'variation_description', true):'',
+                    'variation_id'=>$variation['variation_id'],
+                    'availability_html'=> json_encode($variation['availability_html']),
                 ]);
-                array_push($variations_id[$key], $variation['variation_id']);
+
+                array_push($variations_id[$key], );
             }
 
         }
@@ -160,37 +184,44 @@ $display_regular_price= $variation['display_regular_price'];
         if(!empty($default_attributes) && in_array($default_attributes[$key], $values)) {
             $current = $default_attributes[$key];
         }
-        //
-
-
-        // remove 'attribute_' from name
         $attribute_name = str_replace('attribute_', '', $name);
         if(count($values)>0) {
-            $html .='<label for="'.$id.'">'.wc_attribute_label($attribute_name).' : </label>';
+            $html .='<label style="display:none;"for="'.$id.'">'.wc_attribute_label($attribute_name).' : </label>';
 
         }
-        $html .= '<select style="display:none;"id="' . $id  . '" class="' . $class  . ' attribute-select" name="' .  $name  . '" data-attribute_name="' . $name . '" data-show_option_none="' . ($show_option_none ? 'yes' : 'no') . '">';
-        $html .= '<option value="">Sélectionner une option</option>';
+        $html .= '<select style="display:none;" id="' . $id  . '" class="' . $class  . ' attribute-select custom-select" name="' .  $name  . '" data-attribute_name="' . $name . '" data-show_option_none="' . ($show_option_none ? 'yes' : 'no') . '">';
 
-        foreach($values as  $value) {
-
-
+        foreach($values as $valuekey => $value) {
             $selected='';
+            $term = get_term_by('slug', $value, $attribute_name);
+            $name = $term->name;
             if($current == $value) {
                 $selected='selected';
             }
-
             if(!empty($value)) {
+                $attr='';
+                $percentage = round(($datas[$key][$valuekey]['display_regular_price'] - $datas[$key][$valuekey]['display_price']) / $datas[$key][$valuekey]['display_regular_price'] * 100);
+                if(intval($percentage)!==0) {
+                    $attr .=' data-price-promo="'. htmlspecialchars(json_encode(wc_price(esc_attr($datas[$key][$valuekey]['display_price']))),ENT_QUOTES, 'UTF-8').'"';
+                    $attr .=' data-price-reg="'. htmlspecialchars(json_encode(wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price']))),ENT_QUOTES, 'UTF-8').'"';
+                } else {
+                    $attr .=' data-price-promo=""';
+                    $attr .=' data-price-reg="'.  htmlspecialchars(json_encode(wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price']))),ENT_QUOTES, 'UTF-8').'"';
+                }
 
+                $html .= '<option  value="' . esc_attr($value) . '" '.$selected.' '. $attr.'>';
+                $html .= esc_html($name) ;
+                
+             
 
-                $html .= '<option  value="' . esc_attr($value) . '" '.$selected.'>' . esc_html($value) . '</option>';
+                $html .= '</option>';
             }
         }
         $html .='</select>';
         $html.='<ul class="variation-wrapper">';
 
         foreach($values as $valuekey => $value) {
-            $classes='';
+            $classes='variation-item';
             $linked='';
             if($product->get_type() =='pw-gift-card') {
                 $classes='inline';
@@ -207,12 +238,13 @@ $display_regular_price= $variation['display_regular_price'];
                         // remove value from current string
                         $currentstring = str_replace($value, ' ', $currentstring);
                         // remove last comma from current string
-
-
                         $linked.= $currentstring;
                     }
                 }
                 $term = get_term_by('slug', $value, $attribute_name);
+                $name = $term->name;
+               
+
                 // get term_meta
                 $color='';
                 if(!empty($term)) {
@@ -223,20 +255,24 @@ $display_regular_price= $variation['display_regular_price'];
                     $html .= '<li class="'.$classes.' colored" data-link="'.$linked.'"  data-value="'.$value.'" data-select="'.$id.'"><span class="color"style="background-color:'.$color.'"></span></li>';
 
                 } else {
-                    $html .= '<li class="'.$classes.'" data-variation_id="'. esc_attr($variations_id[$key][$valuekey]) .'" data-price="'. esc_attr($prices[$key][$valuekey]['html']) .'" data-link="'.$linked.'"  data-value="'.$value.'" data-select="'.$id.'">';
-                    $html .='<span class="attribute_value">'.$value.'</span>';                    
-                    $percentage = round(($prices[$key][$valuekey]['display_regular_price'] - $prices[$key][$valuekey]['display_price']) / $prices[$key][$valuekey]['display_regular_price'] * 100);
-                   
-                     if(intval($percentage)!==0){
-                         $html .='<span class="attribute_prices">'. wc_price(esc_attr($prices[$key][$valuekey]['display_price']) ).'</span>';                    
-                         $html .='<span class="attribute_prices">'. wc_price(esc_attr($prices[$key][$valuekey]['display_regular_price'])) .'</span>';    
-                         $html .='<span class="attribute_prices">'.$percentage .'%</span>';
-                     }
-                     else{
-                        $html .='<span class="attribute_prices">'. wc_price(esc_attr($prices[$key][$valuekey]['display_regular_price'])) .'</span>';
-                     }
-             
-                     $html .='</li>';
+                    $html .= '<li class="'.$classes.'" data-variation_id="'. esc_attr($datas[$key][$valuekey]['variation_id']) .'" data-price="'. esc_attr($datas[$key][$valuekey]['html']) .'" data-link="'.$linked.'"  data-value="'.$value.'" data-select="'.$id.'">';
+                        $html .='<span class="checkbox"></span>';                    
+                        $html .='<div class="variation-item__title"><p class="h3">'.$name.'</p>';                    
+                            $html .='<p class="description">'.$datas[$key][$valuekey]['description'].'</p>';
+                        $html .='</div>';   
+                        $html .='<div class="variation-item__prices">';                 
+                            $percentage = round(($datas[$key][$valuekey]['display_regular_price'] - $datas[$key][$valuekey]['display_price']) / $datas[$key][$valuekey]['display_regular_price'] * 100);
+                            if(intval($percentage)!==0){
+                                $html .='<span class="display_regular_price">'. wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price'])) .'</span>';    
+                                $html .='<span class="display_price">'. wc_price(esc_attr($datas[$key][$valuekey]['display_price']) ).'</span>';                    
+                                $html .='<span class="percent">-'.$percentage .'%</span>';
+                            }
+                            else{
+                                $html .='<span class="display_price">'. wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price'])) .'</span>';
+                            }
+                        $html .='</div>';
+
+                    $html .='</li>';
                 }
             }
         }

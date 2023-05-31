@@ -1,0 +1,467 @@
+.single-product {
+
+    background-color: var(--beige);
+
+    #main {
+        max-width: 1440px;
+
+        .summary {
+            margin-top: 130px;
+            float: none;
+            width: 50%;
+
+
+            h1 {
+                font-family: 'Recoleta';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 56px;
+                line-height: 64px;
+                color: var(--green);
+            }
+
+            .subtitle {
+                font-family: 'Recoleta';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 32px;
+                color: var(--green);
+            }
+        }
+    }
+
+
+
+    .variations_form {
+        select.attribute-select {
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+
+            option {
+                padding: 1.2rem;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        .variation-wrapper {
+            list-style: none;
+            border: none;
+            border-radius: unset;
+
+            .variation-item {
+                cursor: pointer;
+                display: grid;
+                grid-template-columns: auto 3.5fr auto;
+                border-top: 1px solid #EBE9E0;
+                padding: 16px 0;
+                align-items: baseline;
+
+                &:first-of-type {
+                    border-top: 1px solid transparent;
+                }
+
+                &.selected {
+                    .checkbox:after {
+
+                        opacity: 1;
+
+                    }
+                }
+
+                .checkbox {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 18px;
+                    width: 18px;
+                    border-radius: 18px;
+                    border: 1px solid var(--green);
+                    margin-right: 24px;
+
+                    &:after {
+                        content: '';
+                        height: 8px;
+                        width: 8px;
+                        opacity: 0;
+                        border-radius: 8px;
+                        background-color: var(--green);
+                    }
+                }
+
+                &__title {
+                    p {
+                        margin-bottom: 0;
+                    }
+
+                    font-family: 'Recoleta';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 24px;
+
+                    .description {
+                        font-family: 'Neue Haas Grotesk Display Pro';
+                        font-style: normal;
+                        font-weight: 450;
+                        font-size: 12px;
+                        line-height: 24px;
+                    }
+                }
+
+                &__prices {
+                    text-align: right;
+                    font-family: 'Recoleta';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 24px;
+
+                    span {
+                        display: inline-block;
+                        font-family: 'Neue Haas Grotesk Display Pro';
+                        font-style: normal;
+                        font-weight: 450;
+                        font-size: 16px;
+                        line-height: 24px;
+
+                        &.display_regular_price {
+                            margin-right: 12px;
+
+                            bdi {
+                                text-decoration: line-through;
+
+                            }
+                        }
+                    }
+
+                    .percent {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .woocommerce-variation-add-to-cart {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-flow: row;
+
+            .quantity {
+                input {
+                    @include quantity;
+                    width: auto;
+                }
+            }
+
+            .button {
+                @include button;
+            }
+        }
+    }
+
+}
+
+.custom-price {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    &__left {
+        p {
+            display: inline-flex;
+            background-color: white;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 10px;
+        }
+
+    }
+
+    &__right {
+        display: flex;
+        flex-flow: column-reverse;
+        text-align: right;
+
+        .mc_variable-from {
+            order: 1;
+
+            +.amount bdi {
+                font-family: 'Recoleta';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 32px;
+                line-height: 40px;
+                color: var(--green);
+            }
+
+        }
+
+        .price {
+            display: flex;
+            flex-flow: column;
+            text-decoration: none;
+
+            .amount,
+            ins {
+                text-decoration: none;
+            }
+
+            del {
+                bdi {
+                    text-decoration: line-through;
+                    font-family: 'Neue Haas Grotesk Display Pro';
+                    font-style: normal;
+                    font-weight: 450;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+
+            bdi {
+                font-family: 'Recoleta';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 32px;
+                line-height: 40px;
+                color: var(--green);
+
+            }
+        }
+    }
+}
+
+.variations {
+    .ts-wrapper {
+        display: none;
+
+        &.sticky {
+            display: block;
+        }
+    }
+
+    .ts-control {
+        padding: 16px 24px;
+        background: #FFFFFF;
+        border-radius: 10px;
+        border: none;
+
+        .item {
+            padding-right: 24px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            p,
+            span {
+                font-family: 'Recoleta';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 0;
+                color: var(--green);
+            }
+
+            span {
+                font-size: 16px;
+            }
+
+        }
+    }
+
+    .select-prices {
+        display: flex;
+        gap: 12px;
+        flex-flow: row;
+        align-items: center;
+
+        .promo {
+            text-decoration: line-through;
+        }
+    }
+
+    .ts-dropdown {
+        .option {
+            padding: 16px 24px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            p,
+            span {
+                font-family: 'Recoleta';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 0;
+                color: var(--green);
+            }
+
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+/**
+* Réassurance slider
+*
+*/
+
+.reassurance-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .swiper-pagination {
+        position: relative;
+        gap: 6px;
+
+        .swiper-pagination-bullet {
+            width: 6px;
+            height: 6px;
+            background-color: #EBE9E0;
+
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--green);
+        }
+    }
+
+    .swiper-wrapper {
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+            width: 100%;
+
+            header {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+
+                p {
+                    font-family: 'Recoleta';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin-bottom: 0;
+                }
+            }
+
+            &--subtitle {
+                font-family: 'Neue Haas Grotesk Display Pro';
+                font-style: normal;
+                font-weight: 450;
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+
+    }
+}
+
+/**
+* global layout
+*
+*/
+.single-product {
+    .product-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .product-gallery {
+            width:  calc(50% - 106px);
+            overflow: hidden;
+            position: relative;
+               display: grid;
+            align-items: center;
+            justify-content: flex-end;
+            position: sticky;
+            top: 0;
+
+            // overflow: hidden;
+        }
+
+
+        .gallery-top {
+            height: 100%;
+            max-height: 100vh;
+            width: 100%;
+            position: relative;
+        
+              .swiper-slide {
+                 height: 100vh;
+                    width: 500px;
+
+
+
+
+
+
+                    img,
+                    video {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+            
+        }
+        .gallery-thumbs{
+            position: absolute;
+            z-index: 99;
+            right: 24px;
+            display: flex;
+            flex-flow: column;gap:16px;
+            .thumb{
+                max-height: 64px;
+                max-width: 64px;
+                cursor: pointer;
+                border-radius: 10px;
+                margin: 0;
+                overflow: hidden;
+                &--active{
+                    border: 1px solid var(--green);
+                }
+            }
+        }
+        .diagnostic-cta{
+            position: absolute;
+            align-self: end;
+            justify-self: center;
+            z-index: 1;
+            bottom: 10vh;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 16px 24px;
+            border-radius: 10px;
+            border: 1px solid var(--green);
+          font-family: 'Neue Haas Grotesk Display Pro';
+            font-style: normal;
+            font-weight: 450;
+            font-size: 16px;
+            line-height: 24px;
+            background-color: rgba(255,255,255,0.2);
+            /* identical to box height, or 150% */
+
+            text-transform: uppercase;
+
+        }
+    }
+}

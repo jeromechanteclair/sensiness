@@ -10,7 +10,7 @@
     "hot": "mix watch --hot",
     "prod": "npm run production --openssl-legacy-provider",
     "production": "mix --production"
-    },
+  },
   "author": "Themosis",
   "license": "GPL-2.0-or-later",
   "bugs": {
@@ -32,7 +32,10 @@
   "dependencies": {
     "jquery": "^3.6.3",
     "laravel-mix-compress-images": "^1.0.4",
-        "webpack": "^5.79.0"
+    "webpack": "^5.79.0",
+    "parsleyjs": "^2.9.2",
+    "swiper": "^9.2.0",
+    "tom-select": "^2.2.2"
 
   }
 }

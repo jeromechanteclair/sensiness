@@ -16,11 +16,75 @@ class Woocommerce  {
 	 * Undocumented function
 	 */
 	public function __construct(){
-		// $this->rewards  =new \WC_Points_Rewards_Product();
 		add_action( 'init',	array($this,'cleanup'));
-		// add_action('dk_after_price', array($this->rewards,'add_variation_message_to_product_summary'), 35);
-		// add_action('dk_after_price', array($this->rewards,'render_product_message'), 20);
-// woo_variation_swatches_global_item_radio_label_template
+		add_action('woocommerce_variation_options_pricing', array($this,'variation_fields'), 10, 3);
+		add_action('woocommerce_save_product_variation',  array($this,'save_variation_fields'), 10, 2);
+		add_action('woocommerce_product_options_general_product_data', array( $this,'product_fields'),10);
+		add_action('woocommerce_process_product_meta', array( $this,'save_product_fields'), 10, 2);
+		add_action('woocommerce_single_product_summary', array( $this,'display_subtitle'), 7);
+		remove_action('woocommerce_single_product_summary', 'ntav_netreviews_product_rating', 31);
+
+		add_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+		add_action('woocommerce_after_single_product_summary', array( $this,'display_reassurance'), 10);
+
+	}
+	public function display_reassurance(){
+		wc_get_template('single-product/reassurance-slider.php');
+	}
+
+
+	public function display_subtitle(){
+		$subtitle = get_post_meta(get_the_ID(), 'subtitle', true);
+		if(!empty($subtitle)){
+			echo'<p class="subtitle">'.$subtitle.'</p>';
+		}
+	}
+	public function product_fields(){
+		
+		echo '<div class="options_group">';
+		woocommerce_wp_text_input(array(
+			'id'      => 'subtitle',
+			'value'   => get_post_meta(get_the_ID(), 'subtitle', true),
+			'label'   => 'Sous titre',
+			'desc_tip' => true,
+			'type' => 'text',
+			'description' => 'Sous titre du produit',
+		));
+
+
+		echo '</div>';
+
+	}
+	public function save_product_fields($id, $post)	{
+		if (!empty($_POST['subtitle'])) {
+			update_post_meta($id, 'subtitle', $_POST['subtitle']);
+		} else {
+			delete_post_meta($id, 'subtitle');
+		}
+
+	}
+	public function variation_fields($loop, $variation_data, $variation){
+
+			woocommerce_wp_text_input(
+				array(
+						'id'            => 'variation_description[' . $loop . ']',
+						'label'         => 'Description de la variation',
+						'wrapper_class' => 'form-row',
+						'placeholder'   => '',
+						'desc_tip'      => true,
+						'description'   => 'Affiche une indication sous la variation',
+						'value'         => get_post_meta($variation->ID, 'variation_description', true)
+					)
+			);
+
+	}
+
+	public function save_variation_fields($variation_id, $loop){
+
+		// Text Field
+		$text_field = ! empty($_POST[ 'variation_description' ][ $loop ]) ? $_POST[ 'variation_description' ][ $loop ] : '';
+		update_post_meta($variation_id, 'variation_description', sanitize_text_field($text_field));
+
 	}
 
 	/**
@@ -35,6 +99,10 @@ class Woocommerce  {
 		remove_action('woocommerce_single_product_summary','woocommerce_template_single_excerpt',20);
 		remove_action('woocommerce_before_main_content','woocommerce_breadcrumb',20);
 		remove_action('woocommerce_before_single_product_summary','woocommerce_show_product_sale_flash',10);
+		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+		remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+		remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
+		remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 		add_action('woocommerce_single_product_summary','woocommerce_breadcrumb',0);
 	}
 

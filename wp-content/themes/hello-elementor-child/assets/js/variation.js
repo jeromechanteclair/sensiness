@@ -20,7 +20,7 @@ function variation() {
 		let datalink = $(trigger).attr('data-link');
 		let dataprice = $(trigger).attr('data-price');
 		let datavariation = $(trigger).attr('data-variation_id');
-        let $price = $(document).find('.custom-price ');
+        let $price = $(document).find('.custom-price__right ');
         let $variation_id = $(document).find('.variation_id');
          $variation_id.val(datavariation)
         console.log($price);

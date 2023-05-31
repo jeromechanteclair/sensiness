@@ -15,41 +15,104 @@
  * @version 3.5.1
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 // Note: `wc_get_gallery_image_html` was added in WC 3.3.2 and did not exist prior. This check protects against theme overrides being used on older versions of WC.
-if ( ! function_exists( 'wc_get_gallery_image_html' ) ) {
-	return;
+if (! function_exists('wc_get_gallery_image_html')) {
+    return;
 }
 
 global $product;
 
-$columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
+$columns           = apply_filters('woocommerce_product_thumbnails_columns', 4);
 $post_thumbnail_id = $product->get_image_id();
-$wrapper_classes   = apply_filters(
-	'woocommerce_single_product_image_gallery_classes',
-	array(
-		'woocommerce-product-gallery',
-		'woocommerce-product-gallery--' . ( $post_thumbnail_id ? 'with-images' : 'without-images' ),
-		'woocommerce-product-gallery--columns-' . absint( $columns ),
-		'images',
-	)
-);
+$attachment_ids = $product->get_gallery_image_ids();
+$controls =true;
+// get post meta gif
+$gif = get_post_meta(get_the_id(), 'gif', true);
+
+
+array_unshift($attachment_ids, $post_thumbnail_id);
+if(empty($attachment_ids)) {
+    $attachment_ids =[$post_thumbnail_id];
+    $controls = false;
+}
+if(empty($attachment_ids) || count($attachment_ids) == 1) {
+
+    $controls = false;
+}
+
+if(!empty($gif)) {
+
+    array_push($attachment_ids, $gif);
+}
+
 ?>
-<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
-	<figure class="woocommerce-product-gallery__wrapper">
-		<?php
-		if ( $post_thumbnail_id ) {
-			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
-		} else {
-			$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
-			$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
-			$html .= '</div>';
-		}
 
-		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+<!-- swiper gallery -->
+<div class="product-gallery">
+	<div class="swiper gallery-top">
+		<?php if($controls) {?>
+			<div class="control-prev">
+				<i class="icon icon-arrow-square"></i>
+			</div>
+			<div class="control-next">
+					<i class="icon icon-arrow-square"></i>
+			</div>
+		<?php };?>
+		<div class="swiper-wrapper">
+			<?php foreach($attachment_ids as $key => $attachment_id) {
+			    // get attachmen_id extension
+			    $ext = pathinfo(get_attached_file($attachment_id), PATHINFO_EXTENSION);
+			    if($ext == 'mov' || $ext == 'mp4') {
+			        // get attachment url
+			        $url = wp_get_attachment_url($attachment_id);
+			        $class="autoplay";
+			        $src = '<video  src="'.$url.'" ></video>';
+			    } else {
+			        $class='';
+			        if($key ==0) {
+			            $src= wp_get_attachment_image($attachment_id, 'product_slide', false, array('loading'=>true));
 
-		do_action( 'woocommerce_product_thumbnails' );
-		?>
-	</figure>
+			        } else {
+
+			            $src= wp_get_attachment_image($attachment_id, 'product_slide', false);
+			        }
+			    }
+			    ?>
+				<figure class="woocommerce-product-gallery__wrapper swiper-slide <?=$class;?>">
+					<?= $src ?>
+				</figure>
+			<?php };?>
+		</div>
+	</div>
+	<!-- thumbnail images -->
+	<?php if(count($attachment_ids)>1):?>
+	<div class="gallery-thumbs">
+		<?php foreach($attachment_ids as  $key=>$attachment_id) {
+		    $ext = pathinfo(get_attached_file($attachment_id), PATHINFO_EXTENSION);
+		    if($ext == 'mov' || $ext == 'mp4') {
+		        // get attachment url
+		        $url = wp_get_attachment_url($attachment_id);
+
+		        $src = '<video  src="'.$url.'" ></video>';
+		    } else {
+		        $src= wp_get_attachment_image($attachment_id, 'product_slide_thumbnail', array('loading'=>true));
+		    }
+		    ?>
+
+			<figure class="thumb <?php if ($key==0) {
+			    echo('thumb--active');
+			}?>">
+				<?= $src ?>
+			</figure>
+		<?php };?>
+	</div>
+	<?php endif;?>
+	<a href="" class="diagnostic-cta">
+Faire le diagnostic
+	</a>
+
 </div>
+
+

@@ -1,3 +1,12 @@
+@charset "UTF-8";
+
+:root {
+  --green: #364321;
+  --beige: #F5F3E6;
+  --beige-light: #F5F3E6;
+  --yellow: #FFD372;
+}
+
 ul.accordions {
   margin: 0 auto;
   padding-left: 0;
@@ -129,6 +138,456 @@ ul.accordions span {
   display: block;
   z-index: 2;
   margin-top: 1rem;
+}
+
+.single-product {
+  background-color: var(--beige);
+}
+
+.single-product #main {
+  max-width: 1440px;
+}
+
+.single-product #main .summary {
+  margin-top: 130px;
+  float: none;
+  width: 50%;
+}
+
+.single-product #main .summary h1 {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 64px;
+  color: var(--green);
+}
+
+.single-product #main .summary .subtitle {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--green);
+}
+
+.single-product .variations_form select.attribute-select {
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-product .variations_form select.attribute-select option {
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-product .variations_form .variation-wrapper {
+  list-style: none;
+  border: none;
+  border-radius: unset;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 3.5fr auto;
+  border-top: 1px solid #EBE9E0;
+  padding: 16px 0;
+  align-items: baseline;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item:first-of-type {
+  border-top: 1px solid transparent;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item.selected .checkbox:after {
+  opacity: 1;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item .checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px;
+  border-radius: 18px;
+  border: 1px solid var(--green);
+  margin-right: 24px;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item .checkbox:after {
+  content: "";
+  height: 8px;
+  width: 8px;
+  opacity: 0;
+  border-radius: 8px;
+  background-color: var(--green);
+}
+
+.single-product .variations_form .variation-wrapper .variation-item__title {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item__title p {
+  margin-bottom: 0;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item__title .description {
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 12px;
+  line-height: 24px;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item__prices {
+  text-align: right;
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item__prices span {
+  display: inline-block;
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item__prices span.display_regular_price {
+  margin-right: 12px;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item__prices span.display_regular_price bdi {
+  text-decoration: line-through;
+}
+
+.single-product .variations_form .variation-wrapper .variation-item__prices .percent {
+  display: block;
+}
+
+.single-product .variations_form .woocommerce-variation-add-to-cart {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-flow: row;
+}
+
+.single-product .variations_form .woocommerce-variation-add-to-cart .quantity input {
+  background-color: white;
+  padding: 16px 24px;
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--green);
+  border-radius: 10px;
+  border: none;
+  width: auto;
+}
+
+.single-product .variations_form .woocommerce-variation-add-to-cart .button {
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--beige);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: var(--green);
+  border-radius: 10px;
+}
+
+.custom-price {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.custom-price__left p {
+  display: inline-flex;
+  background-color: white;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+.custom-price__right {
+  display: flex;
+  flex-flow: column-reverse;
+  text-align: right;
+}
+
+.custom-price__right .mc_variable-from {
+  order: 1;
+}
+
+.custom-price__right .mc_variable-from + .amount bdi {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+  color: var(--green);
+}
+
+.custom-price__right .price {
+  display: flex;
+  flex-flow: column;
+  text-decoration: none;
+}
+
+.custom-price__right .price .amount,
+.custom-price__right .price ins {
+  text-decoration: none;
+}
+
+.custom-price__right .price del bdi {
+  text-decoration: line-through;
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.custom-price__right .price bdi {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+  color: var(--green);
+}
+
+.variations .ts-wrapper {
+  display: none;
+}
+
+.variations .ts-wrapper.sticky {
+  display: block;
+}
+
+.variations .ts-control {
+  padding: 16px 24px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  border: none;
+}
+
+.variations .ts-control .item {
+  padding-right: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.variations .ts-control .item p,
+.variations .ts-control .item span {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 0;
+  color: var(--green);
+}
+
+.variations .ts-control .item span {
+  font-size: 16px;
+}
+
+.variations .select-prices {
+  display: flex;
+  gap: 12px;
+  flex-flow: row;
+  align-items: center;
+}
+
+.variations .select-prices .promo {
+  text-decoration: line-through;
+}
+
+.variations .ts-dropdown .option {
+  padding: 16px 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.variations .ts-dropdown .option p,
+.variations .ts-dropdown .option span {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 0;
+  color: var(--green);
+}
+
+.variations .ts-dropdown .option span {
+  font-size: 16px;
+}
+
+/**
+* Réassurance slider
+*
+*/
+
+.reassurance-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reassurance-slider .swiper-pagination {
+  position: relative;
+  gap: 6px;
+}
+
+.reassurance-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background-color: #EBE9E0;
+}
+
+.reassurance-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--green);
+}
+
+.reassurance-slider .swiper-wrapper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  width: 100%;
+}
+
+.reassurance-slider .swiper-wrapper .swiper-slide header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.reassurance-slider .swiper-wrapper .swiper-slide header p {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 0;
+}
+
+.reassurance-slider .swiper-wrapper .swiper-slide--subtitle {
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/**
+* global layout
+*
+*/
+
+.single-product .product-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.single-product .product-wrapper .product-gallery {
+  width: calc(50% - 106px);
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-content: flex-end;
+  position: sticky;
+  top: 0;
+}
+
+.single-product .product-wrapper .gallery-top {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.single-product .product-wrapper .gallery-top .swiper-slide {
+  height: 100vh;
+  width: 500px;
+}
+
+.single-product .product-wrapper .gallery-top .swiper-slide img,
+.single-product .product-wrapper .gallery-top .swiper-slide video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.single-product .product-wrapper .gallery-thumbs {
+  position: absolute;
+  z-index: 99;
+  right: 24px;
+  display: flex;
+  flex-flow: column;
+  gap: 16px;
+}
+
+.single-product .product-wrapper .gallery-thumbs .thumb {
+  max-height: 64px;
+  max-width: 64px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.single-product .product-wrapper .gallery-thumbs .thumb--active {
+  border: 1px solid var(--green);
+}
+
+.single-product .product-wrapper .diagnostic-cta {
+  position: absolute;
+  align-self: end;
+  justify-self: center;
+  z-index: 1;
+  bottom: 10vh;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border-radius: 10px;
+  border: 1px solid var(--green);
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  background-color: rgba(255, 255, 255, 0.2);
+  /* identical to box height, or 150% */
+  text-transform: uppercase;
 }
 
 

@@ -1,0 +1,27 @@
+@mixin button {
+
+    font-family: 'Neue Haas Grotesk Display Pro';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--beige);
+    width: 100%;
+    padding: 16px 24px;
+    text-transform: uppercase;
+    background-color: var(--green);
+    border-radius: 10px;
+}
+
+@mixin quantity {
+    background-color: white;
+    padding: 16px 24px;
+    font-family: 'Neue Haas Grotesk Display Pro';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--green);
+    border-radius: 10px;
+    border: none;
+}
