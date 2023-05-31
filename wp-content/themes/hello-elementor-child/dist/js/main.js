@@ -98,10 +98,10 @@ function slider() {
     swiper.forEach(function (slider) {
       new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](slider, {
         // Optional parameters
-        direction: "horizontal",
-        // loop: true,
+        direction: "vertical",
+        loop: true,
         slidesPerView: 1,
-        speed: 1500,
+        speed: 1000,
         centeredSlides: true,
         autoplay: {
           delay: 2500,

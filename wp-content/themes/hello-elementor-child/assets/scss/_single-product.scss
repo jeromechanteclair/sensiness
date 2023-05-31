@@ -322,6 +322,11 @@
     align-items: center;
     justify-content: center;
 
+    .swiper-wrapper {
+        max-height: 100px;
+        // overflow: hidden;
+    }
+
     .swiper-pagination {
         position: relative;
         gap: 6px;
@@ -375,6 +380,181 @@
 }
 
 /**
+* description
+*
+*/
+.single-product {
+    scroll-behavior: smooth;
+
+    .product-description {
+        margin-top: 52px;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 80px;
+
+        &__left {
+            p {
+                font-family: 'Recoleta';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 32px;
+                color: var(--green);
+            }
+        }
+
+        &__right {
+
+            h2,
+            h3 {
+                font-family: 'Recoleta';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 21px;
+                line-height: 26px;
+                color: var(--green);
+                margin-top: 32px;
+            }
+
+            ul {
+                padding-left: 0;
+
+                li {
+                    list-style-type: none;
+                    display: flex;
+                    font-family: 'Recoleta';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 24px;
+                    margin: 24px 0;
+                    color: var(--green);
+
+                    &:before {
+                        content: '+';
+                        font-size: 18px;
+                        display: inline-block;
+                        margin-right: 12px;
+
+                    }
+
+
+
+                }
+            }
+
+        }
+    }
+}
+
+/**
+* satisfaction
+*
+*/
+.satisfaction {
+    .satisfaction-container {
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+
+        &+p {
+            font-family: 'Neue Haas Grotesk Display Pro';
+            color: var(--green);
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 21px;
+            /* identical to box height, or 150% */
+
+            text-align: center;
+
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+
+        &--title {
+            font-family: 'Recoleta';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: var(--green);
+            margin-top: 12px;
+        }
+    }
+
+    .circle-wrap {
+
+        width: 64px;
+        height: 64px;
+        background: #EBE9E0;
+        border-radius: 50%;
+
+    }
+
+    .circle {
+        width: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 64px;
+    }
+
+    .circle-wrap .circle .mask,
+    .circle-wrap .circle .fill {
+        width: 64px;
+        height: 64px;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .circle-wrap .circle .mask {
+        clip: rect(0px, 64px, 64px, 32px);
+    }
+
+    .circle-wrap .circle .mask .fill {
+        clip: rect(0px, 32px, 64px, 0px);
+        background-color: var(--yellow);
+    }
+
+    .circle-wrap .circle .mask.full,
+    .circle-wrap .circle .fill {
+        // animation: fill ease-in-out 3s forwards;
+        transform: rotate(180deg);
+    }
+
+
+
+    .circle-wrap .inside-circle {
+        width: 56px;
+        height: 56px;
+
+        border-radius: 50%;
+        background: var(--beige);
+
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        z-index: 100;
+        font-family: 'Recoleta';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        color: var(--green);
+        // font-weight: 700;
+        // font-size: 2em;
+    }
+}
+
+/**
 * global layout
 *
 */
@@ -385,10 +565,10 @@
         align-items: flex-start;
 
         .product-gallery {
-            width:  calc(50% - 106px);
+            width: calc(50% - 106px);
             overflow: hidden;
             position: relative;
-               display: grid;
+            display: grid;
             align-items: center;
             justify-content: flex-end;
             position: sticky;
@@ -403,45 +583,50 @@
             max-height: 100vh;
             width: 100%;
             position: relative;
-        
-              .swiper-slide {
-                 height: 100vh;
-                    width: 500px;
+
+            .swiper-slide {
+                height: 100vh;
+                width: 500px;
 
 
 
 
 
 
-                    img,
-                    video {
-                        object-fit: cover;
-                        width: 100%;
-                        height: 100%;
-                    }
+                img,
+                video {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
                 }
+            }
 
-            
+
         }
-        .gallery-thumbs{
+
+        .gallery-thumbs {
             position: absolute;
             z-index: 99;
             right: 24px;
             display: flex;
-            flex-flow: column;gap:16px;
-            .thumb{
+            flex-flow: column;
+            gap: 16px;
+
+            .thumb {
                 max-height: 64px;
                 max-width: 64px;
                 cursor: pointer;
                 border-radius: 10px;
                 margin: 0;
                 overflow: hidden;
-                &--active{
+
+                &--active {
                     border: 1px solid var(--green);
                 }
             }
         }
-        .diagnostic-cta{
+
+        .diagnostic-cta {
             position: absolute;
             align-self: end;
             justify-self: center;
@@ -452,12 +637,12 @@
             padding: 16px 24px;
             border-radius: 10px;
             border: 1px solid var(--green);
-          font-family: 'Neue Haas Grotesk Display Pro';
+            font-family: 'Neue Haas Grotesk Display Pro';
             font-style: normal;
             font-weight: 450;
             font-size: 16px;
             line-height: 24px;
-            background-color: rgba(255,255,255,0.2);
+            background-color: rgba(255, 255, 255, 0.2);
             /* identical to box height, or 150% */
 
             text-transform: uppercase;

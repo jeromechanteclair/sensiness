@@ -10,11 +10,11 @@
 
               new Swiper(slider, {
                   // Optional parameters
-                  direction: "horizontal",
-                  // loop: true,
+                  direction: "vertical",
+                  loop: true,
                   slidesPerView: 1,
 
-                  speed: 1500,
+                  speed: 1000,
                   centeredSlides: true,
                   autoplay: {
                       delay: 2500,

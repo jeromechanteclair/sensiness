@@ -21,24 +21,76 @@ class Woocommerce  {
 		add_action('woocommerce_save_product_variation',  array($this,'save_variation_fields'), 10, 2);
 		add_action('woocommerce_product_options_general_product_data', array( $this,'product_fields'),10);
 		add_action('woocommerce_process_product_meta', array( $this,'save_product_fields'), 10, 2);
-		add_action('woocommerce_single_product_summary', array( $this,'display_subtitle'), 7);
-		remove_action('woocommerce_single_product_summary', 'ntav_netreviews_product_rating', 31);
-
+		add_action('woocommerce_single_product_summary', 'woocommerce_breadcrumb', 0);
 		add_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+		add_action('woocommerce_single_product_summary', array( $this,'display_subtitle'), 7);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_reassurance'), 10);
+		add_action('woocommerce_after_single_product_summary', array( $this,'display_description'), 11);
+		add_action('woocommerce_after_single_product_summary', array( $this,'display_satisfaction'), 12);
 
 	}
-	public function display_reassurance(){
-		wc_get_template('single-product/reassurance-slider.php');
-	}
 
-
+	/**
+	 * Display subtitle after title
+	 * @hooked woocommerce_after_single_product_summary
+	 * @return html
+	 */
 	public function display_subtitle(){
 		$subtitle = get_post_meta(get_the_ID(), 'subtitle', true);
 		if(!empty($subtitle)){
 			echo'<p class="subtitle">'.$subtitle.'</p>';
 		}
 	}
+
+	/**
+	 * Display reassurance after cart
+	 * @hooked woocommerce_after_single_product_summary
+	 * @priority 10
+	 * @return template
+	 */
+	public function display_reassurance(){
+		wc_get_template('single-product/reassurance-slider.php');
+	}
+
+
+	/**
+     * Display description after reassurance
+     * @hooked woocommerce_after_single_product_summary
+     * @priority 11
+	 * @return html
+     */
+	public function display_description(){
+		$html='
+			<div class="product-description">
+			<div class="product-description__left">
+				<p>Description</p>
+			</div>
+			<div class="product-description__right">';
+			$html.=get_the_content();
+			echo $html;
+
+			wc_get_template('single-product/satisfaction.php');
+
+			$html2='</div>
+
+		</div>';
+		echo $html2;
+	}
+
+	/**
+	 * Display satisfaction after description
+	 * @hooked woocommerce_after_single_product_summary
+	 * @priority 12
+	 * @return template
+	 */
+	public function display_satisfaction(){
+		// wc_get_template('single-product/satisfaction.php');
+	}
+	/**
+	 * Add custom product fields
+	 *
+	 * @return void
+	 */
 	public function product_fields(){
 		
 		echo '<div class="options_group">';
@@ -55,6 +107,12 @@ class Woocommerce  {
 		echo '</div>';
 
 	}
+
+	/**
+	 * Save custom product fields
+	 *
+	 * @return void
+	 */
 	public function save_product_fields($id, $post)	{
 		if (!empty($_POST['subtitle'])) {
 			update_post_meta($id, 'subtitle', $_POST['subtitle']);
@@ -63,6 +121,11 @@ class Woocommerce  {
 		}
 
 	}
+	/**
+	 * Add custom variation fields
+	 *
+	 * @return void
+	 */
 	public function variation_fields($loop, $variation_data, $variation){
 
 			woocommerce_wp_text_input(
@@ -79,9 +142,13 @@ class Woocommerce  {
 
 	}
 
+	/**
+     * Save custom variation fields
+     *
+     * @return void
+     */
 	public function save_variation_fields($variation_id, $loop){
 
-		// Text Field
 		$text_field = ! empty($_POST[ 'variation_description' ][ $loop ]) ? $_POST[ 'variation_description' ][ $loop ] : '';
 		update_post_meta($variation_id, 'variation_description', sanitize_text_field($text_field));
 
@@ -96,6 +163,7 @@ class Woocommerce  {
 	
 		$this->remove_filters_with_method_and_class_name('woocommerce_before_add_to_cart_button', 'WC_Points_Rewards_Product', 'add_variation_message_to_product_summary', 25);
 		$this->remove_filters_with_method_and_class_name('woocommerce_before_add_to_cart_button', 'WC_Points_Rewards_Product', 'render_product_message', 15);
+		remove_action('woocommerce_single_product_summary', 'ntav_netreviews_product_rating', 31);
 		remove_action('woocommerce_single_product_summary','woocommerce_template_single_excerpt',20);
 		remove_action('woocommerce_before_main_content','woocommerce_breadcrumb',20);
 		remove_action('woocommerce_before_single_product_summary','woocommerce_show_product_sale_flash',10);
@@ -103,7 +171,6 @@ class Woocommerce  {
 		remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
 		remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
 		remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
-		add_action('woocommerce_single_product_summary','woocommerce_breadcrumb',0);
 	}
 
 	/**

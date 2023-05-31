@@ -68,11 +68,10 @@ if ( post_password_required() ) {
 			 * @hooked woocommerce_output_related_products - 20
 			 */
 			do_action('woocommerce_after_single_product_summary');
-		?><p>
+		?>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam interdum condimentum imperdiet. Vestibulum efficitur placerat velit. Quisque blandit, risus ut finibus eleifend, felis enim malesuada leo, non dictum urna nulla nec turpis. Nunc fermentum urna quis lacus porta convallis. Aenean sagittis dignissim ex eu commodo. Nulla suscipit mi accumsan metus laoreet sagittis. Mauris at sollicitudin augue. In egestas sodales tellus ut scelerisque. Nulla facilisi. Aenean eget aliquet tortor, at posuere elit. Duis accumsan mi vel risus auctor, nec laoreet libero condimentum. Proin leo enim, commodo vitae est at, imperdiet pellentesque libero. Sed nunc nibh, convallis non quam sit amet, ornare porta eros. Nullam semper orci non hendrerit auctor. Integer hendrerit, elit ut eleifend interdum, mi tortor cursus velit, sed auctor nunc mauris ac magna.
 
-Quisque ut neque vitae diam scelerisque suscipit ut in dolor. Aenean sagittis ullamcorper volutpat. Sed leo justo, congue ac ipsum sit amet, porta maximus sem. Phasellus vel vulputate tortor, at ultrices turpis. Vestibulum auctor vestibulum nunc. Sed dictum, sapien quis dignissim suscipit, lectus erat varius dolor, sed pellentesque dui lacus sit amet enim. Integer sagittis consequat sapien, eget porta ante dapibus sit amet. </p>
+
 				
 	</div>
 

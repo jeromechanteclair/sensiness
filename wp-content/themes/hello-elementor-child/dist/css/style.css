@@ -458,6 +458,10 @@ ul.accordions span {
   justify-content: center;
 }
 
+.reassurance-slider .swiper-wrapper {
+  max-height: 100px;
+}
+
 .reassurance-slider .swiper-pagination {
   position: relative;
   gap: 6px;
@@ -503,6 +507,159 @@ ul.accordions span {
   font-weight: 450;
   font-size: 16px;
   line-height: 24px;
+}
+
+/**
+* description
+*
+*/
+
+.single-product {
+  scroll-behavior: smooth;
+}
+
+.single-product .product-description {
+  margin-top: 52px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 80px;
+}
+
+.single-product .product-description__left p {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--green);
+}
+
+.single-product .product-description__right h2,
+.single-product .product-description__right h3 {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 26px;
+  color: var(--green);
+  margin-top: 32px;
+}
+
+.single-product .product-description__right ul {
+  padding-left: 0;
+}
+
+.single-product .product-description__right ul li {
+  list-style-type: none;
+  display: flex;
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 24px 0;
+  color: var(--green);
+}
+
+.single-product .product-description__right ul li:before {
+  content: "+";
+  font-size: 18px;
+  display: inline-block;
+  margin-right: 12px;
+}
+
+/**
+* satisfaction
+*
+*/
+
+.satisfaction .satisfaction-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+}
+
+.satisfaction .satisfaction-container + p {
+  font-family: "Neue Haas Grotesk Display Pro";
+  color: var(--green);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  /* identical to box height, or 150% */
+  text-align: center;
+}
+
+.satisfaction__item {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.satisfaction__item--title {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--green);
+  margin-top: 12px;
+}
+
+.satisfaction .circle-wrap {
+  width: 64px;
+  height: 64px;
+  background: #EBE9E0;
+  border-radius: 50%;
+}
+
+.satisfaction .circle {
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+}
+
+.satisfaction .circle-wrap .circle .mask,
+.satisfaction .circle-wrap .circle .fill {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.satisfaction .circle-wrap .circle .mask {
+  clip: rect(0px, 64px, 64px, 32px);
+}
+
+.satisfaction .circle-wrap .circle .mask .fill {
+  clip: rect(0px, 32px, 64px, 0px);
+  background-color: var(--yellow);
+}
+
+.satisfaction .circle-wrap .circle .mask.full,
+.satisfaction .circle-wrap .circle .fill {
+  transform: rotate(180deg);
+}
+
+.satisfaction .circle-wrap .inside-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--beige);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 100;
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--green);
 }
 
 /**
