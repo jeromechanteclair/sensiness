@@ -61,7 +61,6 @@ ul.accordions li.accordion .accordion-header {
 
 ul.accordions li.accordion i {
   position: absolute;
-  transform: translate(-6px, 0);
   margin-top: 0.5rem;
   right: 1.5rem;
 }
@@ -70,20 +69,13 @@ ul.accordions li.accordion i:before {
   transition: all 0.25s ease-in-out;
   content: "";
   position: absolute;
-  background-color: #506531;
-  width: 0.1rem;
-  height: 1rem;
-  transform: translate(0, 0) rotate(45deg);
-}
-
-ul.accordions li.accordion i:after {
-  transition: all 0.25s ease-in-out;
-  content: "";
-  position: absolute;
-  background-color: #506531;
-  width: 0.1rem;
-  height: 1rem;
-  transform: translate(0, 0) rotate(-45deg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 0.6rem;
+  height: 0.6rem;
+  transform: translate(0, 0) rotate(180deg);
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='0 0 10 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.99999 4.6538L0.596191 0.25H9.40379L4.99999 4.6538Z' fill='%23364321'/%3E%3C/svg%3E%0A");
 }
 
 ul.accordions li.accordion a {
@@ -124,8 +116,33 @@ ul.accordions li.accordion input[type=checkbox]:checked ~ i:before {
   transform: translate(0, 0) rotate(0);
 }
 
-ul.accordions li.accordion input[type=checkbox]:checked ~ i:after {
-  transform: translate(0, 0) rotate(-90deg);
+ul.accordions--product li.accordion {
+  max-width: 100%;
+  margin: 12px 0;
+}
+
+ul.accordions--product li.accordion i {
+  right: unset;
+  left: 0;
+}
+
+ul.accordions--product li.accordion .accordion-header {
+  padding-left: 34px;
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--green);
+}
+
+ul.accordions--product li.accordion .accordion-content {
+  padding-left: 34px;
+  font-style: normal;
+  color: var(--green);
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 ul.accordions span {
@@ -142,16 +159,29 @@ ul.accordions span {
 
 .single-product {
   background-color: var(--beige);
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  color: var(--green);
 }
 
 .single-product #main {
+  max-width: 100%;
+}
+
+.single-product #main .container {
   max-width: 1440px;
+  margin: 0 auto;
+}
+
+.single-product #main .container.product-wrapper {
+  max-width: 100%;
 }
 
 .single-product #main .summary {
   margin-top: 130px;
   float: none;
   width: 50%;
+  overflow: hidden;
+  padding-right: calc((100vw - 1440px) / 2);
 }
 
 .single-product #main .summary h1 {
@@ -240,7 +270,7 @@ ul.accordions span {
 }
 
 .single-product .variations_form .variation-wrapper .variation-item__title .description {
-  font-family: "Neue Haas Grotesk Display Pro";
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
   font-weight: 450;
   font-size: 12px;
@@ -258,7 +288,7 @@ ul.accordions span {
 
 .single-product .variations_form .variation-wrapper .variation-item__prices span {
   display: inline-block;
-  font-family: "Neue Haas Grotesk Display Pro";
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -287,7 +317,7 @@ ul.accordions span {
 .single-product .variations_form .woocommerce-variation-add-to-cart .quantity input {
   background-color: white;
   padding: 16px 24px;
-  font-family: "Neue Haas Grotesk Display Pro";
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -299,7 +329,7 @@ ul.accordions span {
 }
 
 .single-product .variations_form .woocommerce-variation-add-to-cart .button {
-  font-family: "Neue Haas Grotesk Display Pro";
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -359,7 +389,7 @@ ul.accordions span {
 
 .custom-price__right .price del bdi {
   text-decoration: line-through;
-  font-family: "Neue Haas Grotesk Display Pro";
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -502,7 +532,7 @@ ul.accordions span {
 }
 
 .reassurance-slider .swiper-wrapper .swiper-slide--subtitle {
-  font-family: "Neue Haas Grotesk Display Pro";
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -518,20 +548,20 @@ ul.accordions span {
   scroll-behavior: smooth;
 }
 
-.single-product .product-description {
-  margin-top: 52px;
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 80px;
-}
-
-.single-product .product-description__left p {
+.single-product .summary-heading {
   font-family: "Recoleta";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
   color: var(--green);
+}
+
+.single-product .product-description {
+  margin-top: 52px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 80px;
 }
 
 .single-product .product-description__right h2,
@@ -569,6 +599,156 @@ ul.accordions span {
 }
 
 /**
+* accordeon
+*
+*/
+
+.accordeon {
+  margin-top: 32px;
+  border-top: 1px solid #EBE9E0;
+  padding-top: 32px;
+  border-bottom: 1px solid #EBE9E0;
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+}
+
+/**
+* bandeau reassurance
+*
+*/
+
+.bandeau-reassurance {
+  background-color: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row;
+  gap: 68px;
+  padding: 28px 0;
+}
+
+.bandeau-reassurance__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row;
+  gap: 12px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.bandeau-reassurance__item p {
+  margin-bottom: 0;
+}
+
+.bandeau-reassurance__item a {
+  text-decoration: underline;
+}
+
+/**
+* ingredients
+*
+*/
+
+/**
+* Video
+*
+*/
+
+.video-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+.video-container video {
+  aspect-ratio: 16/9;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.ingredients {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ingredients__left {
+  padding-left: calc((100vw - 1200px) / 2);
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.ingredients__left h2 {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+  margin-bottom: 112px;
+  margin-top: 64px;
+}
+
+.ingredients__left__item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.ingredients__left__item picture {
+  width: 40px;
+  height: 40px;
+  display: block;
+  overflow: hidden;
+  border-radius: 40px;
+}
+
+.ingredients__left__item picture img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.ingredients__left__item p {
+  margin-bottom: 0;
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.ingredients__left__item span {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.ingredients__right picture {
+  width: 50vw;
+  max-height: 470px;
+  height: 100%;
+  display: block;
+}
+
+.ingredients__right picture img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+/**
 * satisfaction
 *
 */
@@ -579,7 +759,7 @@ ul.accordions span {
 }
 
 .satisfaction .satisfaction-container + p {
-  font-family: "Neue Haas Grotesk Display Pro";
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
   color: var(--green);
   font-style: normal;
   font-weight: 400;
@@ -737,7 +917,7 @@ ul.accordions span {
   padding: 16px 24px;
   border-radius: 10px;
   border: 1px solid var(--green);
-  font-family: "Neue Haas Grotesk Display Pro";
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;

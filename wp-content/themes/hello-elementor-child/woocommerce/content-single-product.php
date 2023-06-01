@@ -31,7 +31,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'product-wrapper', $product ); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'product-wrapper container', $product ); ?>>
 
 	<?php
 	/**
@@ -75,7 +75,19 @@ if ( post_password_required() ) {
 				
 	</div>
 
-
+			
 </div>
+<?php wc_get_template('single-product/bandeau-reassurance.php');?>
+<?php if(get_field('video')):?>
+		
+		<div class="video-container">
+			<video controls="" id='video-player' preload='metadata'>
+			<source src="<?=get_field('video')['url'];?>" type=
+			"video/mp4">
+
+		</video>
+	</div>
+<?php endif;?>
+<?php wc_get_template('single-product/ingredients.php');?>
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>

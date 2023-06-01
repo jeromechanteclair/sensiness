@@ -20,7 +20,7 @@ $metas = get_post_meta($post->ID);
 	<span itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="accordion-content">
 		<div itemprop="text">
 			<?php the_content();?>
-</div>
+		</div>
 	</span>
 
 </li><!-- #post-<?php the_ID(); ?> -->

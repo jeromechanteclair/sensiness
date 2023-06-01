@@ -46,24 +46,17 @@ ul.accordions {
 				transition: all 0.25s ease-in-out;
 				content: "";
 				position: absolute;
-				background-color: #506531;
-				width: 0.1rem;
-				height: 1rem;
-				transform: translate(0, 0) rotate(45deg);
-			}
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				width: .6rem;
+				height: .6rem;
+				transform: translate(0, 0) rotate(180deg);
+background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='0 0 10 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.99999 4.6538L0.596191 0.25H9.40379L4.99999 4.6538Z' fill='%23364321'/%3E%3C/svg%3E%0A");			}
 
-			&:after {
-				transition: all 0.25s ease-in-out;
-				content: "";
-				position: absolute;
-				background-color: #506531;
-				width: 0.1rem;
-				height: 1rem;
-				transform: translate(0, 0) rotate(-45deg);
-			}
 
 			position: absolute;
-			transform: translate(-6px, 0);
+			// transform: translate(-6px, 0);
 			margin-top: 0.5rem;
 			right: 1.5rem;
 		}
@@ -116,9 +109,7 @@ ul.accordions {
 							transform: translate(0, 0) rotate(0);
 						}
 
-						&:after {
-							transform: translate(0, 0) rotate(-90deg);
-						}
+
 					}
 				}
 			}
@@ -127,6 +118,38 @@ ul.accordions {
 
 	list-style: none;
 	perspective: 900;
+
+	&--product {
+		li.accordion {
+			max-width: 100%;
+			margin: 12px 0;
+			i{
+				right: unset;
+				left: 0;
+			}
+			 input[type="checkbox"]{
+				
+			 }
+			.accordion-header {
+padding-left: 34px;
+				font-family: 'Recoleta';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 18px;
+				line-height: 24px;
+				color: var(--green);
+			}
+
+			.accordion-content {
+				padding-left: 34px;
+				font-style: normal;
+				color: var(--green);
+				font-weight: 450;
+				font-size: 16px;
+				line-height: 24px;
+			}
+		}
+	}
 
 	span {
 		transition: all 0.25s ease-in-out;

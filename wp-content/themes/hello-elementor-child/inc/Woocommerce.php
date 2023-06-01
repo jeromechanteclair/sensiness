@@ -63,7 +63,7 @@ class Woocommerce  {
 		$html='
 			<div class="product-description">
 			<div class="product-description__left">
-				<p>Description</p>
+				<p class="summary-heading">Description</p>
 			</div>
 			<div class="product-description__right">';
 			$html.=get_the_content();
@@ -75,6 +75,9 @@ class Woocommerce  {
 
 		</div>';
 		echo $html2;
+		
+wc_get_template('single-product/accordeon.php');
+
 	}
 
 	/**

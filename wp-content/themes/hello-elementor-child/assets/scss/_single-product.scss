@@ -1,15 +1,25 @@
 .single-product {
 
     background-color: var(--beige);
-
+    font-family: 'NeueHaasDisplay-Roman, sans-serif';
+    color: var(--green);
     #main {
-        max-width: 1440px;
+        max-width: 100%;
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            &.product-wrapper{
+                   max-width: 100%;
+            }
+        }
 
         .summary {
             margin-top: 130px;
             float: none;
             width: 50%;
-
+            overflow: hidden;
+ padding-right: calc((100vw - 1440px) /2);
 
             h1 {
                 font-family: 'Recoleta';
@@ -103,7 +113,7 @@
                     line-height: 24px;
 
                     .description {
-                        font-family: 'Neue Haas Grotesk Display Pro';
+                        font-family: 'NeueHaasDisplay-Roman, sans-serif';
                         font-style: normal;
                         font-weight: 450;
                         font-size: 12px;
@@ -121,7 +131,7 @@
 
                     span {
                         display: inline-block;
-                        font-family: 'Neue Haas Grotesk Display Pro';
+                        font-family: 'NeueHaasDisplay-Roman, sans-serif';
                         font-style: normal;
                         font-weight: 450;
                         font-size: 16px;
@@ -214,7 +224,7 @@
             del {
                 bdi {
                     text-decoration: line-through;
-                    font-family: 'Neue Haas Grotesk Display Pro';
+                    font-family: 'NeueHaasDisplay-Roman, sans-serif';
                     font-style: normal;
                     font-weight: 450;
                     font-size: 16px;
@@ -368,7 +378,7 @@
             }
 
             &--subtitle {
-                font-family: 'Neue Haas Grotesk Display Pro';
+                font-family: 'NeueHaasDisplay-Roman, sans-serif';
                 font-style: normal;
                 font-weight: 450;
                 font-size: 16px;
@@ -386,22 +396,22 @@
 .single-product {
     scroll-behavior: smooth;
 
+    .summary-heading {
+        font-family: 'Recoleta';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 32px;
+        color: var(--green);
+    }
+
     .product-description {
         margin-top: 52px;
         display: grid;
         grid-template-columns: auto auto;
         gap: 80px;
 
-        &__left {
-            p {
-                font-family: 'Recoleta';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 24px;
-                line-height: 32px;
-                color: var(--green);
-            }
-        }
+        &__left {}
 
         &__right {
 
@@ -448,17 +458,161 @@
 }
 
 /**
+* accordeon
+*
+*/
+.accordeon {
+    margin-top: 32px;
+    border-top: 1px solid #EBE9E0;
+    padding-top: 32px;
+    border-bottom: 1px solid #EBE9E0;
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+}
+
+/**
+* bandeau reassurance
+*
+*/
+.bandeau-reassurance {
+    background-color: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row;
+    gap: 68px;
+    padding: 28px 0;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row;
+        gap: 12px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        a {
+            text-decoration: underline;
+
+        }
+    }
+}
+
+/**
+* ingredients
+*
+*/
+/**
+* Video
+*
+*/
+.video-container{
+    max-width: 1440px;margin: 0 auto;
+    line-height: 0;
+    video{
+        aspect-ratio:16/9;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+.ingredients {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__left {
+        padding-left: calc((100vw - 1200px) /2);
+
+        h2 {
+            font-family: 'Recoleta';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 48px;
+            line-height: 56px;
+            margin-bottom: 112px;
+            margin-top: 64px;
+        }
+
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        height: 100%;
+
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 24px;
+            margin-bottom: 24px;
+
+            picture {
+                width: 40px;
+                height: 40px;
+                display: block;
+                overflow: hidden;
+                border-radius: 40px;
+
+                img {
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            p{
+                margin-bottom: 0;
+                font-family: 'Recoleta';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+            }
+            span{
+                
+font-family: 'Recoleta';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 24px;
+            }
+        }
+    }
+
+    &__right {
+        picture {
+            width: 50vw;
+            max-height: 470px;
+            height: 100%;
+            display: block;
+
+            img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
+/**
 * satisfaction
 *
 */
 .satisfaction {
+
     .satisfaction-container {
 
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
 
         &+p {
-            font-family: 'Neue Haas Grotesk Display Pro';
+            font-family: 'NeueHaasDisplay-Roman, sans-serif';
             color: var(--green);
             font-style: normal;
             font-weight: 400;
@@ -637,7 +791,7 @@
             padding: 16px 24px;
             border-radius: 10px;
             border: 1px solid var(--green);
-            font-family: 'Neue Haas Grotesk Display Pro';
+            font-family: 'NeueHaasDisplay-Roman, sans-serif';
             font-style: normal;
             font-weight: 450;
             font-size: 16px;

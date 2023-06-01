@@ -608,6 +608,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 				$slug        = $data['slug'];
 				$is_selected = wc_string_to_bool( $data['is_selected'] );
 				$option_name = $data['option_name'];
+	
 
 				/*
 				 * $get_variations       = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
@@ -619,6 +620,8 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 				$attribute_value = $slug;
 
 				$label          = esc_html( $option_name );
+			
+
 				$label_template = apply_filters( 'woo_variation_swatches_global_item_radio_label_template', '%image% - %variation% - %price% %stock%', $data );
 
 				if ( count( array_keys( $attributes ) ) === 1 ) {

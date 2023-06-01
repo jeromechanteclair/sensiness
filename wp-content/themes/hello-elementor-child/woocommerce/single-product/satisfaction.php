@@ -1,8 +1,9 @@
 <?php
-
-$subtitle =get_field('subtitle_satisfaction');
+$group=get_field('satisfaction_group');
 // Check rows existexists.
-if(have_rows('satisfaction')):?>
+$subtitle =$group['subtitle_satisfaction'];
+if(have_rows('satisfaction_group')): while ( have_rows('satisfaction_group') ) : the_row(); ?>
+<?php if(have_rows('satisfaction')):?>
 <section class="satisfaction">
 
 	<div class="satisfaction-container">
@@ -30,24 +31,24 @@ if(have_rows('satisfaction')):?>
 					
 					<div class="mask full" style="
 					   transform: rotate(<?=$degree;?>);">
-					<div class="fill" ></div>
+						<div class="fill" ></div>
 					</div>
 				
 					<div class="mask half">
-					<div class="fill" style="
-					   transform: rotate(<?=$degree;?>);" ></div>
-					</div>
+						<div class="fill" style="
+						transform: rotate(<?=$degree;?>);" ></div>
+						</div>
 					
-					<div class="inside-circle">
-					<?=$number;?>%
-					</div>
+						<div class="inside-circle">
+						<?=$number;?>%
+						</div>
 					
-				</div>
+					</div>
 
 				
+				</div>
+				<p class="satisfaction__item--title"><?=$title;?></p>
 			</div>
-			<p class="satisfaction__item--title"><?=$title;?></p>
-		</div>
 	
 		<?php endwhile;?>
 	
@@ -55,6 +56,10 @@ if(have_rows('satisfaction')):?>
 	<p><?=$subtitle;?></p>
 </section>
 <?php
+endif;
+?>
+<?php
+endwhile;
 endif;
 ?>
 

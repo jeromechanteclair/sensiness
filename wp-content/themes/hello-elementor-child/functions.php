@@ -282,3 +282,21 @@ function display_variations($attributes, $available_variations){
 
 }
 
+/***
+ * Options page ACF
+ */
+
+ 
+if(function_exists('acf_add_options_page')) {
+
+    acf_add_options_page(array(
+        'page_title'    => 'Réglages généraux',
+        'menu_title'    => 'Réglages généraux',
+        'menu_slug'     => 'acf-general-settings',
+        'capability'    => 'edit_posts',
+    ));
+
+
+}
+
+
