@@ -40,6 +40,13 @@ if ( '0' === $comment->comment_approved ) { ?>
 		?>
 		<span class="woocommerce-review__dash">&ndash;</span> <time class="woocommerce-review__published-date" datetime="<?php echo esc_attr( get_comment_date( 'c' ) ); ?>"><?php echo esc_html( get_comment_date( wc_date_format() ) ); ?></time>
 	</p>
+		<?php
 
+		if(get_comment_meta($comment->comment_ID, 'comment_file_id', true)) {
+
+		$img_url =wp_get_attachment_image_url(get_comment_meta($comment->comment_ID, 'comment_file_id', true));?>
+		<img src="<?=$img_url;?>">
+		<?php }?>
+		
 	<?php
 }

@@ -77,7 +77,10 @@ if ( post_password_required() ) {
 
 			
 </div>
+<?php do_action('woocommerce_reviews');
+?>
 <?php wc_get_template('single-product/bandeau-reassurance.php');?>
+
 <?php if(get_field('video')):?>
 		
 		<div class="video-container">
@@ -89,5 +92,7 @@ if ( post_password_required() ) {
 	</div>
 <?php endif;?>
 <?php wc_get_template('single-product/ingredients.php');?>
+<?php wc_get_template('single-product/bandeau-marquee.php');?>
+<?php wc_get_template('single-product/long-description.php');?>
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>

@@ -27,8 +27,59 @@ class Woocommerce  {
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_reassurance'), 10);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_description'), 11);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_satisfaction'), 12);
+add_action('comment_form_logged_in_before',  array( $this,'woocommerce_add_file_upload_field'));
+add_action('comment_form_before_fields',  array( $this,'woocommerce_add_file_upload_field'));
+add_action('comment_post', array( $this,'woocommerce_save_comment_file_field'));
+
+		add_action('woocommerce_reviews', 'comments_template', 61);
 
 	}
+
+
+	/**
+	 *comment form
+	 *
+	 * @return void
+	 */
+			
+	public function woocommerce_add_file_upload_field()
+	{
+		echo '';
+	}
+
+	public function woocommerce_save_comment_file_field($comment_id)
+		{
+			if (isset($_FILES['comment_file']) && ! empty($_FILES['comment_file']['name'])) {
+				$upload_dir = wp_upload_dir();
+				$target_dir = $upload_dir['basedir'] . '/comment-files/';
+
+				if (! file_exists($target_dir)) {
+					wp_mkdir_p($target_dir);
+				}
+
+				$file_name = basename($_FILES['comment_file']['name']);
+				$target_path = $target_dir . $file_name;
+
+
+				if (move_uploaded_file($_FILES['comment_file']['tmp_name'], $target_path)) {
+					$attachment = array(
+						'guid'           => $upload_dir['baseurl'] . '/comment-files/' . $file_name,
+						'post_mime_type' => $_FILES['comment_file']['type'],
+						'post_title'     => preg_replace('/\.[^.]+$/', '', $file_name),
+						'post_content'   => '',
+						'post_status'    => 'inherit'
+					);
+
+					$attachment_id = wp_insert_attachment($attachment, $target_path, $comment_id);
+					require_once(ABSPATH . 'wp-admin/includes/image.php');
+					$attachment_data = wp_generate_attachment_metadata($attachment_id, $target_path);
+					wp_update_attachment_metadata($attachment_id, $attachment_data);
+
+					update_comment_meta($comment_id, 'comment_file_id', $attachment_id);
+				}
+			}
+		}
+
 
 	/**
 	 * Display subtitle after title
@@ -171,9 +222,18 @@ wc_get_template('single-product/accordeon.php');
 		remove_action('woocommerce_before_main_content','woocommerce_breadcrumb',20);
 		remove_action('woocommerce_before_single_product_summary','woocommerce_show_product_sale_flash',10);
 		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
-		remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+		// remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
 		remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
 		remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+		add_filter('woocommerce_product_tabs', array($this,'remove_tabs'), 11);
+
+	}
+	public function remove_tabs($tabs){
+
+unset($tabs['description']);
+unset($tabs['reviews']);
+return $tabs;
+
 	}
 
 	/**

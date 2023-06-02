@@ -1,14 +1,14 @@
 <?php
 
 // Check rows existexists.
-if(have_rows('reassurance')):?>
+if(have_rows('reassurance','option')):?>
 <section class="swiper reassurance-slider">
 	<div class="swiper-wrapper">
 
 	<?php 
 
 		// Loop through rows.
-		while(have_rows('reassurance')) : the_row();
+		while(have_rows('reassurance','option')) : the_row();
 
 			// Load sub field value.
 			$reassurance_item = get_sub_field('reassurance_item');

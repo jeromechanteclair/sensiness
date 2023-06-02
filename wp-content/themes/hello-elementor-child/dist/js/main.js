@@ -12,9 +12,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _variation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variation */ "./assets/js/variation.js");
 /* harmony import */ var _select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./select */ "./assets/js/select.js");
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider */ "./assets/js/slider.js");
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 
 
+if ($('#commentform').length > 0) {
+  $('#commentform')[0].encoding = 'multipart/form-data';
+}
+$(document).on('click', '.toggle-review-form', function () {
+  $('#review_form_wrapper').toggleClass('hide');
+});
 (0,_variation__WEBPACK_IMPORTED_MODULE_0__.variation)();
 (0,_select__WEBPACK_IMPORTED_MODULE_1__.select)();
 (0,_slider__WEBPACK_IMPORTED_MODULE_2__.slider)();

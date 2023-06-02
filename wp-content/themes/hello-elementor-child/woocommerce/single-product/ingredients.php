@@ -8,7 +8,7 @@ if(have_rows('ingredients')): while (have_rows('ingredients')) : the_row(); ?>
 <section class="ingredients">
 
 	<div class="ingredients__left">
-	<h2><?=$main_title;?></h2>
+	<h2 class="h2"><?=$main_title;?></h2>
 	<?php
         while(have_rows('ingredient_group')) : the_row();
 

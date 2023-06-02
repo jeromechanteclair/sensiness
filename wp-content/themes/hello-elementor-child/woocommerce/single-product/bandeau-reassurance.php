@@ -1,11 +1,11 @@
 <?php
 
-if(have_rows('reassurance_produit', 'option')): ?>
+if(have_rows('reassurance_produit', )): ?>
 <section class="bandeau-reassurance">
 
 
 	<?php
-	while ( have_rows('reassurance_produit', 'option') ) : 
+	while ( have_rows('reassurance_produit', ) ) : 
 	the_row(); 
 
 	$icon = get_sub_field('icon');

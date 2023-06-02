@@ -24,7 +24,7 @@ if ( ! comments_open() ) {
 }
 
 ?>
-<div id="reviews" class="woocommerce-Reviews">
+<div id="reviews" class="woocommerce-Reviews container">
 	<div id="comments">
 		<h2 class="woocommerce-Reviews-title">
 			<?php
@@ -38,6 +38,17 @@ if ( ! comments_open() ) {
 			}
 			?>
 		</h2>
+		<header class="reviews-header">
+			<div class="reviews-header__left">
+				<p><?= $product->get_average_rating();?>/5</p>
+				<?php woocommerce_template_single_rating();?>
+			</div>
+			<div class="reviews-header__right">
+				<button class="toggle-review-form">
+					Donner mon avis
+				</button>
+			</div>
+		</header>
 
 		<?php if ( have_comments() ) : ?>
 			<ol class="commentlist">
@@ -66,8 +77,13 @@ if ( ! comments_open() ) {
 	</div>
 
 	<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
-		<div id="review_form_wrapper">
+		<div id="review_form_wrapper" class="hide">
 			<div id="review_form">
+				<span class="toggle-review-form">
+					<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M1.40002 13.6538L0.346191 12.6L5.94619 7L0.346191 1.4L1.40002 0.346176L7.00002 5.94618L12.6 0.346176L13.6538 1.4L8.05384 7L13.6538 12.6L12.6 13.6538L7.00002 8.05383L1.40002 13.6538Z" fill="#364321"/>
+					</svg>
+				</span>
 				<?php
 				$commenter    = wp_get_current_commenter();
 				$comment_form = array(
@@ -121,7 +137,9 @@ if ( ! comments_open() ) {
 				}
 
 				if ( wc_review_ratings_enabled() ) {
-					$comment_form['comment_field'] = '<div class="comment-form-rating"><label for="rating">' . esc_html__( 'Your rating', 'woocommerce' ) . ( wc_review_ratings_required() ? '&nbsp;<span class="required">*</span>' : '' ) . '</label><select name="rating" id="rating" required>
+					$comment_form['comment_field'] ='<div class="star-wrapper">';
+
+					$comment_form['comment_field'] .= '<div class="comment-form-rating"><label for="rating">' . esc_html__( 'Your rating', 'woocommerce' ) . ( wc_review_ratings_required() ? '&nbsp;<span class="required">*</span>' : '' ) . '</label><select name="rating" id="rating" required>
 						<option value="">' . esc_html__( 'Rate&hellip;', 'woocommerce' ) . '</option>
 						<option value="5">' . esc_html__( 'Perfect', 'woocommerce' ) . '</option>
 						<option value="4">' . esc_html__( 'Good', 'woocommerce' ) . '</option>
@@ -129,6 +147,12 @@ if ( ! comments_open() ) {
 						<option value="2">' . esc_html__( 'Not that bad', 'woocommerce' ) . '</option>
 						<option value="1">' . esc_html__( 'Very poor', 'woocommerce' ) . '</option>
 					</select></div>';
+					$comment_form['comment_field'].='<p class="form-row form-row-wide">
+						<label for="comment_file">' . __('Télécharger un fichier', 'woocommerce') . '</label>
+						<input type="file" name="comment_file" id="comment_file" accept=".jpg, .png" />
+					</p>';
+					$comment_form['comment_field'].='</div>';
+
 				}
 
 				$comment_form['comment_field'] .= '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'woocommerce' ) . '&nbsp;<span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>';
