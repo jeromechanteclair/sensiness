@@ -22,14 +22,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( $related_products ) : ?>
 
 	<section class="related products">
+		<div class="container">
+			<header>
+				<h2>Découvrez aussi</h2>
+				<div>
+				<a class="shop-cta" href="<?=wc_get_page_permalink( 'shop' );?>">
+				Voir tous nos produits</a>
+				</div>
+			</header>
 
-		<?php
-		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
-
-		if ( $heading ) :
-			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
-		<?php endif; ?>
 		
 		<?php woocommerce_product_loop_start(); ?>
 
@@ -46,7 +47,7 @@ if ( $related_products ) : ?>
 			<?php endforeach; ?>
 
 		<?php woocommerce_product_loop_end(); ?>
-
+		</div>
 	</section>
 	<?php
 endif;

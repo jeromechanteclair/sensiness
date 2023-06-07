@@ -1,6 +1,53 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/js/file.js":
+/*!***************************!*\
+  !*** ./assets/js/file.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   file: () => (/* binding */ file)
+/* harmony export */ });
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+function file() {
+  var newFileList;
+  $(document).on('dragenter', 'label[for="comment_file"] ', function (e) {
+    $(this).addClass('drag');
+  });
+  $(document).on('dragend drop dragleave', 'label[for="comment_file"]', function (e) {
+    $(this).removeClass('drag');
+  });
+  $(document).on('change', '#comment_file', function () {
+    var names = [];
+    for (var i = 0; i < $(this).get(0).files.length; ++i) {
+      var $placeholder = '<div class="file-drop__file" data-index="' + i + '"><i class="remove-file"></i><span class="file-drop__file__filename">' + $(this).get(0).files[i].name + '</span></div>';
+      names.push();
+      $($placeholder).insertAfter($('.file-drop'));
+    }
+  });
+  $(document).on('click', '.remove-file', function (e) {
+    var index = $(this).parent().attr('data-index');
+    var input = document.getElementById('comment_file');
+    newFileList = Array.from(input.files);
+    newFileList.splice(index, 1);
+    function FileListItems(files) {
+      var b = new ClipboardEvent("").clipboardData || new DataTransfer();
+      for (var i = 0, len = files.length; i < len; i++) b.items.add(files[i]);
+      return b.files;
+    }
+    var files = new FileListItems(newFileList);
+    input.files = files;
+    $(this).parent().remove();
+  });
+}
+
+
+/***/ }),
+
 /***/ "./assets/js/main.js":
 /*!***************************!*\
   !*** ./assets/js/main.js ***!
@@ -12,7 +59,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _variation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variation */ "./assets/js/variation.js");
 /* harmony import */ var _select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./select */ "./assets/js/select.js");
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider */ "./assets/js/slider.js");
+/* harmony import */ var _file__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./file */ "./assets/js/file.js");
+/* harmony import */ var _scroll__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scroll */ "./assets/js/scroll.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+
 
 
 
@@ -25,6 +76,53 @@ $(document).on('click', '.toggle-review-form', function () {
 (0,_variation__WEBPACK_IMPORTED_MODULE_0__.variation)();
 (0,_select__WEBPACK_IMPORTED_MODULE_1__.select)();
 (0,_slider__WEBPACK_IMPORTED_MODULE_2__.slider)();
+(0,_file__WEBPACK_IMPORTED_MODULE_3__.file)();
+(0,_scroll__WEBPACK_IMPORTED_MODULE_4__.scroll)();
+
+/***/ }),
+
+/***/ "./assets/js/scroll.js":
+/*!*****************************!*\
+  !*** ./assets/js/scroll.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   scroll: () => (/* binding */ scroll)
+/* harmony export */ });
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+function scroll() {
+  var formtop = $('.variations_form').offset().top;
+  var formtrigger = formtop + $('.variations_form').outerHeight() + 100;
+  $.fn.isInViewport = function () {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+  $(window).scroll(function () {
+    console.log(formtrigger);
+    if ($('.video-container ').isInViewport()) {
+      var video = $('.video-container ').find('video');
+      video[0].autoplay = true;
+    } else {
+      var _video = $('.video-container ').find('video');
+      _video[0].autoplay = false;
+    }
+    if (formtrigger < $(window).scrollTop()) {
+      var summaryheigth = $('.summary').outerHeight();
+      var reworked = $('.variations_form').outerHeight();
+      $('.summary').css('height', summaryheigth + 'px');
+      $('.variations_form').addClass('sticky');
+    } else {
+      $('.variations_form').removeClass('sticky');
+    }
+  });
+}
+
 
 /***/ }),
 

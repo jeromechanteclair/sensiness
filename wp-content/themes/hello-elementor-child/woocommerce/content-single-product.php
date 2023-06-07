@@ -77,22 +77,36 @@ if ( post_password_required() ) {
 
 			
 </div>
-<?php do_action('woocommerce_reviews');
-?>
+
 <?php wc_get_template('single-product/bandeau-reassurance.php');?>
 
 <?php if(get_field('video')):?>
 		
 		<div class="video-container">
-			<video controls="" id='video-player' preload='metadata'>
+			<video  id='video-player' preload='metadata' loop>
 			<source src="<?=get_field('video')['url'];?>" type=
 			"video/mp4">
 
 		</video>
 	</div>
 <?php endif;?>
+<?= do_shortcode( '[comparateur_cbd]');?>
 <?php wc_get_template('single-product/ingredients.php');?>
 <?php wc_get_template('single-product/bandeau-marquee.php');?>
 <?php wc_get_template('single-product/long-description.php');?>
+<?php do_action('woocommerce_reviews');?>
+<?php wc_get_template('single-product/diagnostic.php');?>
+<?php woocommerce_output_related_products();?>
+<?php wc_get_template('single-product/bandeau-marquee.php');?>
+<?php wc_get_template('single-product/images.php');?>
 
+<div class="faq">
+	<header>
+		<h2>Foire aux questions</h2>
+		<p>Si vous avez la moindre question, contactez-nous !</p>
+		<a class="faq-button" href="/contact">nous contacter</a>
+	</header>
+	<?= do_shortcode( '[FAQ]');?>
+	
+</div>
 <?php do_action( 'woocommerce_after_single_product' ); ?>

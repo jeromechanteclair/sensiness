@@ -1,7 +1,8 @@
-#review_form_wrapper{
-    &.hide{
+#review_form_wrapper {
+    &.hide {
         display: none;
     }
+
     position: fixed;
     top: 0;
     left: 0;
@@ -12,23 +13,359 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    #review_form{
+
+    #review_form {
         background-color: white;
         border-radius: 20px;
         padding: 56px 100px;
         position: relative;
-        .toggle-review-form{
+        max-width: calc(var(--max-width) * 0.833);
+
+        .file-drop {
+            display: flex;
+        }
+
+        label {
+            margin-bottom: 12px;
+        }
+
+        h3 {
+            grid-column: span 2;
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: 'Recoleta';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 48px;
+            line-height: 56px;
+        }
+
+        #respond {
+            #reply-title {
+                display: none;
+            }
+        }
+
+        #commentform {
+            display: grid;
+            grid-template-columns: 50% auto;
+            grid-template-rows: 1fr;
+            grid-template-rows: repeat(6, auto);
+            grid-template-areas: "left right";
+            align-items: flex-start;
+            column-gap: 12.5%;
+
+            input,
+            textarea {
+                @include button;
+                text-transform: none;
+                background-color: white;
+                color: var(--green);
+                border: 1px solid #364321;
+
+            }
+
+            .comment-notes {
+                grid-area: left;
+                grid-row: 1;
+                display: none;
+            }
+
+            .star-wrapper {
+                grid-area: left;
+                grid-row: 2;
+                display: flex;
+                align-items: flex-start;
+
+                label {
+                    margin-bottom: 0;
+                }
+
+                p {
+                    margin-bottom: 0;
+                }
+
+                .comment-form-rating {
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column;
+                    justify-content: space-between;
+                }
+
+                .stars {
+                    margin-top: 16px;
+                    color: var(--yellow);
+
+                    a:hover {
+                        color: var(--yellow);
+                    }
+                }
+            }
+
+            .comment-form-comment {
+                grid-area: left;
+                grid-row: 5;
+            }
+
+            .comment-form-author {
+                grid-area: left;
+                grid-row: 3;
+            }
+
+            .comment-form-email {
+                grid-area: left;
+                grid-row: 4;
+            }
+
+            .comment-form-cookies-consent {
+                grid-area: left;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 12px;
+                grid-row: 6;
+                padding-bottom: 0;
+                margin-bottom: 12px;
+
+                input {
+                    width: auto;
+                }
+            }
+
+            .review-infos {
+                grid-area: right;
+                grid-row: span 6;
+                font-style: normal;
+
+                p {
+                    font-weight: 450;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+
+            }
+
+            .form-submit {
+                grid-column: span 2;
+
+                input {
+                    width: 100%;
+                    @include button;
+
+                }
+            }
+        }
+
+        .toggle-review-form {
             position: absolute;
             top: 38px;
             right: 38px;
         }
-        .star-wrapper{
+
+        .star-wrapper {
             display: flex;
             align-items: center;
-            gap:24px;
+            gap: 24px;
         }
     }
 }
-.toggle-review-form{
+
+.toggle-review-form {
     cursor: pointer;
+}
+
+.single-product {
+    #reviews {
+        background-color: white;
+        padding: 96px 0;
+        ;
+
+
+        #comments {
+            ol.commentlist {
+                margin-left: 0;
+                padding-left: 0;
+
+                li {
+                    .comment-text {
+                        margin-left: 0;
+                        padding-left: 0;
+                        border: none;
+                        padding: 32px 0;
+                        border-top: 1px solid #F3F2EC;
+
+                        .meta {
+                            .woocommerce-review__author {
+
+                                font-family: 'Recoleta';
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 18px;
+                                line-height: 24px;
+                                color: var(--green)
+                            }
+                        }
+                        .comment-content{
+                            margin-top: 24px;
+                            display: flex;
+                            align-items: flex-start;
+                            justify-content: flex-start;
+                            gap:16px;
+                            picture{
+width: 182px;
+height: 120px;
+display: flex;
+border-radius: 12px;
+overflow: hidden;
+img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+                            }
+                        }
+                    }
+                }
+            }
+
+            h2 {
+                text-align: center;
+                font-family: 'Recoleta';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 48px;
+                line-height: 56px;
+            }
+
+            .reviews-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 54px 0;
+                ;
+
+                &__left {
+                    p {
+                        font-family: 'Recoleta';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 40px;
+                        line-height: 48px;
+                    }
+                }
+
+                .toggle-review-form {
+                    @include button;
+                }
+            }
+        }
+    }
+}
+
+.file-drop {
+    width: 100%;
+
+    display: block;
+    border-radius: 12px;
+
+    // background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%23333' stroke-width='2' stroke-dasharray='3%2c 7' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+    gap: 16px;
+
+    text-transform: uppercase;
+    @include button;
+
+
+
+
+
+    &.drag {
+        background-color: #466466;
+    }
+
+    transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #466466;
+    }
+
+    input[type=file] {
+
+
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        cursor: pointer;
+
+
+
+    }
+
+    &__file {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding-top: 12px;
+
+        &__filename {
+            flex-grow: 1;
+            padding-left: 12px;
+
+            font-family: 'Recoleta';
+
+        }
+
+        .remove-file {
+            position: relative;
+
+            width: 1rem;
+            height: 1rem;
+
+
+            opacity: 0.8;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &:before,
+            &:after {
+                position: absolute;
+                left: 0.5rem;
+                content: ' ';
+                height: 1rem;
+                width: 1px;
+                background-color: var(--green);
+
+                @media screen and (max-width:640px) {
+                    width: 2.7rem;
+                    left: 0;
+                    top: 1.35rem;
+                    height: 0.1rem;
+                }
+
+            }
+
+            &:before {
+                transform: rotate(45deg);
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+            }
+
+        }
+    }
 }

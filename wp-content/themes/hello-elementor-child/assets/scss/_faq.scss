@@ -18,7 +18,7 @@ ul.accordions {
 
 		h2 {
 			font-size: 48px;
-			margin: 1rem 0;
+			margin-bottom: 48px ;
 			font-family: 'Recoleta';
 		}
 	}
@@ -26,17 +26,21 @@ ul.accordions {
 	li.accordion {
 		max-width: 46%;
 		width: 100%;
+		border-bottom:1px solid #EBE9E0;
+		
 
 		@media screen and (max-width: 834px) {
 			max-width: 100%;
 		}
 
 		.accordion-header {
-			font-family: 'Recoleta';
+	
 			color: #506531;
-			font-size: 24px;
-			line-height: 150%;
-			font-weight: 500;
+font-family: 'Recoleta';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
 			margin: 0;
 			padding-right: 3rem;
 		}
@@ -102,6 +106,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='
 						opacity: 0;
 						padding-top: 0;
 						transform: translate(0, 50%);
+
 					}
 
 					i {
@@ -161,7 +166,7 @@ padding-left: 34px;
 		display: block;
 		z-index: 2;
 		// border-top: 1px dotted #dce7eb;
-
+padding-bottom: 24px;
 		margin-top: 1rem;
 	}
 }

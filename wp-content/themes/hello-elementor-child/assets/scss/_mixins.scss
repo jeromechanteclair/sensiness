@@ -11,6 +11,22 @@
     text-transform: uppercase;
     background-color: var(--green);
     border-radius: 10px;
+    border: none;
+}
+@mixin button-transparent {
+
+    font-family: 'NeueHaasDisplay-Roman, sans-serif';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--green);
+    width: 100%;
+    padding: 16px 24px;
+    text-transform: uppercase;
+    background-color:transparent;
+    border:1px solid var(--green);
+    border-radius:50px;
 }
 
 @mixin quantity {
@@ -24,4 +40,27 @@
     color: var(--green);
     border-radius: 10px;
     border: none;
+}
+
+.single-product {
+    --max-width: 1440px;
+
+    @media screen and (max-width:1440px) {
+        --max-width: 100%;
+    }
+}
+
+@mixin container-min {
+    max-width: calc(var(--max-width) * .55);
+}
+
+@mixin container {
+    max-width: calc(var(--max-width) * .833);
+}
+.container{
+      @include container;
+    margin: 0 auto;
+    &.container--min {
+    @include container-min;
+}
 }

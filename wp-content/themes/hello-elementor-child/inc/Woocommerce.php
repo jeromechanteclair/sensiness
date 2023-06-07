@@ -27,9 +27,11 @@ class Woocommerce  {
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_reassurance'), 10);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_description'), 11);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_satisfaction'), 12);
-add_action('comment_form_logged_in_before',  array( $this,'woocommerce_add_file_upload_field'));
-add_action('comment_form_before_fields',  array( $this,'woocommerce_add_file_upload_field'));
-add_action('comment_post', array( $this,'woocommerce_save_comment_file_field'));
+		// add_action('comment_form_logged_in_before',  array( $this,'woocommerce_add_file_upload_field'));
+		// add_action('comment_form_before_fields',  array( $this,'woocommerce_add_file_upload_field'));
+		add_action('comment_form_after_fields',  array( $this,'woocommerce_add_comment_infos'));
+		add_action('comment_form_logged_in_after',  array( $this,'woocommerce_add_comment_infos'));
+		add_action('comment_post', array( $this,'woocommerce_save_comment_file_field'));
 
 		add_action('woocommerce_reviews', 'comments_template', 61);
 
@@ -42,9 +44,20 @@ add_action('comment_post', array( $this,'woocommerce_save_comment_file_field'));
 	 * @return void
 	 */
 			
-	public function woocommerce_add_file_upload_field()
+	public function woocommerce_add_comment_infos()
 	{
-		echo '';
+		$html='	<div class="review-infos">
+					<p>Conseils et directives</p>
+					<p>
+						Les avis sont là pour aider les autres utilisateurs. Voici comment écrire les meilleurs avis possibles :
+						Partagez combien de temps vous avez utilisé ce produit.
+						Au besoin, comparez le produit avec un produit similaire.
+						Identifiez les attributs spécifiques du produit (p. ex. les résultats d\'une crème hydratante ou l\'odeur d\'un savon) et dites s\'ils répondent à vos attentes.
+					</p>
+					<p><i>* Champs obligatoires</i></p>
+				</div>
+				';
+				echo $html;
 	}
 
 	public function woocommerce_save_comment_file_field($comment_id)
@@ -227,12 +240,22 @@ wc_get_template('single-product/accordeon.php');
 		remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 		add_filter('woocommerce_product_tabs', array($this,'remove_tabs'), 11);
 
+	add_filter('woocommerce_output_related_products_args', array($this,'related_count'), 20);
+
+
+	}
+	public function related_count($args)
+	{
+		$args['posts_per_page'] = 3; // 4 related products
+		$args['columns'] = 3; // arranged in 2 columns
+		return $args;
 	}
 	public function remove_tabs($tabs){
 
-unset($tabs['description']);
-unset($tabs['reviews']);
-return $tabs;
+		unset($tabs['description']);
+		unset($tabs['additional_information']);
+		unset($tabs['reviews']);
+		return $tabs;
 
 	}
 
