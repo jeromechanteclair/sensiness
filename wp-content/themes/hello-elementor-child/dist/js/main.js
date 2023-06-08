@@ -95,7 +95,7 @@ __webpack_require__.r(__webpack_exports__);
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function scroll() {
   var formtop = $('.variations_form').offset().top;
-  var formtrigger = formtop + $('.variations_form').outerHeight() + 100;
+  var formtrigger = formtop + $('.variations_form').outerHeight();
   $.fn.isInViewport = function () {
     var elementTop = $(this).offset().top;
     var elementBottom = elementTop + $(this).outerHeight();
@@ -104,7 +104,6 @@ function scroll() {
     return elementBottom > viewportTop && elementTop < viewportBottom;
   };
   $(window).scroll(function () {
-    console.log(formtrigger);
     if ($('.video-container ').isInViewport()) {
       var video = $('.video-container ').find('video');
       video[0].autoplay = true;
@@ -113,12 +112,22 @@ function scroll() {
       _video[0].autoplay = false;
     }
     if (formtrigger < $(window).scrollTop()) {
-      var summaryheigth = $('.summary').outerHeight();
+      var bodyheight = $('body').outerHeight();
+      $('body').css('height', bodyheight + 'px');
       var reworked = $('.variations_form').outerHeight();
-      $('.summary').css('height', summaryheigth + 'px');
-      $('.variations_form').addClass('sticky');
+      if (!$('.variations_form').hasClass('sticky')) {
+        setTimeout(function () {
+          $('.variations_form').addClass('sticky');
+        }, 500);
+      }
     } else {
-      $('.variations_form').removeClass('sticky');
+      // $('.variations_form').removeClass('sticky');
+      if ($('.variations_form').hasClass('sticky')) {
+        // $('.variations_form').removeClass('sticky')
+        setTimeout(function () {
+          $('.variations_form').removeClass('sticky');
+        }, 500);
+      }
     }
   });
 }
@@ -149,8 +158,7 @@ function select() {
     <path d="M5.99999 6.67689C5.88589 6.67689 5.77275 6.6551 5.66056 6.61151C5.5484 6.56791 5.45065 6.50445 5.36731 6.42111L0.873087 1.92689C0.728204 1.78202 0.655762 1.60639 0.655762 1.39999C0.655762 1.19359 0.728204 1.01795 0.873087 0.873087C1.01795 0.728204 1.19359 0.655762 1.39999 0.655762C1.60639 0.655762 1.78202 0.728204 1.92689 0.873087L5.99999 4.94616L10.0731 0.873087C10.218 0.728204 10.3936 0.655762 10.6 0.655762C10.8064 0.655762 10.982 0.728204 11.1269 0.873087C11.2718 1.01795 11.3442 1.19359 11.3442 1.39999C11.3442 1.60639 11.2718 1.78202 11.1269 1.92689L6.63266 6.42111C6.53908 6.51471 6.44036 6.58074 6.33651 6.61919C6.23268 6.65765 6.1205 6.67689 5.99999 6.67689Z" fill="#364321"/>\
     </svg>\
     ';
-  // attribute-select
-  console.log($selects);
+  var tom;
   $selects.each(function (index, select) {
     var settings = {
       controlInput: null,
@@ -171,10 +179,82 @@ function select() {
         }
       }
     };
-    var tom = new (tom_select__WEBPACK_IMPORTED_MODULE_0___default())(select, settings);
+    tom = new (tom_select__WEBPACK_IMPORTED_MODULE_0___default())(select, settings);
     tom.settings.placeholder = "New placeholder";
     tom.inputState();
   });
+  var $form;
+  $(document).on('click', '[data-select]', function (e) {
+    // resetAttributes($(this));
+
+    allowattributes($(this));
+  });
+  tom.on('change', function (el) {
+    var trigger = $(document).find('.variation-item[data-value=' + tom.getValue() + ']');
+    allowattributes(trigger, true);
+  });
+  function allowattributes(trigger) {
+    var recurtion = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    // $('form.cart').trigger('reload_product_variations');
+    var select = $(trigger).attr('data-select');
+    var value = $(trigger).attr('data-value');
+    var datalink = $(trigger).attr('data-link');
+    var dataprice = $(trigger).attr('data-price');
+    var datavariation = $(trigger).attr('data-variation_id');
+    var $price = $(document).find('.custom-price__right ');
+    var $variation_id = $(document).find('.variation_id');
+    $variation_id.val(datavariation);
+    $price.html(JSON.parse(dataprice));
+
+    // split data-link by white spaces
+    var datalinkarray = datalink.split(' ');
+    // remove empty value from datalinkarray
+    datalinkarray = datalinkarray.filter(function (el) {
+      return el.length > 0;
+    });
+    var lists = $(document).find('.variation-wrapper li');
+
+    // find sibligns
+    var siblings = $(document).find('[data-select="' + select + '"]');
+    // remove active class from siblings
+    siblings.removeClass('selected');
+    lists.each(function (i, el) {
+      if (!datalinkarray.includes($(el).attr('data-value')) && $(el).attr('data-select') !== select) {
+        // $(el).addClass('disabled').removeClass('selected');
+      } else {
+        if ($(el).attr('data-select') !== select) {}
+        // $(el).removeClass('disabled');
+      }
+
+      if ($(el).attr('data-select') !== select) {}
+    });
+
+    // add active class to clicked button
+    $(trigger).addClass('selected');
+    var $selected = $('form.cart').find('.selected');
+    $selected.each(function (i, el) {
+      var currentselect = $(el).attr('data-select');
+      var currentval = $(el).attr('data-value');
+      if (currentselect == 'attribute_pa_sizes') {
+        $('.default.product__item-cart').find('.size').html(currentval);
+      }
+      if (currentselect == 'attribute_pa_colors') {
+        $('.default.product__item-cart').find('.color').html(currentval);
+      }
+      if (currentselect == 'attribute_contenance') {
+        $('.default.product__item-cart').find('.contenance').html(currentval.replace('-', ','));
+      }
+      if (currentselect == 'attribute_pa_diametres') {
+        $('.default.product__item-cart').find('.diametre').html(currentval.replace('-', ','));
+      }
+    });
+    var $select = $('form.cart').find('[name="' + select + '"]');
+    $select.val(value).trigger('change');
+    if (!recurtion) {
+      tom.setValue(value);
+    }
+    $select.trigger('click');
+  }
 }
 
 
@@ -272,89 +352,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   variation: () => (/* binding */ variation)
 /* harmony export */ });
-/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-function variation() {
-  var $form;
-  $(document).on('click', '[data-select]', function (e) {
-    // resetAttributes($(this));
-
-    allowattributes($(this));
-  });
-  function allowattributes(trigger) {
-    // $('form.cart').trigger('reload_product_variations');
-    var select = $(trigger).attr('data-select');
-    var value = $(trigger).attr('data-value');
-    var datalink = $(trigger).attr('data-link');
-    var dataprice = $(trigger).attr('data-price');
-    var datavariation = $(trigger).attr('data-variation_id');
-    var $price = $(document).find('.custom-price__right ');
-    var $variation_id = $(document).find('.variation_id');
-    $variation_id.val(datavariation);
-    console.log($price);
-    $price.html(JSON.parse(dataprice));
-
-    // console.log(datalink);
-    // split data-link by white spaces
-    var datalinkarray = datalink.split(' ');
-    // remove empty value from datalinkarray
-    datalinkarray = datalinkarray.filter(function (el) {
-      return el.length > 0;
-    });
-    var lists = $(document).find('.variation-wrapper li');
-
-    // find sibligns
-    var siblings = $(document).find('[data-select="' + select + '"]');
-    // remove active class from siblings
-    siblings.removeClass('selected');
-    lists.each(function (i, el) {
-      if (!datalinkarray.includes($(el).attr('data-value')) && $(el).attr('data-select') !== select) {
-        // $(el).addClass('disabled').removeClass('selected');
-        // console.log($(el).attr('data-value'));
-      } else {
-        if ($(el).attr('data-select') !== select) {
-          // console.log($(el).attr('data-value'));
-        }
-        // $(el).removeClass('disabled');
-      }
-
-      if ($(el).attr('data-select') !== select) {}
-    });
-
-    // add active class to clicked button
-    $(trigger).addClass('selected');
-    var $selected = $('form.cart').find('.selected');
-    $selected.each(function (i, el) {
-      var currentselect = $(el).attr('data-select');
-      var currentval = $(el).attr('data-value');
-      if (currentselect == 'attribute_pa_sizes') {
-        $('.default.product__item-cart').find('.size').html(currentval);
-      }
-      if (currentselect == 'attribute_pa_colors') {
-        $('.default.product__item-cart').find('.color').html(currentval);
-      }
-      if (currentselect == 'attribute_contenance') {
-        $('.default.product__item-cart').find('.contenance').html(currentval.replace('-', ','));
-      }
-      if (currentselect == 'attribute_pa_diametres') {
-        $('.default.product__item-cart').find('.diametre').html(currentval.replace('-', ','));
-      }
-      // $('form.cart').find('[name="' + currentselect + '"]').val(currentval)
-      // $('form.cart').find('[name="' + currentselect + '"]').trigger('change')
-      // console.log($('form.cart').find('[name="' + currentselect + '"]'), $('form.cart').find('[name="' + currentselect + '"]').val());
-    });
-    // console.log(value);
-    var $select = $('form.cart').find('[name="' + select + '"]');
-    $select.val(value).trigger('change');
-    $select.trigger('click');
-    // $('.default.product__item-cart').find('.size').html(v.attributes['attribute_pa_sizes'])
-    // $('.default.product__item-cart').find('.color').html(v.attributes['attribute_pa_colors'])
-
-    // $('form.cart').find('[name="' + select + '"]').trigger('change')
-    // trigger found_variation event
-    //
-  }
-}
-
+function variation() {}
 
 
 /***/ }),

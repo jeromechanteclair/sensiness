@@ -90,12 +90,15 @@ if ( post_password_required() ) {
 		</video>
 	</div>
 <?php endif;?>
-<?= do_shortcode( '[comparateur_cbd]');?>
+
 <?php wc_get_template('single-product/ingredients.php');?>
 <?php wc_get_template('single-product/bandeau-marquee.php');?>
 <?php wc_get_template('single-product/long-description.php');?>
+<?php wc_get_template('single-product/calculateur.php');?>
+
 <?php do_action('woocommerce_reviews');?>
 <?php wc_get_template('single-product/diagnostic.php');?>
+
 <?php woocommerce_output_related_products();?>
 <?php wc_get_template('single-product/bandeau-marquee.php');?>
 <?php wc_get_template('single-product/images.php');?>

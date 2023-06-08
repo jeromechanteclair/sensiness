@@ -194,6 +194,9 @@ function display_variations($attributes, $available_variations){
         foreach($values as $valuekey => $value) {
             $selected='';
             $term = get_term_by('slug', $value, $attribute_name);
+            if(!$term){
+                break;
+            }
             $name = $term->name;
             if($current == $value) {
                 $selected='selected';

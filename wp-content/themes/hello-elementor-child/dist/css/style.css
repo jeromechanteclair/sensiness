@@ -5,6 +5,7 @@
   --beige: #F5F3E6;
   --beige-light: #F5F3E6;
   --yellow: #FFD372;
+  --red: #FC6565;
 }
 
 .single-product {
@@ -587,6 +588,15 @@ ul.accordions span {
   color: var(--yellow);
 }
 
+.single-product .woocommerce-breadcrumb {
+  color: var(--green);
+}
+
+.single-product .woocommerce-breadcrumb a {
+  opacity: 1;
+  color: var(--green);
+}
+
 .single-product nav.woocommerce-pagination .page-numbers {
   border: none;
   display: flex;
@@ -604,6 +614,7 @@ ul.accordions span {
   padding: 12px;
   min-width: 42px;
   border: 1px solid transparent;
+  border-radius: 4px;
 }
 
 .single-product nav.woocommerce-pagination .page-numbers li .page-numbers.current,
@@ -649,6 +660,10 @@ ul.accordions span {
   position: relative;
 }
 
+.single-product #main .product-wrapper .gallery-top .swiper-wrapper {
+  width: 500px;
+}
+
 .single-product #main .product-wrapper .gallery-top .swiper-slide {
   height: 100vh;
   width: 500px;
@@ -682,6 +697,53 @@ ul.accordions span {
 
 .single-product #main .product-wrapper .gallery-thumbs .thumb--active {
   border: 1px solid var(--green);
+}
+
+.single-product #main .product-wrapper .referlink {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--yellow);
+  border-radius: 100%;
+  position: absolute;
+  left: 120px;
+  top: 169px;
+  width: 112px;
+  height: 112px;
+  z-index: 1;
+}
+
+.single-product #main .product-wrapper .referlink .textpath {
+  position: absolute;
+  height: auto;
+  max-width: 90px;
+  transform-origin: center;
+  width: 100%;
+  animation: rotating 8s linear infinite;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.single-product #main .product-wrapper .referlink .textpath text {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 11px;
+  letter-spacing: 1px;
 }
 
 .single-product #main .product-wrapper .diagnostic-cta {
@@ -880,6 +942,7 @@ ul.accordions span {
   font-weight: 450;
   font-size: 12px;
   line-height: 24px;
+  color: var(--red);
 }
 
 .single-product .variations_form .variation-wrapper .variation-item__prices {
@@ -906,6 +969,7 @@ ul.accordions span {
 
 .single-product .variations_form .variation-wrapper .variation-item__prices span.display_regular_price bdi {
   text-decoration: line-through;
+  color: var(--red);
 }
 
 .single-product .variations_form .variation-wrapper .variation-item__prices .percent {
@@ -955,7 +1019,7 @@ ul.accordions span {
 }
 
 .custom-price__left p {
-  display: inline-flex;
+  display: none;
   background-color: white;
   align-items: center;
   gap: 6px;
@@ -984,7 +1048,10 @@ ul.accordions span {
 
 .custom-price__right .price {
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
   text-decoration: none;
 }
 
@@ -993,12 +1060,17 @@ ul.accordions span {
   text-decoration: none;
 }
 
+.custom-price__right .price del {
+  opacity: 1 !important;
+}
+
 .custom-price__right .price del bdi {
   text-decoration: line-through;
   font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
+  color: var(--red);
   line-height: 24px;
 }
 
@@ -1058,6 +1130,7 @@ ul.accordions span {
 
 .variations .select-prices .promo {
   text-decoration: line-through;
+  color: var(--red);
 }
 
 .variations .ts-dropdown .option {
@@ -1213,7 +1286,6 @@ html {
   margin-top: 32px;
   border-top: 1px solid #EBE9E0;
   padding-top: 32px;
-  border-bottom: 1px solid #EBE9E0;
   padding-bottom: 32px;
   margin-bottom: 32px;
 }
@@ -1265,21 +1337,22 @@ html {
 .long_description .container {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   padding: 96px 0;
+  max-width: 100%;
+  gap: calc(var(--max-width) * 0.0166);
 }
 
 .long_description__left {
-  padding-left: calc(var(--max-width) * 0.0833);
+  width: calc(var(--max-width) * 0.3375);
 }
 
 .long_description__left .h2 {
   margin-top: 0;
-  max-width: calc(var(--max-width) * 0.3375);
 }
 
 .long_description__right {
-  width: calc(var(--max-width) * 0.4784);
+  width: calc(var(--max-width) * 0.4791);
 }
 
 /**
@@ -1288,17 +1361,21 @@ html {
 */
 
 .ingredients {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: calc(var(--max-width) * 0.3291) calc(var(--max-width) * 0.5);
+  justify-content: flex-end;
+  grid-auto-rows: 1fr;
+  gap: calc(var(--max-width) * 0.0875);
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .ingredients__left {
-  padding-left: calc((100vw - 1200px) / 2);
   display: flex;
   flex-flow: column;
   justify-content: space-between;
   height: 100%;
+  padding-bottom: 42px;
 }
 
 .ingredients__left__item {
@@ -1341,9 +1418,13 @@ html {
   line-height: 24px;
 }
 
+.ingredients__right {
+  height: 100%;
+}
+
 .ingredients__right picture {
-  width: 50vw;
-  max-height: 470px;
+  width: 100%;
+  aspect-ratio: 708/410;
   height: 100%;
   display: block;
 }
@@ -1352,7 +1433,7 @@ html {
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
-  max-height: 470px;
+  max-height: 100%;
   width: 100%;
 }
 
@@ -1568,6 +1649,14 @@ html {
   align-items: center;
 }
 
+.single-product .related.products ul li.product .onsale {
+  display: none;
+}
+
+.single-product .related.products ul li.product a img {
+  border-radius: 10px;
+}
+
 .single-product .related.products ul li.product .woocommerce-loop-product__title {
   font-family: "Recoleta";
   font-style: normal;
@@ -1613,10 +1702,11 @@ html {
 .single-product .photos .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  max-width: var(--max-width);
 }
 
 .single-product .photos .container picture {
-  width: 100%;
+  width: calc(var(--max-width) * 0.5);
   height: 100%;
   aspect-ratio: 1/1;
   display: block;
@@ -1695,6 +1785,138 @@ html {
   border: none;
   width: auto;
 }
+
+/**
+Calculator
+**/
+
+.single-product .calculateur .calculateur-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  gap: calc(var(--max-width) * 0.07916);
+}
+
+.single-product .calculateur .calculateur-container__left {
+  width: calc(var(--max-width) * 0.42083);
+}
+
+.single-product .calculateur .calculateur-container__right {
+  width: calc(var(--max-width) * 0.4083);
+  overflow: hidden;
+  /*On hover change colour of black thumb into green 🟢 and scale size*/
+}
+
+.single-product .calculateur .calculateur-container__right form input[type=range] {
+  background: linear-gradient(to right, var(--yellow) 0%, var(--yellow) 46.66%, rgb(255, 255, 255) 46.66%, rgb(255, 255, 255) 100%);
+  width: 100%;
+}
+
+.single-product .calculateur .calculateur-container__right form input[type=range] div {
+  background-color: var(--yellow);
+}
+
+.single-product .calculateur .calculateur-container__right select {
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.single-product .calculateur .calculateur-container__right input[type=range]::-webkit-slider-thumb,
+.single-product .calculateur .calculateur-container__right input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: var(--yellow);
+  border: none;
+  cursor: pointer;
+  -webkit-transition: background 0.15s ease-in-out;
+  -moz-transition: background 0.15s ease-in-out;
+  transition: background 0.15s ease-in-out;
+}
+
+.single-product .calculateur .calculateur-container__right input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  background: var(--yellow);
+}
+
+.single-product .calculateur .calculateur-container__right input[type=range]:active::-webkit-slider-thumb {
+  transform: scale(1.1);
+  background: var(--yellow);
+}
+
+.single-product .calculateur .calculateur-container__right .human_weight_selector {
+  position: relative;
+}
+
+.single-product .calculateur .calculateur-container__right .range_value {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--beige);
+  color: var(--green);
+  padding: 0;
+  text-align: right;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.single-product .calculateur .calculateur-container__right .range_value:after {
+  display: none;
+}
+
+.single-product .calculateur .calculateur-container__right label {
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  color: var(--green);
+  margin-bottom: 24px;
+  margin-top: 24px;
+  line-height: 24px;
+}
+
+.single-product .calculateur .calculateur-container__right .cbd-calculator__title {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+.single-product .calculateur .calculateur-container__right .cbd-calculator__posologie h3 {
+  font-style: normal;
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-weight: 450;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.single-product .calculateur .calculateur-container__right .cbd-calculator__posologie p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-product .calculateur .calculateur-container__right .cbd-calculator__posologie p .posologie {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.single-product .cbd-calculator__results {
+  display: none;
+}
+
+/**
+FAQ
+**/
 
 .single-product .faq {
   padding: 96px 0;
