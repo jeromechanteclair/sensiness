@@ -1,6 +1,7 @@
 function scroll() {
     var formtop = $('.variations_form').offset().top;
-    var formtrigger = formtop+$('.variations_form').outerHeight();
+    var formtrigger = formtop + $('.variations_form').outerHeight();
+
     function isInViewport($element) {
         let elementTop = $($element).offset().top;
         let elementBottom = elementTop + $($element).outerHeight();
@@ -10,45 +11,45 @@ function scroll() {
 
         return elementBottom > viewportTop && elementTop < viewportBottom;
     };
- 
+
     $(window).scroll(function () {
-        if($(document.find(''))){
+        if ($(document.find('.video-container '))) {
 
-        
-        if ($('.video-container ').isInViewport()) {
 
-            let video = $('.video-container ').find('video');
-            video[0].autoplay = true;
-        } else {
+            if ($('.video-container ').isInViewport()) {
 
-            let video = $('.video-container ').find('video');
-            video[0].autoplay = false;
+                let video = $('.video-container ').find('video');
+                video[0].autoplay = true;
+            } else {
+
+                let video = $('.video-container ').find('video');
+                video[0].autoplay = false;
+            }
         }
-        }
-        if(formtrigger< $(window).scrollTop()){
-               let bodyheight = $('body').outerHeight();
-    $('body').css('height',bodyheight+'px')
+        if (formtrigger < $(window).scrollTop()) {
+            let bodyheight = $('body').outerHeight();
+            $('body').css('height', bodyheight + 'px')
 
-            let reworked = $('.variations_form').outerHeight() ;
-            if( !$('.variations_form').hasClass('sticky')){
+            let reworked = $('.variations_form').outerHeight();
+            if (!$('.variations_form').hasClass('sticky')) {
                 setTimeout(() => {
-                    
+
                     $('.variations_form').addClass('sticky')
                 }, 500);
 
             }
-           
+
         } else {
 
             // $('.variations_form').removeClass('sticky');
-            if( $('.variations_form').hasClass('sticky')){
+            if ($('.variations_form').hasClass('sticky')) {
                 // $('.variations_form').removeClass('sticky')
-   setTimeout(() => {
-                    
+                setTimeout(() => {
+
                     $('.variations_form').removeClass('sticky')
                 }, 500);
             }
-         
+
         }
     });
 }
