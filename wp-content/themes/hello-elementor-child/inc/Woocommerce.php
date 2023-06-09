@@ -84,30 +84,30 @@ class Woocommerce  {
 				if (! file_exists($target_dir)) {
 					wp_mkdir_p($target_dir);
 				}
-if(isset($_FILES['comment_file']['name'])) {
+			if(isset($_FILES['comment_file']['name'])) {
 
 
-    $file_name = basename($_FILES['comment_file']['name']);
-    $target_path = $target_dir . $file_name;
+				$file_name = basename($_FILES['comment_file']['name']);
+				$target_path = $target_dir . $file_name;
 
 
-    if (move_uploaded_file($_FILES['comment_file']['tmp_name'], $target_path)) {
-        $attachment = array(
-            'guid'           => $upload_dir['baseurl'] . '/comment-files/' . $file_name,
-            'post_mime_type' => $_FILES['comment_file']['type'],
-            'post_title'     => preg_replace('/\.[^.]+$/', '', $file_name),
-            'post_content'   => '',
-            'post_status'    => 'inherit'
-        );
+				if (move_uploaded_file($_FILES['comment_file']['tmp_name'], $target_path)) {
+					$attachment = array(
+						'guid'           => $upload_dir['baseurl'] . '/comment-files/' . $file_name,
+						'post_mime_type' => $_FILES['comment_file']['type'],
+						'post_title'     => preg_replace('/\.[^.]+$/', '', $file_name),
+						'post_content'   => '',
+						'post_status'    => 'inherit'
+					);
 
-        $attachment_id = wp_insert_attachment($attachment, $target_path, $comment_id);
-        require_once(ABSPATH . 'wp-admin/includes/image.php');
-        $attachment_data = wp_generate_attachment_metadata($attachment_id, $target_path);
-        wp_update_attachment_metadata($attachment_id, $attachment_data);
+					$attachment_id = wp_insert_attachment($attachment, $target_path, $comment_id);
+					require_once(ABSPATH . 'wp-admin/includes/image.php');
+					$attachment_data = wp_generate_attachment_metadata($attachment_id, $target_path);
+					wp_update_attachment_metadata($attachment_id, $attachment_data);
 
-        update_comment_meta($comment_id, 'comment_file_id', $attachment_id);
-    }
-}
+					update_comment_meta($comment_id, 'comment_file_id', $attachment_id);
+				}
+			}
 			}
 		}
 

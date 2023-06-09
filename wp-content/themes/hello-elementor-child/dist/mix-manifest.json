@@ -1,4 +1,10 @@
 {
     "/js/main.js": "/js/main.js",
-    "/css/style.css": "/css/style.css"
+    "/css/style.css": "/css/style.css",
+    "/css/fonts/NeueHaasDisplayRoman.woff": "/css/fonts/NeueHaasDisplayRoman.woff",
+    "/css/fonts/Recoleta-Black.woff": "/css/fonts/Recoleta-Black.woff",
+    "/css/fonts/Recoleta-Bold.woff": "/css/fonts/Recoleta-Bold.woff",
+    "/css/fonts/Recoleta-Light.woff": "/css/fonts/Recoleta-Light.woff",
+    "/css/fonts/Recoleta-Medium.woff": "/css/fonts/Recoleta-Medium.woff",
+    "/css/fonts/Recoleta-Regular.woff": "/css/fonts/Recoleta-Regular.woff"
 }

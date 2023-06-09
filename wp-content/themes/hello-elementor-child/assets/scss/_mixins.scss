@@ -1,4 +1,41 @@
 
+    @font-face {
+        font-family: 'NeueHaasDisplay-Roman';
+        src: url('fonts/NeueHaasDisplayRoman.woff');
+        font-weight: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Recoleta';
+        src: url('fonts/Recoleta-Light.woff');
+        font-weight: 300;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Recoleta';
+        src: url('fonts/Recoleta-Regular.woff');
+        font-weight: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Recoleta';
+        src: url('fonts/Recoleta-Bold.woff');
+        font-weight: bold;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Recoleta';
+        src: url('fonts/Recoleta-Medium.woff');
+        font-weight: 500;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Recoleta';
+        src: url('fonts/Recoleta-Black.woff');
+        font-weight: 900;
+        font-display: swap;
+    }
+
 @mixin transition{
     transition: all 0.2s ease-in-out;
 }

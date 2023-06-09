@@ -1,4 +1,5 @@
 .single-product {
+
     scroll-behavior: smooth;
 
     .stock {
@@ -28,7 +29,7 @@
     }
 
     background-color: var(--beige);
-    font-family: 'NeueHaasDisplay-Roman, sans-serif';
+    font-family: 'NeueHaasDisplay-Roman';
     color: var(--green);
 
     nav.woocommerce-pagination {
@@ -247,7 +248,7 @@
                 padding: 16px 24px;
                 border-radius: 10px;
                 border: 1px solid var(--green);
-                font-family: 'NeueHaasDisplay-Roman, sans-serif';
+                font-family: 'NeueHaasDisplay-Roman';
                 font-style: normal;
                 font-weight: 450;
                 font-size: 16px;
@@ -502,7 +503,7 @@
                     line-height: 24px;
 
                     .description {
-                        font-family: 'NeueHaasDisplay-Roman, sans-serif';
+                        font-family: 'NeueHaasDisplay-Roman';
                         font-style: normal;
                         font-weight: 450;
                         font-size: 12px;
@@ -521,7 +522,7 @@
 
                     span {
                         display: inline-block;
-                        font-family: 'NeueHaasDisplay-Roman, sans-serif';
+                        font-family: 'NeueHaasDisplay-Roman';
                         font-style: normal;
                         font-weight: 450;
                         font-size: 16px;
@@ -597,7 +598,7 @@
             font-weight: 450;
             font-size: 16px;
             line-height: 24px;
-            font-family: 'NeueHaasDisplay-Roman, sans-serif';
+            font-family: 'NeueHaasDisplay-Roman';
         }
 
 
@@ -635,7 +636,7 @@
         del{
                .woocommerce-Price-amount {
                text-decoration: line-through;
-                    font-family: 'NeueHaasDisplay-Roman, sans-serif';
+                    font-family: 'NeueHaasDisplay-Roman';
                     font-style: normal;
                     font-weight: 450;
                     font-size: 16px;
@@ -691,7 +692,7 @@
 
                 bdi {
                     text-decoration: line-through;
-                    font-family: 'NeueHaasDisplay-Roman, sans-serif';
+                    font-family: 'NeueHaasDisplay-Roman';
                     font-style: normal;
                     font-weight: 450;
                     font-size: 16px;
@@ -852,7 +853,7 @@
             }
 
             &--subtitle {
-                font-family: 'NeueHaasDisplay-Roman, sans-serif';
+                font-family: 'NeueHaasDisplay-Roman';
                 font-style: normal;
                 font-weight: 450;
                 font-size: 16px;
@@ -1252,7 +1253,7 @@ html {
         }
 
         &+p {
-            font-family: 'NeueHaasDisplay-Roman, sans-serif';
+            font-family: 'NeueHaasDisplay-Roman';
             color: var(--green);
             font-style: normal;
             font-weight: 400;
@@ -1700,7 +1701,7 @@ Calculator
                 .cbd-calculator__posologie {
                     h3 {
                         font-style: normal;
-                        font-family: "NeueHaasDisplay-Roman, sans-serif";
+                        font-family: "NeueHaasDisplay-Roman";
                         font-weight: 450;
                         font-size: 18px;
                         line-height: 24px;

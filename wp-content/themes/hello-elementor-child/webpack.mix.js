@@ -17,7 +17,10 @@ mix.autoload({
   jquery: ['$', 'window.jQuery', 'jQuery'],
 });
 mix.js('assets/js/main.js', 'dist/js').setPublicPath('dist');
-mix.sass('assets/scss/style.scss', 'dist/css/style.css').setPublicPath('dist');
+mix.sass('assets/scss/style.scss', 'dist/css/style.css').setPublicPath('dist').options({
+    processCssUrls: false
+});;
 mix.browserSync({
     proxy:'sensiness.local'
  })
+ mix.copyDirectory('assets/fonts', 'dist/css/fonts')

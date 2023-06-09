@@ -1,7 +1,10 @@
 function scroll() {
+    if($(document).find('.single-product .cart').length>0){
+
+    
     var formtop = $('.single-product .cart').offset().top;
     var formtrigger = formtop + $('.single-product .cart').outerHeight();
-
+}
     function isInViewport($element) {
         let elementTop = $($element).offset().top;
         let elementBottom = elementTop + $($element).outerHeight();
@@ -17,7 +20,7 @@ function scroll() {
         if ($(document).find('.video-container ').length>0) {
 
 
-            if ($('.video-container ').isInViewport()) {
+            if (isInViewport($('.video-container '))) {
 
                 let video = $('.video-container ').find('video');
                 video[0].autoplay = true;
