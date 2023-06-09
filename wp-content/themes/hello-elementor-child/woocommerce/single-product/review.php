@@ -58,12 +58,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="comment-content">
 		<?php
 
-			if(get_comment_meta($comment->comment_ID, 'comment_file_id', true)) {
+if(get_comment_meta($comment->comment_ID, 'comment_file_id', true)) {
 
-				$img_url =wp_get_attachment_image_url(get_comment_meta($comment->comment_ID, 'comment_file_id', true));?>
+    $img_url =wp_get_attachment_image_url(get_comment_meta($comment->comment_ID, 'comment_file_id', true));?>
 			<picture><img src="<?=$img_url;?>"></picture>
-			<?php 
-	
+			<?php
+}
 			/**
 			 * The woocommerce_review_comment_text hook
 			 *
@@ -72,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			do_action( 'woocommerce_review_comment_text', $comment );
 
 			do_action( 'woocommerce_review_after_comment_text', $comment );
-			}?>
+			?>
 
 		</div>
 		</div>

@@ -55,6 +55,12 @@
         }
 
         #respond {
+            .must-log-in{
+                a{
+                    text-decoration: underline;
+                    
+                }
+            }
                @media screen and (max-width:810px) {
     
          overflow-y: auto;
