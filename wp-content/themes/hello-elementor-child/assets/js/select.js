@@ -8,7 +8,7 @@ function select() {
     <path d="M5.99999 6.67689C5.88589 6.67689 5.77275 6.6551 5.66056 6.61151C5.5484 6.56791 5.45065 6.50445 5.36731 6.42111L0.873087 1.92689C0.728204 1.78202 0.655762 1.60639 0.655762 1.39999C0.655762 1.19359 0.728204 1.01795 0.873087 0.873087C1.01795 0.728204 1.19359 0.655762 1.39999 0.655762C1.60639 0.655762 1.78202 0.728204 1.92689 0.873087L5.99999 4.94616L10.0731 0.873087C10.218 0.728204 10.3936 0.655762 10.6 0.655762C10.8064 0.655762 10.982 0.728204 11.1269 0.873087C11.2718 1.01795 11.3442 1.19359 11.3442 1.39999C11.3442 1.60639 11.2718 1.78202 11.1269 1.92689L6.63266 6.42111C6.53908 6.51471 6.44036 6.58074 6.33651 6.61919C6.23268 6.65765 6.1205 6.67689 5.99999 6.67689Z" fill="#364321"/>\
     </svg>\
     ';
- var tom ;
+ var tom =false ;
     $selects.each(function (index, select) {
         var settings = {
             controlInput: null,
@@ -48,11 +48,14 @@ function select() {
 
 
     })
-    tom.on('change',function(el){
-     
-     let trigger = $(document).find('.variation-item[data-value='+tom.getValue()+']');
-       allowattributes(trigger,true)
-    })
+    if(tom){
+
+        tom.on('change',function(el){
+         
+         let trigger = $(document).find('.variation-item[data-value='+tom.getValue()+']');
+           allowattributes(trigger,true)
+        })
+    }
 
 
 
@@ -125,8 +128,9 @@ function select() {
         let $select = $('form.cart').find('[name="' + select + '"]');
         $select.val(value).trigger('change')
         if(!recurtion){
-
+    if(tom){
             tom.setValue(value);
+    }
         }
         $select.trigger('click')
 

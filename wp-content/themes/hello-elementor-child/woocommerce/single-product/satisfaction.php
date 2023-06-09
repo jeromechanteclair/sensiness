@@ -1,6 +1,5 @@
 <?php
 $group=get_field('satisfaction_group');
-var_dump($group);
 if($group):
 // Check rows existexists.
 $subtitle =$group['subtitle_satisfaction'];
