@@ -13,7 +13,8 @@ function scroll() {
     };
 
     $(window).scroll(function () {
-        if ($(document.find('.video-container '))) {
+        // console.log($(document).find('.video-container '));
+        if ($(document).find('.video-container ').length>0) {
 
 
             if ($('.video-container ').isInViewport()) {
