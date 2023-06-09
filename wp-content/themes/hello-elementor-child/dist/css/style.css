@@ -1328,6 +1328,15 @@ ul.accordions span {
 }
 
 .custom-price__right .woocommerce-Price-amount {
+  text-decoration: line-through;
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  color: var(--red);
+}
+
+.custom-price__right .woocommerce-Price-amount {
   font-family: "Recoleta";
   font-style: normal;
   font-weight: 400;

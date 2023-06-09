@@ -632,7 +632,17 @@
         grid-template-rows: 1fr 1fr;
         text-align: right;
         align-items: center;
-
+        del{
+                }
+        .woocommerce-Price-amount {
+               text-decoration: line-through;
+                    font-family: 'NeueHaasDisplay-Roman, sans-serif';
+                    font-style: normal;
+                    font-weight: 450;
+                    font-size: 16px;
+                    color: var(--red);
+        
+        }
         .woocommerce-Price-amount {
             font-family: "Recoleta";
             font-style: normal;
