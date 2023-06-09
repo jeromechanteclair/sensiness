@@ -14,12 +14,16 @@ if(have_rows('photos_illustration', )): ?>
 
 
 	?>
-	<picture>
-		<img src="<?=$image_left['url'];?>" alt="<?=$title;?>">
-	</picture>
-	<picture>
-		<img src="<?=$image_right['url'];?>" alt="<?=$title;?>">
-	</picture>
+	<?php if($image_left):?>
+		<picture>
+			<img src="<?=$image_left['url'];?>" alt="<?=$title;?>">
+		</picture>
+	<?php endif;?>
+	<?php if($image_right):?>
+		<picture>
+			<img src="<?=$image_right['url'];?>" alt="<?=$title;?>">
+		</picture>
+	<?php endif;?>
 	
 	<?php  endwhile;?>
 
