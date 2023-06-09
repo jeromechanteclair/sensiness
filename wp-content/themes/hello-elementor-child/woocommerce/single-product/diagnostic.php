@@ -1,6 +1,6 @@
 <?php
 
-if(have_rows('diagnostic', )): ?>
+if(have_rows('diagnostic' )): ?>
 <section class="diagnostic">
 
 
