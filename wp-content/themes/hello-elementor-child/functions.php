@@ -315,3 +315,4 @@ add_action('shutdown', function () {
 });
 
 add_image_size('product_slide_thumbnail', 62, 62);
+add_image_size('product_slide', 500, 961);
