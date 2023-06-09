@@ -1,9 +1,9 @@
 function scroll() {
     var formtop = $('.variations_form').offset().top;
     var formtrigger = formtop+$('.variations_form').outerHeight();
-    $.fn.isInViewport = function () {
-        let elementTop = $(this).offset().top;
-        let elementBottom = elementTop + $(this).outerHeight();
+    function isInViewport($element) {
+        let elementTop = $($element).offset().top;
+        let elementBottom = elementTop + $($element).outerHeight();
 
         let viewportTop = $(window).scrollTop();
         let viewportBottom = viewportTop + $(window).height();
@@ -12,7 +12,9 @@ function scroll() {
     };
  
     $(window).scroll(function () {
+        if($(document.find(''))){
 
+        
         if ($('.video-container ').isInViewport()) {
 
             let video = $('.video-container ').find('video');
@@ -21,6 +23,7 @@ function scroll() {
 
             let video = $('.video-container ').find('video');
             video[0].autoplay = false;
+        }
         }
         if(formtrigger< $(window).scrollTop()){
                let bodyheight = $('body').outerHeight();

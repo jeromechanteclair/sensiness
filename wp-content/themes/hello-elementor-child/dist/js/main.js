@@ -100,20 +100,23 @@ __webpack_require__.r(__webpack_exports__);
 function scroll() {
   var formtop = $('.variations_form').offset().top;
   var formtrigger = formtop + $('.variations_form').outerHeight();
-  $.fn.isInViewport = function () {
-    var elementTop = $(this).offset().top;
-    var elementBottom = elementTop + $(this).outerHeight();
+  function isInViewport($element) {
+    var elementTop = $($element).offset().top;
+    var elementBottom = elementTop + $($element).outerHeight();
     var viewportTop = $(window).scrollTop();
     var viewportBottom = viewportTop + $(window).height();
     return elementBottom > viewportTop && elementTop < viewportBottom;
-  };
+  }
+  ;
   $(window).scroll(function () {
-    if ($('.video-container ').isInViewport()) {
-      var video = $('.video-container ').find('video');
-      video[0].autoplay = true;
-    } else {
-      var _video = $('.video-container ').find('video');
-      _video[0].autoplay = false;
+    if ($(document.find(''))) {
+      if ($('.video-container ').isInViewport()) {
+        var video = $('.video-container ').find('video');
+        video[0].autoplay = true;
+      } else {
+        var _video = $('.video-container ').find('video');
+        _video[0].autoplay = false;
+      }
     }
     if (formtrigger < $(window).scrollTop()) {
       var bodyheight = $('body').outerHeight();
