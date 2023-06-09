@@ -1,3 +1,7 @@
+
+@mixin transition{
+    transition: all 0.2s ease-in-out;
+}
 @mixin button {
 
     font-family: 'NeueHaasDisplay-Roman, sans-serif';
@@ -12,6 +16,10 @@
     background-color: var(--green);
     border-radius: 10px;
     border: none;
+    @include transition;
+    &:hover{
+        background-color: #607440;
+    }
 }
 @mixin button-transparent {
 
@@ -26,7 +34,12 @@
     text-transform: uppercase;
     background-color:transparent;
     border:1px solid var(--green);
-    border-radius:50px;
+    border-radius:10px;
+    @include transition;
+    &:hover{
+        background-color: var(--green);
+        color: white;
+    }
 }
 
 @mixin quantity {
@@ -64,3 +77,4 @@
     @include container-min;
 }
 }
+

@@ -1,6 +1,10 @@
 .single-product {
     scroll-behavior: smooth;
 
+    .stock {
+        display: none
+    }
+
     .button {
         @include button;
     }
@@ -155,10 +159,12 @@
                 .thumb {
                     max-height: 64px;
                     max-width: 64px;
-                     @media screen and (max-width:810px) {
-                          max-height: 48px;
-                    max-width: 48px;
-                     }
+
+                    @media screen and (max-width:810px) {
+                        max-height: 48px;
+                        max-width: 48px;
+                    }
+
                     cursor: pointer;
                     border-radius: 10px;
                     margin: 0;
@@ -183,9 +189,10 @@
                 width: 112px;
                 height: 112px;
                 z-index: 1;
-                   @media screen and (max-width:810px) {
+
+                @media screen and (max-width:810px) {
                     left: 24px;
-                   }
+                }
 
                 .textpath {
                     position: absolute;
@@ -247,8 +254,13 @@
                 line-height: 24px;
                 background-color: rgba(255, 255, 255, 0.2);
                 /* identical to box height, or 150% */
-
+                @include transition;
                 text-transform: uppercase;
+
+                &:hover {
+                    background-color: var(--green);
+                    color: white;
+                }
 
                 @media screen and (max-width:810px) {
                     display: none;
@@ -320,13 +332,37 @@
 
     }
 
-
-    .variations_form {
+    .product form.cart .button{
+               @include button;
+    } .cart {
         .woocommerce-variation-availability {
             display: none;
         }
-     
+
+        .sticky-only {
+            display: none;
+        }
+
         &.sticky {
+            .sticky-only {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                p:first-of-type {
+                    font-family: "Recoleta";
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+
+                p {
+                    margin-bottom: 0;
+                }
+            }
+
             position: fixed;
             bottom: 48px;
             z-index: 98;
@@ -336,9 +372,11 @@
             align-items: center;
             justify-content: center;
             animation: translatetop 0.2s ease-in-out forwards;
-                @media screen and (max-width:640px) {
-                     bottom:24px;
-                }
+
+            @media screen and (max-width:640px) {
+                bottom: 24px;
+            }
+
             @keyframes translatetop {
                 from {
                     opacity: 0;
@@ -366,6 +404,7 @@
                 @media screen and (max-width:810px) {
                     max-width: calc(var(--max-width) - 48px);
                 }
+
                 @media screen and (max-width:640px) {
                     flex-flow: column;
                 }
@@ -505,6 +544,10 @@
             }
         }
 
+        .button {
+            @include button;
+        }
+
         .woocommerce-variation-add-to-cart {
             display: flex;
             align-items: center;
@@ -518,9 +561,7 @@
                 }
             }
 
-            .button {
-                @include button;
-            }
+
         }
     }
 
@@ -530,6 +571,47 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+
+    .mc_variable-from {
+
+        grid-area: bottom;
+        padding-right: 12px;
+    }
+
+    .mc_variable-sale {
+
+        grid-area: bottom;
+        grid-column: 2;
+        font-family: "Recoleta";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 40px;
+
+    }
+
+    .mc_variable-regular {
+        .woocommerce-Price-amount {
+            color: var(--red);
+            font-style: normal;
+            font-weight: 450;
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'NeueHaasDisplay-Roman, sans-serif';
+        }
+
+
+        display: block;
+        grid-area: top;
+        grid-column: span 3;
+    }
+
+    .mc_variable-suffix {
+        grid-area: bottom;
+        grid-column: 3;
+        display: block;
+        padding-left: 12px;
+    }
 
     &__left {
         p {
@@ -544,9 +626,26 @@
     }
 
     &__right {
-        display: flex;
-        flex-flow: column-reverse;
+        display: grid;
+        grid-template-areas: "top""bottom";
+        grid-template-columns: auto auto auto;
+        grid-template-rows: 1fr 1fr;
         text-align: right;
+        align-items: center;
+
+        .woocommerce-Price-amount {
+            font-family: "Recoleta";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 40px;
+        }
+
+        //    gap:12px;
+        .wc-points-rewards-product-message {
+            order: 2;
+            grid-area: bottom;
+        }
 
         .mc_variable-from {
             order: 1;
@@ -563,6 +662,7 @@
         }
 
         .price {
+            grid-area: top;
             display: flex;
             flex-flow: row;
             gap: 12px;
@@ -858,7 +958,8 @@ html {
 
     @media screen and (max-width:810px) {
         flex-flow: column;
-      padding: 48px ;    }
+        padding: 48px;
+    }
 
     &__item {
         display: flex;
@@ -901,26 +1002,29 @@ html {
         padding: 96px 0;
         max-width: 100%;
         gap: calc(var(--max-width)*0.0166);
-           @media screen and (max-width:640px) {
-            gap:24px;
+
+        @media screen and (max-width:640px) {
+            gap: 24px;
             flex-flow: column;
-           }
-         
+        }
+
     }
 
     &__left {
         // padding-left: calc(var(--max-width)*0.0833);
         width: calc(var(--max-width)*0.3375);
-          @media screen and (max-width:640px) {
-      width: calc(var(--max-width) - 48px);
-        margin: 0 auto;
-           }
+
+        @media screen and (max-width:640px) {
+            width: calc(var(--max-width) - 48px);
+            margin: 0 auto;
+        }
 
         .h2 {
             margin-top: 0;
-                @media screen and (max-width:640px) {
-                    margin-bottom: 24px;
-                }
+
+            @media screen and (max-width:640px) {
+                margin-bottom: 24px;
+            }
 
             // max-width: calc(var(--max-width)*0.3375);
         }
@@ -928,10 +1032,11 @@ html {
 
     &__right {
         width: calc(var(--max-width)*0.4791);
-          @media screen and (max-width:640px) {
-      width: calc(var(--max-width) - 48px);
-        margin: 0 auto;
-           }
+
+        @media screen and (max-width:640px) {
+            width: calc(var(--max-width) - 48px);
+            margin: 0 auto;
+        }
     }
 }
 
@@ -947,18 +1052,22 @@ html {
     gap: calc(var(--max-width)*0.0875);
     max-width: var(--max-width);
     margin: 0 auto;
+
     @media screen and (max-width:640px) {
-        grid-template-columns:1fr;
-        gap:0;
+        grid-template-columns: 1fr;
+        gap: 0;
     }
+
     &__left {
-           @media screen and (max-width:640px) {
-        width: calc(var(--max-width) - 48px);
-        margin: 0 auto;
-        .h2{
-            margin-bottom: 24px;
+        @media screen and (max-width:640px) {
+            width: calc(var(--max-width) - 48px);
+            margin: 0 auto;
+
+            .h2 {
+                margin-bottom: 24px;
+            }
         }
-    }
+
         // padding-left: calc(var(--max-width)* 0.083);
 
 
@@ -1015,9 +1124,11 @@ html {
         //   width: calc(var(--max-width)*0.5);
         picture {
             width: 100%;
- @media screen and (max-width:640px) {
-    aspect-ratio: 4/3;
- }
+
+            @media screen and (max-width:640px) {
+                aspect-ratio: 4/3;
+            }
+
             aspect-ratio: 708/410;
             height: 100%;
             // min-height: calc(var(--max-width)*0.32638);
@@ -1056,7 +1167,7 @@ html {
         position: absolute;
         overflow: hidden;
         gap: 24px;
-        
+
         animation: marquee 15s linear infinite;
     }
 
@@ -1066,10 +1177,11 @@ html {
         align-items: center;
         gap: 24px;
         width: 25%;
-           @media screen and (max-width:640px) {
-                gap: 12px;
-                      width: 50%;
-            }
+
+        @media screen and (max-width:640px) {
+            gap: 12px;
+            width: 50%;
+        }
 
         span {
             white-space: nowrap;
@@ -1121,11 +1233,13 @@ html {
 
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
-            @media screen and (max-width:640px) {
-     display: flex;
-     flex-flow: row wrap;
-justify-content: center;
-            }
+
+        @media screen and (max-width:640px) {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+
         &+p {
             font-family: 'NeueHaasDisplay-Roman, sans-serif';
             color: var(--green);
@@ -1145,9 +1259,11 @@ justify-content: center;
         flex-flow: column;
         justify-content: center;
         align-items: center;
-            @media screen and (max-width:640px) {
-                width: 50%;
-            }
+
+        @media screen and (max-width:640px) {
+            width: 50%;
+        }
+
         &--title {
             font-family: 'Recoleta';
             font-style: normal;
@@ -1237,9 +1353,10 @@ justify-content: center;
             display: grid;
             grid-template-columns: 1fr 1fr;
             margin-bottom: 48px;
-                @media screen and (max-width:640px) {
-                        grid-template-columns: 1fr ;
-                }
+
+            @media screen and (max-width:640px) {
+                grid-template-columns: 1fr;
+            }
 
             h2 {
                 font-family: 'Recoleta';
@@ -1248,18 +1365,21 @@ justify-content: center;
                 font-size: 48px;
                 line-height: 56px;
                 margin-bottom: 0;
-                  @media screen and (max-width:640px) {
+
+                @media screen and (max-width:640px) {
                     text-align: center;
-                  }
+                }
             }
 
             div {
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
-                  @media screen and (max-width:640px) {
+
+                @media screen and (max-width:640px) {
                     margin-top: 24px;
-      justify-content: center;                }
+                    justify-content: center;
+                }
             }
 
             .shop-cta {
@@ -1276,10 +1396,12 @@ justify-content: center;
                 display: flex;
                 flex-flow: column;
                 align-items: center;
-  @media screen and (max-width:640px) {
-                       float: none;
-                       width: 100%;
+
+                @media screen and (max-width:640px) {
+                    float: none;
+                    width: 100%;
                 }
+
                 .onsale {
                     display: none;
                 }
@@ -1330,18 +1452,22 @@ justify-content: center;
             display: grid;
             grid-template-columns: calc(var(--max-width)*0.5) calc(var(--max-width)*0.5);
             max-width: var(--max-width);
-  @media screen and (max-width:640px) {
-    grid-template-columns: 1fr;
-  }
+
+            @media screen and (max-width:640px) {
+                grid-template-columns: 1fr;
+            }
+
             picture {
                 width: 100%;
                 height: 100%;
                 aspect-ratio: 1/1;
-                            max-width: var(--max-width);
-  @media screen and (max-width:640px) {
-                   aspect-ratio: 4/3;
+                max-width: var(--max-width);
 
-  }
+                @media screen and (max-width:640px) {
+                    aspect-ratio: 4/3;
+
+                }
+
                 display: block;
 
                 img {
@@ -1384,18 +1510,21 @@ justify-content: center;
             margin-top: 56px;
             padding: 56px;
             border-radius: 10px;
-  @media screen and (max-width:640px) {
-    padding: 24px;
-    gap:0;
-  }
+
+            @media screen and (max-width:640px) {
+                padding: 24px;
+                gap: 0;
+            }
+
             margin-bottom: 96px;
             display: grid;
             grid-template-columns: 2fr 1fr;
             align-items: flex-end;
             gap: 10%;
-                            @media screen and (max-width:810px) {
-                                  grid-template-columns: 1fr;
-                            }
+
+            @media screen and (max-width:810px) {
+                grid-template-columns: 1fr;
+            }
 
             &__left {
                 h2 {
@@ -1413,13 +1542,16 @@ justify-content: center;
                 display: flex;
                 align-items: flex-end;
                 justify-content: flex-end;
-   @media screen and (max-width:810px) {
-                               justify-content: flex-start;
-                            }
+
+                @media screen and (max-width:810px) {
+                    justify-content: flex-start;
+                }
+
                 .diagnostic-button {
                     @include button;
                     width: auto;
                     text-align: center;
+
                 }
 
             }
@@ -1440,11 +1572,12 @@ Calculator
             max-width: var(--max-width);
             margin: 0 auto;
             gap: calc(var(--max-width)*0.07916);
-                       @media screen and (max-width:640px) {
-                        grid-template-columns: 1fr;
-                        gap:0;
-                       }
-                   
+
+            @media screen and (max-width:640px) {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
 
             &__left {
                 height: 100%;
@@ -1466,10 +1599,12 @@ Calculator
             &__right {
                 width: 100%;
                 padding: 64px 0;
-    @media screen and (max-width:640px) {
-                width: calc(var(--max-width) - 48px);
-                margin: 0 auto;
-                       }
+
+                @media screen and (max-width:640px) {
+                    width: calc(var(--max-width) - 48px);
+                    margin: 0 auto;
+                }
+
                 overflow: hidden;
 
                 form input[type="range"] {
@@ -1598,11 +1733,13 @@ FAQ
             justify-content: center;
             flex-flow: column;
             margin-bottom: 24px;
+
             @media screen and (max-width:640px) {
                 max-width: calc(var(--max-width) - 48px);
                 margin: 0 auto;
-                  margin-bottom: 24px;
+                margin-bottom: 24px;
             }
+
             h2 {
                 font-family: 'Recoleta';
                 font-style: normal;

@@ -30,7 +30,13 @@ if ( $product->is_in_stock() ) : ?>
 	<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 	<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
-		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+		<div><?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+			<div class="sticky-only">
+		<p><?= get_the_title();?></p>
+		<p><?= wc_price($product->get_price());?></p>
+	
+	</div>
+<div class="woocommerce-variation-add-to-cart variations_button">
 
 		<?php
 		do_action( 'woocommerce_before_add_to_cart_quantity' );
@@ -47,8 +53,9 @@ if ( $product->is_in_stock() ) : ?>
 		?>
 
 		<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
-
+</div>
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+	</div>
 	</form>
 
 	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>

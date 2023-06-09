@@ -1,6 +1,6 @@
 function scroll() {
-    var formtop = $('.variations_form').offset().top;
-    var formtrigger = formtop + $('.variations_form').outerHeight();
+    var formtop = $('.single-product .cart').offset().top;
+    var formtrigger = formtop + $('.single-product .cart').outerHeight();
 
     function isInViewport($element) {
         let elementTop = $($element).offset().top;
@@ -31,23 +31,23 @@ function scroll() {
             let bodyheight = $('body').outerHeight();
             $('body').css('height', bodyheight + 'px')
 
-            let reworked = $('.variations_form').outerHeight();
-            if (!$('.variations_form').hasClass('sticky')) {
+            let reworked = $('.single-product .cart').outerHeight();
+            if (!$('.single-product .cart').hasClass('sticky')) {
                 setTimeout(() => {
 
-                    $('.variations_form').addClass('sticky')
+                    $('.single-product .cart').addClass('sticky')
                 }, 500);
 
             }
 
         } else {
 
-            // $('.variations_form').removeClass('sticky');
-            if ($('.variations_form').hasClass('sticky')) {
-                // $('.variations_form').removeClass('sticky')
+            // $('.single-product .cart').removeClass('sticky');
+            if ($('.single-product .cart').hasClass('sticky')) {
+                // $('.single-product .cart').removeClass('sticky')
                 setTimeout(() => {
 
-                    $('.variations_form').removeClass('sticky')
+                    $('.single-product .cart').removeClass('sticky')
                 }, 500);
             }
 

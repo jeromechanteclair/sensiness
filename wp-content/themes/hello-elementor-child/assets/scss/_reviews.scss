@@ -83,6 +83,11 @@
                 background-color: white;
                 color: var(--green);
                 border: 1px solid #364321;
+                &:hover{
+                        background-color: white;
+                color: var(--green);
+                border: 1px solid #364321;
+                }
 
             }
 
@@ -331,14 +336,14 @@ img{
 
 
     &.drag {
-        background-color: #466466;
+        background-color: #607440;
     }
 
     transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 
     &:hover {
         cursor: pointer;
-        background-color: #466466;
+        background-color: #607440;
     }
 
     input[type=file] {

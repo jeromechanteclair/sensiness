@@ -153,7 +153,7 @@ if ( ! comments_open() ) {
 							</g>
 							</svg>
 
-							<input type="file" multiple data-parsley-fileextension="jpg,png" name="comment_file[]" id="comment_file"  accept=".jpg, .png">
+							<input type="file" multiple data-parsley-fileextension="jpg,png" name="comment_file" id="comment_file"  accept=".jpg, .png">
 
 						</label>
 					</p>';

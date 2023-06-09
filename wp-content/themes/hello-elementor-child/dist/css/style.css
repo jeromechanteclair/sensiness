@@ -284,7 +284,20 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
+  transition: all 0.2s ease-in-out;
   text-transform: none;
+  background-color: white;
+  color: var(--green);
+  border: 1px solid #364321;
+}
+
+#review_form_wrapper #review_form #commentform input:hover,
+#review_form_wrapper #review_form #commentform textarea:hover {
+  background-color: #607440;
+}
+
+#review_form_wrapper #review_form #commentform input:hover,
+#review_form_wrapper #review_form #commentform textarea:hover {
   background-color: white;
   color: var(--green);
   border: 1px solid #364321;
@@ -413,6 +426,11 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+#review_form_wrapper #review_form #commentform .form-submit input:hover {
+  background-color: #607440;
 }
 
 #review_form_wrapper #review_form .toggle-review-form {
@@ -539,6 +557,11 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.single-product #reviews #comments .reviews-header .toggle-review-form:hover {
+  background-color: #607440;
 }
 
 .file-drop {
@@ -563,16 +586,21 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
+  transition: all 0.2s ease-in-out;
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 
+.file-drop:hover {
+  background-color: #607440;
+}
+
 .file-drop.drag {
-  background-color: #466466;
+  background-color: #607440;
 }
 
 .file-drop:hover {
   cursor: pointer;
-  background-color: #466466;
+  background-color: #607440;
 }
 
 .file-drop input[type=file] {
@@ -647,6 +675,10 @@ ul.accordions span {
   color: var(--green);
 }
 
+.single-product .stock {
+  display: none;
+}
+
 .single-product .button {
   font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
@@ -660,6 +692,11 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.single-product .button:hover {
+  background-color: #607440;
 }
 
 .single-product .star-rating * {
@@ -894,7 +931,13 @@ ul.accordions span {
   line-height: 24px;
   background-color: rgba(255, 255, 255, 0.2);
   /* identical to box height, or 150% */
+  transition: all 0.2s ease-in-out;
   text-transform: uppercase;
+}
+
+.single-product #main .product-wrapper .diagnostic-cta:hover {
+  background-color: var(--green);
+  color: white;
 }
 
 @media screen and (max-width: 810px) {
@@ -956,11 +999,35 @@ ul.accordions span {
   margin-top: 64px;
 }
 
-.single-product .variations_form .woocommerce-variation-availability {
+.single-product .product form.cart .button {
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--beige);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: var(--green);
+  border-radius: 10px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.single-product .product form.cart .button:hover {
+  background-color: #607440;
+}
+
+.single-product .cart .woocommerce-variation-availability {
   display: none;
 }
 
-.single-product .variations_form.sticky {
+.single-product .cart .sticky-only {
+  display: none;
+}
+
+.single-product .cart.sticky {
   position: fixed;
   bottom: 48px;
   z-index: 98;
@@ -972,8 +1039,27 @@ ul.accordions span {
   animation: translatetop 0.2s ease-in-out forwards;
 }
 
+.single-product .cart.sticky .sticky-only {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.single-product .cart.sticky .sticky-only p:first-of-type {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.single-product .cart.sticky .sticky-only p {
+  margin-bottom: 0;
+}
+
 @media screen and (max-width: 640px) {
-  .single-product .variations_form.sticky {
+  .single-product .cart.sticky {
     bottom: 24px;
   }
 }
@@ -990,7 +1076,7 @@ ul.accordions span {
   }
 }
 
-.single-product .variations_form.sticky > div {
+.single-product .cart.sticky > div {
   background-color: var(--beige);
   padding: 24px;
   border-radius: 10px;
@@ -1004,53 +1090,53 @@ ul.accordions span {
 }
 
 @media screen and (max-width: 810px) {
-  .single-product .variations_form.sticky > div {
+  .single-product .cart.sticky > div {
     max-width: calc(var(--max-width) - 48px);
   }
 }
 
 @media screen and (max-width: 640px) {
-  .single-product .variations_form.sticky > div {
+  .single-product .cart.sticky > div {
     flex-flow: column;
   }
 }
 
-.single-product .variations_form.sticky > div .variations {
+.single-product .cart.sticky > div .variations {
   margin-bottom: 0 !important;
 }
 
-.single-product .variations_form.sticky > div .ts-wrapper {
+.single-product .cart.sticky > div .ts-wrapper {
   display: block !important;
 }
 
-.single-product .variations_form.sticky > div .ts-dropdown {
+.single-product .cart.sticky > div .ts-dropdown {
   top: unset;
   bottom: 100%;
 }
 
-.single-product .variations_form.sticky > div .variation-wrapper {
+.single-product .cart.sticky > div .variation-wrapper {
   display: none;
 }
 
-.single-product .variations_form select.attribute-select {
+.single-product .cart select.attribute-select {
   padding: 1.2rem;
   display: flex;
   justify-content: space-between;
 }
 
-.single-product .variations_form select.attribute-select option {
+.single-product .cart select.attribute-select option {
   padding: 1.2rem;
   display: flex;
   justify-content: space-between;
 }
 
-.single-product .variations_form .variation-wrapper {
+.single-product .cart .variation-wrapper {
   list-style: none;
   border: none;
   border-radius: unset;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item {
+.single-product .cart .variation-wrapper .variation-item {
   cursor: pointer;
   display: grid;
   grid-template-columns: auto 3.5fr auto;
@@ -1059,15 +1145,15 @@ ul.accordions span {
   align-items: baseline;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item:first-of-type {
+.single-product .cart .variation-wrapper .variation-item:first-of-type {
   border-top: 1px solid transparent;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item.selected .checkbox:after {
+.single-product .cart .variation-wrapper .variation-item.selected .checkbox:after {
   opacity: 1;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item .checkbox {
+.single-product .cart .variation-wrapper .variation-item .checkbox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1078,7 +1164,7 @@ ul.accordions span {
   margin-right: 24px;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item .checkbox:after {
+.single-product .cart .variation-wrapper .variation-item .checkbox:after {
   content: "";
   height: 8px;
   width: 8px;
@@ -1087,7 +1173,7 @@ ul.accordions span {
   background-color: var(--green);
 }
 
-.single-product .variations_form .variation-wrapper .variation-item__title {
+.single-product .cart .variation-wrapper .variation-item__title {
   font-family: "Recoleta";
   font-style: normal;
   font-weight: 400;
@@ -1095,11 +1181,11 @@ ul.accordions span {
   line-height: 24px;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item__title p {
+.single-product .cart .variation-wrapper .variation-item__title p {
   margin-bottom: 0;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item__title .description {
+.single-product .cart .variation-wrapper .variation-item__title .description {
   font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
   font-weight: 450;
@@ -1108,7 +1194,7 @@ ul.accordions span {
   color: var(--red);
 }
 
-.single-product .variations_form .variation-wrapper .variation-item__prices {
+.single-product .cart .variation-wrapper .variation-item__prices {
   text-align: right;
   font-family: "Recoleta";
   font-style: normal;
@@ -1117,7 +1203,7 @@ ul.accordions span {
   line-height: 24px;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item__prices span {
+.single-product .cart .variation-wrapper .variation-item__prices span {
   display: inline-block;
   font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
@@ -1126,27 +1212,47 @@ ul.accordions span {
   line-height: 24px;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item__prices span.display_regular_price {
+.single-product .cart .variation-wrapper .variation-item__prices span.display_regular_price {
   margin-right: 12px;
 }
 
-.single-product .variations_form .variation-wrapper .variation-item__prices span.display_regular_price bdi {
+.single-product .cart .variation-wrapper .variation-item__prices span.display_regular_price bdi {
   text-decoration: line-through;
   color: var(--red);
 }
 
-.single-product .variations_form .variation-wrapper .variation-item__prices .percent {
+.single-product .cart .variation-wrapper .variation-item__prices .percent {
   display: block;
 }
 
-.single-product .variations_form .woocommerce-variation-add-to-cart {
+.single-product .cart .button {
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--beige);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: var(--green);
+  border-radius: 10px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.single-product .cart .button:hover {
+  background-color: #607440;
+}
+
+.single-product .cart .woocommerce-variation-add-to-cart {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-flow: row;
 }
 
-.single-product .variations_form .woocommerce-variation-add-to-cart .quantity input {
+.single-product .cart .woocommerce-variation-add-to-cart .quantity input {
   background-color: white;
   padding: 16px 24px;
   font-family: "NeueHaasDisplay-Roman, sans-serif";
@@ -1160,25 +1266,47 @@ ul.accordions span {
   width: auto;
 }
 
-.single-product .variations_form .woocommerce-variation-add-to-cart .button {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
-  font-style: normal;
-  font-weight: 450;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--beige);
-  width: 100%;
-  padding: 16px 24px;
-  text-transform: uppercase;
-  background-color: var(--green);
-  border-radius: 10px;
-  border: none;
-}
-
 .custom-price {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+}
+
+.custom-price .mc_variable-from {
+  grid-area: bottom;
+  padding-right: 12px;
+}
+
+.custom-price .mc_variable-sale {
+  grid-area: bottom;
+  grid-column: 2;
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.custom-price .mc_variable-regular {
+  display: block;
+  grid-area: top;
+  grid-column: span 3;
+}
+
+.custom-price .mc_variable-regular .woocommerce-Price-amount {
+  color: var(--red);
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "NeueHaasDisplay-Roman, sans-serif";
+}
+
+.custom-price .mc_variable-suffix {
+  grid-area: bottom;
+  grid-column: 3;
+  display: block;
+  padding-left: 12px;
 }
 
 .custom-price__left p {
@@ -1191,9 +1319,25 @@ ul.accordions span {
 }
 
 .custom-price__right {
-  display: flex;
-  flex-flow: column-reverse;
+  display: grid;
+  grid-template-areas: "top" "bottom";
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 1fr 1fr;
   text-align: right;
+  align-items: center;
+}
+
+.custom-price__right .woocommerce-Price-amount {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.custom-price__right .wc-points-rewards-product-message {
+  order: 2;
+  grid-area: bottom;
 }
 
 .custom-price__right .mc_variable-from {
@@ -1210,6 +1354,7 @@ ul.accordions span {
 }
 
 .custom-price__right .price {
+  grid-area: top;
   display: flex;
   flex-flow: row;
   gap: 12px;
@@ -1922,10 +2067,15 @@ html {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
+  transition: all 0.2s ease-in-out;
   display: flex;
   align-items: center;
   width: auto;
   line-height: 100%;
+}
+
+.single-product .related.products header .shop-cta:hover {
+  background-color: #607440;
 }
 
 .single-product .related.products ul li.product {
@@ -1979,11 +2129,17 @@ html {
   text-transform: uppercase;
   background-color: transparent;
   border: 1px solid var(--green);
-  border-radius: 50px;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
   width: auto;
+}
+
+.single-product .related.products ul li.product .button:hover {
+  background-color: var(--green);
+  color: white;
 }
 
 /**
@@ -2109,8 +2265,13 @@ html {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
+  transition: all 0.2s ease-in-out;
   width: auto;
   text-align: center;
+}
+
+.single-product .diagnostic .diagnostic-container__right .diagnostic-button:hover {
+  background-color: #607440;
 }
 
 /**
@@ -2325,10 +2486,15 @@ FAQ
   background-color: var(--green);
   border-radius: 10px;
   border: none;
+  transition: all 0.2s ease-in-out;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
   width: auto;
+}
+
+.single-product .faq header .faq-button:hover {
+  background-color: #607440;
 }
 
 .body-overlay {

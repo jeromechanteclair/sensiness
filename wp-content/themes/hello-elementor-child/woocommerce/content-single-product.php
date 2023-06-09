@@ -98,9 +98,11 @@ if ( post_password_required() ) {
 
 <?php do_action('woocommerce_reviews');?>
 <?php wc_get_template('single-product/diagnostic.php');?>
+<?php woocommerce_output_related_products();?>
 
 <?php wc_get_template('single-product/bandeau-marquee.php');?>
-<?php wc_get_template('single-product/images.php');?>
+<?php wc_get_template('single-product/images.php');
+?>
 
 <div class="faq">
 	<header>
