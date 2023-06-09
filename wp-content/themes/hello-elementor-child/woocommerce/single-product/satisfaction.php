@@ -1,5 +1,6 @@
 <?php
 $group=get_field('satisfaction_group');
+if($group):
 // Check rows existexists.
 $subtitle =$group['subtitle_satisfaction'];
 if(have_rows('satisfaction_group')): while ( have_rows('satisfaction_group') ) : the_row(); ?>
@@ -60,6 +61,7 @@ endif;
 ?>
 <?php
 endwhile;
+endif;
 endif;
 ?>
 

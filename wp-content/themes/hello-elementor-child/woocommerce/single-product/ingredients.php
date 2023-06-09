@@ -1,6 +1,7 @@
 <?php
 $group=get_field('ingredients');
 // Check rows existexists.
+if($group):
 $main_title =$group['title'];
 $main_img = $group['image'];
 if(have_rows('ingredients')): while (have_rows('ingredients')) : the_row(); ?>
@@ -41,6 +42,7 @@ endif;
     ?>
 <?php
 endwhile;
+endif;
 endif;
 ?>
 

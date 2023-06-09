@@ -1,6 +1,7 @@
 <?php
 
 $group=get_field('accordeon');
+if($group):
 // Check rows existexists.
 $title =$group['title'];
 
@@ -49,6 +50,7 @@ endif;
 ?>
 <?php
 endwhile;
+endif;
 endif;
 ?>
 
