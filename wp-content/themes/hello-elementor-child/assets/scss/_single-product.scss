@@ -63,18 +63,38 @@
     #main {
         max-width: 100%;
 
+        @media screen and (max-width:1024px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
         .product-wrapper {
             display: flex;
             justify-content: center;
             align-items: flex-start;
             gap: calc(var(--max-width)*0.07152);
 
+            @media screen and (max-width:1024px) {
+                flex-flow: column;
+            }
+
 
             .product-gallery {
                 width: calc(var(--max-width)*0.3666);
 
+                @media screen and (max-width:1024px) {
+                    width: 100%;
+                }
+
                 @media screen and (max-width:1440px) {
                     width: calc(var(--max-width)*0.3666);
+                }
+
+                @media screen and (max-width:1024px) {
+                    width: 100%;
+                    position: relative;
+                    top: unset;
+
                 }
 
                 overflow: hidden;
@@ -94,17 +114,14 @@
                 max-height: 100vh;
                 width: 100%;
                 position: relative;
-                .swiper-wrapper{
-                        width: 500px;
+
+                .swiper-wrapper {
+                    width: calc(var(--max-width)*0.3472);
                 }
+
                 .swiper-slide {
                     height: 100vh;
-                    width: 500px;
-
-
-
-
-
+                    width: calc(var(--max-width)*0.3472);
 
                     img,
                     video {
@@ -125,9 +142,23 @@
                 flex-flow: column;
                 gap: 16px;
 
+                @media screen and (max-width:810px) {
+                    right: unset;
+                    position: absolute;
+                    align-self: end;
+                    justify-self: center;
+                    z-index: 1;
+                    bottom: 10vh;
+                    flex-flow: row;
+                }
+
                 .thumb {
                     max-height: 64px;
                     max-width: 64px;
+                     @media screen and (max-width:810px) {
+                          max-height: 48px;
+                    max-width: 48px;
+                     }
                     cursor: pointer;
                     border-radius: 10px;
                     margin: 0;
@@ -152,6 +183,9 @@
                 width: 112px;
                 height: 112px;
                 z-index: 1;
+                   @media screen and (max-width:810px) {
+                    left: 24px;
+                   }
 
                 .textpath {
                     position: absolute;
@@ -159,31 +193,34 @@
                     max-width: 90px;
                     transform-origin: center;
                     width: 100%;
-                      animation: rotating 8s linear infinite;
+                    animation: rotating 8s linear infinite;
 
-             @keyframes rotating {
-            from {
-                -ms-transform: rotate(0deg);
-                -moz-transform: rotate(0deg);
-                -webkit-transform: rotate(0deg);
-                -o-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            to {
-                -ms-transform: rotate(360deg);
-                -moz-transform: rotate(360deg);
-                -webkit-transform: rotate(360deg);
-                -o-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-            }
+                    @keyframes rotating {
+                        from {
+                            -ms-transform: rotate(0deg);
+                            -moz-transform: rotate(0deg);
+                            -webkit-transform: rotate(0deg);
+                            -o-transform: rotate(0deg);
+                            transform: rotate(0deg);
+                        }
+
+                        to {
+                            -ms-transform: rotate(360deg);
+                            -moz-transform: rotate(360deg);
+                            -webkit-transform: rotate(360deg);
+                            -o-transform: rotate(360deg);
+                            transform: rotate(360deg);
+                        }
+                    }
 
                     text {
                         font-family: 'Recoleta';
                         font-style: normal;
                         font-weight: 400;
                         font-size: 11px;
-                        line-height: 11px; letter-spacing: 1px;                   }
+                        line-height: 11px;
+                        letter-spacing: 1px;
+                    }
 
                     display: flex;
                     align-items: flex-end;
@@ -213,6 +250,10 @@
 
                 text-transform: uppercase;
 
+                @media screen and (max-width:810px) {
+                    display: none;
+                }
+
             }
         }
 
@@ -231,6 +272,13 @@
 
             overflow: hidden;
             margin-right: calc(var(--max-width)*0.0833);
+
+            @media screen and (max-width:1024px) {
+                margin-top: 24px;
+                margin-right: auto;
+                margin-left: auto;
+                width: calc(var(--max-width) - 48px);
+            }
 
             h1 {
                 font-family: 'Recoleta';
@@ -277,7 +325,7 @@
         .woocommerce-variation-availability {
             display: none;
         }
-
+     
         &.sticky {
             position: fixed;
             bottom: 48px;
@@ -288,7 +336,9 @@
             align-items: center;
             justify-content: center;
             animation: translatetop 0.2s ease-in-out forwards;
-
+                @media screen and (max-width:640px) {
+                     bottom:24px;
+                }
             @keyframes translatetop {
                 from {
                     opacity: 0;
@@ -312,6 +362,13 @@
                 gap: 12px;
                 @include container;
                 width: 100%;
+
+                @media screen and (max-width:810px) {
+                    max-width: calc(var(--max-width) - 48px);
+                }
+                @media screen and (max-width:640px) {
+                    flex-flow: column;
+                }
 
                 .variations {
                     margin-bottom: 0 !important;
@@ -592,6 +649,10 @@
         flex-flow: row;
         align-items: center;
 
+        svg {
+            transform: rotate(180deg);
+        }
+
         .promo {
             text-decoration: line-through;
             color: var(--red);
@@ -715,6 +776,12 @@ html {
         margin-top: 52px;
         display: grid;
         grid-template-columns: auto auto;
+
+        @media screen and (max-width:1024px) {
+            grid-template-columns: auto;
+            gap: 24px;
+        }
+
         gap: 80px;
 
         &__left {}
@@ -789,6 +856,10 @@ html {
     gap: 68px;
     padding: 28px 0;
 
+    @media screen and (max-width:810px) {
+        flex-flow: column;
+      padding: 48px ;    }
+
     &__item {
         display: flex;
         align-items: center;
@@ -799,6 +870,11 @@ html {
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
+
+        @media screen and (max-width:810px) {
+            text-align: center;
+            flex-flow: column;
+        }
 
         p {
             margin-bottom: 0;
@@ -825,14 +901,26 @@ html {
         padding: 96px 0;
         max-width: 100%;
         gap: calc(var(--max-width)*0.0166);
+           @media screen and (max-width:640px) {
+            gap:24px;
+            flex-flow: column;
+           }
+         
     }
 
     &__left {
         // padding-left: calc(var(--max-width)*0.0833);
         width: calc(var(--max-width)*0.3375);
+          @media screen and (max-width:640px) {
+      width: calc(var(--max-width) - 48px);
+        margin: 0 auto;
+           }
 
         .h2 {
             margin-top: 0;
+                @media screen and (max-width:640px) {
+                    margin-bottom: 24px;
+                }
 
             // max-width: calc(var(--max-width)*0.3375);
         }
@@ -840,6 +928,10 @@ html {
 
     &__right {
         width: calc(var(--max-width)*0.4791);
+          @media screen and (max-width:640px) {
+      width: calc(var(--max-width) - 48px);
+        margin: 0 auto;
+           }
     }
 }
 
@@ -855,8 +947,18 @@ html {
     gap: calc(var(--max-width)*0.0875);
     max-width: var(--max-width);
     margin: 0 auto;
-
+    @media screen and (max-width:640px) {
+        grid-template-columns:1fr;
+        gap:0;
+    }
     &__left {
+           @media screen and (max-width:640px) {
+        width: calc(var(--max-width) - 48px);
+        margin: 0 auto;
+        .h2{
+            margin-bottom: 24px;
+        }
+    }
         // padding-left: calc(var(--max-width)* 0.083);
 
 
@@ -913,7 +1015,9 @@ html {
         //   width: calc(var(--max-width)*0.5);
         picture {
             width: 100%;
-
+ @media screen and (max-width:640px) {
+    aspect-ratio: 4/3;
+ }
             aspect-ratio: 708/410;
             height: 100%;
             // min-height: calc(var(--max-width)*0.32638);
@@ -952,6 +1056,7 @@ html {
         position: absolute;
         overflow: hidden;
         gap: 24px;
+        
         animation: marquee 15s linear infinite;
     }
 
@@ -961,6 +1066,10 @@ html {
         align-items: center;
         gap: 24px;
         width: 25%;
+           @media screen and (max-width:640px) {
+                gap: 12px;
+                      width: 50%;
+            }
 
         span {
             white-space: nowrap;
@@ -989,6 +1098,12 @@ html {
 
     video {
         aspect-ratio: 16/9;
+
+        @media screen and (max-width:810px) {
+            aspect-ratio: 4/3;
+
+        }
+
         width: 100%;
         object-fit: cover;
     }
@@ -1006,7 +1121,11 @@ html {
 
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
-
+            @media screen and (max-width:640px) {
+     display: flex;
+     flex-flow: row wrap;
+justify-content: center;
+            }
         &+p {
             font-family: 'NeueHaasDisplay-Roman, sans-serif';
             color: var(--green);
@@ -1026,7 +1145,9 @@ html {
         flex-flow: column;
         justify-content: center;
         align-items: center;
-
+            @media screen and (max-width:640px) {
+                width: 50%;
+            }
         &--title {
             font-family: 'Recoleta';
             font-style: normal;
@@ -1116,6 +1237,9 @@ html {
             display: grid;
             grid-template-columns: 1fr 1fr;
             margin-bottom: 48px;
+                @media screen and (max-width:640px) {
+                        grid-template-columns: 1fr ;
+                }
 
             h2 {
                 font-family: 'Recoleta';
@@ -1124,12 +1248,18 @@ html {
                 font-size: 48px;
                 line-height: 56px;
                 margin-bottom: 0;
+                  @media screen and (max-width:640px) {
+                    text-align: center;
+                  }
             }
 
             div {
                 display: flex;
                 align-items: center;
-                justify-content: flex-end
+                justify-content: flex-end;
+                  @media screen and (max-width:640px) {
+                    margin-top: 24px;
+      justify-content: center;                }
             }
 
             .shop-cta {
@@ -1146,12 +1276,18 @@ html {
                 display: flex;
                 flex-flow: column;
                 align-items: center;
-                .onsale{
+  @media screen and (max-width:640px) {
+                       float: none;
+                       width: 100%;
+                }
+                .onsale {
                     display: none;
                 }
-                a img{
+
+                a img {
                     border-radius: 10px;
                 }
+
                 .woocommerce-loop-product__title {
                     font-family: 'Recoleta';
                     font-style: normal;
@@ -1192,13 +1328,20 @@ html {
     .photos {
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: calc(var(--max-width)*0.5) calc(var(--max-width)*0.5);
             max-width: var(--max-width);
-
+  @media screen and (max-width:640px) {
+    grid-template-columns: 1fr;
+  }
             picture {
-                width: calc(var(--max-width)*0.5);
+                width: 100%;
                 height: 100%;
                 aspect-ratio: 1/1;
+                            max-width: var(--max-width);
+  @media screen and (max-width:640px) {
+                   aspect-ratio: 4/3;
+
+  }
                 display: block;
 
                 img {
@@ -1219,11 +1362,13 @@ html {
     .diagnostic {
         overflow: hidden;
         position: relative;
+        height: 100%;
 
         picture {
             width: 100%;
             display: flex;
             position: absolute;
+            height: 100%;
 
             img {
                 height: 100%;
@@ -1239,12 +1384,18 @@ html {
             margin-top: 56px;
             padding: 56px;
             border-radius: 10px;
-
+  @media screen and (max-width:640px) {
+    padding: 24px;
+    gap:0;
+  }
             margin-bottom: 96px;
             display: grid;
             grid-template-columns: 2fr 1fr;
             align-items: flex-end;
             gap: 10%;
+                            @media screen and (max-width:810px) {
+                                  grid-template-columns: 1fr;
+                            }
 
             &__left {
                 h2 {
@@ -1262,10 +1413,13 @@ html {
                 display: flex;
                 align-items: flex-end;
                 justify-content: flex-end;
-
+   @media screen and (max-width:810px) {
+                               justify-content: flex-start;
+                            }
                 .diagnostic-button {
                     @include button;
                     width: auto;
+                    text-align: center;
                 }
 
             }
@@ -1279,20 +1433,43 @@ Calculator
 .single-product {
     .calculateur {
         .calculateur-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: calc(var(--max-width) * 0.42083) calc(var(--max-width)*0.4083);
             justify-content: flex-start;
             align-items: center;
             max-width: var(--max-width);
             margin: 0 auto;
             gap: calc(var(--max-width)*0.07916);
+                       @media screen and (max-width:640px) {
+                        grid-template-columns: 1fr;
+                        gap:0;
+                       }
+                   
 
             &__left {
-                width: calc(var(--max-width) * 0.42083);
+                height: 100%;
+                width: 100%;
+
+                picture {
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
             }
 
             &__right {
-                width: calc(var(--max-width)*0.4083);
-
+                width: 100%;
+                padding: 64px 0;
+    @media screen and (max-width:640px) {
+                width: calc(var(--max-width) - 48px);
+                margin: 0 auto;
+                       }
                 overflow: hidden;
 
                 form input[type="range"] {
@@ -1420,7 +1597,12 @@ FAQ
             align-items: center;
             justify-content: center;
             flex-flow: column;
-
+            margin-bottom: 24px;
+            @media screen and (max-width:640px) {
+                max-width: calc(var(--max-width) - 48px);
+                margin: 0 auto;
+                  margin-bottom: 24px;
+            }
             h2 {
                 font-family: 'Recoleta';
                 font-style: normal;
@@ -1436,6 +1618,7 @@ FAQ
 
             p {
                 margin-bottom: 24px;
+                text-align: center
             }
 
             .faq-button {

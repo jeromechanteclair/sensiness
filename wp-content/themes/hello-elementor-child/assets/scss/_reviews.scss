@@ -9,10 +9,16 @@
     background: rgba(54, 67, 33, 0.4);
     width: 100%;
     height: 100%;
-    z-index: 99;
+    z-index: 999;
     display: flex;
     align-items: center;
     justify-content: center;
+    @media screen and (max-width:810px) {
+       
+    // height: auto;
+    //   padding-bottom: 84px;
+      overflow-y: auto;
+    }
 
     #review_form {
         background-color: white;
@@ -20,7 +26,14 @@
         padding: 56px 100px;
         position: relative;
         max-width: calc(var(--max-width) * 0.833);
-
+    @media screen and (max-width:810px) {
+        padding: 56px 24px;
+        max-width: 100%;
+         overflow-y: auto;
+         border-radius: 0;
+         height: 100%;
+         padding-bottom: 84px;
+    }
         .file-drop {
             display: flex;
         }
@@ -38,9 +51,14 @@
             font-weight: 400;
             font-size: 48px;
             line-height: 56px;
+            
         }
 
         #respond {
+               @media screen and (max-width:810px) {
+    
+         overflow-y: auto;
+    }
             #reply-title {
                 display: none;
             }
@@ -54,7 +72,10 @@
             grid-template-areas: "left right";
             align-items: flex-start;
             column-gap: 12.5%;
-
+   @media screen and (max-width:810px) {
+     grid-template-columns:1fr;
+      column-gap: 0;
+   }
             input,
             textarea {
                 @include button;
@@ -76,6 +97,11 @@
                 grid-row: 2;
                 display: flex;
                 align-items: flex-start;
+                   @media screen and (max-width:810px) {
+                    flex-flow: column;
+                    width: 100%;
+                    margin-bottom: 24px;
+                   }
 
                 label {
                     margin-bottom: 0;
@@ -83,6 +109,9 @@
 
                 p {
                     margin-bottom: 0;
+                    @media screen and (max-width:810px) {
+                        width:100%;
+                    }
                 }
 
                 .comment-form-rating {
@@ -136,6 +165,9 @@
                 grid-area: right;
                 grid-row: span 6;
                 font-style: normal;
+                    @media screen and (max-width:810px) {
+                        display: none;
+                    }
 
                 p {
                     font-weight: 450;
@@ -147,7 +179,9 @@
 
             .form-submit {
                 grid-column: span 2;
-
+ @media screen and (max-width:810px) {
+                       grid-row: span 6;
+                    }
                 input {
                     width: 100%;
                     @include button;
@@ -178,7 +212,12 @@
     #reviews {
         background-color: white;
         padding: 96px 0;
-        ;
+        .container--min{
+              @media screen and (max-width:810px) {
+                          max-width: calc(var(--max-width) - 48px);
+margin: 0 auto;
+              }
+        }
 
 
         #comments {
@@ -242,7 +281,11 @@ img{
                 align-items: center;
                 justify-content: space-between;
                 margin: 54px 0;
-                ;
+                 @media screen and (max-width:810px) {
+                    flex-flow: column;
+                    justify-content: center;
+                    gap:24px;
+                 }
 
                 &__left {
                     p {
@@ -251,6 +294,9 @@ img{
                         font-weight: 500;
                         font-size: 40px;
                         line-height: 48px;
+                          @media screen and (max-width:810px) {
+                            text-align: center;
+                          }
                     }
                 }
 

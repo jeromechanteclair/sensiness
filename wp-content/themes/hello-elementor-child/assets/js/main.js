@@ -10,6 +10,11 @@ import { scroll  } from "./scroll";
     $(document).on('click','.toggle-review-form',function(){
         $('#review_form_wrapper').toggleClass('hide');
     })
+    
+    $(document).find('.body-overlay').addClass('fade');
+    setTimeout(() => {
+          $(document).find('.body-overlay').addClass('hide');
+    }, 300);
 variation();
 select();
 slider();

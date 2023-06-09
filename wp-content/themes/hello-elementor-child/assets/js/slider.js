@@ -13,7 +13,7 @@
                   direction: "vertical",
                   loop: true,
                   slidesPerView: 1,
-
+                  allowTouchMove: false,
                   speed: 1000,
                   centeredSlides: true,
                   autoplay: {

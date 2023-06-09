@@ -73,6 +73,10 @@ if ($('#commentform').length > 0) {
 $(document).on('click', '.toggle-review-form', function () {
   $('#review_form_wrapper').toggleClass('hide');
 });
+$(document).find('.body-overlay').addClass('fade');
+setTimeout(function () {
+  $(document).find('.body-overlay').addClass('hide');
+}, 300);
 (0,_variation__WEBPACK_IMPORTED_MODULE_0__.variation)();
 (0,_select__WEBPACK_IMPORTED_MODULE_1__.select)();
 (0,_slider__WEBPACK_IMPORTED_MODULE_2__.slider)();
@@ -286,6 +290,7 @@ function slider() {
         direction: "vertical",
         loop: true,
         slidesPerView: 1,
+        allowTouchMove: false,
         speed: 1000,
         centeredSlides: true,
         autoplay: {
