@@ -313,3 +313,5 @@ remove_action('shutdown', 'wp_ob_end_flush_all', 1);
 add_action('shutdown', function () {
     while (@ob_end_flush());
 });
+
+add_image_size('product_slide_thumbnail', 62, 62);
