@@ -633,8 +633,7 @@
         text-align: right;
         align-items: center;
         del{
-                }
-        .woocommerce-Price-amount {
+               .woocommerce-Price-amount {
                text-decoration: line-through;
                     font-family: 'NeueHaasDisplay-Roman, sans-serif';
                     font-style: normal;
@@ -643,6 +642,8 @@
                     color: var(--red);
         
         }
+                }
+     
         .woocommerce-Price-amount {
             font-family: "Recoleta";
             font-style: normal;

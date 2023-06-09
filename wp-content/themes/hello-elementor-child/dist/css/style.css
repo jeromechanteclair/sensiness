@@ -1327,7 +1327,7 @@ ul.accordions span {
   align-items: center;
 }
 
-.custom-price__right .woocommerce-Price-amount {
+.custom-price__right del .woocommerce-Price-amount {
   text-decoration: line-through;
   font-family: "NeueHaasDisplay-Roman, sans-serif";
   font-style: normal;
