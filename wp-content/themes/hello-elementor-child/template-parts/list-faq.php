@@ -7,7 +7,7 @@ if(isset($args['category'])){
 }
 if($query !== null) :
 	$currentthematique ="";?>
-	<div class="container">
+	<div class="container" itemscope itemtype="http://schema.org/FAQPage">
 	<ul class="accordions">
 	<?php
 	while ( $query ->have_posts() ) :

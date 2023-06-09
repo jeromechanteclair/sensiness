@@ -46,7 +46,7 @@ class FAQ extends MetaboxGenerator {
         add_action('add_meta_boxes', array( $this, 'addListMetaBox' ));
         add_action('save_post', array( $this, 'saveMetaBox' ), 10, 2);
         add_shortcode('FAQ', array( $this, 'FAQ' ),10,1);
-        add_filter( 'wpseo_schema_graph',  array( $this,'custom_schema'), 10, 2 );
+        // add_filter( 'wpseo_schema_graph',  array( $this,'custom_schema'), 10, 2 );
     }
 
     /**
