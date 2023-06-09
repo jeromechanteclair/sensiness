@@ -4,6 +4,7 @@ if(have_rows('long_description')):
     while (have_rows('long_description')) : the_row();
         $content = get_sub_field('content');
         $title = get_sub_field('title');
+		if($title):
         ?>
 	<section class="long_description">
 		<div class="container">
@@ -17,4 +18,4 @@ if(have_rows('long_description')):
 			</div>
 		</div>
 	</section>
-<?php endwhile; endif;?>
+<?php endif; endwhile; endif;?>
