@@ -276,7 +276,7 @@ ul.accordions span {
 }
 #review_form_wrapper #review_form #commentform input,
 #review_form_wrapper #review_form #commentform textarea {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -396,7 +396,7 @@ ul.accordions span {
 }
 #review_form_wrapper #review_form #commentform .form-submit input {
   width: 100%;
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -511,7 +511,7 @@ ul.accordions span {
   }
 }
 .single-product #reviews #comments .reviews-header .toggle-review-form {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -539,7 +539,7 @@ ul.accordions span {
   flex-flow: row;
   gap: 16px;
   text-transform: uppercase;
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -629,7 +629,7 @@ ul.accordions span {
   display: none;
 }
 .single-product .button {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -771,6 +771,7 @@ ul.accordions span {
   border-radius: 10px;
   margin: 0;
   overflow: hidden;
+  border: 1px solid transparent;
 }
 @media screen and (max-width: 810px) {
   .single-product #main .product-wrapper .gallery-thumbs .thumb {
@@ -911,7 +912,7 @@ ul.accordions span {
   margin-top: 64px;
 }
 .single-product .product form.cart .button {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -1105,7 +1106,7 @@ ul.accordions span {
   display: block;
 }
 .single-product .cart .button {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -1131,7 +1132,7 @@ ul.accordions span {
 .single-product .cart .woocommerce-variation-add-to-cart .quantity input {
   background-color: white;
   padding: 16px 24px;
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -1837,7 +1838,7 @@ html {
   }
 }
 .single-product .related.products header .shop-cta {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -1892,7 +1893,7 @@ html {
   color: var(--green);
 }
 .single-product .related.products ul li.product .button {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -2012,7 +2013,7 @@ html {
   }
 }
 .single-product .diagnostic .diagnostic-container__right .diagnostic-button {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;
@@ -2204,7 +2205,7 @@ FAQ
   text-align: center;
 }
 .single-product .faq header .faq-button {
-  font-family: "NeueHaasDisplay-Roman, sans-serif";
+  font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
   font-size: 16px;

@@ -41,7 +41,7 @@
 }
 @mixin button {
 
-    font-family: 'NeueHaasDisplay-Roman, sans-serif';
+    font-family: 'NeueHaasDisplay-Roman';
     font-style: normal;
     font-weight: 450;
     font-size: 16px;
@@ -60,7 +60,7 @@
 }
 @mixin button-transparent {
 
-    font-family: 'NeueHaasDisplay-Roman, sans-serif';
+    font-family: 'NeueHaasDisplay-Roman';
     font-style: normal;
     font-weight: 450;
     font-size: 16px;
@@ -82,7 +82,7 @@
 @mixin quantity {
     background-color: white;
     padding: 16px 24px;
-    font-family: 'NeueHaasDisplay-Roman, sans-serif';
+    font-family: 'NeueHaasDisplay-Roman';
     font-style: normal;
     font-weight: 450;
     font-size: 16px;
