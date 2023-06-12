@@ -4,6 +4,7 @@ function scroll() {
     
     var formtop = $('.single-product .cart').offset().top;
     var formtrigger = formtop + $('.single-product .cart').outerHeight();
+    var formtrigger =  $('.product-gallery').outerHeight();
 }
     function isInViewport($element) {
         let elementTop = $($element).offset().top;
@@ -36,10 +37,10 @@ function scroll() {
 
             let reworked = $('.single-product .cart').outerHeight();
             if (!$('.single-product .cart').hasClass('sticky')) {
-                setTimeout(() => {
+                // setTimeout(() => {
 
                     $('.single-product .cart').addClass('sticky')
-                }, 500);
+                // }, 500);
 
             }
 
@@ -48,10 +49,10 @@ function scroll() {
             // $('.single-product .cart').removeClass('sticky');
             if ($('.single-product .cart').hasClass('sticky')) {
                 // $('.single-product .cart').removeClass('sticky')
-                setTimeout(() => {
+                // setTimeout(() => {
 
                     $('.single-product .cart').removeClass('sticky')
-                }, 500);
+                // }, 500);
             }
 
         }

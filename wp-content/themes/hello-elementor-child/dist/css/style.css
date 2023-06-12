@@ -778,6 +778,12 @@ ul.accordions span {
     max-width: 48px;
   }
 }
+.single-product #main .product-wrapper .gallery-thumbs .thumb img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
 .single-product #main .product-wrapper .gallery-thumbs .thumb--active {
   border: 1px solid var(--green);
 }
@@ -981,6 +987,7 @@ ul.accordions span {
   gap: 12px;
   max-width: calc(var(--max-width) * 0.833);
   width: 100%;
+  border: 1px solid #DBDBDB;
 }
 @media screen and (max-width: 810px) {
   .single-product .cart.sticky > div {
