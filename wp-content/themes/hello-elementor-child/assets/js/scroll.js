@@ -5,7 +5,7 @@ function scroll() {
     var formtop = $('.single-product .cart').offset().top;
     var formtrigger = formtop + $('.single-product .cart').outerHeight();
     var formtrigger =  $('.summary').outerHeight();
-            let summaryheigth = $('.summary').outerHeight();
+            let summaryheigth = $('.summary').outerHeight(true);
 
                $('.summary').css('height',summaryheigth+'px')
 }
