@@ -1,0 +1,72 @@
+{
+  "name": "breaking_news",
+  "version": "1.0.0",
+  "description": "Breaking news plugin",
+  "author": "Jérôme chanteclair",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "WordPress",
+    "Plugin"
+  ],
+  "homepage": "https://git.toptal.com/screening/jerome-chanteclair-2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.toptal.com/screening/jerome-chanteclair-2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@wordpress/scripts": "^19.2.4",
+    "babel-loader": "^8.2.3",
+    "browser-sync": "^2.27.7",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.0.17",
+    "dir-archiver": "^1.1.1",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "node-sass": "^7.0.1",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "rtlcss": "^3.5.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "svg-inline-loader": "^0.8.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^36.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^36.0.0",
+    "@ckeditor/ckeditor5-editor-classic": "^36.0.0",
+    "@ckeditor/ckeditor5-ui": "^36.0.0",
+    "@wordpress/eslint-plugin": "^13.3.0",
+    "jquery": "^3.6.0",
+    "share-url": "^1.2.0"
+  },
+  "rtlcssConfig": {
+    "options": {
+      "autoRename": false,
+      "autoRenameStrict": false,
+      "blacklist": {},
+      "clean": true,
+      "greedy": false,
+      "processUrls": false,
+      "stringMap": []
+    },
+    "plugins": [],
+    "map": false
+  },
+  "scripts": {
+    "lint:scss": "wp-scripts lint-style assets/src/sass/*.scss",
+    "lint:js": "wp-scripts lint-js assets/src/js/*.js",
+    "bundle": "dir-archiver --src . --dest ../breakingNews.zip --exclude webpack.config.js .DS_Store workspace.code-workspace .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules assets vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock",
+    "production": "cross-env NODE_ENV=production webpack --mode production --progress",
+    "dev": "cross-env NODE_ENV=development webpack --watch --mode development --progress"
+  }
+}

@@ -1,0 +1,215 @@
+.cbd-calculator {
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: 'Recoleta';
+    }
+
+    &__container {}
+
+    &__title {}
+
+    &__description {}
+
+    form {
+        .hide {
+            display: none;
+        }
+
+        .radios {
+            label {
+                display: inline-block;
+                background-color: transparent;
+                padding:16px;
+                &:first-of-type{
+                    margin-right: 16px;
+                }
+               
+                
+                border:  1px solid #506531;
+                border-radius: 15px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgb(244, 238, 220);
+                }
+            }
+
+            input[type="radio"] {
+                opacity: 0;
+                position: fixed;
+                width: 0;
+
+                &:focus+label {
+                    // border: 2px dashed #444;
+                }
+
+                &:checked+label {
+                    color: rgb(244, 238, 220);
+                    background-color: #506531;
+                    border-color: #506531;
+                }
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: rgb(119, 113, 96);
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        select {
+            border: 1px solid #506531;
+            border-radius: 15px 15px 15px 15px;
+            padding: 16px;
+            font-size: 16px;
+            // margin: 0 0 23px;
+            -webkit-appearance: none;
+            cursor: pointer;
+            line-height: 1;
+            width: 100%;
+            color: #506531;
+            background-image: url("data:image/svg+xml,%3Csvg width='15' height='10' viewBox='0 0 15 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 1.5L7.5 8L1 1.5' stroke='%23143159' stroke-width='1.73333'/%3E%3C/svg%3E%0A");
+            background-size: 15px 10px;
+            background-position: calc(100% - 20px) center;
+            background-repeat: no-repeat;
+            background-color: rgb(244, 238, 220);
+        }
+
+        input[type="range"] {
+            appearance: none;
+            width: calc(100% - (73px));
+            height: 10px;
+            border-radius: 5px;
+            background: #fff;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            background: linear-gradient(to right, rgb(80, 101, 49) 0%, rgb(80, 101, 49)46.66%, rgb(255, 255, 255) 46.66%, rgb(255, 255, 255) 100%);
+        }
+
+        /*Range black ⚫ thumb*/
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            background: rgb(119, 113, 96);
+            cursor: pointer;
+            transition: background 0.15s ease-in-out;
+        }
+
+        /*On hover change colour of black thumb into green 🟢 and scale size*/
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            background: rgb(119, 113, 96);
+        }
+
+        input[type="range"]:active::-webkit-slider-thumb {
+            transform: scale(1.1);
+            background: rgb(119, 113, 96);
+        }
+
+        /*Range current value*/
+        .range_value {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 3px;
+            background: rgb(119, 113, 96);
+            ;
+            padding: 5px 10px;
+            margin-left: 8px;
+        }
+
+        .range_value:after {
+            position: absolute;
+            top: 8px;
+            left: -7px;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-right: 7px solid rgb(119, 113, 96);
+            border-bottom: 7px solid transparent;
+            content: "";
+        }
+    }
+
+    .posologie {
+        font-weight: bold;
+
+        &__value {}
+    }
+
+    &__products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+
+
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    &__product {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        padding: 22px;
+        border-radius: 15px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #7771601A;
+        }
+
+        h4 {
+            font-size: 20px;
+            line-height: 24px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        span {
+            font-size: 16px;
+            color: rgb(119, 113, 96);
+            font-family: 'Recoleta';
+        }
+
+        img {
+            border-radius: 16px;
+        }
+
+        button {
+            border-width: 1px 1px 1px 1px;
+            border-radius: 50px 50px 50px 50px;
+
+            margin-top: 5px;
+            background-color: rgb(244, 238, 220);
+            font-size: 16px;
+            text-transform: uppercase;
+            border: 1px solid #506531;
+            color: #506531;
+
+            &:hover {
+                background-color: #506531;
+                color: rgb(244, 238, 220);
+            }
+        }
+    }
+
+    a.cbd-calculator__product {
+        text-decoration: none;
+    }
+}
+
+// 
+// 

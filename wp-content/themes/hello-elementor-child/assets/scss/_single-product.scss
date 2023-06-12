@@ -404,6 +404,7 @@
 
                 @media screen and (max-width:810px) {
                     max-width: calc(var(--max-width) - 48px);
+                    padding: 12px;
                 }
 
                 @media screen and (max-width:640px) {
@@ -1068,6 +1069,7 @@ html {
     @media screen and (max-width:640px) {
         grid-template-columns: 1fr;
         gap: 0;
+           grid-auto-rows:auto;
     }
 
     &__left {
@@ -1099,6 +1101,7 @@ html {
             picture {
                 width: 40px;
                 height: 40px;
+                min-width: 40px;
                 display: block;
                 overflow: hidden;
                 border-radius: 40px;
@@ -1144,7 +1147,7 @@ html {
             aspect-ratio: 708/410;
             height: 100%;
             // min-height: calc(var(--max-width)*0.32638);
-            display: block;
+            display: flex;
 
             img {
                 object-fit: cover;
@@ -1480,7 +1483,7 @@ html {
 
                 }
 
-                display: block;
+                display: flex;
 
                 img {
                     object-fit: cover;
@@ -1526,6 +1529,8 @@ html {
             @media screen and (max-width:640px) {
                 padding: 24px;
                 gap: 0;
+                            max-width: calc(var(--max-width) - 48px);
+
             }
 
             margin-bottom: 96px;

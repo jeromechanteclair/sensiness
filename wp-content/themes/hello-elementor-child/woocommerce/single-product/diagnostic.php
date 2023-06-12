@@ -26,7 +26,7 @@ if(have_rows('diagnostic' )): ?>
 			<?=$content;?>
 		</div>
 		<div class="diagnostic-container__right">
-		<a class="diagnostic-button" href="<?=$link['url'];?>"><?=$link['title'];?></a>
+		<a class="diagnostic-button" href="<?=$link['url'];?>"><?=wp_strip_all_tags($link['title']);?></a>
 		</div>
 		
 	</div>
