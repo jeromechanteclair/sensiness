@@ -822,7 +822,10 @@
 
     .swiper-pagination {
         position: relative;
-        gap: 6px;
+        gap: 6px;   display: flex;
+        align-items: center;
+        justify-content: center;
+        
 
         .swiper-pagination-bullet {
             width: 6px;
@@ -1791,4 +1794,21 @@ FAQ
             }
         }
     }
+}
+/*
+*caractéristiques
+*/
+.single-product{
+    .sub-infos{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-start;
+        @media screen and (max-width:640px) {
+            flex-flow: column;
+        }
+    }
+ul{
+    padding-left: 14px;
+}
 }

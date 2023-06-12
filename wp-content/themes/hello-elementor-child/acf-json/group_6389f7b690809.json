@@ -43,6 +43,26 @@
             "append": ""
         },
         {
+            "key": "field_64873ab953860",
+            "label": "Caractéristiques",
+            "name": "caracteristiques",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
             "key": "field_64778ffb66fd3",
             "label": "Satisfaction",
             "name": "satisfaction_group",
@@ -822,5 +842,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686301973
+    "modified": 1686584222
 }

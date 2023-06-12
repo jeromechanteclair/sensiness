@@ -22,7 +22,7 @@ class Woocommerce  {
 		add_action('woocommerce_product_options_general_product_data', array( $this,'product_fields'),10);
 		add_action('woocommerce_process_product_meta', array( $this,'save_product_fields'), 10, 2);
 		add_action('woocommerce_single_product_summary', 'woocommerce_breadcrumb', 0);
-		add_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
 		add_action('woocommerce_single_product_summary', array( $this,'display_subtitle'), 7);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_reassurance'), 10);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_description'), 11);
@@ -118,11 +118,23 @@ class Woocommerce  {
 	 * @return html
 	 */
 	public function display_subtitle(){
+		echo("<div class='sub-infos'>");
+		echo("<div class='sub-infos__left'>");
 		$subtitle = get_post_meta(get_the_ID(), 'subtitle', true);
 		if(!empty($subtitle)){
 			echo'<p class="subtitle">'.$subtitle.'</p>';
 		}
-	}
+		$caracteristiques = get_field('caracteristiques');
+		if(!empty($caracteristiques)){
+			echo'<div class="caracteristiques">'.$caracteristiques.'</div>';
+		}echo("</div>");
+
+echo("<div class='sub-infos__right'>");
+
+		woocommerce_template_single_rating();
+		echo("</div>");
+		echo("</div>");
+		}
 
 	/**
 	 * Display reassurance after cart

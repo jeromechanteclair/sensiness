@@ -203,15 +203,18 @@ function display_variations($attributes, $available_variations){
             }
             if(!empty($value)) {
                 $attr='';
+            if(isset($datas[$key][$valuekey]['display_regular_price']) && $datas[$key][$valuekey]['display_regular_price'] !=0) {
+
+
                 $percentage = round(($datas[$key][$valuekey]['display_regular_price'] - $datas[$key][$valuekey]['display_price']) / $datas[$key][$valuekey]['display_regular_price'] * 100);
                 if(intval($percentage)!==0) {
-                    $attr .=' data-price-promo="'. htmlspecialchars(json_encode(wc_price(esc_attr($datas[$key][$valuekey]['display_price']))),ENT_QUOTES, 'UTF-8').'"';
-                    $attr .=' data-price-reg="'. htmlspecialchars(json_encode(wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price']))),ENT_QUOTES, 'UTF-8').'"';
+                    $attr .=' data-price-promo="'. htmlspecialchars(json_encode(wc_price(esc_attr($datas[$key][$valuekey]['display_price']))), ENT_QUOTES, 'UTF-8').'"';
+                    $attr .=' data-price-reg="'. htmlspecialchars(json_encode(wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price']))), ENT_QUOTES, 'UTF-8').'"';
                 } else {
                     $attr .=' data-price-promo=""';
-                    $attr .=' data-price-reg="'.  htmlspecialchars(json_encode(wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price']))),ENT_QUOTES, 'UTF-8').'"';
+                    $attr .=' data-price-reg="'.  htmlspecialchars(json_encode(wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price']))), ENT_QUOTES, 'UTF-8').'"';
                 }
-
+            }
                 $html .= '<option  value="' . esc_attr($value) . '" '.$selected.' '. $attr.'>';
                 $html .= esc_html($name) ;
                 
@@ -263,9 +266,14 @@ function display_variations($attributes, $available_variations){
                         $html .='<div class="variation-item__title"><p class="h3">'.$name.'</p>';                    
                             $html .='<p class="description">'.$datas[$key][$valuekey]['description'].'</p>';
                         $html .='</div>';   
-                        $html .='<div class="variation-item__prices">';                 
-                            $percentage = round(($datas[$key][$valuekey]['display_regular_price'] - $datas[$key][$valuekey]['display_price']) / $datas[$key][$valuekey]['display_regular_price'] * 100);
-                            if(intval($percentage)!==0){
+                        $html .='<div class="variation-item__prices">';  
+if(isset($datas[$key][$valuekey]['display_regular_price']) && $datas[$key][$valuekey]['display_regular_price'] !=0) {
+
+    $percentage = round(($datas[$key][$valuekey]['display_regular_price'] - $datas[$key][$valuekey]['display_price']) / $datas[$key][$valuekey]['display_regular_price'] * 100);
+}
+else{
+$percentage=0;
+} if(intval($percentage)!==0){
                                 $html .='<span class="display_regular_price">'. wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price'])) .'</span>';    
                                 $html .='<span class="display_price">'. wc_price(esc_attr($datas[$key][$valuekey]['display_price']) ).'</span>';                    
                                 $html .='<span class="percent">-'.$percentage .'%</span>';
