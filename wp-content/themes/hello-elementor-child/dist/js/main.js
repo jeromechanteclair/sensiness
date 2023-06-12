@@ -103,7 +103,7 @@ function scroll() {
     var formtrigger = formtop + $('.single-product .cart').outerHeight();
     var formtrigger = $('.summary').outerHeight();
     var summaryheigth = $('.summary').outerHeight(true);
-    $('.summary').css('height', summaryheigth + 'px');
+    $('.summary').css('min-height', summaryheigth + 'px');
   }
   function isInViewport($element) {
     var elementTop = $($element).offset().top;
