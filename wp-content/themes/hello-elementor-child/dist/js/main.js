@@ -319,6 +319,15 @@ function slider() {
           delay: 2500,
           disableOnInteraction: false
         },
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            direction: "horizontal"
+          },
+          640: {
+            direction: "vertical"
+          }
+        },
         // If we need pagination
         pagination: {
           el: ".swiper-pagination",

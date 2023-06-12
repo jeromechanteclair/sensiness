@@ -731,6 +731,11 @@ ul.accordions span {
   width: 100%;
   position: relative;
 }
+@media screen and (max-width: 810px) {
+  .single-product #main .product-wrapper .gallery-top {
+    max-height: 80vh;
+  }
+}
 .single-product #main .product-wrapper .gallery-top .swiper-wrapper {
   width: calc(var(--max-width) * 0.3472);
 }
@@ -760,7 +765,7 @@ ul.accordions span {
     align-self: end;
     justify-self: center;
     z-index: 1;
-    bottom: 10vh;
+    bottom: 5vh;
     flex-flow: row;
   }
 }
@@ -803,8 +808,16 @@ ul.accordions span {
   z-index: 1;
 }
 @media screen and (max-width: 810px) {
+  .single-product #main .product-wrapper .referlink .icon {
+    max-height: 28px;
+  }
+}
+@media screen and (max-width: 810px) {
   .single-product #main .product-wrapper .referlink {
     left: 24px;
+    width: 80px;
+    height: 80px;
+    top: 48px;
   }
 }
 .single-product #main .product-wrapper .referlink .textpath {
@@ -818,6 +831,11 @@ ul.accordions span {
   align-items: flex-end;
   text-align: center;
   text-transform: uppercase;
+}
+@media screen and (max-width: 810px) {
+  .single-product #main .product-wrapper .referlink .textpath {
+    max-width: 68px;
+  }
 }
 @keyframes rotating {
   from {
@@ -834,6 +852,12 @@ ul.accordions span {
   font-size: 11px;
   line-height: 11px;
   letter-spacing: 1px;
+}
+@media screen and (max-width: 810px) {
+  .single-product #main .product-wrapper .referlink .textpath text {
+    font-size: 10px;
+    line-height: 10px;
+  }
 }
 .single-product #main .product-wrapper .diagnostic-cta {
   position: absolute;
@@ -890,6 +914,12 @@ ul.accordions span {
   font-size: 56px;
   line-height: 64px;
   color: var(--green);
+}
+@media screen and (max-width: 640px) {
+  .single-product #main .summary h1 {
+    font-size: 48px;
+    line-height: 56px;
+  }
 }
 .single-product #main .summary .woocommerce-review-link {
   text-decoration: underline;
@@ -1149,8 +1179,10 @@ ul.accordions span {
   justify-content: space-between;
 }
 .custom-price .mc_variable-from {
+  grid-area: top;
+}
+.custom-price .mc_variable-from + .amount {
   grid-area: bottom;
-  padding-right: 12px;
 }
 .custom-price .mc_variable-sale {
   grid-area: bottom;
@@ -1380,6 +1412,11 @@ ul.accordions span {
   font-weight: 450;
   font-size: 16px;
   line-height: 24px;
+}
+@media screen and (max-width: 810px) {
+  .reassurance-slider .swiper-wrapper .swiper-slide--subtitle {
+    font-size: 12px;
+  }
 }
 
 /**

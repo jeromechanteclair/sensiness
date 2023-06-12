@@ -119,7 +119,9 @@
                 max-height: 100vh;
                 width: 100%;
                 position: relative;
-
+      @media screen and (max-width:810px) {
+        max-height: 80vh;
+      }
                 .swiper-wrapper {
                     width: calc(var(--max-width)*0.3472);
                 }
@@ -153,7 +155,7 @@
                     align-self: end;
                     justify-self: center;
                     z-index: 1;
-                    bottom: 10vh;
+                    bottom: 5vh;
                     flex-flow: row;
                 }
 
@@ -196,9 +198,17 @@
                 width: 112px;
                 height: 112px;
                 z-index: 1;
+                   @media screen and (max-width:810px) {
+                              .icon{
+                                max-height: 28px;
+                              }
+                        }
 
                 @media screen and (max-width:810px) {
                     left: 24px;
+                    width: 80px;
+                    height: 80px;
+                    top: 48px;
                 }
 
                 .textpath {
@@ -208,7 +218,9 @@
                     transform-origin: center;
                     width: 100%;
                     animation: rotating 8s linear infinite;
-
+                        @media screen and (max-width:810px) {
+                            max-width: 68px;
+                        }
                     @keyframes rotating {
                         from {
                             -ms-transform: rotate(0deg);
@@ -234,7 +246,12 @@
                         font-size: 11px;
                         line-height: 11px;
                         letter-spacing: 1px;
+                         @media screen and (max-width:810px) {
+                               font-size: 10px;
+                        line-height: 10px;
+                        }
                     }
+                    
 
                     display: flex;
                     align-items: flex-end;
@@ -306,6 +323,10 @@
                 font-size: 56px;
                 line-height: 64px;
                 color: var(--green);
+                @media screen and (max-width:640px) {
+ font-size: 48px;
+                line-height: 56px;
+                }
             }
 
 
@@ -583,8 +604,11 @@
 
     .mc_variable-from {
 
-        grid-area: bottom;
-        padding-right: 12px;
+        grid-area: top;
+        +.amount {
+              grid-area: bottom;
+        }
+        // padding-right: 12px;
     }
 
     .mc_variable-sale {
@@ -869,6 +893,9 @@
                 font-weight: 450;
                 font-size: 16px;
                 line-height: 24px;
+                      @media screen and (max-width:810px) {
+                          font-size: 12px;
+                      }
             }
         }
 
