@@ -4,7 +4,7 @@ function scroll() {
     
     var formtop = $('.single-product .cart').offset().top;
     var formtrigger = formtop + $('.single-product .cart').outerHeight();
-    var formtrigger =  $('.product-gallery').outerHeight()+100;
+    var formtrigger =  $('.summary').outerHeight()+100;
 }
     function isInViewport($element) {
         let elementTop = $($element).offset().top;
