@@ -22,7 +22,7 @@ class Main {
 
 		// email
 		add_filter( 'woocommerce_email_attachments', array( $this, 'attach_pdf_to_email' ), 99, 4 );
-		add_filter( 'wpo_wcpdf_document_is_allowed', array( $this, 'disable_free'), 10, 2 );
+		add_filter( 'wpo_wcpdf_document_is_allowed', array( $this, 'disable_free' ), 10, 2 );
 		add_filter( 'wp_mail', array( $this, 'set_phpmailer_validator'), 10, 1 );
 
 		if ( isset(WPO_WCPDF()->settings->debug_settings['enable_debug']) ) {
@@ -48,6 +48,7 @@ class Main {
 		if ( apply_filters( 'wpo_wcpdf_remove_order_personal_data', true ) ) {
 			add_action( 'woocommerce_privacy_remove_order_personal_data_meta', array( $this, 'remove_order_personal_data_meta' ), 10, 1 );
 			add_action( 'woocommerce_privacy_remove_order_personal_data', array( $this, 'remove_order_personal_data' ), 10, 1 );
+			add_filter( 'wpo_wcpdf_document_is_allowed', array( $this, 'disable_anonymized' ), 11, 2 );
 		}
 		// export private data
 		add_action( 'woocommerce_privacy_export_order_personal_data_meta', array( $this, 'export_order_personal_data_meta' ), 10, 1 );
@@ -133,6 +134,7 @@ class Main {
 				// log document generation to order notes
 				add_action( 'wpo_wcpdf_init_document', function( $document ) {
 					$this->log_document_creation_to_order_notes( $document, 'email_attachment' );
+					$this->log_document_creation_trigger_to_order_meta( $document, 'email_attachment' );
 					$this->mark_document_printed( $document, 'email_attachment' );
 				} );
 				
@@ -379,16 +381,19 @@ class Main {
 			if ( count( $order_ids ) > 1 && isset( $_REQUEST['bulk'] ) ) {
 				add_action( 'wpo_wcpdf_init_document', function( $document ) {
 					$this->log_document_creation_to_order_notes( $document, 'bulk' );
+					$this->log_document_creation_trigger_to_order_meta( $document, 'bulk' );
 					$this->mark_document_printed( $document, 'bulk' );
 				} );
 			} elseif ( isset( $_REQUEST['my-account'] ) ) {
 				add_action( 'wpo_wcpdf_init_document', function( $document ) {
 					$this->log_document_creation_to_order_notes( $document, 'my_account' );
+					$this->log_document_creation_trigger_to_order_meta( $document, 'my_account' );
 					$this->mark_document_printed( $document, 'my_account' );
 				} );
 			} else {
 				add_action( 'wpo_wcpdf_init_document', function( $document ) {
 					$this->log_document_creation_to_order_notes( $document, 'single' );
+					$this->log_document_creation_trigger_to_order_meta( $document, 'single' );
 					$this->mark_document_printed( $document, 'single' );
 				} );
 			}
@@ -870,6 +875,15 @@ class Main {
 			return $allowed;
 		}
 	}
+	
+	public function disable_anonymized( $allowed, $document ) {
+		if ( ! empty( $document->order ) && ! empty( $anonymized = $document->order->get_meta( '_anonymized' ) ) ) {
+			if ( apply_filters( 'wpo_wcpdf_disallow_anonymized_order_document', wc_string_to_bool( $anonymized ), $this ) ) {
+				$allowed = false;
+			}
+		}
+		return $allowed;
+	}
 
 	public function test_mode_settings( $use_historical_settings, $document ) {
 		if ( isset( WPO_WCPDF()->settings->general_settings['test_mode'] ) ) {
@@ -1186,13 +1200,52 @@ class Main {
 	 * @return void
 	 */
 	public function log_to_order_notes( $note, $document ) {
-		if ( ! empty( $document ) && ! empty( $order = $document->order ) && ! empty( $note ) ) {			
+		if ( property_exists( $document, 'order_ids' ) && ! empty( $document->order_ids ) ) { // bulk document
+			$order_ids = $document->order_ids;
+		} else {
+			$order_ids = [ $document->order->get_id() ];
+		}
+		
+		foreach ( $order_ids as $order_id ) {
+			$order = wc_get_order( $order_id );
+			if ( empty( $order ) ) {
+				continue;
+			}
 			if ( is_callable( array( $order, 'add_order_note' ) ) ) { // order
 				$order->add_order_note( strip_tags( $note ) );
 			} elseif ( $document->is_refund( $order ) ) {            // refund order
 				$parent_order = $document->get_refund_parent( $order );
 				if ( ! empty( $parent_order ) && is_callable( array( $parent_order, 'add_order_note' ) ) ) {
 					$parent_order->add_order_note( strip_tags( $note ) );
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Logs to the order meta
+	 *
+	 * @param object  $document
+	 * @param string  $trigger
+	 * @param boolean $force
+	 * @return void
+	 */
+	public function log_document_creation_trigger_to_order_meta( $document, $trigger, $force = false ) {
+		if ( $trigger == 'bulk' && property_exists( $document, 'order_ids' ) && ! empty( $document->order_ids ) ) { // bulk document
+			$order_ids = $document->order_ids;
+		} else {
+			$order_ids = [ $document->order->get_id() ];
+		}
+		
+		foreach ( $order_ids as $order_id ) {
+			$order = wc_get_order( $order_id );
+			if ( ! empty( $order ) ) { 
+				$type   = $document->get_type();
+				$status = $order->get_meta( "_wcpdf_{$type}_creation_trigger" );
+				 
+				if ( true == $force || empty( $status ) ) {
+					$order->update_meta_data( "_wcpdf_{$type}_creation_trigger", $trigger );
+					$order->save_meta_data();
 				}
 			}
 		}
@@ -1266,8 +1319,10 @@ class Main {
 		$error = 0;
 		
 		if ( ! empty( $data['action'] ) && $data['action'] == "printed_wpo_wcpdf" && ! empty( $data['event'] ) && ! empty( $data['document_type'] ) && ! empty( $data['order_id'] ) && ! empty( $data['trigger'] ) ) {
-			$document = wcpdf_get_document( esc_attr( $data['document_type'] ), esc_attr( $data['order_id'] ) );
-			if ( ! empty( $document ) && ! empty( $order = $document->order ) ) {
+			$document        = wcpdf_get_document( esc_attr( $data['document_type'] ), esc_attr( $data['order_id'] ) );
+			$full_permission = WPO_WCPDF()->admin->user_can_manage_document( esc_attr( $data['document_type'] ) );
+			
+			if ( ! empty( $document ) && ! empty( $order = $document->order ) && $full_permission ) {
 				switch ( esc_attr( $data['event'] ) ) {
 					case 'mark':
 						$this->mark_document_printed( $document, esc_attr( $data['trigger'] ) );
@@ -1291,7 +1346,7 @@ class Main {
 		
 		if ( $error > 0 ) {
 			/* translators: 1. document type, 2. mark/unmark */
-			wp_die( sprintf( esc_html__( "Document of type '$1%s' for the selected order could not be $2%s as printed.", 'woocommerce-pdf-invoices-packing-slips' ), esc_attr( $data['document_type'] ), $event_type ) );
+			wp_die( sprintf( esc_html__( 'Document of type %1$s for the selected order could not be %2$s as printed.', 'woocommerce-pdf-invoices-packing-slips' ), esc_attr( $data['document_type'] ), $event_type ) );
 		}
 	}
 	
@@ -1320,7 +1375,7 @@ class Main {
 	public function document_can_be_manually_marked_printed( $document ) {
 		$can_be_manually_marked_printed = false;
 		
-		if ( empty( $document ) ) {
+		if ( empty( $document ) || ( property_exists( $document, 'is_bulk' ) && $document->is_bulk ) ) {
 			return $can_be_manually_marked_printed;
 		}
 		

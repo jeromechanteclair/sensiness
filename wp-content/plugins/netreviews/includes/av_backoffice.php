@@ -9,10 +9,6 @@ current_user_can('administrator');
 require_once(ABSPATH . 'wp-admin/admin.php');
 require_once(ABSPATH . 'wp-admin/admin-header.php');
 
-$current_lang = get_locale();
-$lang_for_localize = explode('_', $current_lang);
-$lang_for_localize = $lang_for_localize[0];
-
 wp_enqueue_style("av_backoffice", plugins_url('css/av_backoffice.css', __FILE__));
 wp_enqueue_style("datepicker_css", "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");
 wp_enqueue_style(
@@ -33,7 +29,6 @@ wp_enqueue_script(
     false,
     false
 );
-wp_enqueue_script("datepicker_i18n", plugins_url('/js/datepicker/datepicker-' . $lang_for_localize . '.js', __FILE__));
 wp_enqueue_script("fontawesome_nr", "https://kit.fontawesome.com/fd565dd76c.js");
 
 // $pluginImagesURL = plugins_url('includes/images/', dirname(__FILE__));
@@ -149,15 +144,15 @@ if (!ntav_getConfig('TEMPLATE_PRODUCT_PAGE', 'non')) {
 
 if (!empty($_POST['designform'])) {
     check_admin_referer('protectform', 'nonce1');
-    $specificStyle = $_POST['specificStyle'];
-    $responsive = $_POST['responsive'];
-    $designWidget = $_POST['widget_version_chosen'];
-    $choosenTemplate = $_POST['template_version_chosen'];
-    $colourStars = $_POST['colourStars'];
-    $numberReviews = $_POST['numberReviews'];
-    $starsCategoryPage = $_POST['starsCategorypage'];
-    $enableHelpful = $_POST['enable_helpful_reviews'];
-    $enableMedia = $_POST['enable_media'];
+    $specificStyle = sanitize_textarea_field($_POST['specificStyle']);
+    $responsive = sanitize_text_field($_POST['responsive']);
+    $designWidget = sanitize_text_field($_POST['widget_version_chosen']);
+    $choosenTemplate = sanitize_text_field($_POST['template_version_chosen']);
+    $colourStars = sanitize_text_field($_POST['colourStars']);
+    $numberReviews = sanitize_text_field($_POST['numberReviews']);
+    $starsCategoryPage = sanitize_text_field($_POST['starsCategorypage']);
+    $enableHelpful = sanitize_text_field($_POST['enable_helpful_reviews']);
+    $enableMedia = sanitize_text_field($_POST['enable_media']);
     ntav_updateValue('SPECIFIC_STYLE', $specificStyle, null, null);
     ntav_updateValue('RESPONSIVE', $responsive, null, null);
     ntav_updateValue('DESIGN_PRODUCT_PAGE', $designWidget, null, null);
@@ -245,18 +240,17 @@ if ($wpmlActive == 'yes') {
 //#################################################################
 
 if (!empty($_POST['exportform'])) {
-    $start_export_date = strip_tags($_POST['start']);
-    $end_export_date = strip_tags($_POST['end']);
-    $locale = $_POST['locale_for_datepicker'];
+    $start_export_date = sanitize_text_field($_POST['start']);
+    $end_export_date = sanitize_text_field($_POST['end']);
     $response = sanitize_text_field($_POST['info_prod']);
     $status = isset($_POST['status']) ? ($_POST['status']) : array();
 
     if (is_array($status)) {
         foreach ($status as $state) {
-            $state = esc_attr($state);
+            $state = sanitize_text_field($state);
         }
     } else {
-        $status = esc_attr($status);
+        $status = sanitize_text_field($status);
     }
 
     $prefix_attr = 'pa_';
@@ -271,7 +265,7 @@ if (!empty($_POST['exportform'])) {
     $random_name = ntav_get_random_name();
     //$query_date = ntav_get_query_between_date($start_export_date, $end_export_date, $locale);
 
-    $results = ntav_getOrdersCSVByWooCommerceVersion($whereStatusChosen, $start_export_date, $end_export_date, $locale);
+    $results = ntav_getOrdersCSVByWooCommerceVersion($whereStatusChosen, $start_export_date, $end_export_date);
 
     if (!empty($results)) {
         // infos et creation du fichier.
@@ -875,8 +869,6 @@ if (!empty($_POST['exportform'])) {
     <div class="panelaccordion" style="max-height: 10000px;">
         <form class="export_form" id="av_form_export" name="av_form_export" method="post">
             <input type="hidden" name="exportform" value="1"/>
-            <input type="hidden" name="locale_for_datepicker" id="locale_for_datepicker"
-                   value="<?php echo $current_lang ?>"/>
             <div>
                 <h2><?php _e(
                     'Export your recently received orders to collect immediately your first customer reviews and to show your certificate Verified Reviews.',

@@ -372,7 +372,7 @@ class Moxiecode_JSON {
 	}
 
 	function decode($input) {
-		$reader = new Moxiecode_JSONReader($input);
+		$reader = new \Moxiecode_JSONReader($input);
 
 		return $this->readValue($reader);
 	}

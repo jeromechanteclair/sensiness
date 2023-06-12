@@ -292,7 +292,7 @@ class Referrals extends Base {
 
 		switch ( $args['action'] ) {
 			case 'view':
-				return add_query_arg( $args, $base_url );
+				return esc_url( add_query_arg( $args, $base_url ) );
 				break;
 
 			case 'delete':

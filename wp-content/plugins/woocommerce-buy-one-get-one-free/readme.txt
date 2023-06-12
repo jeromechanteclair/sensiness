@@ -3,7 +3,7 @@ Contributors: oscargare
 Tags: woocommerce, deal, marketing, promotion
 Requires at least: 4.5
 Tested up to: 6.1
-Stable tag: 3.9.1
+Stable tag: 3.9.2
 Requires PHP: 5.6
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html

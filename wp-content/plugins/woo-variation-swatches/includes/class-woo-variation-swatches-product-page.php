@@ -166,7 +166,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 
 					$params['woo_variation_swatches_ajax_variation_threshold_min'] = apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
 					$params['woo_variation_swatches_ajax_variation_threshold_max'] = $this->get_variation_threshold_max( $product );
-					$params['woo_variation_swatches_total_children']               = count( $product->get_children() );
+					$params['woo_variation_swatches_total_children']               = $product ?? count( $product->get_children() );
 				}
 			}
 
@@ -533,13 +533,13 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 		}
 
 		public function get_image_attribute_id( $data, $attribute_type, $variation_data = array() ) {
+
 			if ( 'image' === $attribute_type ) {
 
 				$term = $data['item'];
 
 				// Global
 				return apply_filters( 'woo_variation_swatches_global_product_attribute_image_id', absint( woo_variation_swatches()->get_frontend()->get_product_attribute_image( $term, $data ) ), $data );
-
 			}
 
 			return 0;
@@ -571,7 +571,9 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 				// Global Color
 				$color = sanitize_hex_color( woo_variation_swatches()->get_frontend()->get_product_attribute_color( $term, $data ) );
 
-				return sprintf( '<span class="variable-item-span variable-item-span-color" style="background-color:%s;"></span>', esc_attr( $color ) );
+				$template_format = apply_filters( 'woo_variation_swatches_color_attribute_template', '<span class="variable-item-span variable-item-span-color" style="background-color:%s;"></span>', $data, $attribute_type, $variation_data );
+
+				return sprintf( $template_format, esc_attr( $color ) );
 			}
 		}
 
@@ -584,7 +586,9 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 				// Global
 				$image = $this->get_image_attribute( $data, $attribute_type, $variation_data );
 
-				return sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option_name ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
+				$template_format = apply_filters( 'woo_variation_swatches_image_attribute_template', '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', $data, $attribute_type, $variation_data );
+
+				return sprintf( $template_format, esc_attr( $option_name ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
 			}
 		}
 
@@ -593,7 +597,9 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 			if ( 'button' === $attribute_type ) {
 				$option_name = $data['option_name'];
 
-				return sprintf( '<span class="variable-item-span variable-item-span-button">%s</span>', esc_html( $option_name ) );
+				$template_format = apply_filters( 'woo_variation_swatches_button_attribute_template', '<span class="variable-item-span variable-item-span-button">%s</span>', $data, $attribute_type, $variation_data );
+
+				return sprintf( $template_format, esc_html( $option_name ) );
 			}
 		}
 
@@ -608,7 +614,6 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 				$slug        = $data['slug'];
 				$is_selected = wc_string_to_bool( $data['is_selected'] );
 				$option_name = $data['option_name'];
-	
 
 				/*
 				 * $get_variations       = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
@@ -620,8 +625,6 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 				$attribute_value = $slug;
 
 				$label          = esc_html( $option_name );
-			
-
 				$label_template = apply_filters( 'woo_variation_swatches_global_item_radio_label_template', '%image% - %variation% - %price% %stock%', $data );
 
 				if ( count( array_keys( $attributes ) ) === 1 ) {
@@ -653,7 +656,9 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 					}
 				}
 
-				return sprintf( '<label class="variable-item-radio-input-wrapper"><input name="%1$s" class="variable-item-radio-input" %2$s  type="radio" value="%3$s" data-value="%3$s" /><span class="variable-item-radio-value-wrapper">%4$s</span></label>', $name, checked( $is_selected, true, false ), esc_attr( $slug ), $label );
+				$template_format = apply_filters( 'woo_variation_swatches_radio_attribute_template', '<label class="variable-item-radio-input-wrapper"><input name="%1$s" class="variable-item-radio-input" %2$s type="radio" value="%3$s" data-value="%3$s" /><span class="variable-item-radio-value-wrapper">%4$s</span></label>', $data, $attribute_type, $variation_data );
+
+				return sprintf( $template_format, $name, checked( $is_selected, true, false ), esc_attr( $slug ), $label );
 			}
 		}
 
@@ -921,7 +926,6 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Product_Page' ) ) {
 				}
 
 				$wrapper_end = $this->wrapper_end();
-
 			}
 
 			// End Swatches

@@ -37,10 +37,10 @@ $this->edge_mode = array(
 $this->set_default_folders();
 
 // custom code
-$this->custom_code = tvr_common::get_custom_code();
+$this->custom_code = Microthemer\Common::get_custom_code();
 
 // params to strip
-$this->params_to_strip = tvr_common::params_to_strip();
+$this->params_to_strip = Microthemer\Common::params_to_strip();
 
 // flatten custom_code array (easier to work with)
 /*foreach ($this->custom_code as $key => $arr){
@@ -412,6 +412,13 @@ $this->css_filters = array(
 				'strip' => '1',
 				'filter' => 1 // http://stackoverflow.com/questions/15820780/jquery-support-invalid-selector
 			),
+			":is(selector)" =>  array(
+				'tip' => esc_attr__('More concise e.g. .long-selector:is(:hover, :focus) instead of .long-selector:hover, .long-selector:focus', 'microthemer'),
+				'editable' => array(
+					'str' => '(selector)',
+					'combo' => 'is_options'
+				)
+			),
 			":lang(language)" =>  array(
 				'tip' => esc_attr__('Target elements that have a "lang" attribute set to a certain langauage code e.g. lang="en"', 'microthemer'),
 				'editable' => array(
@@ -509,6 +516,12 @@ $this->css_filters = array(
 				'tip' => esc_attr__('Target links that have been visited', 'microthemer'),
 				'strip' => '1',
 			),
+			":where(selector)" =>  array(
+				'tip' => esc_attr__('Like :is but with zero CSS specificity', 'microthemer'),
+				'editable' => array(
+					'str' => '(selector)',
+				)
+			),
 		)
 	),
 
@@ -571,12 +584,33 @@ $this->min_and_max_mqs = array(
 	),
 );
 
+// Sample container queries
+$this->container_queries = array(
+	$this->unq_base.'c1' => array(
+		"label" => __('< (c) 1100', 'microthemer'),
+		"query" => "@container (max-width: 1100px)",
+	),
+	$this->unq_base.'c2' => array(
+		"label" => __('< (c) 900', 'microthemer'),
+		"query" => "@container (max-width: 900px)",
+	),
+	$this->unq_base.'c3' => array(
+		"label" => __('< (c) 700', 'microthemer'),
+		"query" => "@container (max-width: 700px)",
+	),
+	$this->unq_base.'4' => array(
+		"label" => __('< (c) 500', 'microthemer'),
+		"query" => "@container (max-width: 500px)",
+	)
+);
+
 $this->default_mqs = array_slice($this->min_and_max_mqs, 0, 4);
 
 $this->mq_sets[esc_html__('Legacy MQs', 'microthemer')] = $this->legacy_m_queries;
 $this->mq_sets[esc_html__('Mobile-first MQs', 'microthemer')] = array_slice($this->min_and_max_mqs, 4, 4);
 $this->mq_sets[esc_html__('Desktop-first MQs (default)', 'microthemer')] = $this->default_mqs;
 $this->mq_sets[esc_html__('Min and max MQs', 'microthemer')] = $this->min_and_max_mqs;
+$this->mq_sets[esc_html__('Container Queries', 'microthemer')] = $this->container_queries;
 
 
 // default preferences for devs are a bit different
@@ -584,6 +618,14 @@ $this->default_dev_preferences = array(
 	"css_important" => 0,
 	//"selname_code_synced" => 1,
 	"wizard_expanded" => 1,
+);
+
+$default_asset_loading_config = array(
+	'global_css' => 1,
+	'global_g_fonts' => 0,
+	'conditional' => array(),
+	//'change' => array(),
+	'logic' => array(),
 );
 
 // define the default preferences here (these can be reset)
@@ -613,11 +655,31 @@ $this->default_preferences = array(
 	"active_scripts_footer" => 0,
 	"active_scripts_deps" => 0, // comma sep list of dependencies
 	"hover_inspect" => 1, // this is hard set in $this->getPreferences()
+	//"auto_folders" => 1,
+	//"auto_folders_page" => 1, - this is set differently for fresh install vs upgrade
+	"prev_folder" => array(
+		'global' => '',
+		'conditional' => ''
+	),
+	"fold_threshold" => 1440, // a conservative fold threshold, but still below 4K screens - user can customise of course
 	"hover_inspect_off_initially" => 0,
 	"scroll_to_elements" => 1, // scroll to out of view elements in reposition_overlays
 	"allow_scss" => 0, // if enabled by default, invalid css/scss will prevent stylesheet update.
+	"image_path_validated" => 0,
+	"active_events" => '',
+
+	"recent_logic" => array(),
+	"asset_loading" => $default_asset_loading_config,
+	"asset_loading_published" => $default_asset_loading_config,
+
+	// temp preferences until folder-specific dependencies are supported (rather than going in global stylesheet)
+	"global_stylesheet_required" => 1,
+	"global_stylesheet_required_published" => 1,
+
+	"load_js" => 0, // global JS
+	"load_js_published" => 0, // global JS - this is dynamically set to "load_js" value when upgrading
+
 	"sync_browser_tabs" => 0,
-	"server_scss" => 0, // give user option to compile scss on the server
 	"specificity_preference" => 1, // 1 = high, 0 = low
 	"wp55_jquery_version" => 0,
 	"bricks_container_hack" => 0, // no longer necessary since Bricks 1.4
@@ -636,14 +698,15 @@ $this->default_preferences = array(
 	"monitor_js_errors" => 1,
 	"generated_css_focus" => 0,
 	"stylesheet_in_footer" => 0,
-	"gzip" => 0, // try having this off by default
+	"gzip" => 1, // try having this off by default - realised there was an issue with sessions now fixed - try having on again
 	"hide_ie_tabs" => 1,
 	"show_extra_actions" => 1, // have the icons showing by default (change)
 	"default_sug_values_set" => 0,
 	"default_sug_variables_set" => 0,
 	"grid_highlight" => 1,
 	"expand_grid" => 0, // this doesn't get saved
-	"minify_css" => 0, // because other plugins minify, and an extra thing that can go wrong
+	"minify_css" => 1, // because this only happens to published assets now
+	"minify_js" => 1,
 	"mt_dark_mode" => 0, // dark theme
 	"draft_mode" => 1, // need to have draft_mode_conversion when upgrading people - on by default
 	"auto_publish_mode" => 0, // maybe don't launch beta with this, but add if requested
@@ -653,6 +716,8 @@ $this->default_preferences = array(
 
 	"pie_by_default" => 0,
 	"admin_bar_preview" => 1, // because WP jumps out of iframe now
+	"admin_asset_loading" => 0,
+	"admin_asset_editing" => 0,
 	"manual_recompile_all_css" => 0,
 	"admin_bar_shortcut" => 1,
 	"top_level_shortcut" => 1, // with auto referrer this is more useful and should be on by default
@@ -700,23 +765,23 @@ $this->default_preferences = array(
 		'left' => array(
 			'items' => array(
 				'folders' => array(
-					'size' => 200,
+					'size' => 252, // 229
 					'size_category' => 'sm',
 				),
 				'styles' => array(
-					'size' => 200,
+					'size' => 252,
 					'size_category' => 'sm'
 				),
 				'editor' => array(
-					'size' => 200,
+					'size' => 252,
 					'size_category' => 'sm'
 				),
 			),
-			'min_column_sizes' => array(160, 160, 160),
-			'column_sizes' => array(220, 220, 220),
+			'min_column_sizes' => array(252, 252, 180),
+			'column_sizes' => array(252, 252, 220),
 			'num_items_docked' => 0,
 			'num_columns' => 1,
-			'effective_num_columns' => 0,
+			'effective_num_columns' => 1,
 			'top_panel' => array(
 				'current' => false,
 				'previous' => false,
@@ -748,22 +813,8 @@ $this->default_preferences = array(
 			),
 		),
 		'top' => array(
-			'effective_num_rows' => 3,
+			'effective_num_rows' => 1,
 		),
-		/*'bottom' => array(
-			'effective_num_rows' => 2,
-			'items' => array(
-				'wizard' => array(
-					'size' => 228,
-					'size_category' => 'sm'
-				),
-				'breadcrumbs' => array(
-					'size' => 28,
-					'size_category' => 'sm'
-				),
-			),
-			'row_sizes' => array(228, 28),
-		),*/
 		'editor_height' => array(
 			'size' => 160,
 			'min_size' => 68,
@@ -922,13 +973,6 @@ $this->default_preferences_dont_reset = array(
 	"initial_scale" => 0,
 	"abs_image_paths" => 0,
 	"units_added_to_suggestions" => 0,
-	// I think I store true/false ie settings in preferences so that frontend script
-	// doesn't need to pull out all the options from the DB in order to enqueue the stylesheets.
-	// This will have an overhaul soon anyway.
-	//"ie_css" => array('all' => 0, 'nine' => 0, 'eight' => 0, 'seven' => 0),
-	"load_js" => 0,
-	//"left_menu_down" => 1,
-	//"user_set_mq" => false,
 
 	// subsets found in MT settings
 	'g_fonts_used' => false,
@@ -968,7 +1012,12 @@ if ($pd_context === 'setup_wp_dependent_vars'){
 			)
 		),
 
-		"page_class_prefix" => $fresh_install ? 'mtp' : 'mt'
+		"page_class_prefix" => $fresh_install ? 'mtp' : 'mt',
+
+		// this is mainly because pre 7.2.1.0 - anyone on a global folder will not get page-specific styles
+		// because they will already be on a global folder, which will apply to the page, and not trigger new auto-folder
+		"auto_folders" => $fresh_install ? 1 : 0,
+		"auto_folders_page" => $fresh_install ? 1 : 0
 	);
 
 	$this->default_preferences = array_merge($this->default_preferences, $default_preferences);
@@ -1264,6 +1313,14 @@ $this->menu = array(
 				'class' => 'mt-enqueue-js',
 				'icon_name' => 'js'
 			),
+
+			/*'initial_setup' => array(
+				'name' => esc_html__('Initial Setup', 'microthemer'),
+				'title' => esc_attr__('Initial Microthemer Setup', 'microthemer'),
+				'dialog' => 1,
+				'class' => 'mt-initial-setup',
+				'icon_name' => 'box-open'
+			),*/
 
 			'auto_publish_mode' => array(
 				//'new_set' => 1,
@@ -1795,7 +1852,7 @@ $this->menu = array(
 	),*/
 
 	'exit' => array(
-		//'custom_insert' => 1,
+		'custom_insert' => 1,
 		'icon_class' => 'exit-to-wordpress',
 		'name' => esc_html__('Exit', 'microthemer'),
 		'sub' => array(

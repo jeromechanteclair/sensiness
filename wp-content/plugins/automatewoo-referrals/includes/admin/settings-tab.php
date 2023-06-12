@@ -510,10 +510,16 @@ class Settings_Tab extends Admin_Settings_Tab_Abstract {
 		return isset( AW_Referrals()->options()->defaults[ $id ] ) ? AW_Referrals()->options()->defaults[ $id ] : false;
 	}
 
-
-	function save() {
+	/**
+	 * Save settings.
+	 *
+	 * @param array $fields Which fields to save. If empty, all fields will be saved.
+	 *
+	 * @return void
+	 */
+	public function save( $fields = array() ): void {
 		parent::save();
-		\AW()->action_scheduler()->enqueue_async_action( 'automatewoo/referrals/settings_updated_async' );
+		do_action( 'automatewoo/referrals/settings_updated' );
 	}
 
 	private function add_referral_limit_section() {

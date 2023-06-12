@@ -2,7 +2,7 @@
 
 namespace WPStaging\Backend;
 
-use WPStaging\Pro\Backup\BackupScheduler;
+use WPStaging\Backup\BackupScheduler;
 
 /**
  * Uninstall WP-Staging
@@ -29,10 +29,16 @@ class uninstall
     {
         $options = json_decode(json_encode(get_option("wpstg_settings", [])));
 
+        /**
+         * @todo Write a query that delete all the options from option table where option_name like (wpstg_* or wpstgpro_*)
+         *       but not in (wpstg_existing_clones, wpstg_existing_clones_beta, wpstg_staging_sites, wpstg_connection)
+         *       but there will be not need of this condition once we add a routine that deletes staging sites
+         */
         if (isset($options->unInstallOnDelete) && $options->unInstallOnDelete === '1') {
             // Options
             delete_option("wpstg_version_upgraded_from");
             delete_option("wpstg_version");
+            delete_transient("wpstg_login_link_settings");
             delete_option("wpstgpro_version_upgraded_from");
             delete_option("wpstgpro_version");
             // @see \WPStaging\Backend\Pro\Upgrade\Upgrade::OPTION_UPGRADE_DATE
@@ -51,8 +57,9 @@ class uninstall
             delete_option("wpstg_activation_redirect");
             delete_option("wpstg_disabled_items_notice"); // @deprecated
             delete_option("wpstg_clone_settings");
+            delete_option("wpstg_clone_excluded_files_list");
             delete_option("wpstg_different_prefix_backup_notice");
-            /* @see \WPStaging\Backend\Pro\Notices\EntireNetworkCloneServerConfigNotice::OPTION_NAME */
+            /* @see \WPStaging\Pro\Notices\EntireNetworkCloneServerConfigNotice::OPTION_NAME */
             delete_option("wpstg_entire_network_clone_notice");
             // Old notice used for display cache on staging site.
             delete_option("wpstg_disabled_cache_notice"); // @deprecated
@@ -76,8 +83,13 @@ class uninstall
             delete_option('wpstg_digitalocean');
             delete_option('wpstg_wasabi');
 
-            // @see \WPStaging\Pro\Backup\BackupScheduler::OPTION_BACKUP_SCHEDULES
+            // @see \WPStaging\Backup\BackupScheduler::OPTION_BACKUP_SCHEDULES
             delete_option('wpstg_backup_schedules');
+
+            /**
+             * @see \WPStaging\Framework\Security\UniqueIdentifier::IDENTIFIER_OPTION_NAME;
+             */
+            delete_option("wpstg_unique_identifier");
 
 
             /* Do not delete these fields without actually deleting the staging site
@@ -104,7 +116,7 @@ class uninstall
             /* @see \WPStaging\Framework\BackgroundProcessing\Queue::QUEUE_TABLE_VERSION_KEY */
             delete_option('wpstg_queue_table_version');
 
-            /** @see \WPStaging\Backend\Notices\WarningsNotice::OPTION_NAME */
+            /** @see \WPStaging\Framework\Notices\WarningsNotice::OPTION_NAME */
             delete_option('wpstg_warnings_notice');
 
             // Delete events

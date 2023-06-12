@@ -1,12 +1,10 @@
+/* global AutomateWoo */
 jQuery( function ( $ ) {
-
-
 	$( '.js-aw-referrals-preview-share-email' ).on( 'click', function ( e ) {
 		e.preventDefault();
 
 		AutomateWoo.open_email_preview( 'referral_share', {} );
 	} );
-
 
 	function revealBasedOnReferralType() {
 		if ( $( '#aw_referrals_type' ).val() === 'coupon' ) {
@@ -20,7 +18,6 @@ jQuery( function ( $ ) {
 		}
 	}
 
-
 	function revealBasedOnRewardType() {
 		if ( $( '#aw_referrals_reward_type' ).val() === 'none' ) {
 			$( '#aw_referrals_reward_amount_field_row' ).hide();
@@ -28,7 +25,6 @@ jQuery( function ( $ ) {
 			$( '#aw_referrals_reward_amount_field_row' ).show();
 		}
 	}
-
 
 	function revealBasedOnReferralLimit() {
 		if ( $( '#aw_referrals_limit_number_referrals' )[ 0 ].checked ) {
@@ -40,7 +36,6 @@ jQuery( function ( $ ) {
 		}
 	}
 
-
 	$( '#aw_referrals_type' ).on( 'change', function () {
 		revealBasedOnReferralType();
 	} );
@@ -49,9 +44,10 @@ jQuery( function ( $ ) {
 		revealBasedOnRewardType();
 	} );
 
-	$( '#aw_referrals_limit_number_referrals' ).on( 'change', revealBasedOnReferralLimit ).trigger( 'change' );
+	$( '#aw_referrals_limit_number_referrals' )
+		.on( 'change', revealBasedOnReferralLimit )
+		.trigger( 'change' );
 
 	revealBasedOnReferralType();
 	revealBasedOnRewardType();
-
 } );

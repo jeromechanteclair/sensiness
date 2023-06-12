@@ -6,7 +6,7 @@ Donate link: https://www.migrateguru.com/
 Requires at least: 4.0
 Tested up to: 6.2
 Requires PHP: 5.4.0
-Stable tag: 4.95
+Stable tag: 5.05
 License: GPLv2 or later
 License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -97,6 +97,9 @@ You’ll need:
 * A domain on the new host, with WordPress installed
 * The destination’s FTP/cPanel details
 
+=Why do you need my email?=
+MigrateGuru requires an email address to send you updates on the migration process, notify you of any errors that occur during the migration.
+
 =How long does MG take to move a site?=
 MG can move a 1 GB (files & database) site in <30 Mins*
 (*Approximate & depends on a number of factors).
@@ -132,6 +135,10 @@ Yes, we do. You can access it here: https://migrateguru.freshdesk.com/support/ho
 6. Click ‘Migrate’.
 
 == Changelog =
+= 5.05 =
+* Code Improvements for PHP 8.2 compatibility
+* Site Health BugFix
+
 = 4.95 =
 * Sync Improvements
 * Code Cleanup

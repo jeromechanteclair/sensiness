@@ -7373,7 +7373,6 @@ $propertyOptions['transition']['event_value'] = array(
 	'icon' => '11, 4, B',
 	'sug_values' => array(
 		'this' => 1,
-		//'no_slider' => 1
 	),
 	// ref
 	'ref_desc' => "<p>Custom Microthemer option. If you have selected a transition event, you must enter a new value for the transition property. This new value will be applied when the transition event occurs.</p>",
@@ -7752,50 +7751,64 @@ $propertyOptions['behaviour']['content'] = array(
 	)
 );
 
-/* Todo - along with object position
- * $propertyOptions['behaviour']['object_fit'] = array(
-	'short_label' => esc_html__('Object Fit', 'microthemer'),
-	'label' => esc_attr__('Object Fit', 'microthemer'),
-	'last_in_sub' => 1,
-	'field-class' => 'icon-size-3',
-	//'input-class' => 'size-0b',
+// container properties (for container queries)
+$propertyOptions['behaviour']['container_type'] = array(
+	'short_label' => esc_html__('Container Type', 'microthemer'),
+	'label' => esc_attr__('Container Type', 'microthemer'),
+	'type' => 'combobox',
 	'select_options' => array(
-		'fill',
-		'contain',
-		'cover',
-		'scale-down',
-		'none'
+		'size',
+		'inline-size',
+		'normal',
+	),
+	// ref
+	'ref_desc' => "<p>The container-type CSS property must be set on a parent/ancestor of an element you style using a container query. Otherwise, selector rules you set on the container query will have no effect.</p>",
+	'ref_values' => array(
+		"size" => "Tells the browser to listen for changes in width and height, or more precisely the inline and block axis. Applies layout, style, and size containment.",
+		"inline-size" => "Tells the browser to listen for changes in width if writing-mode is horizontal, or height if writing-mode is vertical (e.g. Japanese). Applies layout, style, and inline-size containment.",
+		"normal" => "The element is a container for style queries, but not size queries.",
+	),
+	'ref_links' => array(
+		'can_i_use' => 'https://caniuse.com/?search=container-type',
+		'mozilla' => 'https://developer.mozilla.org/en-US/docs/Web/CSS/container-type',
+	),
+	'tutorials' => array(
+		array(
+			'url' => 'https://www.smashingmagazine.com/2021/05/complete-guide-css-container-queries/',
+			'title' => 'A Primer On CSS Container Queries',
+		),
+		array(
+			'url' => 'https://web.dev/cq-stable/',
+			'title' => 'Container queries land in stable browsers',
+		),
+		array(
+			'url' => 'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries',
+			'title' => 'CSS Container Queries',
+		),
+	)
+);
+
+$propertyOptions['behaviour']['container_name'] = array(
+	'short_label' => esc_html__('Container Name', 'microthemer'),
+	'label' => esc_attr__('Container Name', 'microthemer'),
+	'sug_values' => array(
+		'this' => 1,
+	),
+	// ref
+	'ref_desc' => "<p>container-name sets a name, so that container queries can target its size more precisely, without accidentally responding to the size of other containers.</p>",
+	'ref_values' => array(
+		"name" => "An alphanumeric string, without quotes, that cannot be the reserved name: default",
+	),
+	'ref_links' => array(
+		'can_i_use' => 'https://caniuse.com/?search=container-name',
+		'mozilla' => 'https://developer.mozilla.org/en-US/docs/Web/CSS/container-name',
 	),
 
-	'icon' => '20, 17',
-	// ref
-	'ref_desc' => "<p>The content property is used with the :before and :after pseudo-elements, to insert generated content.</p>",
-
-);*/
+);
 
 
-/*$extraOptionsReference['CSS3_PIE']['CSS3_PIE'] = array(
-	'short_label' => 'CSS3 PIE',
-	'label' => 'CSS3 PIE (Progressive Internet Explorer)',
-	'field-class' => '',
-	'input-class' => '',
-	'icon' => '26, 5',
-	// ref
-	'ref_desc' => "<p>Microthemer comes pre-integrated with CSS3 PIE which can be enabled by on a global or per-selector basis. CSS3 PIE makes Internet Explorer 6-9 render CSS3 properties like gradients, border-radius and box-shadow correctly. We recommend that you visit
-		the <a href='http://css3pie.com/' target='_blank'>CSS3 PIE site</a> to learn more about it.</p>
-		<p>One of the main drawbacks with PIE is that it is very frequently necessary to give elements a \"position\" value of \"relative\" when also assigning CSS3 properties to them. To make this less tedious, Microthemer automatically applies \"position:relative\" when you set CSS3 properties (if you have enabled CSS3 PIE).</p>
-		<p>You can still use PIE and turn off the automatic \"position:relative\" by explictly setting the \"position\" value to something else (e.g. \"static\", \"absolute\" or \"fixed\"). However, sometimes it's better to just not use CSS3 PIE and allow corners to be square or backgrounds to be solid colors in old Internet Explorer versions that don't support CSS3 properties.</p>
-		<p><b>Some Known PIE Shortcomings</b></p>
 
-		<ul>
-			<li>PIE does not currently work when applied to the \"body\" Selector</li>
-			<li>Element types that cannot accept children (e.g. \"input\" and \"img\") will fail or throw errors if you apply styles that use relative length units such as em or ex. Stick to using px units for these elements (Microthemer automatically applies \"px\" to numerical values if no unit is set - apart from line-height as it is a valid (and useful) not to include a unit).</li>
-			<li>There is another work around that avoids the \"position:relative\" fix mentioned above. You can make the ancestor element \"position:relative\" and give it a z-index. An ancester element is an element that contains another element. With WordPress, the \"post\" element will be the \"ancester\" of any content inside the post such as text, meta information, and images.</li>
-		</ul>
-		<br />
-		<p><b>Donate to PIE:</b> PIE is Free for everyone. Please consider <a href='http://css3pie.com/' target='_blank'>donating to the PIE project</a> if it has helped you.</p>",
-	'ref_values' => '',
-);*/
+
 
 
 // log moved groups/properties

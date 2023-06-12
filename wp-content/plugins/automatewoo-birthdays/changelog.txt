@@ -1,5 +1,12 @@
 *** AutomateWoo - Birthdays Add-on ***
 
+2023-05-10 - version 1.3.20
+* Add - Declare HPOS compatibility.
+* Tweak - WC 7.7 compatibility.
+
+2023-05-02 - version 1.3.19
+* Dev - Security improvements: [Semgrep] Ignore warnings about file inclusions.
+
 2023-04-04 - version 1.3.18
 * Tweak - WC 7.6 compatibility.
 

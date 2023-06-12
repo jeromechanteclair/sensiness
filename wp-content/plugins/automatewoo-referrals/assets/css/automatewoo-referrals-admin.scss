@@ -11,9 +11,13 @@ $orange: #ffba00;
 }
 
 @mixin icon( $glyph: "\e001" ) {
-	font-family: 'WooCommerce';
+
+	/* We set icon fonts without a generic fallback. */
+	/* stylelint-disable font-family-no-missing-generic-family-keyword */
+	font-family: WooCommerce;
+	/* stylelint-enable font-family-no-missing-generic-family-keyword */
 	speak: none;
-	font-weight: normal;
+	font-weight: 400;
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
@@ -30,32 +34,34 @@ $orange: #ffba00;
 }
 
 .automatewoo-referral-status {
+
 	@include ir;
 	background: none;
 	font-size: 1.4em;
 	margin: 0 auto;
 
-	&:after {
+	&::after {
+
 		@include icon;
 	}
 
 
-	&.status-pending:after {
+	&.status-pending::after {
 		content: "\e012";
 		color: $orange;
 	}
 
-	&.status-approved:after {
+	&.status-approved::after {
 		content: "\e015";
 		color: $green;
 	}
 
-	&.status-rejected:after {
+	&.status-rejected::after {
 		content: "\e013";
 		color: $red;
 	}
 
-	&.status-potential-fraud:after {
+	&.status-potential-fraud::after {
 		content: "\e016";
 		color: $red;
 	}
@@ -66,6 +72,7 @@ $orange: #ffba00;
 .automatewoo-list-table {
 
 	&--referrals {
+
 		.column-status {
 			width: 50px;
 		}
@@ -76,6 +83,7 @@ $orange: #ffba00;
 	}
 
 	&--advocates {
+
 		.column-invites_sent,
 		.column-referral_count,
 		.column-referral_revenue,
@@ -86,6 +94,7 @@ $orange: #ffba00;
 	}
 
 	&--referral-codes {
+
 		td.column-referral_code {
 			font-size: 14px;
 			font-family: Consolas, Monaco, monospace;
@@ -95,6 +104,7 @@ $orange: #ffba00;
 }
 
 .automatewoo-referral-page {
+
 	.aw-referral-info-boxes {
 		margin: 11px 0 20px;
 	}
@@ -110,9 +120,9 @@ $orange: #ffba00;
 
 
 .automatewoo-edit-referral-table {
+
 	.automatewoo-field--type-price {
 		width: 170px;
 	}
 }
-
 

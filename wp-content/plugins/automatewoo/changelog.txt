@@ -1,5 +1,38 @@
 *** AutomateWoo Changelog ***
 
+2023-06-08 - version 5.7.6
+* Dev - Add release preparation GH workflow.
+* Tweak - Ability to disable the Mailchimp integration without a valid API key.
+* Tweak - Security improvements.
+
+2023-05-30 - version 5.7.5
+* Dev - Made `AutomateWoo` namespace available instantly before the `DOMContentLoaded`.
+* Dev - Remove the `"inline"` `AutomateWoo.Modal` type, export actionable classes in `AutomateWoo.Modal.triggerClasses`.
+* Fix - Avoid the AutomateWoo indirectly changing the "Publish" button in the new post page to "Schedule" when the site timezone is other than UTC.
+* Fix - Prevent cart from being restored after checkout.
+* Fix - `woocommerce_admin_report_currency` filter integration.
+* Tweak - Compile CSS files without emitting a UTF-8 byte-order mark (BOM) to get better compatibility with other extensions optimizing CSS file loading.
+* Tweak - Use WP helper function for increasing memory limit.
+
+2023-05-10 - version 5.7.4
+* Fix - Prevent WP Nonce verification in Use bulk actions if the action is not related to AW.
+* Tweak - WC 7.7 compatibility.
+
+2023-05-02 - version 5.7.3
+* Compat - Improve PHP 8.2 compatibility.
+* Dev - Remove previous copy of Sensei when installing unit tests.
+* Dev - Remove the sign in the dynamic modifier from all DateTime::modify.
+* Dev - Security improvements: Fix array_filter with no callback and ignore include file warnings.
+* Dev - Security improvements: Fix/Clean unescaped add_query_vars.
+* Dev - Security improvements: Remove security issue with CURLOPT_SSL_VERIFYPEER.
+* Fix - Limit the Customer pause period days of abandoned cart triggers to at least 1.
+* Fix - PHP 8.2 Compatibility: Fix the incorrect time conversion for scheduled workflow in UTC-X timezones.
+
+2023-04-18 - version 5.7.2
+* Tweak - Improve Security.
+* Tweak - Remove Welcome Notice when a workflow is created.
+* Tweak - Security improvements.
+
 2023-04-04 - version 5.7.1
 * Dev - Add PHP Code coverage report as GitHub action.
 * Fix - Missed import references.

@@ -3,7 +3,7 @@
  * Plugin Name: AutomateWoo - Birthdays Add-on
  * Plugin URI: https://woocommerce.com/products/automatewoo-birthdays/
  * Description: Birthdays add-on for AutomateWoo.
- * Version: 1.3.18
+ * Version: 1.3.20
  * Author: WooCommerce
  * Author URI: https://woocommerce.com
  * License: GPLv3
@@ -12,7 +12,7 @@
  *
  * Tested up to: 6.2
  * WC requires at least: 4.3
- * WC tested up to: 7.6
+ * WC tested up to: 7.7
  * Woo: 4871155:978a1f1867e6a61a4e0b90f11f769ca4
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,6 +30,7 @@
  *
  * @package AutomateWoo/Birthdays
  */
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -59,7 +60,7 @@ class AW_Birthdays_Loader {
 		self::$data                          = new stdClass();
 		self::$data->id                      = 'automatewoo-birthdays';
 		self::$data->name                    = ''; // Replaced with translatable string on init hook
-		self::$data->version                 = '1.3.18'; // WRCS: DEFINED_VERSION.
+		self::$data->version                 = '1.3.20'; // WRCS: DEFINED_VERSION.
 		self::$data->file                    = __FILE__;
 		self::$data->min_automatewoo_version = '5.1.0';
 
@@ -72,6 +73,9 @@ class AW_Birthdays_Loader {
 		add_filter( 'woocommerce_translations_updates_for_automatewoo-birthdays', '__return_true' );
 
 		register_activation_hook( self::$data->file, [ __CLASS__, 'plugin_activate' ] );
+
+		// Declare compatibility for WooCommerce features.
+		add_action( 'before_woocommerce_init', [ __CLASS__, 'declare_feature_compatibility' ] );
 	}
 
 	/**
@@ -156,7 +160,7 @@ class AW_Birthdays_Loader {
 	/**
 	 * Save the activation event to activate on the next request.
 	 *
-	 * @since %VERSION%
+	 * @since 1.3.0
 	 */
 	public static function plugin_activate() {
 		update_option( self::$data->id . '-activated', 'yes' );
@@ -165,11 +169,23 @@ class AW_Birthdays_Loader {
 	/**
 	 * Call activation code in the addon.
 	 *
-	 * @since %VERSION%
+	 * @since 1.3.0
 	 */
 	public static function addon_activate() {
 		AW_Birthdays()->activate();
 		update_option( self::$data->id . '-activated', 'no' );
+	}
+
+
+	/**
+	 * Declare compatibility for WooCommerce features.
+	 *
+	 * @since 1.3.20
+	 */
+	public static function declare_feature_compatibility() {
+		if ( class_exists( FeaturesUtil::class ) ) {
+			FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		}
 	}
 }
 

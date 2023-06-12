@@ -1,6 +1,10 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+if ( !class_exists(WC_Admin_Settings::class)) {
+	include_once(WP_PLUGIN_DIR . '/woocommerce/includes/admin/class-wc-admin-settings.php');
+}
+
 include_once( __DIR__ . '/class-mbe-csv-to-table.php' );
 include_once( __DIR__ . '/class-mbe-csv-shipping-to-table.php' );
 include_once( __DIR__ . '/class-mbe-csv-package-to-table.php' );
@@ -48,7 +52,7 @@ class Mbe_Settings extends WC_Settings_Page {
 		/**
 		 *    Define all hooks instead of inheriting from parent
 		 */
-		add_action( 'woocommerce_sections_csv', array( $this, 'output_sections_csv' ) );
+//		add_action( 'woocommerce_sections_csv', array( $this, 'output_sections_csv' ) );
 
 		parent::__construct();
 
@@ -136,6 +140,7 @@ class Mbe_Settings extends WC_Settings_Page {
 						],
 						'description' => __( 'Select your MBE Center\'s country', 'mail-boxes-etc' ),
 						'desc_tip'    => true,
+						'default'   => 'IT',
 					],
 					[
 						'id'    => $this->id . '_' . 'mbe_username',
@@ -184,6 +189,7 @@ class Mbe_Settings extends WC_Settings_Page {
 						],
 						'desc'              => __( 'Select your MBE Center\'s country', 'mail-boxes-etc' ),
 						'desc_tip'          => true,
+						'default'           => 'IT',
 //						'custom_attributes' => array_merge( $loginDisabled )
 					],
 					[
@@ -219,6 +225,7 @@ class Mbe_Settings extends WC_Settings_Page {
 						'blank'   => false,
 						'lock'    => false,
 						'description' =>__('Click here if you want to reset the information entered in the form above', 'mail-boxes-etc'),
+						'desc_tip'    => true,
 					],
 				];
 				break;
@@ -255,6 +262,7 @@ class Mbe_Settings extends WC_Settings_Page {
 				'options' => array( 0 => __( 'No', 'mail-boxes-etc' ), 1 => __( 'Yes', 'mail-boxes-etc' ) ),
 				'label'   => __( 'Enable', 'mail-boxes-etc' ),
 				'desc'    => __( 'Setting to "Enabled" will enable MBE shipping options for the buyers of your eCommerce.', 'mail-boxes-etc' ),
+				'default'   => 0,
 			],
 			[ 'type' => 'sectionend', 'id' => $sectionId ]
 		];
@@ -284,6 +292,7 @@ class Mbe_Settings extends WC_Settings_Page {
 				'desc'  => __( 'For the plugin to work correctly, at least one option must be selected, and the services available are those set by the MBE Center on the MOL user page on HUB. Subsequently, it is possible to define a custom name for each MBE service selected in the field seen above. This set of fields is automatically generated dynamically, based on the values selected in the "Enabled MBE Services" list', 'mail-boxes-etc' ),
 				'id'    => $sectionId
 			],
+
 			[
 				'id'      => $this->id . '_' . 'mbe_courier_config_mode',
 				'title'   => __( 'Configuration mode', 'mail-boxes-etc' ),
@@ -352,6 +361,7 @@ class Mbe_Settings extends WC_Settings_Page {
 						'title'   => __( 'Custom prices via csv - File mode', 'mail-boxes-etc' ),
 						'type'    => 'select',
 						'options' => $csvModeOptions,
+						'default'   => Mbe_Shipping_Helper_Data::MBE_CSV_MODE_PARTIAL,
 					],
 					[
 						'id'    => $this->id . '_' . 'mbe_shipments_csv_insurance_min',
@@ -368,6 +378,7 @@ class Mbe_Settings extends WC_Settings_Page {
 						'title'   => __( 'Insurance extra-service - Declared value calculation', 'mail-boxes-etc' ),
 						'type'    => 'select',
 						'options' => $insuranceModeOptions,
+						'default'   => Mbe_Shipping_Helper_Data::MBE_INSURANCE_WITH_TAXES,
 					]
 				];
 				break;
@@ -398,7 +409,7 @@ class Mbe_Settings extends WC_Settings_Page {
 							'type'    => 'select',
 							'default' => '',
 							'desc'    => __( 'Select the custom mapping for the default shipping method. Leave blank if you don\'t want to map it', 'mail-boxes-etc' ),
-							'options' => ( array_merge( [ '' => '' ], $selectedOptions ) )
+							'options' => ( array_merge( [ '' => '' ], $selectedOptions ) ),
 						];
 					}
 				}
@@ -414,7 +425,8 @@ class Mbe_Settings extends WC_Settings_Page {
 								'id'    => $this->id . '_' . 'mbe_custom_label_' . strtolower( $t ),
 								'title' => __( 'Custom name for', 'mail-boxes-etc' ) . ' ' . $this->availableShipping[ $index ]['label'],
 								'type'  => 'text',
-								'desc'  => __( "Insert the custom name for the shipment method. Leave blank if you don't want to change the default value", 'mail-boxes-etc' ),
+								'desc'  => __( "Insert the custom name for the shipment method. Leave it blank if you don't want to change the default value", 'mail-boxes-etc' ),
+                                'desc_tip' => true,
 							];
 						}
 					}
@@ -499,7 +511,7 @@ class Mbe_Settings extends WC_Settings_Page {
 					'type'    => 'select',
 					'label'   => __( 'Default shipping package', 'mail-boxes-etc' ),
 					'desc'    => __( 'Set the package to be used as default if the product doesn\'t have a related one', 'mail-boxes-etc' ),
-					'options' => $this->helper->getStandardPackagesForSelect()
+					'options' => $this->helper->getStandardPackagesForSelect(),
 				],
 			];
 		}
@@ -511,6 +523,7 @@ class Mbe_Settings extends WC_Settings_Page {
 			'options' => [ 0 => __( 'No', 'mail-boxes-etc' ), 1 => __( 'Yes', 'mail-boxes-etc' ) ],
 			'label'   => __( 'Csv for standard packages', 'mail-boxes-etc' ),
 			'desc'    => __( 'Load the standard packages via csv file', 'mail-boxes-etc' ),
+            'desc_tip' => true,
 			'default' => 0,
 		];
 		$settings[] = [ 'type' => 'sectionend', 'id' => $sectionId ];
@@ -678,17 +691,18 @@ class Mbe_Settings extends WC_Settings_Page {
 				'id'      => $this->id . '_' . 'sallowspecific',
 				'title'   => __( 'Ship to Applicable Countries', 'mail-boxes-etc' ),
 				'desc'    => __( 'Choose the countries for which you want to enable shipping', 'mail-boxes-etc' ),
+                'desc_tip' => true,
 				'type'    => 'select',
 				'options' => array(
 					'0' => __( 'All Allowed Countries', 'mail-boxes-etc' ),
 					'1' => __( 'Specific Countries', 'mail-boxes-etc' ),
 				),
+				'default'   => '0',
 			],
 			[
 				'id'    => $this->id . '_' . 'specificcountry',
 				'title' => __( 'Country', 'mail-boxes-etc' ),
 				'type'  => 'multi_select_countries',
-//					'options' => $countries,
 			],
 			[
 				'id'      => $this->id . '_' . 'default_shipment_mode',
@@ -701,6 +715,7 @@ class Mbe_Settings extends WC_Settings_Page {
 					'2' => __( 'Create one Shipment per shopping cart (parcels calculated based on weight)', 'mail-boxes-etc' ),
 					'3' => __( 'Create one Shipment per shopping cart with one parcel per Item', 'mail-boxes-etc' ),
 				],
+                'default' => '1'
 			],
 			[
 				'id'      => $this->id . '_' . 'default_shipment_type',
@@ -708,24 +723,28 @@ class Mbe_Settings extends WC_Settings_Page {
 				'label'   => __( 'Default Shipment type', 'mail-boxes-etc' ),
 				'type'    => 'select',
 				'options' => $shipmentTypeOptions,
+				'default'   => 'GENERIC',
 			],
 			[
 				'id'      => $this->id . '_' . 'shipments_closure_mode',
 				'title'   => __( 'Daily shipments closure - Mode', 'mail-boxes-etc' ),
 				'type'    => 'select',
 				'options' => $closureModeOptions,
+				'default' => Mbe_Shipping_Helper_Data::MBE_CLOSURE_MODE_MANUALLY,
 			],
 			[
 				'id'      => $this->id . '_' . 'shipments_closure_time',
 				'title'   => __( 'Daily shipments closure schedule (automatic mode only)', 'mail-boxes-etc' ),
 				'type'    => 'select',
 				'options' => $closureTimeOptions,
+				'desc'    => __('Timezone') .': '.__(wp_timezone()->getName()),
 			],
 			[
 				'id'      => $this->id . '_' . 'shipments_creation_mode',
 				'title'   => __( 'Shipments creation in MBE Online - Mode', 'mail-boxes-etc' ),
 				'type'    => 'select',
 				'options' => $creationModeOptions,
+				'default'   => Mbe_Shipping_Helper_Data::MBE_CREATION_MODE_MANUALLY,
 			],
 			[
 				'id'      => $this->id . '_' . 'mbe_add_track_id',
@@ -734,6 +753,7 @@ class Mbe_Settings extends WC_Settings_Page {
 				'options' => array( 1 => __( 'Yes', 'mail-boxes-etc' ), 0 => __( 'No', 'mail-boxes-etc' ) ),
 				'label'   => __( 'Add tracking id to email', 'mail-boxes-etc' ),
 				'desc'    => __( 'Select if you want to add the tracking code to the email order detail', 'mail-boxes-etc' ),
+                'desc_tip' => true,
 				'default' => 0,
 			],
 			[ 'type' => 'sectionend', 'id' => $sectionId ]
@@ -757,6 +777,7 @@ class Mbe_Settings extends WC_Settings_Page {
 					'P' => __( 'Percentage', 'mail-boxes-etc' ),
 					'F' => __( 'Fixed amount', 'mail-boxes-etc' ),
 				],
+				'default'   => 'P',
 			],
 			[
 				'id'      => $this->id . '_' . 'handling_action',
@@ -766,6 +787,7 @@ class Mbe_Settings extends WC_Settings_Page {
 					'S' => __( 'Shipment', 'mail-boxes-etc' ),
 					'P' => __( 'Parcel', 'mail-boxes-etc' ),
 				],
+				'default'   => 'S',
 			],
 			[
 				'id'    => $this->id . '_' . 'handling_fee',
@@ -782,6 +804,7 @@ class Mbe_Settings extends WC_Settings_Page {
 					'3' => __( 'Always round down', 'mail-boxes-etc' ),
 					'4' => __( 'Always round up', 'mail-boxes-etc' ),
 				],
+				'default'   => '1',
 			],
 		];
 
@@ -794,6 +817,7 @@ class Mbe_Settings extends WC_Settings_Page {
 					'1' => '1',
 					'2' => '0.5',
 				],
+				'default'   => '1',
 			];
 		}
 

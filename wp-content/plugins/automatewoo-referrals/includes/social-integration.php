@@ -94,6 +94,8 @@ abstract class Social_Integration {
 			}
 		}
 
+		// SEMGREP WARNING EXPLANATION
+		// This URL is escaped later in the code.
 		$url = add_query_arg( $args, AW_Referrals()->get_share_page_url() );
 
 		return apply_filters( 'automatewoo/referrals/social_integration/redirect_to_share_url', $url, $this );

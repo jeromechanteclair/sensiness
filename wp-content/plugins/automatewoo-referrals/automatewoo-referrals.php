@@ -3,7 +3,7 @@
  * Plugin Name: AutomateWoo - Refer A Friend Add-on
  * Plugin URI: https://automatewoo.com/addons/refer-a-friend/
  * Description: Refer A Friend add-on for AutomateWoo.
- * Version: 2.6.20
+ * Version: 2.7.2
  * Author: WooCommerce
  * Author URI: https://woocommerce.com
  * License: GPLv3
@@ -12,8 +12,8 @@
  * Domain Path: /languages/
  *
  * Tested up to: 6.2
- * WC requires at least: 4.5
- * WC tested up to: 7.6
+ * WC requires at least: 7.4
+ * WC tested up to: 7.7
  * Woo: 4871154:3fd134b42d7c710d96a6e6abd38718bc
  *
  * This program is free software: you can redistribute it and/or modify
@@ -32,14 +32,70 @@
  * @package AutomateWoo/Referrals
  */
 
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
+
 defined( 'ABSPATH' ) || exit;
 
 // phpcs:disable Generic.Files.OneObjectStructurePerFile.MultipleFound
 
 /**
  * Class AW_Referrals_Plugin_Data
+ *
+ * Note:
+ * We should be extending AutomateWoo\Plugin_Data, but the class can't be
+ * autoloaded since it's currently in includes/abstract/addon.php which
+ * contains multiple classes in one file.
  */
 class AW_Referrals_Plugin_Data {
+
+	/**
+	 * Slug
+	 *
+	 * @var string
+	 */
+	public $id;
+
+	/**
+	 * Name
+	 *
+	 * @var string
+	 */
+	public $name;
+
+	/**
+	 * Version
+	 *
+	 * @var string
+	 */
+	public $version;
+
+	/**
+	 * Main plugin file
+	 *
+	 * @var string
+	 */
+	public $file;
+
+	/**
+	 * Minimum PHP version
+	 *
+	 * @var string
+	 */
+	public $min_php_version;
+
+	/**
+	 * Minimum AutomateWoo version
+	 *
+	 * @var string
+	 */
+	public $min_automatewoo_version;
+
+	/**
+	 * Minimum WooCommerce version
+	 *
+	 * @var string
+	 */
+	public $min_woocommerce_version;
 
 	/**
 	 * AW_Referrals_Plugin_Data constructor.
@@ -47,9 +103,9 @@ class AW_Referrals_Plugin_Data {
 	public function __construct() {
 		$this->id                      = 'automatewoo-referrals';
 		$this->name                    = ''; // Replaced with translatable string on init hook
-		$this->version                 = '2.6.20'; // WRCS: DEFINED_VERSION.
+		$this->version                 = '2.7.2'; // WRCS: DEFINED_VERSION.
 		$this->file                    = __FILE__;
-		$this->min_automatewoo_version = '5.3.0';
+		$this->min_automatewoo_version = '5.7.0';
 	}
 }
 
@@ -89,6 +145,9 @@ class AW_Referrals_Loader {
 		// Subscribe to automated translations.
 		add_action( 'woocommerce_translations_updates_for_automatewoo-referrals', '__return_true' );
 		register_activation_hook( self::$data->file, [ __CLASS__, 'plugin_activate' ] );
+
+		// Declare compatibility for WooCommerce features.
+		add_action( 'before_woocommerce_init', [ __CLASS__, 'declare_feature_compatibility' ] );
 	}
 
 	/**
@@ -194,6 +253,16 @@ class AW_Referrals_Loader {
 		update_option( self::$data->id . '-activated', 'no' );
 	}
 
+	/**
+	 * Declare compatibility for WooCommerce features.
+	 *
+	 * @since 2.7.0
+	 */
+	public static function declare_feature_compatibility() {
+		if ( class_exists( FeaturesUtil::class ) ) {
+			FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		}
+	}
 }
 
 AW_Referrals_Loader::init( new AW_Referrals_Plugin_Data() );

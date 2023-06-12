@@ -1,17 +1,206 @@
 CHANGELOG
 
+= 7.2.2.6 (June 9th, 2023) =
+
+# Change
+* Microthemer used to try to maintain the current folder if it loaded on the page, even if that was at odds with the Global vs Page switch in the footer. Now it honours the switch more strictly. This makes the feature more predictable and solves the issue of accidentally switching between global vs page styles when re-selecting elements that have an existing selector.
+
+= 7.2.2.5 (June 9th, 2023) =
+
+# Change
+* GZIP compression on the MT interface is enabled by default. This will make MT load faster, and should not occasionally result in a blank page now that the session issue has been addressed.
+
+# Bugs fixed
+* Possible PHP warning about $preferences being defined in Trait and Class.
+* Possible https warning in the console when saving preferences on the standalone page.
+* Compatibility issue with GZIP preference if a PHP session was active, a blank screen was displayed.
+
+= 7.2.2.3 (June 2nd, 2023) =
+
+# Bugs fixed
+* When viewing logic settings for a folder with no condition immediately after one that does have a condition, the condition continued to display in the textarea.
+
+= 7.2.2.2 (June 1st, 2023) =
+
+# Change
+* Microthemer used to highlight elements in grey if a selector would target the current element, but is in a conditional folder that doesn't load on the page. This was useful for hinting if you might want to extend the targeting of an existing selector to other pages, but arguably distracting. As it was necessary to use the "Create an additional selector" option fairly frequently. So on balance, I think it's better not to highlight such selectors in grey. Grey highlighting is now reserved for when you click a non-loading selector in the folders menu (rather than selecting elements on the page).
+
+# Bugs fixed
+* Microthemer falsely flagged comma separated :not/:is pseudo selectors as invalid e.g. not:(p, li). Also, MT formatted such comma separated selectors on new lines, which looked messy in the editor.
+* Possible PHP warning after an initial install when viewing site frontend: Warning: Undefined array key 'initial_scale'.
+
+= 7.2.2.1 (May 30th, 2023) =
+
+# Bugs fixed
+* Display issue on the view code tabs if a folder name was fairly long.
+* Custom JavaScript added via the full code view was not loading on the page.
+
+= 7.2.2.0 (May 25th, 2023) =
+
+# Enhancement
+* Added links to  help videos when displaying the "Folder not loading" warning.
+
+# Bugs fixed
+* Two issues if "Stylesheet loading order" preference was set - MT could output the same CSS file again under some circumstances (after the body tag). And Microthemer folders did not always show as faded out in the main menu to indicate when they are not loading.
+* When Microthemer automatically created a folder for the current page, the folder name could be quite long. MT now caps the length at 35 characters, to the nearest whole word.
+
+= 7.2.1.9 (May 22nd, 2023) =
+
+# Enhancement
+* Two new conditional loading functions supported:
+* \Microthemer\is_active() - for checking the currently active theme or plugin.
+* \Microthemer\match_url_path() - for testing string or regex pattern match on thr current URL path.
+
+# Bugs fixed
+* Folder logic tests failed to run if the "Stylesheet loading order" was set in the preferences.
+* Issues customizing pages with Microthemer if the page didn't run the wp_footer hook.
+
+= 7.2.1.8 (May 15th, 2023) =
+
+# Bugs fixed
+* The previous update caused issues if the 'load stylesheet in footer' preference was set.
+
+= 7.2.1.7 (May 15th, 2023) =
+
+# Bugs fixed
+* Compatibility issue with Divi theme, whereby Divi styles did not load properly.
+
+= 7.2.1.6 (May 14th, 2023) =
+
+# Bugs fixed
+* Use of a PHP $_SESSION in the 7.2.1.4 caused issues for some sites. Microthemer now uses $_COOKIE instead.
+
+= 7.2.1.5 (May 13th, 2023) =
+
+# Bugs fixed
+* Jumpy layout shift when MT loads for the very first time.
+
+= 7.2.1.4 (May 12th, 2023) =
+
+# Change
+* Asynchronous CSS loads by settings media="print" initially, rather than rel="preload". Preload isn't supported in IE11, and is slightly less performant than switching the media type.
+
+# Enhancement
+* New XL2 option added to layout presets. This sets up two columns in left hand sidebar, one for folders another for styles.
+
+# Bugs fixed
+* Draft folders (any folder with only one draft (unsaved) selector in it) were being created twice when navigating between site pages because they were mistakenly assessed as not loading on the new page.
+
+= 7.2.1.3 (May 11th, 2023) =
+
+# Bugs fixed
+* Microthemer popup screens did not display correctly in yesterday's release.
+
+= 7.2.1.2 (May 10th, 2023) =
+
+# Change
+* Microthemer no longer creates an example selector to target the h1 on the home page.
+
+# Bugs fixed
+* The prev/next selector arrows did not update correctly when auto-positioning selectors within folders based on the order they appear on the page.
+* The page-id modifier did not work when set to mtp, on this beta version.
+* Possible issue loading MT.
+
+= 7.2.1.0 (May 5th, 2023) =
+
+# Change
+* Conditional folder icons just have an outline, global folders are solid.
+
+# Bugs fixed
+* When adding a condition to a folder, the and/or buttons could show instead of the "Add" button.
+* Alignment of Auto-folder context menu.
+* MT was not always highlighting the correct line when showing the source of a Sass compile error.
+
+= 7.2.0.8 (May 4th, 2023) =
+
+# Change
+* The "Auto Folder" setting is disabled for users upgrading from previous versions, so that switching to automatic page-specific folders that automatically organise selectors within folders is a deliberate decision.
+* Slight change to the behaviour when switching between global and page styles - the folder only changes if you select an initial folder, or you select the next element on the page. This preserves to opportunity to adjust the "Move current selector" checkbox.
+
+# Bugs fixed
+* JS error when using the "Detach preview" feature.
+* Layout shift when Microthemer was initially loading.
+
+= 7.2.0.7 (May 1st, 2023) =
+
+# Enhancement
+* If a folder has a conditional that effectively makes it global on the frontend or admin area, it is displayed in the Global folders list in the footer.
+* Global and current page options added to the "Add condition" menu.
+
+# Bugs fixed
+* Automatic page-specific folders did not work correctly when added to the admin area.
+* Switching to a global folder on the admin side, could default to a frontend only global folder.
+
+= 7.2.0.6 (April 27th, 2023) =
+
+# Change
+* The options for leaving Microthemer are only at the bottom right of the interface, they are not in the settings menu anymore.
+* Microthemer's default selector labels do not include the parent context, to make them a bit shorter and more readable.
+* Microthemer only minifies PUBLISHED CSS and JS files, and those preferences are enabled by default. Draft CSS files are beautified.
+* Microthemer creates an example selector when you first install it - Heading 1.
+* Microthemer generates CSS selectors with low specificity by default. This seems like the best approach when used in combination with the "Auto folder" settings, which is enabled by default (see below).
+
+# Enhancement
+* Microthemer automatically organises your selectors into page-specific folders, with no configuration necessary.
+* Switch between global and page-specific styles with a single switch in the footer panel.
+* Or fully disable "Auto folder" by unchecking the checkbox in the footer panel.
+* With "Auto folder" enabled, Microthemer adds selectors to folders in an order that matches the HTML DOM order - the order elements display on the page.
+* With "Auto folder" enabled, Microthemer creates a "below fold" variation of any page-specific folder - if elements are positioned below a height threshold set in Preferences (the default is 1440px).
+* Added UI support for :is and :where pseudo classes.
+
+# Bugs fixed
+* The Microthemer shortcut did not display on the frontend.
+* Possible PHP Warning: Undefined array key "global_g_fonts".
+* Adding a selector to a folder manually was not stored in the history table.
+* Possible file writing error on new installations.
+
+= 7.2.0.4 (March 16th, 2023) =
+
+# Enhancement
+* Added basic support for container queries. Add these manually or load a sample set via the media queries screen. Make an element a container using the new "container-type" property in the behavior  group. Learn more about container queries here: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
+
+= 7.2.0.3 (March 10th, 2023) =
+
+# Change
+* When clicking the folder in the top toolbar, the menu scrolls to the current selector in focus, rather than the top of the folder.
+
+# Enhancement
+* Microthemer warns you if your folder loading conditions generate a PHP error when testing your logic, and suppresses error reporting on the frontend.
+* Folder icons added to conditional stylesheets in the view generated code window.
+* Unpublished CSS is flagged clearly when viewing a CSS file that only exists as a draft.
+
+# Bugs fixed
+* When applying styles to a folder that is not loading due to conditional logic, the "Folder not loading" message could appear many times.
+* The styling of the folder in the top toolbar did not reflect the state of loading on the current page, or if it was conditional.
+* The 'Folder not loading' warning did not display when using the CSS grid drag and drop controls.
+* Microthemer uses absolute image paths for background images if the WordPress install directory structure means that the root relative paths it tried to generate are not valid.
+* Microthemer could output empty selectors in CSS it generates, particularly when using the responsive tabs.
+* On the standalone preferences page, the tabs did not work.
+* Possible 'undefined' PHP warnings when loading the Microthemer interface for the first time.
+
+= 7.2.0.1 (March 3rd, 2023) =
+
+# Bugs fixed
+* Clear logic button did not live update the styles.
+
+= 7.2.0.0 (March 1st, 2023) =
+
+# Enhancement
+* Support for conditionally loading CSS on specific pages only.
+* Load a folder's CSS as an inline style tag or as an external stylesheet that can be loaded asynchronously.
+* Enter one or more PHP-like logical conditions to determine folder loading.
+* Alternatively, search for pages to include or exclude.
+* Optimisation to ensure that there is zero performance gain from deactivating Microthemer and using the code for simply loading frontend assets. The same standalone PHP class is now used for both scenarios.
+
+# Bugs fixed
+* Compatibility issue with PHP 8.
+* The viewport meta tag was not added when loading Microthemer assets manually, which could lead to inconsistent results.
+* Microthemer styles were not added to the WP login page when loading Microthemer assets manually.
+
 = 7.1.6.9 (Jan 17th, 2023) =
 
 # Bugs fixed
 * When typing "flex-flow: column wrap" (or wrap-reverse) in the single selector editor, Microthemer converted the CSS to "flex-flow: column nowrap".
-
-= 7.1.6.8 (Jan 12th, 2023) =
-
-# Change
-* Microthemer does not auto-apply CSS units to CSS property fields if calc() is used anywhere in the field.
-
-# Bugs fixed
-* Removed some deprecated PHP functions.
 
 = 7.1.6.7 (Jan 10th, 2023) =
 

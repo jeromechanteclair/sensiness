@@ -29,6 +29,9 @@ $data.= 'TvrMT.data.prog.combo.directories = ' . json_encode($directories) . ';'
 // the last 20 custom site preview URLs the user enters are saved in DB
 $data.= 'TvrMT.data.prog.combo.custom_paths = ' . json_encode($this->preferences['custom_paths']) . ';' . "\n\n";
 
+// the last 30 page logic items
+$data.= 'TvrMT.data.prog.combo.recent_logic = ' . json_encode($this->preferences['recent_logic']) . ';' . "\n\n";
+
 // path to the icon font
 $data.= 'TvrMT.data.dyn.icon_font_face_style = ' . json_encode( array('css' => $this->load_icon_font(true)) ) . ';' ."\n\n";
 //'icon_font_face_style' => $this->load_icon_font(true),
@@ -94,6 +97,9 @@ $data.= 'TvrMT.data.dyn.micro_root_url = "' . $this->micro_root_url . '";' . "\n
 
 // the default site pages list (posts and pages limited to 30, more results collected on search)
 $data.= 'TvrMT.data.dyn.site_pages = ' . json_encode($this->get_site_pages()) . ';' . "\n\n";
+
+// the default site pages list (posts and pages limited to 30, more results collected on search)
+//$data.= 'TvrMT.data.dyn.site_pages = ' . json_encode($this->get_site_pages()) . ';' . "\n\n";
 
 // URLs for placehold (light, dark, current)
 //$data.= 'TvrMT.data.dyn.placeholderURLs = ' . json_encode($this->get_placeholder_urls()) . ';' . "\n\n";

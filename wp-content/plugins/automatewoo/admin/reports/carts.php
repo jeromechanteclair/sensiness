@@ -104,7 +104,7 @@ class Report_Carts extends Admin_List_Table {
 					'cart_id' => $cart->get_id()
 				], admin_url( 'admin-ajax.php' ) );
 
-				return '<a class="button view aw-button-icon js-open-automatewoo-modal" data-automatewoo-modal-type="ajax" data-automatewoo-modal-size="lg" href="' . $url . '">View</a>';
+				return '<a class="button view aw-button-icon js-open-automatewoo-modal" data-automatewoo-modal-size="lg" href="' . $url . '">View</a>';
 
 				break;
 		}
@@ -158,7 +158,7 @@ class Report_Carts extends Admin_List_Table {
 		$query->set_calc_found_rows( true );
 		$query->set_limit( $per_page );
 		$query->set_page( $current_page );
-		$query->set_ordering( $this->get_param_orderby(), $this->get_param_order() );
+		$query->set_ordering( $this->get_param_orderby( array_keys( $this->get_sortable_columns() ) ), $this->get_param_order() );
 
 		// Filter items based on customer.
 		$customer_id = absint( aw_request( 'filter_customer' ) );

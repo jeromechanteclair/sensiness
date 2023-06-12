@@ -143,7 +143,7 @@ $html .= '<div id="netreviews_informations">';
 $html .= '<div class="nr-icon nr-exit"></div>';
 $html .= '<ul>';
 $html .= '<li>' . __("For further information on the nature of the review controls, as well as the possibility of contacting the author of the review please consult our", 'av');
-$html .= '<a href="http://www.' . __('verified-reviews.com', 'av') . '/index.php?page=mod_conditions_utilisation" target="_blank">' . __("GCU", 'av') . '</a>';
+$html .= '<a href="https://www.netreviews.com/consumers/' . __('en/transparency-charter/', 'av') . '" target="_blank">' . __("Transparency Charter", 'av') . '</a>';
 $html .= '</li>';
 $html .= '<li>' . __("No inducements have been provided for these reviews", 'av') . '</li>';
 $html .= '<li>' . __("Reviews are published and kept for a period of five years", 'av') . '</li>';

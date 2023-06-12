@@ -80,5 +80,5 @@ class Invite extends AutomateWoo\Model {
  		$this->set_prop( 'email', $email );
 	}
 
-	
+
 }

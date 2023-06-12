@@ -1,6 +1,7 @@
 import getAnchor from "./getAnchor";
 import axios from 'axios';
 import apiFetch from '@wordpress/api-fetch';
+
 /*
  * Makes a get request to the fields list
  *
@@ -23,7 +24,12 @@ const ajaxPost = (path, requestData) => {
         let xhr = new XMLHttpRequest();
         xhr.open('POST', url );
         xhr.onload = function () {
-            let response = JSON.parse(xhr.response);
+            let response;
+            try {
+                response = JSON.parse(xhr.response);
+            } catch (error) {
+                resolve(invalidDataError(xhr.response, 500, 'invalid_data') );
+            }
             if (xhr.status >= 200 && xhr.status < 300) {
                 resolve(response);
             } else {
@@ -124,6 +130,7 @@ const invalidDataError = (apiResponse, status, code ) => {
 }
 
 const apiGet = (path) => {
+
     if ( usesPlainPermalinks() ) {
         let config = {
             headers: {
@@ -216,8 +223,4 @@ export const doAction = (action, data) => {
     if (typeof data === 'undefined') data = {};
     data.nonce = rsssl_settings.rsssl_nonce;
     return apiPost('reallysimplessl/v1/do_action/'+action, data);
-}
-
-export const getOnboarding = (forceRefresh) => {
-    return apiGet('reallysimplessl/v1/onboarding'+glue()+'forceRefresh='+forceRefresh+getNonce());
 }

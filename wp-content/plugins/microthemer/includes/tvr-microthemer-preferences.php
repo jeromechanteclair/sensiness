@@ -62,7 +62,7 @@ $this->display_log();
 	              ),
 	              'minify_css' => array(
 		              'label' => __('Minify the CSS file Microthemer generates', 'microthemer'),
-		              'explain' => __('Microthemer can generate a minified file, min.active-styles.css, and load that instead for a smaller file size and quicker downloading.' , 'microthemer')
+		              'explain' => __('Minify the CSS code Microthemer outputs - not necessary is you use an asset optimisation plugin' , 'microthemer')
 	              ),
 	              'color_as_hex' => array(
 		              'label' => __('Report color in hex values instead of RGB/A'),
@@ -84,7 +84,7 @@ $this->display_log();
               )
             ),
             'wordpress_toolbar' => array(
-	            'label' => __('WordPress Toolbar', 'microthemer'),
+	            'label' => __('WordPress Admin', 'microthemer'),
 	            'items' => array(
 		            'admin_bar_shortcut' => array(
 			            'label' => __('Add a Microthemer shortcut to the WP admin bar', 'microthemer'),
@@ -99,6 +99,14 @@ $this->display_log();
 		            'admin_bar_preview' => array(
 			            'label' => __('On site preview, display WP admin bar ', 'microthemer'),
 			            'explain' => __('Display the WordPress admin bar at the top of every page in the site preview', 'microthemer')
+		            ),
+		            'admin_asset_loading' => array(
+			            'label' => __('Support admin area style loading', 'microthemer'),
+			            'explain' => __('Individual MT folders can load on admin pages', 'microthemer')
+		            ),
+		            'admin_asset_editing' => array(
+			            'label' => __('Support admin area point and click editing', 'microthemer'),
+			            'explain' => __('Customise the design of the admin area just like on the frontend', 'microthemer')
 		            ),
 	            )
             ),
@@ -172,6 +180,14 @@ $this->display_log();
 			            'explain' => __('Choose how many revisions to store in the Database. The allowed range is 1-300. The default is 50. Saved revisions do not count towards the quota. Nor do pre-upgrade backups.', 'microthemer'),
 			            'combobox' => 'num_history_points',
 		            ),
+		            'fold_threshold' => array(
+			            'is_text' => 1,
+			            'one_line' => 1,
+			            'label' => __('Below fold threshold for async css (with Auto folder enabled)', 'microthemer'),
+			            'explain' => __('Set the screen height below which elements will be styled with asynchronous (non-blocking) CSS, for maximum page speed', 'microthemer'),
+			            'combobox' => 'fold_threshold',
+		            ),
+                    //
 		            'tape_measure_slider' => array(
 			            'label' => __('Enable tape measure style sliders', 'microthemer'),
 			            'explain' => __('The numbers in the tape measure design may be helpful, but it involves dragging left to increase values, which may feel unintuitive', 'microthemer'),
@@ -212,6 +228,10 @@ $this->display_log();
 		            'monitor_js_errors' => array(
 			            'label' => __('Monitor general JavaScript errors on your site'),
 			            'explain' => __('General JavaScript errors on your site can interfere with Microthemer, and other plugins. Microthemer can check for errors and warn you about them.', 'microthemer')
+		            ),
+		            'minify_js' => array(
+			            'label' => __('Minify the JS you add with Microthemer', 'microthemer'),
+			            'explain' => __('Minify the custom JavaScript you add - not necessary is you use an asset optimisation plugin' , 'microthemer')
 		            ),
 		            'active_scripts_footer' => array(
 			            'label' => __('Load the JS you add with Microthemer in the footer'),
@@ -409,7 +429,7 @@ $this->display_log();
             <div class="heading"><?php echo esc_html__('Alternatively, use a plugin', 'microthemer'); ?></div>
             <p class="instruction-text"><?php echo esc_html__('If you are not familiar with editing PHP theme files, or you are using Oxygen Builder, you can also run the above code in the form of a simple plugin. 
             This approach is necessary for Oxygen users because Oxygen disables the theme.', 'microthemer'); ?></p>
-            <p><a class="tvr-button" href="<?php echo $this->thispluginurl . 'includes/inactive-loading/mt-inactive.zip'; ?>"><?php echo esc_html__('Download plugin', 'microthemer'); ?></a></p>
+            <p><a href="<?php echo $this->thispluginurl . 'includes/inactive-loading/mt-inactive.zip'; ?>"><?php echo esc_html__('Download plugin', 'microthemer'); ?></a></p>
 
             <p class="instruction-text"><?php echo esc_html__('Simply install and activate the "mt-inactive.zip" plugin, and then you can uninstall Microthemer - the CSS will still apply.', 'microthemer'); ?></p>
             <br /><br />

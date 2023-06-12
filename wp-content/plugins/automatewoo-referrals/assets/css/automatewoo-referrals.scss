@@ -6,19 +6,20 @@ $mobile-bp: 900px;
 @mixin clearfix() {
 	*zoom: 1;
 
-	&:before,
-	&:after {
+	&::before,
+	&::after {
 		content: " ";
 		display: table;
 	}
 
-	&:after {
+	&::after {
 		clear: both;
 	}
 }
 
 
 .aw-email-referral-form {
+
 	p.form-row {
 		margin: 0 0 1em;
 	}
@@ -38,6 +39,7 @@ $mobile-bp: 900px;
 	margin: 22px 0 2px;
 	font-size: 0;
 	text-align: center;
+
 	@include clearfix();
 
 	a.btn {
@@ -46,7 +48,7 @@ $mobile-bp: 900px;
 		border: none;
 		background: #43454b;
 		color: #fff;
-		padding: .84em 1.387em .91em;
+		padding: 0.84em 1.387em 0.91em;
 		line-height: 0.9;
 		font-weight: 600;
 		text-shadow: none;
@@ -57,7 +59,8 @@ $mobile-bp: 900px;
 		margin: 0 5px 9px;
 		text-decoration: none !important;
 
-		&:before {
+		&::before {
+
 			@extend %automatewoo-referrals-icon;
 			line-height: 1.4;
 			margin-right: 0.7em;
@@ -73,15 +76,18 @@ $mobile-bp: 900px;
 	}
 
 	a.btn-email {
-		&:before {
+
+		&::before {
+
 			@extend %automatewoo-referrals-icon--mail;
 		}
 	}
 
 	a.btn-facebook {
-		background: #3B5998;
+		background: #3b5998;
 
-		&:before {
+		&::before {
+
 			@extend %automatewoo-referrals-icon--facebook;
 		}
 	}
@@ -89,7 +95,8 @@ $mobile-bp: 900px;
 	a.btn-twitter {
 		background: #55acee;
 
-		&:before {
+		&::before {
+
 			@extend %automatewoo-referrals-icon--twitter;
 		}
 	}
@@ -97,7 +104,8 @@ $mobile-bp: 900px;
 	a.btn-whatsapp {
 		background: #55acee;
 
-		&:before {
+		&::before {
+
 			@extend %automatewoo-referrals-icon--whatsapp;
 		}
 	}
@@ -107,11 +115,10 @@ $mobile-bp: 900px;
 .aw-referrals-share-or {
 	text-align: center;
 	margin: 0 0 1.1em;
-	color: #bbbbbb;
+	color: #bbb;
 	text-transform: uppercase;
 	font-size: 1.07em;
 }
-
 
 
 .aw-referrals-share-widget {

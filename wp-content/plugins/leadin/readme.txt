@@ -4,9 +4,9 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: CRM, Email Marketing, Live Chat, Marketing, Analytics, form, popups, newsletter, contact management, chat, contact form, marketing automation
 Requires at least: 5.4
-Tested up to: 6.1.1
+Tested up to: 6.2
 Requires PHP: 7.2
-Stable tag: 10.1.13
+Stable tag: 10.1.24
 
 Capture, organize and engage web visitors with free live chat, forms, CRM (contact management), email marketing, and analytics. Easy to use, no coding.
 
@@ -29,7 +29,7 @@ Ready to get started? Click download in the top right corner of the page.
 ### CRM & Contact Management Platform
 Your CRM in the HubSpot WordPress plugin is your company's command center. It's the place where you can track every single customer interaction and get a 360-degree view of your customers. You can even use it to manage or automate marketing, sales, and service processes.
 
-[youtube https://www.youtube.com/watch?v=rbg0NHvu_dk]
+[youtube https://www.youtube.com/watch?v=GjZ97U4O9nM]
 
 With HubSpot, you don't need to jump from tool to tool to keep track of everything. Instead, you can store all of your data in one place.
 
@@ -380,12 +380,12 @@ Please visit the <a href="https://community.hubspot.com/?utm_source=wordpress-pl
 == Changelog ==
 
 <a href="http://plugins.svn.wordpress.org/leadin/trunk/changelog.txt" target="_blank">Full changelog here</a>
-- Current version: 10.1.13
-- Version release date: 2023-03-30
+- Current version: 10.1.24
+- Version release date: 2023-05-31
 
-= 10.1.13 (2023-03-30) =
-* Add url sanitizing for meetings shortcode
+= 10.1.24 (2023-05-31) =
+* Add Norwegian language support
 
-= 10.1.0 (2023-03-08) =
-* Forms app embedder
+= 10.1.23 (2023-05-17) =
+* Fixed form creation by template
 

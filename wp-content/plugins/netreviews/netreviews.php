@@ -5,7 +5,7 @@
  * Plugin URI: http://www.avis-verifies.com/eCommerce/woocommerce/netreviews.zip
  * Description: We provide you with a solution that enables you to collect customer reviews about your website and products which will show on your
  * website and on a attestation which will increase the credibility of published reviews.
- * Version: 2.3.13
+ * Version: 2.3.14
  * Author: NetReviews SAS <contact@avis-verifies.com>
  * Author URI: www.avis-verifies.com
  * Text Domain: avis-verifies
@@ -629,10 +629,7 @@ function ntav_netreviews_product_reviews_short_code()
 function ntav_getContentForProductReviews()
 {
     global $product;
-    $id_product = get_the_id();
-    if ($product) {
-        $id_product = $product->get_id();
-    }
+    $id_product = $product->get_id();
     $WpmlEnable = ntav_getWpmlEnable();
 
     if ($WpmlEnable == 'yes') {

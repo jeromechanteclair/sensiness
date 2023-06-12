@@ -204,7 +204,7 @@ if ($property == 'google_font') {
 	$extra_icon = $this->iconFont('search', array(
 		'class' => 'g-font show-dialog',
 		'rel' => 'google-fonts',
-		'title' => esc_attr('Browse Google fonts', 'Microthemer'),
+		'title' => esc_attr__('Browse Google fonts', 'Microthemer'),
 	));
 
 	// hide if font-family isn't set to Google Font

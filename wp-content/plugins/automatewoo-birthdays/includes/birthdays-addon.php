@@ -62,6 +62,8 @@ final class AW_Birthdays_Addon extends AutomateWoo\Addon {
 		$path = $this->get_autoload_path( $class );
 
 		if ( $path && file_exists( $path ) ) {
+			// Exclusion reason: The $path is for the autoload no reaching user input.
+			// nosemgrep: audit.php.lang.security.file.inclusion-arg
 			include $path;
 		}
 	}

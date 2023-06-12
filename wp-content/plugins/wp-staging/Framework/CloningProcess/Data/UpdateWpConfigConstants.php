@@ -24,8 +24,6 @@ class UpdateWpConfigConstants extends FileCloningService
             return true;
         }
 
-        $content = $this->readWpConfig();
-
         $replaceOrAdd = [
             "UPLOADS"             => sprintf("'%s'", $this->escapeSingleQuotes($this->dto->getUploadFolder())),
             "WP_PLUGIN_DIR"       => '__DIR__ . "' . (new WpDefaultDirectories())->getRelativePluginPath(SlashMode::LEADING_SLASH) . '"',
@@ -34,25 +32,31 @@ class UpdateWpConfigConstants extends FileCloningService
             "WP_HOME"             => sprintf("'%s'", $this->escapeSingleQuotes($this->dto->getStagingSiteUrl())),
             "WP_SITEURL"          => sprintf("'%s'", $this->escapeSingleQuotes($this->dto->getStagingSiteUrl())),
             "WP_CACHE"            => 'false',
+            "DISABLE_WP_CRON"     => (isset($this->dto->getJob()->getOptions()->cronDisabled) && $this->dto->getJob()->getOptions()->cronDisabled) ? 'true' : 'false',
             "WP_ENVIRONMENT_TYPE" => sprintf("'%s'", 'staging'),
         ];
+
         if ($this->dto->isExternal()) {
             $replaceOrAdd['DB_HOST']     = sprintf("'%s'", $this->escapeSingleQuotes($this->dto->getExternalDatabaseHost()));
             $replaceOrAdd['DB_USER']     = sprintf("'%s'", $this->escapeSingleQuotes($this->dto->getExternalDatabaseUser()));
             $replaceOrAdd['DB_PASSWORD'] = sprintf("'%s'", $this->escapeSingleQuotes($this->dto->getExternalDatabasePassword()));
             $replaceOrAdd['DB_NAME']     = sprintf("'%s'", $this->escapeSingleQuotes($this->dto->getExternalDatabaseName()));
+
+            if ($this->dto->getExternalDatabaseSsl()) {
+                $replaceOrAdd['MYSQL_CLIENT_FLAGS'] = 'MYSQLI_CLIENT_SSL | MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT';
+            }
         }
 
         $replaceOrSkip = [];
         if ($this->isNetworkClone()) {
             $replaceOrAdd['DOMAIN_CURRENT_SITE'] = sprintf("'%s'", $this->escapeSingleQuotes($this->dto->getStagingSiteDomain()));
-            $replaceOrAdd['PATH_CURRENT_SITE'] = sprintf("'%s'", trailingslashit($this->escapeSingleQuotes($this->dto->getStagingSitePath())));
+            $replaceOrAdd['PATH_CURRENT_SITE']   = sprintf("'%s'", trailingslashit($this->escapeSingleQuotes($this->dto->getStagingSitePath())));
             $replaceOrSkip["WP_ALLOW_MULTISITE"] = 'true';
-            $replaceOrSkip["MULTISITE"] = 'true';
+            $replaceOrSkip["MULTISITE"]          = 'true';
         } else {
             //It's OK to attempt replacing multi-site constants even in single-site jobs as they will not be present in a single-site wp-config.php
             $replaceOrSkip["WP_ALLOW_MULTISITE"] = 'false';
-            $replaceOrSkip["MULTISITE"] = 'false';
+            $replaceOrSkip["MULTISITE"]          = 'false';
         }
 
         /** @var  $jetpackHelper */
@@ -76,6 +80,7 @@ class UpdateWpConfigConstants extends FileCloningService
          */
         $replaceOrAdd = (array)apply_filters('wpstg_constants_replace_or_add', $replaceOrAdd);
 
+        $content = $this->readWpConfig();
         foreach ($replaceOrAdd as $constant => $newDefinition) {
             $content = $this->replaceOrAddDefinition($constant, $content, $newDefinition);
         }

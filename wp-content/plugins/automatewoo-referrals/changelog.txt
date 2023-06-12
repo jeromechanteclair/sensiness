@@ -1,5 +1,25 @@
 *** AutomateWoo - Refer A Friend Add-on ***
 
+2023-06-08 - version 2.7.2
+* Fix - Fatal error triggered by settings tab.
+* Tweak - Compatibility for PHP 8.2.
+* Tweak - Migrate Anonymize Emails task to Action Scheduler Job.
+
+2023-05-10 - version 2.7.1
+* Tweak - Compile CSS files without emitting a UTF-8 byte-order mark (BOM) to get better compatibility with other extensions optimizing CSS file loading.
+* Tweak - WC 7.7 compatibility.
+
+2023-05-02 - version 2.7.0
+* Add - Analytics REST endpoint.
+* Add - HPOS compatibility.
+* Add - Referrals WC Analytics page.
+* Add - Referred orders dashboard widget.
+* Dev - Add JS linting.
+* Dev - Add bundlewatch.
+* Dev - Add style linting.
+* Dev - Security improvements: Fixes and cleanup of semgrep warnings.
+* Tweak - Bump minimum WooCommerce version to 7.4 (L-2).
+
 2023-04-04 - version 2.6.20
 * Tweak - WC 7.6 compatibility.
 

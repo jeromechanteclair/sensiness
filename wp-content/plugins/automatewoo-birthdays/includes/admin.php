@@ -70,6 +70,10 @@ class Admin {
 		$path = AW_Birthdays()->path( '/includes/views/' . $view );
 
 		if ( file_exists( $path ) ) {
+
+			// Exclusion reason: The $path is protected by AW_Birthdays()->path and also only being called by us
+			// internally without reaching user input.
+			// nosemgrep: audit.php.lang.security.file.inclusion-arg
 			include $path;
 		}
 	}

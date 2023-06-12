@@ -122,34 +122,30 @@ require_once('common-inline-assets.php');
 						$act_param = 'tvr_activate_micro_theme';
 						$nonce = 'tvr_activate_micro_theme';
 					}
-					// Having this option probably just creates confusion for Microthemer - just have for Microloader
-					if (TVR_MICRO_VARIANT == 'loader') {
-						?>
 
-					<?php
-					} else {
-						$action_buttons = array(
-							'info',
-							'attachments',
-							'instructions',
-							'download',
-							'delete'
-						);
-						foreach ($action_buttons as $button){
-							if ($button == 'info'){
-								$class = 'on';
-							} else {
-								$class = '';
-							}
-						?>
-							<li class="pack-action <?php echo $class; ?> pack-action-<?php echo $button; ?>"
-								rel="<?php echo $button; ?>" data-dir-name="<?php echo $this->preferences['theme_in_focus']; ?>">
-								<span class="pack-icon icon tvr-icon"></span>
-								<span class="action-text"><?php echo $button; ?></span>
-							</li>
-							<?php
+					$action_buttons = array(
+						'info',
+						'attachments',
+						'instructions',
+						'download',
+						'delete'
+					);
+
+					foreach ($action_buttons as $button){
+						if ($button == 'info'){
+							$class = 'on';
+						} else {
+							$class = '';
 						}
+						?>
+                        <li class="pack-action <?php echo $class; ?> pack-action-<?php echo $button; ?>"
+                            rel="<?php echo $button; ?>" data-dir-name="<?php echo $this->preferences['theme_in_focus']; ?>">
+                            <span class="pack-icon icon tvr-icon"></span>
+                            <span class="action-text"><?php echo $button; ?></span>
+                        </li>
+						<?php
 					}
+
 					?>
 				</ul>
 
@@ -158,10 +154,6 @@ require_once('common-inline-assets.php');
 
 		</div>
 
-		<?php
-		// only show meta data editing options and files table if microthemer
-		if (TVR_MICRO_VARIANT == 'themer') {
-		?>
 		<div id="single-content-areas">
 			<div id='edit-info' class='manage-content-wrap hidden show'>
 				<div class="explain">
@@ -244,7 +236,7 @@ require_once('common-inline-assets.php');
 						<th colspan="2" class="manage-column image-upload">
 
 							<form name='upload_file_form' id="upload-file-form" method="post" enctype="multipart/form-data"
-								action="<?php echo $this->page_prefix; ?>.php?page=<?php echo $this->managesinglepage;?>" autocomplete="off">
+								action="admin.php?page=<?php echo $this->managesinglepage;?>" autocomplete="off">
 								<?php wp_nonce_field('tvr_upload_file_submit'); ?>
 								<input type="file" name="upload_file" />
 								<input class="tvr-button" type="submit" name= "tvr_upload_file_submit" value="Upload File" />
@@ -370,9 +362,7 @@ require_once('common-inline-assets.php');
 			</div>
 
 		</div>
-		<?php
-		} // ends 'if themer'
-		?>
+
 
 		<!-- View file dialog -->
 		<?php echo $this->start_dialog('view-pack-file', esc_html__('Design Pack File', 'microthemer'), 'sidebar'); ?>

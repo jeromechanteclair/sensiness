@@ -310,34 +310,37 @@ class mbe_tracking_factory
                 $logger->logVar($mbeShipment, "MBE SHIPMENT");
 
 
-                if ($mbeShipment) {
-                    $trackingNumber = $mbeShipment->MasterTrackingMBE;
-                    $label = $mbeShipment->Labels->Label;
+	            if ($mbeShipment) {
+		            $trackingNumber = $mbeShipment->MasterTrackingMBE;
+		            $label = !empty($mbeShipment->Labels)?$mbeShipment->Labels->Label:null;
 
-                    if (is_array($label)) {
-                        $i = 1;
-                        foreach ($label as $l) {
-                            $fileName = 'MBE_' . $orderId . '_' . $trackingNumber . '_' . $i;
-                            self::saveShipmentDocument($l->Type, $l->Stream, $fileName);
-                            self::saveMultipleShipmentInfo($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_FILENAME, $fileName . '.' . strtolower($l->Type), true);
-                            $i++;
-                        }
-                    }
-                    else {
-                        $fileName = 'MBE_' . $orderId . '_' . $trackingNumber;
-                        self::saveShipmentDocument($label->Type, $label->Stream, $fileName);
+		            if (is_array($label)) {
+			            $i = 1;
+			            foreach ($label as $l) {
+				            $fileName = 'MBE_' . $orderId . '_' . $trackingNumber . '_' . $i;
+				            if(!empty($l) && self::saveShipmentDocument($l->Type, $l->Stream, $fileName)) {
+					            self::saveMultipleShipmentInfo($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_FILENAME, $fileName . '.' . strtolower($l->Type), true);
+				            }
+				            $i++;
+			            }
+		            }
+		            else {
+			            $fileName = 'MBE_' . $orderId . '_' . $trackingNumber;
+			            if(!empty($label) && self::saveShipmentDocument($label->Type, $label->Stream, $fileName)) {
+				            self::saveMultipleShipmentInfo( $orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_FILENAME, $fileName . '.' . strtolower( $label->Type ), true );
+			            } else {
+							$logger->log('Missing label in response or error saving the label file');
+			            }
+		            }
 
-                        self::saveMultipleShipmentInfo($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_FILENAME, $fileName . '.' . strtolower($label->Type), true);
-                    }
-
-                    self::saveMultipleShipmentInfo($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_NUMBER, $trackingNumber);
-                    update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_NUMBER, $trackingNumber, true);
-                    update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_NAME, $serviceName, true);
-                    update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_SERVICE, $service, true);
-                    update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_ZONE, $subzone, true);
-                    update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_URL, self::getTrackingUrlBySystem());
-                    return true;
-                }
+		            self::saveMultipleShipmentInfo($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_NUMBER, $trackingNumber);
+		            update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_NUMBER, $trackingNumber, true);
+		            update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_NAME, $serviceName, true);
+		            update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_SERVICE, $service, true);
+		            update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_ZONE, $subzone, true);
+		            update_post_meta($orderId, woocommerce_mbe_tracking_admin::SHIPMENT_SOURCE_TRACKING_URL, self::getTrackingUrlBySystem());
+		            return true;
+	            }
             }
 
         }
@@ -389,6 +392,7 @@ class mbe_tracking_factory
         }
 
         $logger->log($message);
+		return $saveResult;
     }
 
 	public static function getTrackingUrlBySystem()

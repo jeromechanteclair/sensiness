@@ -47,11 +47,6 @@ if (!defined('WPSTG_PLUGIN_DOMAIN')) {
     define('WPSTG_PLUGIN_DOMAIN', 'wp-staging');
 }
 
-// Features
-if (!defined('WPSTG_FEATURE_ENABLE_BACKUP')) {
-    define('WPSTG_FEATURE_ENABLE_BACKUP', true);
-}
-
 // Define WordPress default constants if not already defined in outdated WP version for backward compatibility
 if (!defined('KB_IN_BYTES')) {
     define('KB_IN_BYTES', 1024);
@@ -110,6 +105,7 @@ if (file_exists(__DIR__ . '/wp-staging-error-handler.php')) {
 }
 
 $wpStaging = WPStaging::getInstance();
+$wpStaging->registerErrorHandler();
 
 /*
  * Set the WPSTG_COMPATIBLE constant in the container,

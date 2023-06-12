@@ -4,6 +4,9 @@
 namespace AutomateWoo\Referrals;
 
 use AutomateWoo;
+use AutomateWoo\HPOS_Helper;
+use AutomateWoo\Referrals\Admin\Analytics;
+use AutomateWoo\Referrals\Admin\Analytics\Rest_API;
 use Automattic\WooCommerce\Admin\Features\Navigation\Menu;
 
 /**
@@ -13,12 +16,17 @@ class Admin {
 
 
 	function __construct() {
+		Analytics::init();
 
 		add_action( 'automatewoo/admin/submenu_pages', [ $this, 'admin_pages' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 
 		add_filter( 'automatewoo/settings/tabs', [ $this, 'settings_tab' ] );
-		add_filter( 'automatewoo/reports/tabs', [ $this, 'reports_tab' ] );
+		// Technically, we don't need this condition, as the hook will not be called by AW, if HPOS is enabled.
+		// But we can have it to be well secured and have a reference what to remove once HPOS will be always on.
+		if ( HPOS_Helper::is_HPOS_enabled() ) {
+			add_filter( 'automatewoo/reports/tabs', [ $this, 'reports_tab' ] );
+		}
 		add_filter( 'automatewoo/admin/screen_ids', [ $this, 'register_screen_id' ] );
 		add_filter( 'automatewoo/dashboard/chart_widgets', [ $this, 'dashboard_chart_widgets' ] );
 		add_filter( 'automatewoo/admin/controllers/includes', [ $this, 'filter_controller_includes' ] );
@@ -77,7 +85,7 @@ class Admin {
 			$index++;
 
 			add_submenu_page(
-				$slug, 
+				$slug,
 				$item[ 'page_title' ],
 				$item[ 'menu_title' ],
 				'manage_woocommerce',
@@ -169,24 +177,12 @@ class Admin {
 	 */
 	function dashboard_chart_widgets( $widgets ) {
 		$path      = AW_Referrals()->admin_path( '/dashboard-widgets/' );
+
+		if ( Rest_API::is_enabled() ) {
+			$widgets[] = $path . 'analytics-orders.php';
+		}
 		$widgets[] = $path . 'chart-invites.php';
 		return $widgets;
-	}
-
-
-	/**
-	 * @param $view
-	 * @param array $args
-	 */
-	function get_view( $view, $args = [] ) {
-
-		if ( $args && is_array( $args ) )
-			extract( $args );
-
-		$path = AW_Referrals()->path( '/includes/admin/views/' . $view );
-
-		if ( file_exists( $path ) )
-			include( $path );
 	}
 
 

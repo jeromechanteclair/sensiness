@@ -2,7 +2,7 @@
 /*
 	Plugin Name: MBE eShip
 	Description: Mail Boxes Etc. Online MBE Plugin integration for main Ecommerce platforms.
-	Version: 2.0.3
+	Version: 2.0.4
 	Author: MBE Worldwide S.p.A.
 	Author URI: https://www.mbeglobal.com/
 	Text Domain: mail-boxes-etc
@@ -66,7 +66,7 @@ if ( ! defined( 'MBE_UAP_TOTAL_SIZE_LIMIT_300_CM' ) ) {
 }
 
 if ( ! defined( 'MBE_UAP_SERVICE' ) ) {
-	define( 'MBE_UAP_SERVICE', 'MDP' );
+	define( 'MBE_UAP_SERVICE', MBE_ESHIP_ID.':MDP' );
 }
 
 if ( ! defined( 'MBE_UAP_ALLOWED_COUNTRIES_LIST' ) ) {
@@ -118,6 +118,41 @@ function mbe_eship_activation_check() {
 	}
 }
 
+function mbe_eship_create_options_default() {
+	$schemaFlagOption = MBE_ESHIP_ID . '_' . 'need_default_values';
+	// Check if it's needed and not already running
+	if(!(get_option( $schemaFlagOption ) === 'no') && !get_transient( MBE_ESHIP_ID . '_set_options_default' ) ) {
+		$logger = new Mbe_Shipping_Helper_Logger();
+		$logger->log( 'Saving settings default value - Starting', true);
+		// set transient to flag it's running.
+		set_transient( MBE_ESHIP_ID . '_set_options_default', 'yes', MINUTE_IN_SECONDS * 5 );
+
+		// Include settings so that we can run through defaults.
+		if ( ! class_exists( WC_Settings_Page::class ) ) {
+			require_once( WP_PLUGIN_DIR . '/woocommerce/includes/admin/settings/class-wc-settings-page.php' );
+		}
+
+		$mbeSettingsPage = include_once __DIR__ . '/includes/class-mbe-settings-page.php';
+		$sections        = $mbeSettingsPage->get_sections();
+		// Remove the Welcome page from the list
+		unset($sections['']);
+
+		$subsections = array_unique( array_keys( $sections ) );
+
+		foreach ( $subsections as $subsection ) {
+			foreach ( $mbeSettingsPage->get_settings_for_section( $subsection ) as $value ) {
+				if ( isset( $value['default'] ) && isset( $value['id'] ) ) {
+					add_option( $value['id'], $value['default']);
+				}
+			}
+		}
+
+		update_option( $schemaFlagOption, 'no' );
+		delete_transient( MBE_ESHIP_ID . '_set_options_default' );
+		$logger->log( 'Saving settings default value - Done', true);
+	}
+}
+
 /**
  * Transfer the settings from the old plugin to the new ones
  * @return void
@@ -129,13 +164,15 @@ function mbe_eship_update_new_settings_check() {
 	$schemaFlagOption          = MBE_ESHIP_ID . '_' . 'need_new_settings';
 	$oldOption                 = get_option( Mbe_Shipping_Helper_Data::MBE_ELINK_SETTINGS );
 	$mbeNeedUpdate             = ! ( get_option( $schemaFlagOption ) === 'no' ) && ! empty( $oldOption );
+	// To check if plugin was already configured but options weren't migrated yet
+	$notConfigured             = empty(get_option(MBE_ESHIP_ID . '_' .Mbe_Shipping_Helper_Data::XML_PATH_ALLOWED_SHIPMENT_SERVICES));
 	$csv_rates_model           = new Mbe_Shipping_Model_Csv_Shipping();
 	$csv_package_model         = new Mbe_Shipping_Model_Csv_Package();
 	$csv_package_product_model = new Mbe_Shipping_Model_Csv_Package_Product();
 
 	$tableExist = $csv_rates_model->tableExists() && $csv_package_model->tableExists() && $csv_package_product_model->tableExists();
 
-	if ( '2.0.0' === MBE_ESHIP_PLUGIN_VERSION && $mbeNeedUpdate && $tableExist ) {
+	if ( $mbeNeedUpdate && $tableExist && $notConfigured ) {
 
 		$logger->log( 'Migrating from MBE e-Link --- Starting', true );
 //		try {
@@ -185,8 +222,10 @@ function mbe_eship_update_new_settings_check() {
 		//
 //		}
 	} else if (empty($oldOption)) {
-        $logger->log('Migrating from MBE e-Link --- Old options are missing ');
-    }
+		$logger->log('Migrating from MBE e-Link --- Old options are missing ');
+	} else if ($mbeNeedUpdate && !$notConfigured) {
+		$logger->log('Migrating from MBE e-Link --- No migration, Plugin already configured ');
+	}
 }
 
 function mbe_eship_uninstall_db_options() {
@@ -311,9 +350,12 @@ function mbe_eship_update_db_check() {
 register_uninstall_hook( __FILE__, 'mbe_eship_uninstall_db_options' );
 register_activation_hook( __FILE__, 'mbe_eship_activation_check' );
 register_activation_hook( __FILE__, 'mbe_eship_install_db' );
+//register_activation_hook( __FILE__, 'mbe_eship_create_options_default' );
+add_action( 'plugins_loaded','mbe_eship_create_options_default' );
 
 add_action( 'plugins_loaded', 'mbe_eship_update_db_check', 9 );
 add_action( 'plugins_loaded', 'mbe_eship_update_new_settings_check', 10 );
+
 
 /**
  * Check if WooCommerce is active
@@ -466,7 +508,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			}
 
 			function load_custom_settings_tab( $settings ) {
-				$settings[] = include __DIR__ . '/includes/class-mbe-settings-page.php';
+				$settings[] = include_once __DIR__ . '/includes/class-mbe-settings-page.php';
 
 				return $settings;
 			}
@@ -495,9 +537,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			}
 
 			public function add_cron_job() {
-//                $this->>helper = new Mbe_Shipping_Helper_Data();
+				$logger = new Mbe_Shipping_Helper_Logger();
 				$time = $this->helper->getShipmentsClosureTime();
 				if ( $this->helper->isEnabled() && $this->helper->isClosureAutomatically() ) {
+					$closureTime = strtotime( "today $time ".wp_timezone_string());
 					$cron_jobs = get_option( 'cron' );
 					$array     = array_column( $cron_jobs, 'closure_event' );
 					if ( ! empty( $array ) ) {
@@ -505,10 +548,12 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 						$scheduledTime = date( 'H:i:s', $index );
 						if ( $scheduledTime != $time ) {
 							wp_clear_scheduled_hook( 'closure_event' );
-							wp_schedule_event( strtotime( "today $time" ), 'daily', 'closure_event' );
+							wp_schedule_event($closureTime, 'daily', 'closure_event' );
+							$logger->log( "Cron automatic closure set at: $time ".wp_timezone_string() );
 						}
 					} else {
-						wp_schedule_event( strtotime( "today $time" ), 'daily', 'closure_event' );
+						wp_schedule_event($closureTime, 'daily', 'closure_event' );
+						$logger->log( "Cron automatic closure set at: $time ".wp_timezone_string() );
 					}
 				} else {
 					wp_clear_scheduled_hook( 'closure_event' );
@@ -580,17 +625,17 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 				$orders->prepare_items(); ?>
 
-                <div class="wrap">
-                    <h2><?php echo __( 'MBE Shipments List', 'mail-boxes-etc' ) ?></h2>
+				<div class="wrap">
+					<h2><?php echo __( 'MBE Shipments List', 'mail-boxes-etc' ) ?></h2>
 
-                    <form id="certificates-filter" method="get">
+					<form id="certificates-filter" method="get">
 
-                        <input type="hidden" name="page"
-                               value="<?php echo ( ! empty( $_REQUEST['page'] ) ) ? esc_attr( wp_unslash( $_REQUEST['page'] ) ) : ''; ?>"
-                        />
+						<input type="hidden" name="page"
+						       value="<?php echo ( ! empty( $_REQUEST['page'] ) ) ? esc_attr( wp_unslash( $_REQUEST['page'] ) ) : ''; ?>"
+						/>
 						<?php $orders->display() ?>
-                    </form>
-                </div>
+					</form>
+				</div>
 				<?php
 			}
 
@@ -607,37 +652,37 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 					}
 					?>
 
-                    <div class="wrap">
-                        <h2><?php echo 'MBE ' . $title . ' ' . __( 'Editor' ) ?>
-                            <a class="add-new-h2"
-                               href="<?php echo get_admin_url( get_current_blog_id(), 'admin.php?page=' . mbe_e_link_get_settings_url() . '&tab=' . MBE_ESHIP_ID . '&section=mbe_packages' ); ?>">
+					<div class="wrap">
+						<h2><?php echo 'MBE ' . $title . ' ' . __( 'Editor' ) ?>
+							<a class="add-new-h2"
+							   href="<?php echo get_admin_url( get_current_blog_id(), 'admin.php?page=' . mbe_e_link_get_settings_url() . '&tab=' . MBE_ESHIP_ID . '&section=mbe_packages' ); ?>">
 								<?php _e( 'Back to settings', 'mail-boxes-etc' ) ?>
-                            </a>
-                        </h2>
+							</a>
+						</h2>
 						<?php echo $message; ?>
 
-                        <form id="certificates-filter" method="get">
+						<form id="certificates-filter" method="get">
 							<?php //Fields to be sent with request and bulk actions ?>
-                            <input type="hidden" name="page"
-                                   value="<?php echo ( ! empty( $_REQUEST['page'] ) ) ? esc_attr( wp_unslash( $_REQUEST['page'] ) ) : ''; ?>"
-                            />
-                            <input type="hidden" name="csv"
-                                   value="<?php echo $csvType ?>"
-                            />
+							<input type="hidden" name="page"
+							       value="<?php echo ( ! empty( $_REQUEST['page'] ) ) ? esc_attr( wp_unslash( $_REQUEST['page'] ) ) : ''; ?>"
+							/>
+							<input type="hidden" name="csv"
+							       value="<?php echo $csvType ?>"
+							/>
 							<?php $csv->display() ?>
-                        </form>
-                    </div>
+						</form>
+					</div>
 					<?php
 				} else {
 					?>
-                    <div class="wrap">
-                        <h2><?php echo __( 'Missing or wrong csv type', 'mail-boxes-etc' ) ?>
-                            <a class="add-new-h2"
-                               href="<?php echo get_admin_url( get_current_blog_id(), 'admin.php?page=' . mbe_e_link_get_settings_url() . '&tab=' . MBE_ESHIP_ID . '&section=mbe_packages' ); ?>">
+					<div class="wrap">
+						<h2><?php echo __( 'Missing or wrong csv type', 'mail-boxes-etc' ) ?>
+							<a class="add-new-h2"
+							   href="<?php echo get_admin_url( get_current_blog_id(), 'admin.php?page=' . mbe_e_link_get_settings_url() . '&tab=' . MBE_ESHIP_ID . '&section=mbe_packages' ); ?>">
 								<?php _e( 'Back to settings', 'mail-boxes-etc' ) ?>
-                            </a>
-                        </h2>
-                    </div>
+							</a>
+						</h2>
+					</div>
 					<?php
 				}
 			}
@@ -814,12 +859,14 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			}
 
 			function wf_mbe_wooCommerce_shipping_uap_meta_field( $order_id ) {
+				$logger = new Mbe_Shipping_Helper_Logger();
 //		        if((bool)$this->helper->getOption('mbe_ship_to_UAP') && $this->helper->isMbeShipping(wc_get_order($order_id))) {
 				if ( $this->helper->isMbeShipping( wc_get_order( $order_id ) ) ) {
 					if ( ! empty( $_POST['shipping_uap_publicaccespointid'] ) ) {
 						update_post_meta( $order_id, 'woocommerce_mbe_uap_shipment', 'Yes' );
 						update_post_meta( $order_id, 'woocommerce_mbe_uap_shipment_publicaccespointId', $_POST['shipping_uap_publicaccespointid'] );
 					} else {
+						$logger->log(__('Missing Access Point ID in $_POST'));
 						update_post_meta( $order_id, 'woocommerce_mbe_uap_shipment', 'No' );
 					}
 				}
@@ -832,11 +879,15 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			}
 
 			function wf_mbe_wooCommerce_shipping_uap_address( $data ) {
+				$logger = new Mbe_Shipping_Helper_Logger();
 				// convert $data['shipping_method'] to array to avoid issues with empty (virtual products) or string values
 				$shippingMethod = is_array( $data['shipping_method'] ) ? $data['shipping_method'] : [ $data['shipping_method'] ];
-				$serviceOK      = preg_grep( '/^' . MBE_UAP_SERVICE . '/', $shippingMethod ) !== false;
+				$serviceOK      = !empty(preg_grep( '/^' . MBE_UAP_SERVICE . '/', $shippingMethod )); // TODO controllare risultato è array non vuoto o con  elementi non vuoti
+
+				$logger->logVar($shippingMethod, 'wf_mbe_wooCommerce_shipping_uap_address - Shipping Method');
 				if ( ! empty( $_POST['uap-list'] ) && $serviceOK ) {
 					$address = json_decode( stripslashes( $_POST['uap-list'] ) );
+					$logger->logVar( $address->PublicAccesPointID, 'wf_mbe_wooCommerce_shipping_uap_address - UAP ID');
 					// Set the UAP address as shipping address
 					$_POST['shipping_uap_publicaccespointid'] = sanitize_text_field( $address->PublicAccesPointID );
 //                        $data['shipping_uap_publicaccespointid']  = sanitize_text_field($address->PublicAccesPointID);
@@ -1152,51 +1203,51 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 						'csv-' . $csvType, 'normal', 'default' );
 					?>
 
-                    <div class="wrap">
-                        <div class="icon32 icon32-posts-post" id="icon-edit"><br></div>
-                        <h2><?php echo __( 'Edit' ) . ' ' . $csv->get_title( false ) ?>
-                            <a class="add-new-h2"
-                               href="<?php echo get_admin_url( get_current_blog_id(), 'admin.php?page=woocommerce_mbe_csv_tabs&csv=' . $csvType ); ?>">
+					<div class="wrap">
+						<div class="icon32 icon32-posts-post" id="icon-edit"><br></div>
+						<h2><?php echo __( 'Edit' ) . ' ' . $csv->get_title( false ) ?>
+							<a class="add-new-h2"
+							   href="<?php echo get_admin_url( get_current_blog_id(), 'admin.php?page=woocommerce_mbe_csv_tabs&csv=' . $csvType ); ?>">
 								<?php _e( 'Back to list', 'mail-boxes-etc' ) ?>
-                            </a>
-                        </h2>
+							</a>
+						</h2>
 
 						<?php if ( ! empty( $notice ) ): ?>
-                            <div id="notice" class="error"><p><?php echo $notice ?></p></div>
+							<div id="notice" class="error"><p><?php echo $notice ?></p></div>
 						<?php endif; ?>
 						<?php if ( ! empty( $message ) ): ?>
-                            <div id="message" class="updated"><p><?php echo $message ?></p></div>
+							<div id="message" class="updated"><p><?php echo $message ?></p></div>
 						<?php endif; ?>
 
-                        <form id="form" method="POST">
-                            <input type="hidden" name="nonce"
-                                   value="<?php echo wp_create_nonce( basename( __FILE__ ) ) ?>"/>
+						<form id="form" method="POST">
+							<input type="hidden" name="nonce"
+							       value="<?php echo wp_create_nonce( basename( __FILE__ ) ) ?>"/>
 							<?php /* storing id to check if we need to add or update the item */ ?>
-                            <input type="hidden" name="id" value="<?php echo $item['id'] ?>"/>
+							<input type="hidden" name="id" value="<?php echo $item['id'] ?>"/>
 
-                            <div class="metabox-holder" id="poststuff">
-                                <div id="post-body">
-                                    <div id="post-body-content">
+							<div class="metabox-holder" id="poststuff">
+								<div id="post-body">
+									<div id="post-body-content">
 										<?php /* render meta box */ ?>
 										<?php do_meta_boxes( 'csv-' . $csvType, 'normal', $item ); ?>
-                                        <input type="submit" value="<?php _e( 'Save', 'mail-boxes-etc' ) ?>" id="submit"
-                                               class="button-primary" name="submit">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+										<input type="submit" value="<?php _e( 'Save', 'mail-boxes-etc' ) ?>" id="submit"
+										       class="button-primary" name="submit">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
 					<?php
 				} else {
 					?>
-                    <div class="wrap">
-                        <h2><?php echo __( 'Missing or wrong csv type', 'mail-boxes-etc' ) ?>
-                            <a class="add-new-h2"
-                               href="<?php echo get_admin_url( get_current_blog_id(), 'admin.php?page=' . mbe_e_link_get_settings_url() . '&tab=' . MBE_ESHIP_ID . '&section=mbe_packages' ); ?>">
+					<div class="wrap">
+						<h2><?php echo __( 'Missing or wrong csv type', 'mail-boxes-etc' ) ?>
+							<a class="add-new-h2"
+							   href="<?php echo get_admin_url( get_current_blog_id(), 'admin.php?page=' . mbe_e_link_get_settings_url() . '&tab=' . MBE_ESHIP_ID . '&section=mbe_packages' ); ?>">
 								<?php _e( 'Back to settings', 'mail-boxes-etc' ) ?>
-                            </a>
-                        </h2>
-                    </div>
+							</a>
+						</h2>
+					</div>
 					<?php
 				}
 			}

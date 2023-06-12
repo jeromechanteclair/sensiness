@@ -3,10 +3,11 @@
 
 namespace AutomateWoo\Referrals;
 
-use AutomateWoo\Background_Processes;
 use AutomateWoo\Clean;
 use AutomateWoo\Integrations;
+use AutomateWoo\Jobs\ActionSchedulerJobMonitor;
 use AutomateWoo\Language;
+use AutomateWoo\Referrals\Jobs\Anonymize_Invite_Emails;
 
 /**
  * @class Hooks
@@ -56,8 +57,10 @@ class Hooks {
 		add_filter( 'automatewoo/log/data_layer_storage_keys', [ 'AutomateWoo\Referrals\Workflows', 'log_data_layer_storage_keys' ] );
 		add_filter( 'automatewoo/formatted_data_layer', [ 'AutomateWoo\Referrals\Workflows', 'filter_formatted_data_layer' ], 10, 2 );
 
-		// background processes
-		add_filter( 'automatewoo/background_processes/includes', [ $this, 'register_background_processes' ] );
+		// jobs
+		add_filter( 'automatewoo/jobs', [ $this, 'register_jobs' ] );
+
+
 		add_action( 'automatewoo/referrals/send_invite_email', [ $this, 'handle_send_invite_email_event' ], 10, 3 );
 
 		// Adding store credit to subscription renewals
@@ -71,7 +74,7 @@ class Hooks {
 			}
 		}
 
-		add_action( 'automatewoo/referrals/settings_updated_async', [ $this, 'maybe_anonymize_invite_emails' ] );
+		add_action( 'automatewoo/referrals/settings_updated', [ $this, 'maybe_anonymize_invite_emails' ] );
 		add_action( 'automatewoo/privacy/loaded', [ $this, 'load_privacy_class' ] );
 
 		add_action( 'wp_loaded', [ $this, 'check_for_action_endpoint' ] );
@@ -85,6 +88,22 @@ class Hooks {
 	function register_background_processes( $includes ) {
 		$includes[ 'referrals_anonymize_invite_emails' ] = AW_Referrals()->path( '/includes/background-processes/anonymize-invite-emails.php' );
 		return $includes;
+	}
+
+	/**
+	 * Register the jobs for AutomateWoo Referrals
+	 * Jobs are tasks run by ActionScheduler via AutomateWoo
+	 *
+	 * @since 2.7.2
+	 *
+	 * @param array $jobs The loaded jobs in AW
+	 * @return array The AW jobs with AW Referrals jobs added.
+	 */
+	function register_jobs( $jobs ) {
+		$action_scheduler = AW()->action_scheduler();
+		$batched_job_monitor = new ActionSchedulerJobMonitor( $action_scheduler );
+		$jobs[] = new Anonymize_Invite_Emails( $action_scheduler, $batched_job_monitor );
+		return $jobs;
 	}
 
 
@@ -106,25 +125,7 @@ class Hooks {
 			return;
 		}
 
-		$query = new Invite_Query();
-		$results = $query->get_results_as_ids();
-
-		if ( ! $results ) {
-			return;
-		}
-
-		/** @var Background_Process_Anonymize_Invite_Emails $process */
-		$process = Background_Processes::get( 'referrals_anonymize_invite_emails' );
-
-		foreach ( $results as $result ) {
-			$process->push_to_queue(
-				[
-					'invite' => $result
-				]
-			);
-		}
-
-		$process->start();
+		AW()->job_service()->get_job( 'referrals_anonymize_invite_emails' )->start();
 	}
 
 

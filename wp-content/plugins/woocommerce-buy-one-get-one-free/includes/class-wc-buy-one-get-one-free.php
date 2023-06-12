@@ -17,7 +17,7 @@ class WC_Buy_One_Get_One_Free {
 	 *
 	 * @var string
 	 */
-	public static $version = '3.9.1';
+	public static $version = '3.9.2';
 
 	/**
 	 * Min WooCommerce required version.

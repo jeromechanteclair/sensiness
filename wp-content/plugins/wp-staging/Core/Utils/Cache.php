@@ -36,12 +36,6 @@ class Cache
     private $lifetime = 2592000; // 30 days
 
     /**
-     * @todo This is referenced by \WPStaging\Core\Utils\Cache::returnException, but doesn't seem to be populated ever. Remove this.
-     * @var array
-     */
-    private $options;
-
-    /**
      * Cache constructor.
      * @param null|int $lifetime
      * @param null|string $cacheDir
@@ -77,7 +71,7 @@ class Cache
          * There's no need to handle failure to create here,
          * as a warning is already displayed on:
          *
-         * @see \WPStaging\Backend\Notices\Notices::messages
+         * @see \WPStaging\Framework\Notices\Notices::renderNotices
          */
         (new Filesystem())->mkdir($this->cacheDir);
     }
@@ -210,7 +204,7 @@ class Cache
     protected function returnException($message = '')
     {
         wp_die(json_encode([
-            'job'     => isset($this->options->currentJob) ? $this->options->currentJob : '',
+            'job'     => '',
             'status'  => false,
             'message' => $message,
             'error'   => true

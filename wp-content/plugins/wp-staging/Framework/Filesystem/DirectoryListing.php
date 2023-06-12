@@ -3,7 +3,7 @@
 namespace WPStaging\Framework\Filesystem;
 
 use RuntimeException;
-use WPStaging\Backend\Notices\Notices;
+use WPStaging\Framework\Notices\Notices;
 use WPStaging\Core\Utils\Htaccess;
 use WPStaging\Core\Utils\IISWebConfig;
 use WPStaging\Core\WPStaging;
@@ -73,7 +73,7 @@ class DirectoryListing
                     /**
                      * Enqueue this error. All enqueued errors will be shown as a single notice.
                      *
-                     * @see \WPStaging\Backend\Notices\Notices::showDirectoryListingWarningNotice
+                     * @see \WPStaging\Framework\Notices\Notices::showDirectoryListingWarningNotice
                      */
                     WPStaging::getInstance()->getContainer()->pushToArray(Notices::$directoryListingErrors, $e->getMessage());
                 }
@@ -124,7 +124,7 @@ class DirectoryListing
 
         // If it's not writable, check if directory listing is prevented. If both fail, bail.
         if (!is_writable($path) && !file_exists($path . 'index.php')) {
-            throw new RuntimeException(__(sprintf("Could not prevent directory listing on %s (Reason: Directory is not writable and does not contain an index file)", untrailingslashit($path)), 'wp-staging'));
+            throw new RuntimeException(sprintf(__('Could not prevent directory listing on %s (Reason: Directory is not writable and does not contain an index file)', 'wp-staging'), untrailingslashit($path)));
         }
 
         // index.php
@@ -150,7 +150,7 @@ PHP
             );
 
             if ($indexPhpCreated === false) {
-                throw new RuntimeException(__(sprintf('Could not prevent directory listing on %s (Reason: Failed to create index.php)', untrailingslashit($path)), 'wp-staging'));
+                throw new RuntimeException(sprintf(__('Could not prevent directory listing on %s (Reason: Failed to create index.php)', 'wp-staging'), untrailingslashit($path)));
             }
         }
 

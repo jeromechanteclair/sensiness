@@ -3218,381 +3218,457 @@
   0 => 
   array (
     'label' => 'bounce',
+    'value' => 'bounce',
     'category' => 'Attention Seekers',
   ),
   1 => 
   array (
     'label' => 'flash',
+    'value' => 'flash',
     'category' => 'Attention Seekers',
   ),
   2 => 
   array (
     'label' => 'pulse',
+    'value' => 'pulse',
     'category' => 'Attention Seekers',
   ),
   3 => 
   array (
     'label' => 'rubberBand',
+    'value' => 'rubberBand',
     'category' => 'Attention Seekers',
   ),
   4 => 
   array (
     'label' => 'shake',
+    'value' => 'shake',
     'category' => 'Attention Seekers',
   ),
   5 => 
   array (
     'label' => 'swing',
+    'value' => 'swing',
     'category' => 'Attention Seekers',
   ),
   6 => 
   array (
     'label' => 'tada',
+    'value' => 'tada',
     'category' => 'Attention Seekers',
   ),
   7 => 
   array (
     'label' => 'wobble',
+    'value' => 'wobble',
     'category' => 'Attention Seekers',
   ),
   8 => 
   array (
     'label' => 'jello',
+    'value' => 'jello',
     'category' => 'Attention Seekers',
   ),
   9 => 
   array (
     'label' => 'bounceIn',
+    'value' => 'bounceIn',
     'category' => 'Bouncing Entrances',
   ),
   10 => 
   array (
     'label' => 'bounceInDown',
+    'value' => 'bounceInDown',
     'category' => 'Bouncing Entrances',
   ),
   11 => 
   array (
     'label' => 'bounceInLeft',
+    'value' => 'bounceInLeft',
     'category' => 'Bouncing Entrances',
   ),
   12 => 
   array (
     'label' => 'bounceInRight',
+    'value' => 'bounceInRight',
     'category' => 'Bouncing Entrances',
   ),
   13 => 
   array (
     'label' => 'bounceInUp',
+    'value' => 'bounceInUp',
     'category' => 'Bouncing Entrances',
   ),
   14 => 
   array (
     'label' => 'bounceOut',
+    'value' => 'bounceOut',
     'category' => 'Bouncing Exits',
   ),
   15 => 
   array (
     'label' => 'bounceOutDown',
+    'value' => 'bounceOutDown',
     'category' => 'Bouncing Exits',
   ),
   16 => 
   array (
     'label' => 'bounceOutLeft',
+    'value' => 'bounceOutLeft',
     'category' => 'Bouncing Exits',
   ),
   17 => 
   array (
     'label' => 'bounceOutRight',
+    'value' => 'bounceOutRight',
     'category' => 'Bouncing Exits',
   ),
   18 => 
   array (
     'label' => 'bounceOutUp',
+    'value' => 'bounceOutUp',
     'category' => 'Bouncing Exits',
   ),
   19 => 
   array (
     'label' => 'fadeIn',
+    'value' => 'fadeIn',
     'category' => 'Fading Entrances',
   ),
   20 => 
   array (
     'label' => 'fadeInDown',
+    'value' => 'fadeInDown',
     'category' => 'Fading Entrances',
   ),
   21 => 
   array (
     'label' => 'fadeInDownBig',
+    'value' => 'fadeInDownBig',
     'category' => 'Fading Entrances',
   ),
   22 => 
   array (
     'label' => 'fadeInLeft',
+    'value' => 'fadeInLeft',
     'category' => 'Fading Entrances',
   ),
   23 => 
   array (
     'label' => 'fadeInLeftBig',
+    'value' => 'fadeInLeftBig',
     'category' => 'Fading Entrances',
   ),
   24 => 
   array (
     'label' => 'fadeInRight',
+    'value' => 'fadeInRight',
     'category' => 'Fading Entrances',
   ),
   25 => 
   array (
     'label' => 'fadeInRightBig',
+    'value' => 'fadeInRightBig',
     'category' => 'Fading Entrances',
   ),
   26 => 
   array (
     'label' => 'fadeInUp',
+    'value' => 'fadeInUp',
     'category' => 'Fading Entrances',
   ),
   27 => 
   array (
     'label' => 'fadeInUpBig',
+    'value' => 'fadeInUpBig',
     'category' => 'Fading Entrances',
   ),
   28 => 
   array (
     'label' => 'fadeOut',
+    'value' => 'fadeOut',
     'category' => 'Fading Exits',
   ),
   29 => 
   array (
     'label' => 'fadeOutDown',
+    'value' => 'fadeOutDown',
     'category' => 'Fading Exits',
   ),
   30 => 
   array (
     'label' => 'fadeOutDownBig',
+    'value' => 'fadeOutDownBig',
     'category' => 'Fading Exits',
   ),
   31 => 
   array (
     'label' => 'fadeOutLeft',
+    'value' => 'fadeOutLeft',
     'category' => 'Fading Exits',
   ),
   32 => 
   array (
     'label' => 'fadeOutLeftBig',
+    'value' => 'fadeOutLeftBig',
     'category' => 'Fading Exits',
   ),
   33 => 
   array (
     'label' => 'fadeOutRight',
+    'value' => 'fadeOutRight',
     'category' => 'Fading Exits',
   ),
   34 => 
   array (
     'label' => 'fadeOutRightBig',
+    'value' => 'fadeOutRightBig',
     'category' => 'Fading Exits',
   ),
   35 => 
   array (
     'label' => 'fadeOutUp',
+    'value' => 'fadeOutUp',
     'category' => 'Fading Exits',
   ),
   36 => 
   array (
     'label' => 'fadeOutUpBig',
+    'value' => 'fadeOutUpBig',
     'category' => 'Fading Exits',
   ),
   37 => 
   array (
     'label' => 'flip',
+    'value' => 'flip',
     'category' => 'Flippers',
   ),
   38 => 
   array (
     'label' => 'flipInX',
+    'value' => 'flipInX',
     'category' => 'Flippers',
   ),
   39 => 
   array (
     'label' => 'flipInY',
+    'value' => 'flipInY',
     'category' => 'Flippers',
   ),
   40 => 
   array (
     'label' => 'flipOutX',
+    'value' => 'flipOutX',
     'category' => 'Flippers',
   ),
   41 => 
   array (
     'label' => 'flipOutY',
+    'value' => 'flipOutY',
     'category' => 'Flippers',
   ),
   42 => 
   array (
     'label' => 'lightSpeedIn',
+    'value' => 'lightSpeedIn',
     'category' => 'Lightspeed',
   ),
   43 => 
   array (
     'label' => 'lightSpeedOut',
+    'value' => 'lightSpeedOut',
     'category' => 'Lightspeed',
   ),
   44 => 
   array (
     'label' => 'rotateIn',
+    'value' => 'rotateIn',
     'category' => 'Rotating Entrances',
   ),
   45 => 
   array (
     'label' => 'rotateInDownLeft',
+    'value' => 'rotateInDownLeft',
     'category' => 'Rotating Entrances',
   ),
   46 => 
   array (
     'label' => 'rotateInDownRight',
+    'value' => 'rotateInDownRight',
     'category' => 'Rotating Entrances',
   ),
   47 => 
   array (
     'label' => 'rotateInUpLeft',
+    'value' => 'rotateInUpLeft',
     'category' => 'Rotating Entrances',
   ),
   48 => 
   array (
     'label' => 'rotateInUpRight',
+    'value' => 'rotateInUpRight',
     'category' => 'Rotating Entrances',
   ),
   49 => 
   array (
     'label' => 'rotateOut',
+    'value' => 'rotateOut',
     'category' => 'Rotating Exits',
   ),
   50 => 
   array (
     'label' => 'rotateOutDownLeft',
+    'value' => 'rotateOutDownLeft',
     'category' => 'Rotating Exits',
   ),
   51 => 
   array (
     'label' => 'rotateOutDownRight',
+    'value' => 'rotateOutDownRight',
     'category' => 'Rotating Exits',
   ),
   52 => 
   array (
     'label' => 'rotateOutUpLeft',
+    'value' => 'rotateOutUpLeft',
     'category' => 'Rotating Exits',
   ),
   53 => 
   array (
     'label' => 'rotateOutUpRight',
+    'value' => 'rotateOutUpRight',
     'category' => 'Rotating Exits',
   ),
   54 => 
   array (
     'label' => 'slideInUp',
+    'value' => 'slideInUp',
     'category' => 'Sliding Entrances',
   ),
   55 => 
   array (
     'label' => 'slideInDown',
+    'value' => 'slideInDown',
     'category' => 'Sliding Entrances',
   ),
   56 => 
   array (
     'label' => 'slideInLeft',
+    'value' => 'slideInLeft',
     'category' => 'Sliding Entrances',
   ),
   57 => 
   array (
     'label' => 'slideInRight',
+    'value' => 'slideInRight',
     'category' => 'Sliding Entrances',
   ),
   58 => 
   array (
     'label' => 'slideOutUp',
+    'value' => 'slideOutUp',
     'category' => 'Sliding Exits',
   ),
   59 => 
   array (
     'label' => 'slideOutDown',
+    'value' => 'slideOutDown',
     'category' => 'Sliding Exits',
   ),
   60 => 
   array (
     'label' => 'slideOutLeft',
+    'value' => 'slideOutLeft',
     'category' => 'Sliding Exits',
   ),
   61 => 
   array (
     'label' => 'slideOutRight',
+    'value' => 'slideOutRight',
     'category' => 'Sliding Exits',
   ),
   62 => 
   array (
     'label' => 'zoomIn',
+    'value' => 'zoomIn',
     'category' => 'Zoom Entrances',
   ),
   63 => 
   array (
     'label' => 'zoomInDown',
+    'value' => 'zoomInDown',
     'category' => 'Zoom Entrances',
   ),
   64 => 
   array (
     'label' => 'zoomInLeft',
+    'value' => 'zoomInLeft',
     'category' => 'Zoom Entrances',
   ),
   65 => 
   array (
     'label' => 'zoomInRight',
+    'value' => 'zoomInRight',
     'category' => 'Zoom Entrances',
   ),
   66 => 
   array (
     'label' => 'zoomInUp',
+    'value' => 'zoomInUp',
     'category' => 'Zoom Entrances',
   ),
   67 => 
   array (
     'label' => 'zoomOut',
+    'value' => 'zoomOut',
     'category' => 'Zoom Exits',
   ),
   68 => 
   array (
     'label' => 'zoomOutDown',
+    'value' => 'zoomOutDown',
     'category' => 'Zoom Exits',
   ),
   69 => 
   array (
     'label' => 'zoomOutLeft',
+    'value' => 'zoomOutLeft',
     'category' => 'Zoom Exits',
   ),
   70 => 
   array (
     'label' => 'zoomOutRight',
+    'value' => 'zoomOutRight',
     'category' => 'Zoom Exits',
   ),
   71 => 
   array (
     'label' => 'zoomOutUp',
+    'value' => 'zoomOutUp',
     'category' => 'Zoom Exits',
   ),
   72 => 
   array (
     'label' => 'hinge',
+    'value' => 'hinge',
     'category' => 'Specials',
   ),
   73 => 
   array (
     'label' => 'jackInTheBox',
+    'value' => 'jackInTheBox',
     'category' => 'Specials',
   ),
   74 => 
   array (
     'label' => 'rollIn',
+    'value' => 'rollIn',
     'category' => 'Specials',
   ),
   75 => 
   array (
     'label' => 'rollOut',
+    'value' => 'rollOut',
     'category' => 'Specials',
   ),
 );

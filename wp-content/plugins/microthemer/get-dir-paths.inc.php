@@ -144,14 +144,6 @@ if ($wp_version >= 3 and is_multisite()) {
 	$this->micro_root_url = $wp_content_url . '/micro-themes/';
 }
 
-// set page prefix for form actions and plugin links
-if (TVR_MICRO_VARIANT == 'themer') {
-	$this->page_prefix = 'admin';
-}
-else {
-	$this->page_prefix = 'themes';
-}
-
 // quick path debug
 $tvr_debug_paths = false;
 if ($tvr_debug_paths){

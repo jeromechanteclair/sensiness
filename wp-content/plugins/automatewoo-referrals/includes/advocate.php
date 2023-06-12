@@ -273,7 +273,7 @@ class Advocate {
 			$url = AW_Referrals()->options()->social_share_url;
 		}
 
-		return add_query_arg( [ AW_Referrals()->options()->share_link_parameter => $this->get_advocate_key() ], trim( $url ) );
+		return esc_url( add_query_arg( [ AW_Referrals()->options()->share_link_parameter => $this->get_advocate_key() ], trim( $url ) ) );
 	}
 
 

@@ -1,26 +1,26 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wordpress Plugin Netreviews\n"
-"POT-Creation-Date: 2020-05-05 12:36+0200\n"
-"PO-Revision-Date: 2020-05-05 12:37+0200\n"
+"POT-Creation-Date: 2023-05-16 22:01+0200\n"
+"PO-Revision-Date: 2023-05-16 22:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
-"X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/av_backoffice.php:52
+#: includes/av_backoffice.php:71
 msgid "Use the voice of your customers and boost your sales"
 msgstr "Nutzen Sie die Stimme Ihrer Kunden und steigern Sie Ihren Umsatz"
 
-#: includes/av_backoffice.php:54
+#: includes/av_backoffice.php:74
 msgid ""
 "Verified Reviews is a trusted third party specialized in the collect of "
 "seller and product reviews, the control and publication of those"
@@ -29,13 +29,13 @@ msgstr ""
 "Sammeln von Verkäufer- und Produktbewertungen, deren Kontrolle und "
 "Veröffentlichung spezialisiert ist"
 
-#: includes/av_backoffice.php:55
+#: includes/av_backoffice.php:77
 msgid "Measure your shopper satisfaction and improve the customer experience"
 msgstr ""
 "Messen Sie die Zufriedenheit Ihrer Kunden und verbessern Sie das "
 "Kundenerlebnis"
 
-#: includes/av_backoffice.php:56
+#: includes/av_backoffice.php:79
 msgid ""
 "Finally, offer a better visibility to your brand by showing product reviews "
 "and influence the choice of your customers consequently"
@@ -44,57 +44,59 @@ msgstr ""
 "Produktbewertungen anzeigen und die Auswahl Ihrer Kunden entsprechend "
 "beeinflussen"
 
-#: includes/av_backoffice.php:68
+#: includes/av_backoffice.php:93
 msgid "Official partners of"
 msgstr "Offizielle Partner von"
 
-#: includes/av_backoffice.php:72
+#: includes/av_backoffice.php:97
 msgid "http://www.verified-reviews.co.uk/"
 msgstr "http://www.echte-bewertungen.com/"
 
-#: includes/av_backoffice.php:142 includes/av_backoffice.php:193
+#: includes/av_backoffice.php:172 includes/av_backoffice.php:223
 msgid "Changes saved."
 msgstr "Änderungen gespeichert."
 
-#: includes/av_backoffice.php:310
+#: includes/av_backoffice.php:366
 msgid "Download the export : "
 msgstr "Den Export herunterladen: "
 
-#: includes/av_backoffice.php:311
+#: includes/av_backoffice.php:368
 msgid "Download"
 msgstr "Herunterladen"
 
-#: includes/av_backoffice.php:316
+#: includes/av_backoffice.php:375
 msgid "No orders in this time slot."
 msgstr "Keine Reihenfolge in diesem Zeitfenster."
 
-#: includes/av_backoffice.php:336
+#: includes/av_backoffice.php:395
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: includes/av_backoffice.php:345
+#: includes/av_backoffice.php:404
 msgid "Module Activation :"
 msgstr "Modul aktivieren:"
 
-#: includes/av_backoffice.php:347 includes/av_backoffice.php:362
-#: includes/av_backoffice.php:545 includes/av_backoffice.php:557
-#: includes/av_backoffice.php:569 includes/av_backoffice.php:581
-#: includes/av_backoffice.php:637 includes/review_Pagination.php:145
+#: includes/av_backoffice.php:409 includes/av_backoffice.php:437
+#: includes/av_backoffice.php:764 includes/av_backoffice.php:789
+#: includes/av_backoffice.php:814 includes/av_backoffice.php:838
+#: includes/av_backoffice.php:908 includes/review_Pagination.php:131
+#: includes/review_Pagination.php:242
 msgid "Yes"
 msgstr "Ja"
 
-#: includes/av_backoffice.php:349 includes/av_backoffice.php:363
-#: includes/av_backoffice.php:546 includes/av_backoffice.php:558
-#: includes/av_backoffice.php:570 includes/av_backoffice.php:582
-#: includes/av_backoffice.php:638 includes/review_Pagination.php:149
+#: includes/av_backoffice.php:416 includes/av_backoffice.php:441
+#: includes/av_backoffice.php:771 includes/av_backoffice.php:797
+#: includes/av_backoffice.php:821 includes/av_backoffice.php:845
+#: includes/av_backoffice.php:909 includes/review_Pagination.php:135
+#: includes/review_Pagination.php:246
 msgid "No"
 msgstr "Nein"
 
-#: includes/av_backoffice.php:357
+#: includes/av_backoffice.php:428
 msgid "Are you using WPML plugin?"
 msgstr "Nutzen Sie das WPML Plugin aus?"
 
-#: includes/av_backoffice.php:370
+#: includes/av_backoffice.php:449
 msgid ""
 "Please, insert your secret key and website id, corresponding to the "
 "backoffice of each shop language."
@@ -102,91 +104,100 @@ msgstr ""
 "Bitte überprüfen Sie Ihren Kundenbereich in der Sprache, die Sie "
 "konfigurieren möchten, um Ihre Anmeldedaten anzuzeigen."
 
-#: includes/av_backoffice.php:378 includes/av_backoffice.php:405
+#: includes/av_backoffice.php:459 includes/av_backoffice.php:492
 msgid "Secret Key : "
 msgstr "Secret Key: "
 
-#: includes/av_backoffice.php:384 includes/av_backoffice.php:410
+#: includes/av_backoffice.php:469 includes/av_backoffice.php:499
 msgid "ID Website : "
 msgstr "ID Website : "
 
-#: includes/av_backoffice.php:399
+#: includes/av_backoffice.php:486
 msgid "Please check your customer area on "
 msgstr "Gehen Sie zu Ihrem Kundenbereich "
 
-#: includes/av_backoffice.php:401
+#: includes/av_backoffice.php:488
 msgid "verified-reviews.co.uk"
 msgstr "echte-bewertungen.com"
 
-#: includes/av_backoffice.php:403
+#: includes/av_backoffice.php:490
 msgid " to see your login data."
 msgstr ", um diese Zugangsdaten einzusehen."
 
-#: includes/av_backoffice.php:418
+#: includes/av_backoffice.php:510
 msgid "Product information to associate (required for Google Shopping) :"
 msgstr "Produktinformationen zu Associate (erforderlich für Google Shopping) :"
 
-#: includes/av_backoffice.php:421
+#: includes/av_backoffice.php:515
 msgid "MPN : "
 msgstr "MPN : "
 
-#: includes/av_backoffice.php:435
+#: includes/av_backoffice.php:528
 msgid "GTIN : "
 msgstr "GTIN : "
 
-#: includes/av_backoffice.php:448
+#: includes/av_backoffice.php:541
 msgid "Brand : "
 msgstr "Marke: "
 
-#: includes/av_backoffice.php:463 includes/av_backoffice.php:596
+#: includes/av_backoffice.php:556 includes/av_backoffice.php:861
 msgid "Save"
 msgstr "Speichern"
 
-#: includes/av_backoffice.php:475
+#: includes/av_backoffice.php:568
 msgid "Design"
 msgstr "Aussehen"
 
-#: includes/av_backoffice.php:483
+#: includes/av_backoffice.php:577
 msgid "Select a design for product page stars:"
 msgstr "Wählen Sie ein Design für Produktsterne:"
 
-#: includes/av_backoffice.php:501
+#: includes/av_backoffice.php:608 includes/starsProduct.php:104
+msgid "Reviews"
+msgstr "Bewertungen"
+
+#: includes/av_backoffice.php:644 includes/av_backoffice.php:687
+#: includes/starsProduct.php:21 includes/starsProduct.php:109
+msgid "See all reviews"
+msgstr "Alle Bewertungen anzeigen"
+
+#: includes/av_backoffice.php:700
 msgid "Choose the template of reviews block:"
 msgstr "Wählen Sie ein Design für Bewertungsblock:"
 
-#: includes/av_backoffice.php:519
+#: includes/av_backoffice.php:725
 msgid "Change stars colour:"
 msgstr "Ändern Sie die Farbe der Sterne:"
 
-#: includes/av_backoffice.php:530
+#: includes/av_backoffice.php:740
 msgid "Number of reviews to display:"
 msgstr "Anzahl der anzuzeigenden Bewertungen:"
 
-#: includes/av_backoffice.php:541
+#: includes/av_backoffice.php:756
 msgid "Display stars in category page:"
 msgstr "Sterne auf der Kategorieseite anzeigen:"
 
-#: includes/av_backoffice.php:553
+#: includes/av_backoffice.php:780
 msgid "Add helpful option to your reviews"
 msgstr "Fügen Sie Ihren Bewertungen eine nützliche Option hinzu:"
 
-#: includes/av_backoffice.php:565
+#: includes/av_backoffice.php:806
 msgid "Display medias with product reviews"
 msgstr "Medien mit Produktbewertungen anzeigen:"
 
-#: includes/av_backoffice.php:577
+#: includes/av_backoffice.php:830
 msgid "Use reduced responsive design in product reviews ?"
 msgstr "Reduziertes Darstellungsfeld für Produktbewertungen benutzen ?"
 
-#: includes/av_backoffice.php:588
+#: includes/av_backoffice.php:853
 msgid "Specific CSS :"
 msgstr "Spezifisches CSS:"
 
-#: includes/av_backoffice.php:609
+#: includes/av_backoffice.php:874
 msgid "Manual export"
 msgstr "Manueller export"
 
-#: includes/av_backoffice.php:615
+#: includes/av_backoffice.php:882
 msgid ""
 "Export your recently received orders to collect immediately your first "
 "customer reviews and to show your certificate Verified Reviews."
@@ -194,31 +205,31 @@ msgstr ""
 "Exportieren Sie Bestellungen, die bereits in Ihrem Geschäft aufgegeben "
 "wurden, und erhalten Sie das Zertifikat Echte Bewertungen schneller."
 
-#: includes/av_backoffice.php:617
+#: includes/av_backoffice.php:886
 msgid "The first date must be older than the second"
 msgstr "Das erste Datum muss älter sein als das zweite"
 
-#: includes/av_backoffice.php:620
+#: includes/av_backoffice.php:889
 msgid "From"
 msgstr "Von"
 
-#: includes/av_backoffice.php:625
+#: includes/av_backoffice.php:895
 msgid "to"
 msgstr "zu"
 
-#: includes/av_backoffice.php:633
+#: includes/av_backoffice.php:904
 msgid "Collect Product Reviews :"
 msgstr "Produktbewertungen sammeln:"
 
-#: includes/av_backoffice.php:644
+#: includes/av_backoffice.php:915
 msgid "Orders status :"
 msgstr "Status der Bestellung :"
 
-#: includes/av_backoffice.php:667
+#: includes/av_backoffice.php:938
 msgid "export"
 msgstr "exportieren"
 
-#: includes/av_backoffice.php:672
+#: includes/av_backoffice.php:944
 msgid ""
 "Without Product Reviews : Your customers will only be asked for their "
 "reviews regarding the order (obligatory)."
@@ -226,7 +237,7 @@ msgstr ""
 "Ohne Produktbewertungen : Ihre Kunden werden hinsichtlich Ihrer "
 "Zufriedenheit mit den Einkauf befragt (obligatorisch)."
 
-#: includes/av_backoffice.php:674
+#: includes/av_backoffice.php:949
 msgid ""
 "With Product Reviews : Your customers will be asked for their review "
 "regarding the order (obligatory) and regarding the purchased products as "
@@ -236,85 +247,77 @@ msgstr ""
 "mit dem Einkauf (obligatorisch) und hinsichtlich Ihrer Zufriedenheit mit den "
 "Produkten befragt."
 
-#: includes/av_backoffice.php:690
+#: includes/av_backoffice.php:967
 msgid "Check installation"
 msgstr "Überprüfen Installation"
 
-#: includes/av_backoffice.php:695
+#: includes/av_backoffice.php:972
 msgid "Tables :"
 msgstr "Tabellen :"
 
-#: includes/av_backoffice.php:696
+#: includes/av_backoffice.php:973
 msgid "Status :"
 msgstr "Status :"
 
-#: includes/av_backoffice.php:719
+#: includes/av_backoffice.php:1005
 msgid "Index :"
 msgstr "Index:"
 
-#: includes/av_backoffice.php:720
+#: includes/av_backoffice.php:1006
 msgid "Count :"
 msgstr "Gesamt:"
+
+#: includes/av_product_tab.php:25
+msgid "logo_full_en.png"
+msgstr "logo_full_de.png"
 
 #: includes/review_Pagination.php:28 includes/review_Pagination.php:33
 msgid "following an order made on"
 msgstr "nach einer bestellung vom"
 
-#: includes/review_Pagination.php:142 includes/review_Pagination.php:259
+#: includes/review_Pagination.php:129 includes/review_Pagination.php:240
 msgid "Was this review helpful ?"
 msgstr "War diese Bewertung hilfreich?"
 
-#: includes/review_Pagination.php:231
+#: includes/review_Pagination.php:209
 msgid "Reply from "
 msgstr "Antworten von "
 
-#: includes/review_Pagination.php:232
+#: includes/review_Pagination.php:211
 msgid "on"
 msgstr "an"
 
-#: includes/review_Pagination.php:247
+#: includes/review_Pagination.php:229
 msgid "Show exchanges"
 msgstr "Austausch anzeigen"
 
-#: includes/review_Pagination.php:253
+#: includes/review_Pagination.php:235
 msgid "Hide exchanges"
 msgstr "Austausch verbergen"
 
-#: includes/starsProduct.php:15 includes/starsProduct.php:94
-#: includes/templates/templateV1.php:38 includes/templates/templateV2.php:41
-#: netreviews.php:243
+#: includes/starsProduct.php:17 includes/starsProduct.php:113
+#: includes/templates/templateV1.php:40 includes/templates/templateV2.php:40
+#: netreviews.php:241 netreviews.php:242
 msgid "Verified Reviews"
 msgstr "Echte Bewertungen"
 
-#: includes/starsProduct.php:47 includes/starsProduct.php:92
-msgid "See all reviews"
-msgstr "Alle Bewertungen anzeigen"
-
-#: includes/starsProduct.php:88
-msgid "Reviews"
-msgstr "Bewertungen"
-
-#: includes/templates/templateV1.php:9 includes/templates/templateV2.php:9
+#: includes/templates/templateV1.php:3 includes/templates/templateV2.php:3
 msgid "An error has occured."
 msgstr "Ein Fehler ist passiert."
 
-#: includes/templates/templateV1.php:10 includes/templates/templateV2.php:10
+#: includes/templates/templateV1.php:4 includes/templates/templateV2.php:4
 msgid "Thank you, your vote will be published soon"
 msgstr "Danke! Ihre Auswahl wird bald veröffentlicht"
 
-#: includes/templates/templateV1.php:38 includes/templates/templateV2.php:41
-msgid "logo_full_en.png"
-msgstr "logo_full_de.png"
-
-#: includes/templates/templateV1.php:41 includes/templates/templateV2.php:113
+#: includes/templates/templateV1.php:42 includes/templates/templateV2.php:136
 msgid "Show the Certificate of Trust"
 msgstr "Das Vertrauens-Zertifikat anzeigen"
 
-#: includes/templates/templateV1.php:43 includes/templates/templateV2.php:116
+#: includes/templates/templateV1.php:43 includes/templates/templateV2.php:139
 msgid "Reviews subject to control"
 msgstr "Bewertung wird geprüft"
 
-#: includes/templates/templateV1.php:48 includes/templates/templateV2.php:122
+#: includes/templates/templateV1.php:47 includes/templates/templateV2.php:145
 msgid ""
 "For further information on the nature of the review controls, as well as the "
 "possibility of contacting the author of the review please consult our"
@@ -322,24 +325,23 @@ msgstr ""
 "Um mehr über das Bewertungskontrolverfahren und die Möglichkeit, den Kunden "
 "zu kontaktieren, zu erfahren, konsultieren Sie bitte unsere"
 
-#: includes/templates/templateV1.php:50 includes/templates/templateV1.php:57
-#: includes/templates/templateV2.php:123 includes/templates/templateV2.php:130
-msgid "verified-reviews.com"
-msgstr "echte-bewertungen.com"
+#: includes/templates/templateV1.php:48 includes/templates/templateV2.php:146
+msgid "en/transparency-charter/"
+msgstr "de/transparenzleitlinie/"
 
-#: includes/templates/templateV1.php:51 includes/templates/templateV2.php:124
-msgid "GCU"
-msgstr "AGBs"
+#: includes/templates/templateV1.php:48 includes/templates/templateV2.php:146
+msgid "Transparency Charter"
+msgstr "Transparenz leitlinie"
 
-#: includes/templates/templateV1.php:52 includes/templates/templateV2.php:126
+#: includes/templates/templateV1.php:50 includes/templates/templateV2.php:148
 msgid "No inducements have been provided for these reviews"
 msgstr "Es wurde für die Bewertungen keine Gegenleistung erbracht"
 
-#: includes/templates/templateV1.php:53 includes/templates/templateV2.php:127
+#: includes/templates/templateV1.php:51 includes/templates/templateV2.php:149
 msgid "Reviews are published and kept for a period of five years"
 msgstr "Die Bewertungen werden veröffentlicht und Fünf Jahre lang Gespeichert"
 
-#: includes/templates/templateV1.php:54 includes/templates/templateV2.php:128
+#: includes/templates/templateV1.php:52 includes/templates/templateV2.php:150
 msgid ""
 "Reviews can not be modified: If a customer wishes to modify their review "
 "then they can do so by contacting Verified Reviews directly to remove the "
@@ -349,71 +351,78 @@ msgstr ""
 "will, muss er Echte Bewertungen kontaktieren um seine Bewertung zu löschen "
 "und eine neue Bewertung schreiben"
 
-#: includes/templates/templateV1.php:56 includes/templates/templateV2.php:129
+#: includes/templates/templateV1.php:53 includes/templates/templateV2.php:151
 msgid "The reasons for deletion of reviews are available"
 msgstr "Die Gründe eine Bewertung zu löschen finden sie"
 
-#: includes/templates/templateV1.php:58 includes/templates/templateV2.php:130
+#: includes/templates/templateV1.php:54 includes/templates/templateV2.php:152
+msgid "verified-reviews.com"
+msgstr "echte-bewertungen.com"
+
+#: includes/templates/templateV1.php:54 includes/templates/templateV2.php:152
 msgid "here"
 msgstr "hier"
 
-#: includes/templates/templateV1.php:73
+#: includes/templates/templateV1.php:69
 msgid "Based on"
 msgstr "Basierend auf"
 
-#: includes/templates/templateV1.php:74
+#: includes/templates/templateV1.php:69
 msgid "customer(s) reviews"
 msgstr "Kundenbewertungen"
 
-#: includes/templates/templateV1.php:135 includes/templates/templateV2.php:151
+#: includes/templates/templateV1.php:123 includes/templates/templateV2.php:169
 msgid "Sort the reviews display"
 msgstr "Die Bewertungen sortieren"
 
-#: includes/templates/templateV1.php:138 includes/templates/templateV2.php:153
+#: includes/templates/templateV1.php:125 includes/templates/templateV2.php:171
 msgid "Newest"
 msgstr "Neuste"
 
-#: includes/templates/templateV1.php:139 includes/templates/templateV2.php:154
+#: includes/templates/templateV1.php:126 includes/templates/templateV2.php:172
 msgid "Oldest"
 msgstr "Älteste"
 
-#: includes/templates/templateV1.php:140 includes/templates/templateV2.php:156
-msgid "Lowest rating"
-msgstr "Schlechteste Note"
-
-#: includes/templates/templateV1.php:141 includes/templates/templateV2.php:157
-msgid "The most helpful"
-msgstr "Hilfreichste"
-
-#: includes/templates/templateV1.php:142 includes/templates/templateV2.php:155
+#: includes/templates/templateV1.php:127 includes/templates/templateV2.php:173
 msgid "Highest rating"
 msgstr "Beste Note"
 
-#: includes/templates/templateV1.php:161
-msgid "More reviews"
-msgstr "Weitere Kommentare..."
+#: includes/templates/templateV1.php:128 includes/templates/templateV2.php:174
+msgid "Lowest rating"
+msgstr "Schlechteste Note"
 
-#: includes/templates/templateV2.php:60 netreviews.php:312 netreviews.php:379
-#: netreviews.php:403 netreviews.php:429 netreviews.php:453
-msgid "review(s)"
-msgstr "bewertungen"
+#: includes/templates/templateV1.php:129 includes/templates/templateV2.php:175
+msgid "The most helpful"
+msgstr "Hilfreichste"
 
-#: includes/templates/templateV2.php:63
-msgid " customers recommending this product"
-msgstr " kunden empfehlen dieses Produkt"
-
-#: includes/templates/templateV2.php:140
-msgid "All the reviews"
-msgstr "Alle Bewertungen"
-
-#: includes/templates/templateV2.php:158
+#: includes/templates/templateV1.php:130 includes/templates/templateV2.php:176
 msgid "Rate"
 msgstr "Bewertung"
 
-#: includes/templates/templateV2.php:184
+#: includes/templates/templateV1.php:140
+msgid "More reviews"
+msgstr "Weitere Kommentare..."
+
+#: includes/templates/templateV2.php:59 netreviews.php:333 netreviews.php:422
+#: netreviews.php:445 netreviews.php:471 netreviews.php:492
+msgid "review(s)"
+msgstr "bewertungen"
+
+#: includes/templates/templateV2.php:62
+msgid " customers recommending this product"
+msgstr " kunden empfehlen dieses Produkt"
+
+#: includes/templates/templateV2.php:162
+msgid "All the reviews"
+msgstr "Alle Bewertungen"
+
+#: includes/templates/templateV2.php:192
 msgid "Display more reviews"
 msgstr "Weitere Kommentare..."
 
-#: netreviews.php:569
+#: netreviews.php:603
 msgid "Product Reviews"
 msgstr "Produktbewertungen"
+
+#~ msgid "GCU"
+#~ msgstr "AGBs"

@@ -47,16 +47,15 @@ class Cloning extends Job
      */
     private $sanitize;
 
-
     /**
      * Initialize is called in \Job
      */
     public function initialize()
     {
-        $this->db = WPStaging::getInstance()->get("wpdb");
-        $this->dirUtils = new WpDefaultDirectories();
+        $this->db          = WPStaging::getInstance()->get("wpdb");
+        $this->dirUtils    = new WpDefaultDirectories();
         $this->sitesHelper = new Sites();
-        $this->sanitize = WPStaging::make(Sanitize::class);
+        $this->sanitize    = WPStaging::make(Sanitize::class);
     }
 
     public function getErrorMessage()
@@ -72,7 +71,7 @@ class Cloning extends Job
     public function save()
     {
         if (!isset($_POST) || !isset($_POST["cloneID"])) {
-            $this->errorMessage = __("clone ID missing");
+            $this->errorMessage = __("clone ID missing", 'wp-staging');
             return false;
         }
 
@@ -86,18 +85,18 @@ class Cloning extends Job
         $this->options->cloneName = isset($_POST["cloneName"]) ? sanitize_text_field($_POST["cloneName"]) : '';
         // The slugified version of Clone Name (to use in directory creation)
         $this->options->cloneDirectoryName = $this->sitesHelper->sanitizeDirectoryName($this->options->cloneName);
-        $result = $this->sitesHelper->isCloneExists($this->options->cloneDirectoryName);
+        $result                            = $this->sitesHelper->isCloneExists($this->options->cloneDirectoryName);
         if ($result !== false) {
             $this->errorMessage = $result;
             return false;
         }
 
-        $this->options->cloneNumber = 1;
-        $this->options->prefix = $this->setStagingPrefix();
+        $this->options->cloneNumber         = 1;
+        $this->options->prefix              = $this->setStagingPrefix();
         $this->options->includedDirectories = [];
         $this->options->excludedDirectories = [];
-        $this->options->extraDirectories = [];
-        $this->options->excludedFiles = apply_filters('wpstg_clone_excluded_files', [
+        $this->options->extraDirectories    = [];
+        $this->options->excludedFiles       = apply_filters('wpstg_clone_excluded_files', [
             '.DS_Store',
             '*.git',
             '*.svn',
@@ -107,15 +106,15 @@ class Cloning extends Job
             '*.log',
             'web.config', // Important: Windows IIS configuration file. Must not be in the staging site!
             '.wp-staging', // Determines if a site is a staging site
-            '.wp-staging-cloneable', // File which make staging site to be cloneable
+            '.wp-staging-cloneable', // File that makes the staging site cloneable.
         ]);
 
-        $this->options->excludedFilesFullPath = [
+        $this->options->excludedFilesFullPath = apply_filters('wpstg.clone.excluded_files_full_path', [
             '.htaccess',
             $this->dirUtils->getRelativeWpContentPath(SlashMode::TRAILING_SLASH) . 'db.php',
             $this->dirUtils->getRelativeWpContentPath(SlashMode::TRAILING_SLASH) . 'object-cache.php',
             $this->dirUtils->getRelativeWpContentPath(SlashMode::TRAILING_SLASH) . 'advanced-cache.php'
-        ];
+        ]);
 
         $this->options->currentStep = 0;
 
@@ -140,10 +139,10 @@ class Cloning extends Job
         }
 
         // Included Tables / Prefixed Table - Excluded Tables
-        $includedTables = isset($_POST['includedTables']) ? $this->sanitize->sanitizeString($_POST['includedTables']) : '';
-        $excludedTables = isset($_POST['excludedTables']) ? $this->sanitize->sanitizeString($_POST['excludedTables']) : '';
+        $includedTables              = isset($_POST['includedTables']) ? $this->sanitize->sanitizeString($_POST['includedTables']) : '';
+        $excludedTables              = isset($_POST['excludedTables']) ? $this->sanitize->sanitizeString($_POST['excludedTables']) : '';
         $selectedTablesWithoutPrefix = isset($_POST['selectedTablesWithoutPrefix']) ? $this->sanitize->sanitizeString($_POST['selectedTablesWithoutPrefix']) : '';
-        $selectedTables = new SelectedTables($includedTables, $excludedTables, $selectedTablesWithoutPrefix);
+        $selectedTables              = new SelectedTables($includedTables, $excludedTables, $selectedTablesWithoutPrefix);
         $selectedTables->setAllTablesExcluded(empty($_POST['allTablesExcluded']) ? false : $this->sanitize->sanitizeBool($_POST['allTablesExcluded']));
         $this->options->tables = $selectedTables->getSelectedTables($this->options->networkClone);
 
@@ -211,6 +210,11 @@ class Cloning extends Job
             $this->options->databasePrefix = $this->maybeAppendUnderscorePrefix($this->sanitize->sanitizeString($_POST["databasePrefix"]));
         }
 
+        $this->options->databaseSsl = false;
+        if (isset($_POST["databaseSsl"]) && 'true' === $this->sanitize->sanitizeString($_POST["databaseSsl"])) {
+            $this->options->databaseSsl = true;
+        }
+
         $this->options->cloneDir = '';
         if (!empty($_POST["cloneDir"])) {
             $this->options->cloneDir = trailingslashit(wpstg_urldecode($this->sanitize->sanitizeString($_POST["cloneDir"])));
@@ -223,17 +227,20 @@ class Cloning extends Job
 
         // Make sure it is always enabled for free version
         $this->options->emailsAllowed = true;
+        $this->options->cronDisabled = false;
+
         if (defined('WPSTGPRO_VERSION')) {
             $this->options->emailsAllowed = apply_filters(
                 'wpstg_cloning_email_allowed',
                 isset($_POST['emailsAllowed']) && $this->sanitize->sanitizeBool($_POST['emailsAllowed'])
             );
+            $this->options->cronDisabled = !empty($_POST['cronDisabled']) ? $this->sanitize->sanitizeBool($_POST['cronDisabled']) : false;
         }
 
         $this->options->destinationHostname = $this->getDestinationHostname();
-        $this->options->destinationDir = $this->getDestinationDir();
+        $this->options->destinationDir      = $this->getDestinationDir();
 
-        $helper = new Helper();
+        $helper                      = new Helper();
         $this->options->homeHostname = $helper->getHomeUrlWithoutScheme();
 
         // Process lock state
@@ -266,32 +273,34 @@ class Cloning extends Job
     private function saveClone()
     {
         // Save new clone data
-        $this->log("Cloning: {$this->options->clone}'s clone job's data is not in database, generating data");
+        $this->debugLog("Cloning: {$this->options->clone}'s clone job's data is not in database, generating data");
 
         $this->options->existingClones[$this->options->clone] = [
-            "cloneName" => $this->options->cloneName,
-            "directoryName" => $this->options->cloneDirectoryName,
-            "path" => trailingslashit($this->options->destinationDir),
-            "url" => $this->getDestinationUrl(),
-            "number" => $this->options->cloneNumber,
-            "version" => WPStaging::getVersion(),
-            "status" => "unfinished or broken (?)",
-            "prefix" => $this->options->prefix,
-            "datetime" => time(),
-            "databaseUser" => $this->options->databaseUser,
-            "databasePassword" => $this->options->databasePassword,
-            "databaseDatabase" => $this->options->databaseDatabase,
-            "databaseServer" => $this->options->databaseServer,
-            "databasePrefix" => $this->options->databasePrefix,
-            "emailsAllowed"   => (bool)$this->options->emailsAllowed,
-            "uploadsSymlinked" => (bool)$this->options->uploadsSymlinked,
-            "ownerId" => $this->options->ownerId,
-            "includedTables"        => $this->options->tables,
-            "excludeSizeRules"      => $this->options->excludeSizeRules,
-            "excludeGlobRules"      => $this->options->excludeGlobRules,
-            "excludedDirectories"   => $this->options->excludedDirectories,
-            "extraDirectories"      => $this->options->extraDirectories,
-            "networkClone"          => $this->isNetworkClone(),
+            "cloneName"           => $this->options->cloneName,
+            "directoryName"       => $this->options->cloneDirectoryName,
+            "path"                => trailingslashit($this->options->destinationDir),
+            "url"                 => $this->getDestinationUrl(),
+            "number"              => $this->options->cloneNumber,
+            "version"             => WPStaging::getVersion(),
+            "status"              => "unfinished or broken (?)",
+            "prefix"              => $this->options->prefix,
+            "datetime"            => time(),
+            "databaseUser"        => $this->options->databaseUser,
+            "databasePassword"    => $this->options->databasePassword,
+            "databaseDatabase"    => $this->options->databaseDatabase,
+            "databaseServer"      => $this->options->databaseServer,
+            "databasePrefix"      => $this->options->databasePrefix,
+            "databaseSsl"         => (bool)$this->options->databaseSsl,
+            "cronDisabled"        => (bool)$this->options->cronDisabled,
+            "emailsAllowed"       => (bool)$this->options->emailsAllowed,
+            "uploadsSymlinked"    => (bool)$this->options->uploadsSymlinked,
+            "ownerId"             => $this->options->ownerId,
+            "includedTables"      => $this->options->tables,
+            "excludeSizeRules"    => $this->options->excludeSizeRules,
+            "excludeGlobRules"    => $this->options->excludeGlobRules,
+            "excludedDirectories" => $this->options->excludedDirectories,
+            "extraDirectories"    => $this->options->extraDirectories,
+            "networkClone"        => $this->isNetworkClone(),
         ];
 
         if ($this->sitesHelper->updateStagingSites($this->options->existingClones) === false) {
@@ -382,7 +391,7 @@ class Cloning extends Job
                 ? 'wpstg' . (count($this->options->existingClones) + $i) . '_'
                 : 'wpstg' . $i . '_';
 
-            $sql = "SHOW TABLE STATUS LIKE '{$this->options->prefix}%'";
+            $sql    = "SHOW TABLE STATUS LIKE '{$this->options->prefix}%'";
             $tables = $this->db->get_results($sql);
 
             // Prefix does not exist. We can use it
@@ -436,10 +445,10 @@ class Cloning extends Job
             return $response;
         }
 
-        $this->options->job = new \stdClass();
-        $this->options->currentJob = $nextJob;
+        $this->options->job         = new \stdClass();
+        $this->options->currentJob  = $nextJob;
         $this->options->currentStep = 0;
-        $this->options->totalSteps = 0;
+        $this->options->totalSteps  = 0;
 
         // Save options
         $this->saveOptions();
@@ -454,6 +463,8 @@ class Cloning extends Job
      */
     public function jobPreserveDataFirstStep()
     {
+        $this->writeJobSpecificLogStartHeader();
+
         $preserve = new PreserveDataFirstStep();
         return $this->handleJobResponse($preserve->start(), 'database');
     }
@@ -539,5 +550,37 @@ class Cloning extends Job
 
         $finish = new Finish();
         return $this->handleJobResponse($finish->start(), '');
+    }
+
+    /**
+     * @return void
+     */
+    private function writeJobSpecificLogStartHeader()
+    {
+
+        $jobName = empty($this->options->mainJob) ? 'Unknown' : $this->options->mainJob;
+
+        switch($jobName) {
+            case 'updating':
+                $jobName = 'Update';
+                break;
+            case 'resetting':
+                $jobName = 'Reset';
+                break;
+            case 'cloning':
+                $jobName = 'Cloning';
+                break;
+            default:
+                $jobName = 'Unknown';
+                break;
+        }
+
+        $this->log('#################### Start ' . $jobName . ' Job ####################', 'INFO');
+        if ($jobName !== 'Cloning' && !empty($this->options->clone)) {
+            $this->logger->info(esc_html('Staging Site ID: ' . $this->options->clone));
+            $this->logger->info(esc_html('Staging Site: ' . $this->options->cloneName));
+        }
+
+        $this->logger->writeLogHeader();
     }
 }

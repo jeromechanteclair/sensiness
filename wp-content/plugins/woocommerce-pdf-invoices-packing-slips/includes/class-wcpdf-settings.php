@@ -32,13 +32,14 @@ class Settings {
 		$this->general          = include( 'class-wcpdf-settings-general.php' );
 		$this->documents        = include( 'class-wcpdf-settings-documents.php' );
 		$this->debug            = include( 'class-wcpdf-settings-debug.php' );
+		$this->upgrade          = include( 'class-wcpdf-settings-upgrade.php' );
 		
 		$this->general_settings = get_option( 'wpo_wcpdf_settings_general' );
 		$this->debug_settings   = get_option( 'wpo_wcpdf_settings_debug' );
 		
 		$this->lock_name        = 'wpo_wcpdf_semaphore_lock';
 		$this->lock_context     = array( 'source' => 'wpo-wcpdf-semaphore' );
-		$this->lock_time        = apply_filters( 'wpo_wcpdf_semaphore_lock_time', 300 );
+		$this->lock_time        = apply_filters( 'wpo_wcpdf_semaphore_lock_time', 2 );
 		$this->lock_retries     = apply_filters( 'wpo_wcpdf_semaphore_lock_retries', 0 );
 
 		// Settings menu item
@@ -168,9 +169,14 @@ class Settings {
 			),
 		) );
 
-		// add status tab last in row
+		// add status and upgrade tabs last in row
 		$settings_tabs['debug'] = array(
 			'title'          => __( 'Status', 'woocommerce-pdf-invoices-packing-slips' ),
+			'preview_states' => 1,
+		);
+
+		$settings_tabs['upgrade'] = array(
+			'title'          => __( 'Upgrade', 'woocommerce-pdf-invoices-packing-slips' ),
 			'preview_states' => 1,
 		);
 

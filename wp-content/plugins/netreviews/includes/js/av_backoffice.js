@@ -35,19 +35,14 @@
 
         var start;
         var end;
-        var locales_datepickers = ['de', 'es', 'fr', 'it', 'pt', 'en'];
 
         $('.input-daterange input').each(function () {
             $('.fa-calendar-alt').click(function () {
                 $(this).datepicker("show");
             });
-            var locale = $('#locale_for_datepicker').val();
-            var locale_to_consider = (locale.split('_'))[0];
 
-            if (!locales_datepickers.includes(locale_to_consider)) {
-                $("#from_datepicker").attr("placeholder", "mm/dd/yy");
-                $("#to_datepicker").attr("placeholder", "mm/dd/yy");
-            }
+            $("#from_datepicker").attr("placeholder", "mm/dd/yy");
+            $("#to_datepicker").attr("placeholder", "mm/dd/yy");
 
             $(this).datepicker({
                 showOtherMonths: true,
@@ -57,37 +52,29 @@
                 minDate: "-1Y",
                 maxDate: 0,
                 onSelect: function (dateText, obj) {
-                    if (this.id == 'from_datepicker') {
-                        if (locales_datepickers.includes(locale_to_consider)) {
-                            var dateFormat = $.datepicker.regional[locale_to_consider].dateFormat;
-                            try {
-                                start = $.datepicker.parseDate(dateFormat, this.value);
-                            } catch (error) {
-                                console.log(error);
-                                this.value = forceGetDate(obj);
-                                start = formatToDate(this.value);
-                            }
-                        } else {
-                            this.value = forceENGetDate(obj);
-                            start = formatToENDate(this.value);
-                        }
+                    let year = obj.selectedYear;
+                    let month = obj.selectedMonth + 1;
+                    if (month < 10) {
+                        month = '0' + month;
                     }
-                    if (this.id == 'to_datepicker') {
-                        if (locales_datepickers.includes(locale_to_consider)) {
-                            var dateFormat = $.datepicker.regional[locale_to_consider].dateFormat;
-                            try {
-                                end = $.datepicker.parseDate(dateFormat, this.value);
-                            } catch (error) {
-                                console.log(error);
-                                this.value = forceGetDate(obj);
-                                end = formatToDate(this.value);
-                            }
-                        } else {
-                            this.value = forceENGetDate(obj);
-                            end = formatToENDate(this.value);
-                        }
+                    let day = obj.selectedDay;
+                    if (day < 10) {
+                        day = '0' + day;
                     }
-                    if (start > end) {
+                    if (this.id === 'from_datepicker') {
+                        start = year + '-' + month + '-' + day;
+                        this.value = start;
+                    }
+
+                    if (this.id === 'to_datepicker') {
+                        end = year + '-' + month + '-' + day;
+                        this.value = end;
+                    }
+
+                    let startAsDate = new Date(start);
+                    let endAsDate = new Date(end);
+
+                    if (startAsDate > endAsDate) {
                         $('.errorDateMessage').css("display", "block");
                         setTimeout(function () {
                             $('.errorDateMessage').css("display", "none"); }, 2000);
@@ -121,59 +108,6 @@
     });
 
 })(jQuery);
-
-function forceGetDate(object)
-{
-    var day = object.selectedDay;
-    if (day < 10) {
-        day = '0' + day;
-    }
-    var month = object.selectedMonth + 1;
-    if (month < 10) {
-        month = '0' + month;
-    }
-    var year = object.selectedYear;
-    var date = day + "/" + month + "/" + year;
-    return date;
-}
-
-function forceENGetDate(object)
-{
-    var day = object.selectedDay;
-    if (day < 10) {
-        day = '0' + day;
-    }
-    var month = object.selectedMonth + 1;
-    if (month < 10) {
-        month = '0' + month;
-    }
-    var year = object.selectedYear;
-    var date = month + "/" + day + "/" + year;
-    return date;
-}
-
-function formatToDate(value)
-{
-    if (typeof value == 'string') {
-        var res = value.split('/');
-        var date = new Date(res[2], res[1] - 1, res[0]);
-        return date;
-    } else {
-        return;
-    }
-}
-
-function formatToENDate(value)
-{
-    if (typeof value == 'string') {
-        var res = value.split('/');
-        var date = new Date(res[2], res[0] - 1, res[1]);
-        console.log(date);
-        return date;
-    } else {
-        return;
-    }
-}
 
 var acc = document.getElementsByClassName("accordion");
 var i;

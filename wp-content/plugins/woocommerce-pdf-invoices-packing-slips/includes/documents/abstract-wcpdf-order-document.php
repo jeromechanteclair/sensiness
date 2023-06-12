@@ -272,10 +272,11 @@ abstract class Order_Document {
 		// pass data to setter functions
 		$this->set_data( array(
 			// always load date before number, because date is used in number formatting
-			'date'   => $order->get_meta( "_wcpdf_{$this->slug}_date" ),
-			'number' => $number,
-			'notes'  => $order->get_meta( "_wcpdf_{$this->slug}_notes" ),
-			'display_date'	=> $order->get_meta( "_wcpdf_{$this->slug}_display_date" ),
+			'date'             => $order->get_meta( "_wcpdf_{$this->slug}_date" ),
+			'number'           => $number,
+			'notes'            => $order->get_meta( "_wcpdf_{$this->slug}_notes" ),
+			'display_date'	   => $order->get_meta( "_wcpdf_{$this->slug}_display_date" ),
+			'creation_trigger' => $order->get_meta( "_wcpdf_{$this->slug}_creation_trigger" ),
 		), $order );
 
 		return;
@@ -345,6 +346,7 @@ abstract class Order_Document {
 			'notes',
 			'printed',
 			'display_date',
+			'creation_trigger',
 		), $this );
 		foreach ( $data_to_remove as $data_key ) {
 			$order->delete_meta_data( "_wcpdf_{$this->slug}_{$data_key}" );
@@ -387,13 +389,13 @@ abstract class Order_Document {
 	public function is_allowed() {
 		$allowed = true;
 		// Check if document is enabled
-		if ( !$this->is_enabled() ) {
+		if ( ! $this->is_enabled() ) {
 			$allowed = false;
 		// Check disabled for statuses
-		} elseif ( !$this->exists() && !empty( $this->settings['disable_for_statuses'] ) && !empty( $this->order ) && is_callable( array( $this->order, 'get_status' ) ) ) {
+		} elseif ( ! $this->exists() && ! empty( $this->settings['disable_for_statuses'] ) && ! empty( $this->order ) && is_callable( array( $this->order, 'get_status' ) ) ) {
 			$status = $this->order->get_status();
 
-			$disabled_statuses = array_map( function($status){
+			$disabled_statuses = array_map( function ( $status ) {
 				$status = 'wc-' === substr( $status, 0, 3 ) ? substr( $status, 3 ) : $status;
 				return $status;
 			}, $this->settings['disable_for_statuses'] );
@@ -470,6 +472,10 @@ abstract class Order_Document {
 		return $this->get_data( 'display_date', $document_type, $order, $context );
 	}
 
+	public function get_creation_trigger( $document_type = '', $order = null, $context = 'view'  ) {
+		return $this->get_data( 'creation_trigger', $document_type, $order, $context );
+	}
+	
 	public function get_title() {
 		return apply_filters( "wpo_wcpdf_{$this->slug}_title", $this->title, $this );
 	}

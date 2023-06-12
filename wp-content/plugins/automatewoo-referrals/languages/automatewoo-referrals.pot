@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: AutomateWoo - Refer A Friend Add-on 2.6.20\n"
+"Project-Id-Version: AutomateWoo - Refer A Friend Add-on 2.7.2\n"
 "Report-Msgid-Bugs-To: https://woocommerce.com/my-account/create-a-ticket/\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-04T07:57:11+00:00\n"
+"POT-Creation-Date: 2023-06-08T04:15:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: automatewoo-referrals\n"
@@ -34,31 +34,32 @@ msgstr ""
 msgid "https://woocommerce.com"
 msgstr ""
 
-#: automatewoo-referrals.php:120
+#: automatewoo-referrals.php:179
 msgid "%s is inactive."
 msgstr ""
 
-#: automatewoo-referrals.php:120
-#: includes/automatewoo-referrals.php:52
+#: automatewoo-referrals.php:179
+#: includes/automatewoo-referrals.php:53
 #: includes/privacy.php:26
 msgid "AutomateWoo - Refer A Friend"
 msgstr ""
 
-#: automatewoo-referrals.php:123
+#: automatewoo-referrals.php:182
 msgid "%s The plugin requires AutomateWoo to be installed and activated."
 msgstr ""
 
-#: automatewoo-referrals.php:125
+#: automatewoo-referrals.php:184
 msgid "%1$s The plugin requires AutomateWoo version %2$s or newer."
 msgstr ""
 
-#: automatewoo-referrals.php:127
+#: automatewoo-referrals.php:186
 msgid "%s AutomateWoo plugin directory name is not correct."
 msgstr ""
 
 #: includes/account-endpoint.php:32
-#: includes/admin/admin.php:44
-#: includes/admin/admin.php:45
+#: includes/admin/admin.php:52
+#: includes/admin/admin.php:53
+#: includes/admin/analytics.php:42
 #: includes/admin/reports-tab.php:13
 #: includes/privacy.php:30
 #: includes/privacy.php:34
@@ -78,7 +79,7 @@ msgid "Resend a referral invite email from the advocate to a specified email add
 msgstr ""
 
 #: includes/actions/resend-invite-email.php:19
-#: includes/admin/admin.php:67
+#: includes/admin/admin.php:75
 #: includes/admin/settings-tab.php:27
 #: includes/rules/advocate-approved-referral-count.php:22
 #: includes/rules/advocate-pending-referral-count.php:22
@@ -103,47 +104,68 @@ msgstr ""
 msgid "Email successfully sent."
 msgstr ""
 
-#: includes/admin/admin.php:49
+#: includes/admin/admin.php:57
 msgid "Referral advocates"
 msgstr ""
 
-#: includes/admin/admin.php:50
+#: includes/admin/admin.php:58
 #: includes/admin/list-tables/advocates.php:24
 #: includes/admin/list-tables/advocates.php:25
 msgid "Advocates"
 msgstr ""
 
-#: includes/admin/admin.php:54
-#: includes/admin/admin.php:55
+#: includes/admin/admin.php:62
+#: includes/admin/admin.php:63
 #: includes/admin/list-tables/referral-codes.php:25
 #: includes/privacy.php:29
 #: includes/privacy.php:36
 msgid "Referral codes"
 msgstr ""
 
-#: includes/admin/admin.php:59
+#: includes/admin/admin.php:67
 #: includes/privacy.php:31
 #: includes/privacy.php:35
 msgid "Referral invites"
 msgstr ""
 
-#: includes/admin/admin.php:60
+#: includes/admin/admin.php:68
 msgid "Invites"
 msgstr ""
 
-#: includes/admin/admin.php:260
+#: includes/admin/admin.php:256
 msgid "Error! No emails were sent."
 msgstr ""
 
-#: includes/admin/admin.php:264
+#: includes/admin/admin.php:260
 msgid "Success! Emails sent: %s"
 msgstr ""
 
-#: includes/admin/admin.php:312
+#: includes/admin/admin.php:308
 #: includes/advocate.php:93
 #: includes/referral.php:323
 msgctxt "full name"
 msgid "%1$s %2$s"
+msgstr ""
+
+#: includes/admin/analytics/rest-api/referrals/stats-controller.php:43
+msgid "Referred orders net sales."
+msgstr ""
+
+#: includes/admin/analytics/rest-api/referrals/stats-controller.php:50
+#: assets/js/analytics/report.js:16
+#: assets/js/min/analytics.min.js:1009
+msgid "Orders"
+msgstr ""
+
+#: includes/admin/analytics/rest-api/referrals/stats-controller.php:51
+#: assets/js/analytics/report.js:17
+#: assets/js/min/analytics.min.js:1010
+msgid "Number of referred orders"
+msgstr ""
+
+#: includes/admin/analytics/rest-api/referrals/stats-store.php:126
+#: includes/admin/analytics/rest-api/referrals/stats-store.php:151
+msgid "Sorry, fetching referrals data failed."
 msgstr ""
 
 #: includes/admin/controllers/advocates.php:54
@@ -225,23 +247,31 @@ msgid "All"
 msgstr ""
 
 #: includes/admin/controllers/referrals.php:316
-#: includes/automatewoo-referrals.php:210
+#: includes/automatewoo-referrals.php:215
 msgid "Approved"
 msgstr ""
 
 #: includes/admin/controllers/referrals.php:317
-#: includes/automatewoo-referrals.php:213
+#: includes/automatewoo-referrals.php:218
 msgid "Rejected"
 msgstr ""
 
 #: includes/admin/controllers/referrals.php:318
-#: includes/automatewoo-referrals.php:212
+#: includes/automatewoo-referrals.php:217
 msgid "Pending"
 msgstr ""
 
 #: includes/admin/controllers/referrals.php:319
-#: includes/automatewoo-referrals.php:211
+#: includes/automatewoo-referrals.php:216
 msgid "Potential Fraud"
+msgstr ""
+
+#: includes/admin/dashboard-widgets/analytics-orders.php:57
+msgid "referred orders value"
+msgstr ""
+
+#: includes/admin/dashboard-widgets/analytics-orders.php:67
+msgid "referrals"
 msgstr ""
 
 #: includes/admin/dashboard-widgets/chart-invites.php:53
@@ -794,51 +824,51 @@ msgstr ""
 msgid "Sign up"
 msgstr ""
 
-#: includes/admin/settings-tab.php:522
+#: includes/admin/settings-tab.php:528
 msgid "Advocate referral limit"
 msgstr ""
 
-#: includes/admin/settings-tab.php:523
+#: includes/admin/settings-tab.php:529
 msgid "Limits the number of referrals an advocate can make within a certain time period. When an advocate's limit is reached they are prevented from earning referral credit and their shared referral coupons are disabled."
 msgstr ""
 
-#: includes/admin/settings-tab.php:529
+#: includes/admin/settings-tab.php:535
 msgid "Limit the number of referrals"
 msgstr ""
 
-#: includes/admin/settings-tab.php:530
+#: includes/admin/settings-tab.php:536
 msgid "If checked, the number of referrals an Advocate can make is limited."
 msgstr ""
 
-#: includes/admin/settings-tab.php:539
+#: includes/admin/settings-tab.php:545
 msgid "Referral limit timeframe"
 msgstr ""
 
-#: includes/admin/settings-tab.php:540
+#: includes/admin/settings-tab.php:546
 msgid "Select the length of time that where the referral limit applies."
 msgstr ""
 
-#: includes/admin/settings-tab.php:544
+#: includes/admin/settings-tab.php:550
 msgid "Lifetime"
 msgstr ""
 
-#: includes/admin/settings-tab.php:545
+#: includes/admin/settings-tab.php:551
 msgid "Yearly"
 msgstr ""
 
-#: includes/admin/settings-tab.php:546
+#: includes/admin/settings-tab.php:552
 msgid "Monthly"
 msgstr ""
 
-#: includes/admin/settings-tab.php:547
+#: includes/admin/settings-tab.php:553
 msgid "Weekly"
 msgstr ""
 
-#: includes/admin/settings-tab.php:555
+#: includes/admin/settings-tab.php:561
 msgid "Referral limit"
 msgstr ""
 
-#: includes/admin/settings-tab.php:556
+#: includes/admin/settings-tab.php:562
 msgid "The number of referrals an Advocate is limited to."
 msgstr ""
 
@@ -929,23 +959,23 @@ msgstr ""
 msgid "Sorry, your account has reached the weekly referral limit."
 msgstr ""
 
-#: includes/automatewoo-referrals.php:173
+#: includes/automatewoo-referrals.php:178
 msgid "Coupon Discount - Fixed Amount"
 msgstr ""
 
-#: includes/automatewoo-referrals.php:174
+#: includes/automatewoo-referrals.php:179
 msgid "Coupon Discount - Percentage"
 msgstr ""
 
-#: includes/automatewoo-referrals.php:187
+#: includes/automatewoo-referrals.php:192
 msgid "Store Credit - Fixed Amount"
 msgstr ""
 
-#: includes/automatewoo-referrals.php:188
+#: includes/automatewoo-referrals.php:193
 msgid "Store Credit - Percentage Of Referral Order"
 msgstr ""
 
-#: includes/automatewoo-referrals.php:189
+#: includes/automatewoo-referrals.php:194
 msgid "No Reward"
 msgstr ""
 
@@ -995,7 +1025,7 @@ msgctxt "Shows the amount of credit"
 msgid "The %s referral credit used in this order was refunded to the customer's balance."
 msgstr ""
 
-#: includes/frontend-endpoints.php:50
+#: includes/frontend-endpoints.php:56
 msgid "Invalid share URL."
 msgstr ""
 
@@ -1424,4 +1454,20 @@ msgstr ""
 
 #: templates/share-page.php:58
 msgid "Or"
+msgstr ""
+
+#: assets/js/analytics/register-report.js:21
+#: assets/js/min/analytics.min.js:1079
+msgctxt "analytics report title"
+msgid "Referrals"
+msgstr ""
+
+#: assets/js/analytics/report.js:26
+#: assets/js/min/analytics.min.js:1019
+msgid "Value"
+msgstr ""
+
+#: assets/js/analytics/report.js:27
+#: assets/js/min/analytics.min.js:1020
+msgid "Value of referred orders"
 msgstr ""

@@ -76,6 +76,7 @@ $this->preferences['expand_device_tabs'] ? $ui_class.= ' expand_device_tabs' : f
 
 
 $ui_class.= ' mt-left-cols-'. $this->preferences['layout']['left']['effective_num_columns'];
+$ui_class.= ' mt-right-cols-'. $this->preferences['layout']['right']['effective_num_columns'];
 $ui_class.= ' mt-top-rows-'. $this->preferences['layout']['top']['effective_num_rows'];
 
 
@@ -135,12 +136,6 @@ require_once('common-inline-assets.php');
 <!-- <div id='tvr-ui'>-->
 
 		<?php
-		// make css file in use available to JS
-		$css_min = $this->preferences['minify_css'] ? 'min.': '';
-		$css_stub = $this->preferences['draft_mode'] ? 'draft' : 'active';
-		?>
-
-		<?php
 		// root ui toggle for showing/hiding extra action icons in folders and selectors menu
 		echo $this->extra_actions_icon('show_extra_actions');
 
@@ -178,10 +173,7 @@ require_once('common-inline-assets.php');
 		<span id="ui-nonce"><?php echo wp_create_nonce('tvr_microthemer_ui_load_styles'); ?></span>
 		<span id="fonts-api" rel="<?php echo $this->thispluginurl.'includes/fonts-api.php'; ?>"></span>
 		<span id="ui-url" rel="<?php echo 'admin.php?page=' . $this->microthemeruipage; ?>"></span>
-		<span id="css-min" rel="<?php echo $css_min; ?>"></span>
-		<span id="css-stub" rel="<?php echo $css_stub; ?>"></span>
 		<span id="admin-url" rel="<?php echo $this->wp_blog_admin_url; ?>"></span>
-
 		<span id="micro-url" rel="<?php echo $this->micro_root_url; ?>"></span>
 		<span id="user-browser" rel="<?php echo $this->check_browser(); ?>"></span>
 		<span id="clean-ui-url" rel="<?php echo isset($_GET['_wpnonce']) ? 1 : 0; ?>"></span>
@@ -722,7 +714,9 @@ require_once('common-inline-assets.php');
 						?>
                     </ul>
                 </div>
-                <!-- keep track of total sections & selectors -->
+
+
+                <!-- keep track of total sections & selectors (hidden) -->
                 <div id="ui-totals-count">
 
                     <span id="section-count-state" class='section-count-state' rel='<?php echo $this->total_selectors; ?>'></span>
@@ -733,8 +727,6 @@ require_once('common-inline-assets.php');
 
                     <span id="total-sel-count"><?php echo $this->total_selectors; ?></span>
                     <span><?php esc_html_e('Selectors', 'microthemer'); ?></span>
-
-
 
                 </div>
 
@@ -822,139 +814,201 @@ require_once('common-inline-assets.php');
             include $this->thisplugindir . 'includes/tvr-microthemer-preview-wrap.php';
             ?>
 
-            <div id="advanced-wizard">
 
-                <?php
-                // save the configuration of the css tab
-                $adv_wizard_focus = !empty($this->preferences['adv_wizard_tab'])
-	                ? $this->preferences['adv_wizard_tab']
-	                : 'css-computed';
-                ?>
 
-                <div class="wizard-panes"<?php echo $this->layout_element_height('inspection_height'); ?>>
+            <div id="wizard-panes" class="wizard-panes"<?php echo $this->layout_element_height('inspection_height'); ?>>
 
-                    <div class="adv-area-html-inspector adv-area">
+				<?php
+				// save the configuration of the css tab
+				$adv_wizard_focus = !empty($this->preferences['adv_wizard_tab'])
+					? $this->preferences['adv_wizard_tab']
+					: 'css-computed';
+				?>
 
-                        <div id="html-preview" class="wizard-inner">
+                <div class="adv-area-html-inspector adv-area">
 
-                            <div class="css-code-wrap">
-                                <textarea name="inspector_html" class="dont-serialize"></textarea>
-                                <pre id="wizard_inspector_html" class="wizard_inspector_html"
-                                     data-mode="customhtml"></pre>
-                                <?php
+                    <div id="html-preview" class="wizard-inner">
 
-                                echo $this->iconFont('sync-alt', array(
-                                    'id' => 'refresh-html-pane',
-                                    'class' => 'refresh-icon refresh-html-pane',
-                                    'title' => esc_attr__("Refresh HTML pane", 'microthemer'),
-                                ));
-                                ?>
-                            </div>
-
+                        <div class="css-code-wrap">
+                            <textarea name="inspector_html" class="dont-serialize"></textarea>
+                            <pre id="wizard_inspector_html" class="wizard_inspector_html"
+                                 data-mode="customhtml"></pre>
 							<?php
 
-							/*
+							echo $this->iconFont('sync-alt', array(
+								'id' => 'refresh-html-pane',
+								'class' => 'refresh-icon refresh-html-pane',
+								'title' => esc_attr__("Refresh HTML pane", 'microthemer'),
+							));
 							?>
-							echo $this->ui_toggle(
-								'ace_full_page_html',
-								esc_attr__('Show full page HTML', 'microthemer'),
-								esc_attr__('Show reduced HTML', 'microthemer'),
-								$this->preferences['ace_full_page_html'],
-								'full-page-html'
-							);
-							*/
-							?>
-
                         </div>
 
+						<?php
 
+						/*
+						?>
+						echo $this->ui_toggle(
+							'ace_full_page_html',
+							esc_attr__('Show full page HTML', 'microthemer'),
+							esc_attr__('Show reduced HTML', 'microthemer'),
+							$this->preferences['ace_full_page_html'],
+							'full-page-html'
+						);
+						*/
+						?>
 
                     </div>
 
 
-                    <div class="adv-area-css-inspector adv-area scrollable-area <?php
-                        if ($adv_wizard_focus == 'css-inspector') {
-                            echo 'show';
-                        }
-                        ?>">
 
-                        <div id="actual-styles" class="actual-styles wizard-inner"></div>
-
-                    </div>
+                </div>
 
 
-                    <div class="adv-area-css-computed adv-area scrollable-area <?php
-					if ($adv_wizard_focus == 'css-computed') {
-						echo 'show';
-					}
-					?>">
+                <div class="adv-area-css-inspector adv-area scrollable-area <?php
+				if ($adv_wizard_focus == 'css-inspector') {
+					echo 'show';
+				}
+				?>">
 
-                        <div id="key-computed"><?php // echo $this->key_computed_info(); ?></div>
+                    <div id="actual-styles" class="actual-styles wizard-inner"></div>
 
-                        <div id="html-computed-css" class="accordion-wrapper">
+                </div>
 
-		                    <?php
 
-		                    foreach ($this->property_option_groups as $property_group => $pg_label) {
-			                    ?>
-                                <div id="comp-<?php echo $property_group; ?>" class="accordion-menu property-menu">
+                <div class="adv-area-css-computed adv-area scrollable-area <?php
+				if ($adv_wizard_focus == 'css-computed') {
+					echo 'show';
+				}
+				?>">
 
-                                    <div class="css-group-heading accordion-heading mt-expandable-heading">
-	                                    <?php echo $pg_label; ?>
-                                    </div>
+                    <div id="key-computed"><?php // echo $this->key_computed_info(); ?></div>
 
-                                    <ul class="mt-expandable-panel mt-computed-panel"></ul>
+                    <div id="html-computed-css" class="accordion-wrapper">
 
+						<?php
+
+						foreach ($this->property_option_groups as $property_group => $pg_label) {
+							?>
+                            <div id="comp-<?php echo $property_group; ?>" class="accordion-menu property-menu">
+
+                                <div class="css-group-heading accordion-heading mt-expandable-heading">
+									<?php echo $pg_label; ?>
                                 </div>
-			                    <?php
-		                    }
-		                    ?>
-                        </div>
 
+                                <ul class="mt-expandable-panel mt-computed-panel"></ul>
+
+                            </div>
+							<?php
+						}
+						?>
                     </div>
 
+                </div>
 
-                    <div id="refine-targeting-pane" class="adv-area adv-area-refine-targeting">
 
-                        <?php echo  $this->targeting_suggestions('panel'); ?>
+                <div id="refine-targeting-pane" class="adv-area adv-area-refine-targeting">
 
-                    </div>
+					<?php echo  $this->targeting_suggestions('panel'); ?>
 
-                    <div id="adv-tabs" class="query-tabs menu-style-tabs">
-		                <?php
+                </div>
 
-		                $tab_headings = array(
-			                'html-inspector' => esc_html__('HTML', 'microthemer'),
-			                'css-computed' => esc_html__('Computed', 'microthemer'),
-			                'css-inspector' => esc_html__('Styles', 'microthemer'),
-			                'refine-targeting' => esc_html__('Targeting', 'microthemer'),
-		                );
-		                foreach ($tab_headings as $key => $value) {
-			                if ($key == $adv_wizard_focus){
-				                $active_c = 'active';
-			                } else {
-				                $active_c = '';
-			                }
-			                echo '<span class="adv-tab mt-tab adv-tab-'.$key.' show '.$active_c.'" rel="'.$key.'">'.$tab_headings[$key].'</span>';
-		                }
-		                // this is redundant (preferences store focus) but kept for consistency with other tab remembering
-		                ?>
-                        <!--<input class="adv-wizard-focus" type="hidden"
+                <div id="adv-tabs" class="query-tabs menu-style-tabs">
+					<?php
+
+					$tab_headings = array(
+						'html-inspector' => esc_html__('HTML', 'microthemer'),
+						'css-computed' => esc_html__('Computed', 'microthemer'),
+						'css-inspector' => esc_html__('Styles', 'microthemer'),
+						'refine-targeting' => esc_html__('Targeting', 'microthemer'),
+					);
+					foreach ($tab_headings as $key => $value) {
+						if ($key == $adv_wizard_focus){
+							$active_c = 'active';
+						} else {
+							$active_c = '';
+						}
+						echo '<span class="adv-tab mt-tab adv-tab-'.$key.' show '.$active_c.'" rel="'.$key.'">'.$tab_headings[$key].'</span>';
+					}
+					// this is redundant (preferences store focus) but kept for consistency with other tab remembering
+					?>
+                    <!--<input class="adv-wizard-focus" type="hidden"
 							   name="tvr_mcth[non_section][adv_wizard_focus]"
 							   value="<?php /*echo $adv_wizard_focus; */?>" />-->
-                    </div>
+                </div>
+
+				<?php
+				echo $this->panel_resizers(array(
+					'context' => 'inspection_columns',
+					'dimension' => 'width',
+					'total' => 2,
+					'side_division' => 1,
+					'side_1' => 'left_inspect',
+					'side_2' => 'right_inspect',
+				));
+				?>
+
+
+            </div>
+
+            <div id="advanced-wizard">
+
+                <div id="footer-shortcuts">
 
                     <?php
-                    echo $this->panel_resizers(array(
-	                    'context' => 'inspection_columns',
-	                    'dimension' => 'width',
-	                    'total' => 2,
-	                    'side_division' => 1,
-	                    'side_1' => 'left_inspect',
-	                    'side_2' => 'right_inspect',
-                    ));
+                    echo $this->ui_toggle(
+	                    'ai_assistant',
+	                    esc_attr__('Expand AI assistant', 'microthemer'),
+	                    esc_attr__('Close AI assistant', 'microthemer'),
+	                    0,
+	                    'ai-expand-toggle '.$this->iconFont('chatbot-icon', array('onlyClass' => 1)),
+	                    'mt-ai-assistant'
+                    );
+
                     ?>
 
+                    <div id="folder-organisation">
+
+			            <?php
+			            $autoFoldersOn = !empty($this->preferences['auto_folders']) ? ' on' : '';
+			            $autoFoldersChecked = $autoFoldersOn ? 'checked="checked"' : '';
+			            $autoPageOn = !empty($this->preferences['auto_folders_page']) ? ' on' : '';
+			            $autoPageChecked = $autoPageOn ? 'checked="checked"' : '';
+			            ?>
+
+                        <input type="checkbox" <?php echo $autoFoldersChecked; ?> name="auto_folders" value="1" />
+
+			            <?php
+			            $posTitle = esc_attr__('If the current folder doesn\'t apply to the page, auto-assign selectors to folders', 'microthemer');
+			            $negTitle = esc_attr__('Disable automatic folder assignment', 'microthemer');
+			            echo $this->iconFont('tick-box-unchecked', array(
+				            'id' => 'toggle-auto-folders',
+				            'class' => 'uit-par fake-checkbox toggle-auto_folders'.$autoFoldersOn,
+				            'title' => $autoFoldersOn ? $negTitle : $posTitle,
+				            'data-pos' => $posTitle,
+				            'data-neg' => $negTitle,
+				            'data-dyn-tt-root' => 'toggle-auto-folders',
+				            'data-toggle-feature' => 1,
+				            'data-aspect' => "auto_folders",
+			            ));
+			            ?>
+
+                        <span><?php echo esc_html__('Auto folder', 'microthemer'); ?></span>
+
+                        <div id="auto-folders-mode" class="mt-binary-buttons context-binary uit-par <?php echo $autoPageOn; ?>" data-run="autoFolderOptions" data-always-run="1" data-aspect="auto_folders_page" data-toggle-feature="1">
+
+                                <span class="binary-button-option folder-option global-folder-option" title="<?php echo esc_attr__('Assign selectors to global folders', 'microthemer'); ?>" rel="0" data-forpopup="contextMenu">
+                                    <?php echo esc_html__('Global', 'microthemer'); ?>
+                                </span>
+
+                            <input type="checkbox" <?php echo $autoPageChecked; ?> name="auto_folders[page]" value="1" />
+
+                            <span class="binary-button-option folder-option page-folder-option" title="<?php echo esc_attr__('Assign selectors to page-specific folders', 'microthemer'); ?>"  rel="1" data-forpopup="contextMenu">
+                                    <?php echo esc_html__('Page', 'microthemer'); ?>
+                                </span>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -1028,6 +1082,8 @@ require_once('common-inline-assets.php');
                             </select>
                         </div>
 
+
+
                         <div class="targeting-mode-toggle">
 
                             <span><?php echo esc_html__('Targeting mode', 'microthemer'); ?></span>
@@ -1047,18 +1103,24 @@ require_once('common-inline-assets.php');
 
                         </div>
 
-                        <div class="mt-exit-wrap">
-                            <?php
-                            echo $this->iconFont('wordpress', array(
-                                'class' => 'mt-exit-options',
-                                'tag' => 'a',
-                                'href' => $this->wp_blog_admin_url
-                                //'title' => esc_html__('Exit to WordPress', 'microthemer')
-                            ));
-                            echo $this->menu_panel_sub('exit', $this->menu['exit'], 'bottom-row')['areas_html'];
-                            ?>
+                    </div>
 
-                        </div>
+                </div>
+
+                <div id="footer-wordpress">
+
+                    <span class="exit-label"><?php echo esc_html__('Exit', 'microthemer'); ?></span>
+
+                    <div class="mt-exit-wrap">
+			            <?php
+			            echo $this->iconFont('wordpress', array(
+				            'class' => 'mt-exit-options',
+				            'tag' => 'a',
+				            'href' => $this->wp_blog_admin_url
+				            //'title' => esc_html__('Exit to WordPress', 'microthemer')
+			            ));
+			            echo $this->menu_panel_sub('exit', $this->menu['exit'], 'bottom-row')['areas_html'];
+			            ?>
 
                     </div>
 
@@ -1076,7 +1138,6 @@ require_once('common-inline-assets.php');
 				echo $this->settings_menu();
 				?>
             </div>
-
 
 
             <div id="mt-context-menu" data-popupName="contextMenu">
@@ -1127,6 +1188,17 @@ require_once('common-inline-assets.php');
 
                 // Folder options (rename, add item, action icons)
                 echo $this->add_edit_section_form('edit');
+
+                // options for switching to between global and page-specific styles
+	            echo $this->context_menu_content(array(
+		            'base_key' => 'switch-folder-mode',
+		            'title' => esc_html__('Assign selectors to global folders - set initial folder', 'microthemer'),
+		            'sections' => array(
+			            $this->switchAutoFolder()
+		            )
+	            ));
+
+
 
                 // selector (item) options
                 echo $this->context_menu_content(array(
@@ -1287,42 +1359,6 @@ require_once('common-inline-assets.php');
 		</div>
 
 
-
-		<?php
-		/*// store the active media queries so they can be shared with design packs
-		if (is_array($this->preferences['m_queries'])){
-			foreach ($this->preferences['m_queries'] as $key => $m_query) {
-				echo '
-			<input type="hidden" name="tvr_mcth[non_section][active_queries]['.$key.'][label]" value="'.esc_attr($m_query['label']).'" />
-			<input type="hidden" name="tvr_mcth[non_section][active_queries]['.$key.'][query]" value="'.esc_attr($m_query['query']).'" />';
-			}
-		}
-
-		// store the active js deps so they can also be shared with design packs
-		if (!empty($this->preferences['enq_js']) and is_array($this->preferences['enq_js'])){
-			foreach ($this->preferences['enq_js'] as $key => $arr) {
-				if (empty($arr['disabled'])){
-					echo '
-					<input type="hidden" name="tvr_mcth[non_section][active_enq_js]['.$key.'][display_name]"
-					value="'.esc_attr($arr['display_name']).'" />';
-				}
-			}
-		}
-
-		// store the active JS events
-        $active_events = !empty($this->options['non_section']['active_events'])
-            ? $this->options['non_section']['active_events'] : '';
-		echo '<textarea id="mt_active_events" name="tvr_mcth[non_section][active_events]">'
-                . esc_html($active_events).
-             '</textarea>';*/
-
-
-		// send the time settings were last saved to ensure another tabs hasn't saved settings more recently
-        /*$last_save_time = !empty($this->options['non_section']['last_save_time']) ?
-            $this->options['non_section']['last_save_time'] : '';
-		echo '<input id="send-last-save-time" type="hidden" name="tvr_mcth[non_section][last_save_time]" 
-		value="'.esc_attr($last_save_time).'" />';*/
-		?>
 
 		</form>
 
@@ -2035,183 +2071,37 @@ require_once('common-inline-assets.php');
 
 			<!-- View CSS -->
 			<?php
-			// get user config for scss/draft/minify
-            $modes = array('draft', 'active');
-			$input_ext = $this->preferences['allow_scss'] ? 'scss': 'css';
-			$input_file_stub = $this->preferences['draft_mode'] ? 'draft' : 'active';
-			$min_stub = $this->preferences['minify_css'] ? 'min.': '';
-
-			// all possible code view tabs (orig way wasn'ty easily maintainable)
-			$jsf = $input_file_stub.'-scripts.js';
-			$all_pos_tabs = array(
-				'scss' => array(
-					'do' => $this->preferences['allow_scss'],
-					'ext' => 'scss',
-					'draft_file' => 'draft-styles.scss',
-					'active_file' => 'active-styles.scss',
-					'file' => $input_file_stub.'-styles.scss'
-				),
-				'css' => array(
-					'do' => 1,
-					'ext' => 'css',
-					'draft_file' => 'draft-styles.css',
-					'active_file' => 'active-styles.css',
-					'file' => $input_file_stub.'-styles.css'
-				),
-				'css_min' => array(
-					'do' => $this->preferences['minify_css'],
-					'ext' => 'css',
-					'draft_file' => 'min.draft-styles.css',
-					'active_file' => 'min.active-styles.css',
-					'file' => 'min.'.$input_file_stub.'-styles.css',
-					'minified' => 1
-				),
-				'js' => array(
-					'do' => 1,
-					'ext' => 'js',
-					'draft_file' => 'draft-scripts.js',
-					'active_file' => 'active-scripts.js',
-					'file' => $jsf,
-					'file_exists' => file_exists($this->micro_root_dir . $jsf)
-				),
-				'js_min'=> array(
-					'do' => !empty($this->preferences['minify_js']),
-					'ext' => 'js',
-					'file' => 'min'.$jsf,
-					'draft_file' => 'min.draft-scripts.js',
-					'active_file' => 'min.active-scripts.js',
-					'file_exists' => file_exists($this->micro_root_dir . 'min'.$jsf),
-					'minified' => 1
-				),
-
-				// client-side SCSS needs to show code used in optimised compile
-                // sometimes this will be the contents of an import file
-				'scss_compile'=> array(
-					'do' => $this->client_scss(), // this will be hidden with CSS when not needed
-					'ext' => 'scss',
-					'file' => 'stdin',
-				),
-				'other' => array(
-					'do' => 0 // for showing external js files and ie if errors arise
-				),
-			);
-
-			// set up tabs (new)
-			$tabs = array();
-			foreach ($all_pos_tabs as $key => $arr){
-				if ($arr['do']){
-					$name = strtoupper($arr['ext']);
-
-					if ($key == 'scss_compile'){
-						$name = 'Previous Sass Compile';
-                    }
-
-					$name.= !empty($arr['minified']) ? ' ('.esc_html__('Min', 'microthemer').')' : '';
-					$tabs[] = $name;
-				}
-			}
-
 			// begin dialog
+			$tabs = array('CSS'); // dummy tab to create the container element, but tabs are added with JS
 			echo $this->start_dialog('display-css-code', esc_html__('View the CSS code Microthemer generates', 'microthemer'), 'medium-dialog', $tabs); ?>
 
 			<div class="content-main dialog-tab-fields">
 
 				<div id="view-css-areas">
-					<?php
-					$i = -1;
-					$p = $this->preferences;
-					foreach ($all_pos_tabs as $k => $arr){
-						if (!$arr['do']) continue;
-						++$i;
-						$show = (!empty($p['generated_css_focus']) && $i === $p['generated_css_focus']) ||
-						        (empty($p['generated_css_focus']) && $i === 0)
-                            ? 'show'
-                            : '';
 
-						?>
-						<div class="dialog-tab-field dialog-tab-field-<?php echo $i; ?> tab-field-<?php echo $k; ?> hidden <?php echo $show; ?>" rel="<?php echo $i; ?>">
+                    <div class="dialog-tab-field">
 
+                        <div id="view-file" class="view-file">
+                            <?php
+                            $title = esc_attr__('View file on server', 'microthemer');
+                            ?>
+                            <a class="draft-file" href="#" target="_blank" title="<?php echo $title; ?>"></a>
+                            <a class="published-file" href="#" target="_blank" title="<?php echo $title; ?>"></a>
+                        </div>
 
-                            <div class="view-file view-file-<?php echo $k; ?>">
+                        <div id="scss-error-notes" class="hidden">
+                            <p><b>NOTE: </b> for maximum performance Microthemer selectively compiles Sass code (previous compile shown below). To compile everything use <b>Ctrl + Alt + P</b></p>
+                        </div>
 
-	                            <?php
-	                            if ($k === 'scss_compile'){
-		                            ?>
-                                    <div id="scss-error-notes">
-                                        <p><b>NOTE: </b> for maximum performance Microthemer selectively
-                                            compiles Sass code (previous compile shown below).
-                                            To compile everything use <b>Ctrl + Alt + P</b></p>
-                                    </div>
-                                    <div id="scss-import-error-notes" class="hidden">
-                                        <p>The Sass error occurred in an @import file: <b><span id="scss-error-file">file here</span></b> (please fix this error and then refresh Microthemer)</p>
-                                    </div>
-		                            <?php
-	                            }
+                        <div class="css-code-wrap">
+                            <textarea class="gen-css-holder dont-serialize"></textarea>
+                            <pre id="generated-code" class="generated-code"></pre>
+                        </div>
 
-	                            else {
-
-
-
-	                                $outputFiles = array('draft_file', 'active_file');
-		                            $mts = '?mts=' . (!empty($p['num_saves']) ? $p['num_saves'] : 0);
-
-	                                foreach($outputFiles as $j => $outputFileKey){
-
-	                                    $outputFile = $arr[$outputFileKey];
-
-	                                    echo '<a href="'.$this->micro_root_url . $outputFile . $mts .'" target="_blank" 
-	                                    title="'.esc_attr__('View file on server', 'microthemer').'">'.$outputFile.'</a>';
-	                                }
-
-	                            }
-	                            ?>
-
-                            </div>
-
-
-
-							<div class="css-code-wrap">
-								<textarea class="gen-css-holder dont-serialize"></textarea>
-								<?php
-								$min_class = !empty($arr['minified']) ? 'min' : '';
-								$mode = $arr['ext'] != 'js' ? $arr['ext'] : 'javascript';
-								?>
-								<pre id="generated-css-<?php echo $i; ?>"
-									 class="generated-css generated-css-<?php echo $k; ?> <?php echo $min_class; ?>"
-									 data-mode="<?php echo $mode; ?>"></pre>
-							</div>
-						</div>
-						<?php
-					}
-					?>
-				</div>
-
-				<?php /*
-                <div class="explain">
-					<div class="heading link explain-link"><?php esc_html_e('About this feature', 'microthemer'); ?></div>
-
-					<div class="full-about">
-						<p><?php esc_html_e('What you see above is the CSS code Microthemer is currently generating. This can sometimes be useful for debugging issues if you know CSS. Or if you want to reuse the code Microthemer generates elsewhere.', 'microthemer'); ?></p>
-						<p><?php echo wp_kses(
-							sprintf(
-								__('<b>Did you know</b> - it\'s possible to disable or completely uninstall Microthemer and still use the customisations. You just need to paste a small piece of code in your theme\'s functions.php file. See this <a %s>forum post</a> for further information.', 'microthemer'),
-								'target="_blank" href="http://themeover.com/forum/topic/microthemer-customizations-when-deactived/"'
-							),
-							array( 'a' => array( 'href' => array(), 'target' => array() ), 'b' => array() )
-						); ?></p>
-						<p><?php echo wp_kses(
-							sprintf(
-								__('<b>Also note</b>, Microthemer adds the "!important" declaration to all CSS styles by default. If you\'re up to speed on %s you may want to disable this behaviour on the <span %s>preferences page</span>. If so, you will still be able to apply "!important" declarations on a per style basis by clicking the faint "i"s that will appear to the right of all style option fields.', 'microthemer'),
-								'<a target="_blank" href="http://themeover.com/beginners-guide-to-understanding-css-specificity/">' . esc_html__('CSS specificity', 'microthemer') . '</a>',
-								'class="link show-dialog" rel="display-preferences"'
-							),
-							array( 'b' => array(), 'span' => array() )
-						); ?></p>
-					</div>
+                    </div>
 
 				</div>
-                */
-                ?>
+
 			</div>
 			<?php echo $this->end_dialog(esc_html_x('Close', 'verb', 'microthemer'), 'span', 'close-dialog'); ?>
 
@@ -2277,7 +2167,7 @@ require_once('common-inline-assets.php');
 	</form>
 
 	<!-- color picker mini and large palettes -->
-	<div id="mt-picker-palette">
+	<div id="mt-picker-palette" class="hidden">
 		<ul class="mt-picker-palette palette-list">
 		<li class="view-full-palette">
 

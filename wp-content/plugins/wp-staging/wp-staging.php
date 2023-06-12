@@ -4,7 +4,7 @@
  * Plugin Name: Backup Duplicator & Migration - WP STAGING
  * Plugin URI: https://wordpress.org/plugins/wp-staging
  * Description: Backup & Duplicator Plugin - Clone, backup, move, duplicate & migrate websites to staging, backup, and development sites for authorized users only.
- * Version: 2.13.0
+ * Version: 2.15.0
  * Requires at least: 3.6+
  * Requires PHP: 5.6
  * Author: WP-STAGING, WPStagingBackup
@@ -36,12 +36,12 @@ if (!defined("WPINC")) {
  * so that any PHP version can parse it and run our version check
  * conditional.
  *
- * Then we include other PHP files to be parsed, this time, certain
- * to be executing in a PHP version that is capable of parsing the
- * the syntax we are using.
+ * Then we add more PHP files to be parsed, making sure they are
+ * running in a PHP version capable of parsing the syntax we are using.
  */
 if (version_compare(phpversion(), '5.6.0', '>=')) {
     // The absolute path to the main file of this plugin.
+    global $pluginFilePath;
     $pluginFilePath = __FILE__;
     include dirname(__FILE__) . '/opcacheBootstrap.php';
     include_once dirname(__FILE__) . '/freeBootstrap.php';
@@ -50,8 +50,8 @@ if (version_compare(phpversion(), '5.6.0', '>=')) {
         function wpstg_unsupported_php_version()
         {
             echo '<div class="notice-warning notice is-dismissible">';
-            echo '<p style="font-weight: bold;">' . esc_html__('WP STAGING') . '</p>';
-            echo '<p>' . esc_html__(sprintf('WP STAGING requires PHP %s or higher. Your site is running an outdated version of PHP (%s), which requires an update.', '5.5', phpversion()), 'wp-staging') . '</p>';
+            echo '<p style="font-weight: bold;">' . esc_html__('PHP Version not supported', 'wp-staging') . '</p>';
+            echo '<p>' . sprintf(esc_html__('WP STAGING requires PHP %s or higher. Your site is running an outdated version of PHP (%s), which requires an update.', 'wp-staging'), '5.5', esc_html(phpversion())) . '</p>';
             echo '</div>';
         }
     }

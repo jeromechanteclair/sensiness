@@ -1,5 +1,4 @@
 <?php
-// phpcs:ignoreFile
 
 namespace AutomateWoo\Referrals;
 
@@ -8,13 +7,18 @@ use AutomateWoo\Customer_Factory;
 use AutomateWoo\Error;
 
 /**
+ * Handler for Frontend Endpoints
+ *
  * @class Frontend_Endpoints
  * @since 2.1
  */
 class Frontend_Endpoints {
 
 
-	static function handle() {
+	/**
+	 * Handle the request actions
+	 */
+	public static function handle() {
 		$action = sanitize_key( aw_request( 'aw-referrals-action' ) );
 
 		switch ( $action ) {
@@ -26,8 +30,10 @@ class Frontend_Endpoints {
 		}
 	}
 
-
-	static function redirect_to_social_share() {
+	/**
+	 * Set the Advocate IP in the user and safely redirect to a specific Social Network URL
+	 */
+	public static function redirect_to_social_share() {
 		$customer_key = Clean::string( aw_request( 'customer' ) );
 		$integration  = false;
 		$advocate     = false;
@@ -58,7 +64,14 @@ class Frontend_Endpoints {
 
 		$advocate->store_ip(); // update advocate IP
 
-		wp_redirect( $integration->get_share_url( $advocate ) );
+		add_filter(
+			'allowed_redirect_hosts',
+			function ( $allowed_hosts ) {
+				return array_merge( $allowed_hosts, [ 'www.facebook.com', 'twitter.com', 'api.whatsapp.com' ] );
+			}
+		);
+
+		wp_safe_redirect( $integration->get_share_url( $advocate ) );
 		exit;
 	}
 

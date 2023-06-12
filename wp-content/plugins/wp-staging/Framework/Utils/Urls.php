@@ -2,7 +2,10 @@
 
 namespace WPStaging\Framework\Utils;
 
-use WPStaging\Pro\Backup\Service\Compressor;
+use WPStaging\Core\WPStaging;
+use WPStaging\Backup\Service\Compressor;
+use WPStaging\Backup\Service\BackupsFinder;
+use WPStaging\Framework\Adapter\Directory;
 
 class Urls
 {
@@ -66,7 +69,7 @@ class Urls
         }
 
         if (!in_array($scheme, ['http', 'https', 'relative'])) {
-            if (is_ssl()) {
+            if ($this->sslAvailable()) {
                 $scheme = 'https';
             } else {
                 $scheme = parse_url($url, PHP_URL_SCHEME);
@@ -111,7 +114,7 @@ class Urls
 
         // Default. Try to get the hostname from the main domain (Workaround for WP Staging Pro older < 2.9.1)
         $siteurl = get_site_url();
-        $result = parse_url($siteurl);
+        $result  = parse_url($siteurl);
         return $result['scheme'] . "://" . $result['host'];
     }
 
@@ -126,11 +129,51 @@ class Urls
     }
 
     /**
-     * Get url of the wp staging backup directory, e.g. http://example.com/wp-content/uploads/backup
+     * Get url of the backup directory, e.g. http://example.com/*
      * @return string
      */
     public function getBackupUrl()
     {
-        return $this->getUploadsUrl() . WPSTG_PLUGIN_DOMAIN . '/' . Compressor::BACKUP_DIR_NAME . '/';
+        if (!WPStaging::make(Directory::class)->isBackupPathOutsideAbspath()) {
+            return $this->getUploadsUrl() . WPSTG_PLUGIN_DOMAIN . '/' . Compressor::BACKUP_DIR_NAME . '/';
+        }
+
+        $backupDirAbsPath        = WPStaging::make(BackupsFinder::class)->getBackupsDirectory();
+        $relativePathToBackupDir = str_replace(wp_normalize_path(ABSPATH), "", $backupDirAbsPath);
+        $siteurl                 = $this->maybeUseProtocolRelative(get_option('siteurl'));
+        return trailingslashit($siteurl) . $relativePathToBackupDir;
+    }
+
+    /** @return bool */
+    public function sslAvailable()
+    {
+        // Cloudflare
+        if (!empty($_SERVER['HTTP_CF_VISITOR'])) {
+            // phpcs:ignore WPStagingCS.Security.SanitizeInput.InputNotSanitized
+            $cfo = json_decode($_SERVER['HTTP_CF_VISITOR']);
+            if (isset($cfo->scheme) && $cfo->scheme === 'https') {
+                return true;
+            }
+        }
+
+        // Other proxy
+        if (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+            return true;
+        }
+
+        return is_ssl();
+    }
+
+    /**
+     * @param string $url
+     * @return string
+     */
+    public function maybeUseProtocolRelative($url)
+    {
+        if ($this->sslAvailable() && substr($url, 0, 7) === 'http://') {
+            $url = preg_replace('@^http://@', '//', $url);
+        }
+
+        return $url;
     }
 }

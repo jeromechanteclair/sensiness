@@ -19,6 +19,7 @@ if (isset($_GET['packs_page'])) {
 // determine start and end
 $start = (($page-1)*$results_per_page)+1;
 $end = ($start+$results_per_page)-1;
+
 if ($end > $total_packs) {
 	$end = $total_packs;
 }

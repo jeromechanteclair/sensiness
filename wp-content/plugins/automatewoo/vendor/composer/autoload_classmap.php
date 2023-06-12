@@ -17,6 +17,7 @@ return array(
     'AutomateWoo\\AbstractOptionsStore' => $baseDir . '/includes/AbstractOptionsStore.php',
     'AutomateWoo\\Abstract_Model_With_Meta_Table' => $baseDir . '/includes/Abstract_Model_With_Meta_Table.php',
     'AutomateWoo\\Action' => $baseDir . '/includes/Action.php',
+    'AutomateWoo\\ActionScheduler\\AW_AsyncRequest_QueueRunner' => $baseDir . '/includes/ActionScheduler/AW_AsyncRequest_QueueRunner.php',
     'AutomateWoo\\ActionScheduler\\ActionScheduler' => $baseDir . '/includes/ActionScheduler/ActionScheduler.php',
     'AutomateWoo\\ActionScheduler\\ActionSchedulerInterface' => $baseDir . '/includes/ActionScheduler/ActionSchedulerInterface.php',
     'AutomateWoo\\ActionScheduler\\AsyncActionRunner' => $baseDir . '/includes/ActionScheduler/AsyncActionRunner.php',

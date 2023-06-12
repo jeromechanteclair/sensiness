@@ -3,19 +3,19 @@
  * Plugin Name: WooCommerce Buy One Get One Free
  * Plugin URI: https://woocommerce.com/products/buy-one-get-one-free/
  * Description: Create Buy One, Get One Free deals in your WooCommerce store.
- * Version: 3.9.1
+ * Version: 3.9.2
  * Author: Oscar Gare
- * Author URI: https://www.linkedin.com/in/oscargare
+ * Author URI: https://oscargare.com/
  * Developer: Oscar Gare
- * Developer URI: https://www.linkedin.com/in/oscargare
+ * Developer URI: https://oscargare.com/
  * Text Domain: wc-buy-one-get-one-free
  * Domain Path: /languages/
  *
  * Requires at least: 4.4
- * Tested up to: 6.1
+ * Tested up to: 6.2
  *
  * WC requires at least: 3.4
- * WC tested up to: 7.5
+ * WC tested up to: 7.6
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html

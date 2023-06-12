@@ -5,7 +5,7 @@
  */
 function ntav_update_version_plugin()
 {
-    ntav_updateValue('MODVERSION', '2.3.12');
+    ntav_updateValue('MODVERSION', '2.3.14');
 }
 
 /*
@@ -139,7 +139,7 @@ function ntav_getConfig($name, $lang = '')
     $query = "SELECT value FROM " . $wpdb->prefix . "netreviews_configuration WHERE name = '" . $name . "'" . $lang_filter;
     $myrows = $wpdb->get_results($query);
     if (!empty($myrows)) {
-        return $myrows[0]->value;
+        return sanitize_text_field($myrows[0]->value);
     }
 }
 
@@ -912,53 +912,16 @@ function ntav_getWpmlEnable()
     return $wpmlActive;
 }
 
-function ntav_formatDatesDependingOnLocale($date, $locale)
-{
-    if (
-        preg_match('/^fr_/', $locale) || preg_match('/^es_/', $locale) || preg_match('/^it_/', $locale) || preg_match(
-            '/^pt_/',
-            $locale
-        )
-    ) {
-        $format = explode('/', $date);
-        $new_format = array_reverse($format);
-        $format_final = implode('-', $new_format);
-    } elseif (preg_match('/^de_/', $locale)) {
-        $slash = strpos($date, '/');
-        $point = strpos($date, '.');
-        if ($slash != false) {
-            $format = explode('/', $date);
-        } elseif ($point != false) {
-            $format = explode('.', $date);
-        } else {
-            return null;
-        }
-        $new_format = array_reverse($format);
-        $format_final = implode('-', $new_format);
-    } else {
-        $pos = strpos($date, '/');
-        if ($pos != false) {
-            $format = explode('/', $date);
-            $year = array_pop($format);
-            $month_year = implode('-', $format);
-            $format_final = $year . '-' . $month_year;
-        } else {
-            return null;
-        }
-    }
-    return $format_final;
-}
-
-function ntav_getOrdersCSVByWooCommerceVersion($whereStatusChosen, $start_export_date, $end_export_date, $locale)
+function ntav_getOrdersCSVByWooCommerceVersion($whereStatusChosen, $start_export_date, $end_export_date)
 {
     global $wpdb;
     global $table_prefix;
 
-    $start_format_final = ntav_formatDatesDependingOnLocale($start_export_date, $locale);
+    $start_format_final = $start_export_date;
     if ($start_format_final == null) {
         $start_format_final = '1970-01-01';
     }
-    $end_format_final = ntav_formatDatesDependingOnLocale($end_export_date, $locale);
+    $end_format_final = $end_export_date;
     if ($end_format_final == null) {
         $end_format_final = date("Y-m-d");
     }

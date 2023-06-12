@@ -19,7 +19,7 @@ foreach ($output as $k_review => $review) {
     $counthelpful = ntav_get_netreviews_helpful($idProduitCible);
     $medias = $review['media_full'];
     $data = ntav_medias($medias);
-    $userReview = urldecode($review['review']);
+    $userReview = htmlspecialchars(urldecode($review['review']));
     $note = $review['rate'];
     $stars = ntav_displayStars($review['rate']);
 
@@ -59,10 +59,10 @@ foreach ($output as $k_review => $review) {
         $markup .= '"author":';
         $markup .= '{';
         $markup .= '"@type":"Person",';
-        $markup .= '"name":"' . urldecode(urldecode($review['customer_name'])) . '"';
+        $markup .= '"name":"' . htmlspecialchars(urldecode(urldecode($review['customer_name']))) . '"';
         $markup .= '},';
         $markup .= '"datePublished":"' . date('d/m/Y', $review['horodate']) . '",';
-        $markup .= '"description":"' . urldecode(urldecode($review['review'])) . '",';
+        $markup .= '"description":"' . htmlspecialchars(urldecode(urldecode($review['review']))) . '",';
         $markup .= '"reviewRating":';
         $markup .= '{';
         $markup .= '"@type":"Rating",';
@@ -84,7 +84,7 @@ foreach ($output as $k_review => $review) {
     $html .= '<div class="netreviews_review_part">';
 
     if ($chosenTemplate == '1') {
-        $html .= '<p class="netreviews_customer_name">' . urldecode(urldecode($review['customer_name']));
+        $html .= '<p class="netreviews_customer_name">' . htmlspecialchars(urldecode(urldecode($review['customer_name'])));
         $html .= ' <span>' . date(
             'd/m/Y',
             $review['horodate']

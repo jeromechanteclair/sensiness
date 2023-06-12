@@ -160,7 +160,7 @@ function ntav_getOrders($message, $post_query)
     $statusChoosen = implode(",", explode(";", ntav_getConfig('ORDERSTATESCHOOSEN', $message['lang_code'])));
     $forbiddenMailExtensions = explode('%3B', ntav_getConfig('FORBIDDEN_EMAIL', $message['lang_code']));
     $delay = ntav_getConfig('DELAY', $message['lang_code']);
-    $list_status = ntav_get_status($statusChoosen);
+    $list_status = ntav_get_status($statusChoosen, $message['lang_code']);
     $WpmlEnable = ntav_getWpmlEnable();
     $config = array(
         'includeProducts' => $allowedProducts,
@@ -202,6 +202,7 @@ function ntav_getOrders($message, $post_query)
         );
         $orders = wc_get_orders($args);
         $order_list = array();
+        $ordersToFlag = [];
         foreach ($orders as $o_key => $order_id) {
             $order = wc_get_order($order_id);
             $customerEmailExtension = explode('@', $order->get_billing_email());
@@ -253,6 +254,7 @@ function ntav_getOrders($message, $post_query)
                             $i++;
                         }
                     }
+                    $ordersToFlag[] = $order_id;
                 }
             } else {
                 $reponse['message']['Emails_Interdits'][] = 'Commande n°' . $order_id . ' Email:' . $order->get_billing_email(
@@ -268,7 +270,7 @@ function ntav_getOrders($message, $post_query)
             //UPDATE FLAG
             $noFlag = $message['no_flag'];
             if (isset($noFlag) && $noFlag == 0 && count($order_list) > 0) {
-                ntav_updateFlag($orders);
+                ntav_updateFlag($ordersToFlag);
             }
         } else {
             $reponse['debug']['mode'] = "[" . $processChoosen . "]" . ' pas de commandes';
@@ -796,14 +798,33 @@ function ntav_get_sha1()
 
 /**
  * Fonction qui retourne les id des statuts de commandes envoyés en parametre
- * @param array $statusChoosen liste des id de statut de commande
+ * @param string $statusChoosen liste des id de statut de commande
  * @return null|string $resultat contient les termes des statuts selectionnés
  */
-function ntav_get_status($statusChoosen)
+function ntav_get_status($statusChoosen, $wpmlLang = '')
 {
     $wc_version = ntav_getConfig('WCVERSION');
+    $moduleVersion = ntav_getConfig('MODVERSION');
+
     if (function_exists('wc_get_order_statuses')) {
         $results = wc_get_order_statuses();
+
+        if (preg_match('/^\d+(,{0,1}\d*)*$/', $statusChoosen)) {
+            $statusIds = array_values($results);
+            $allChoosenStatus = explode(',', $statusChoosen);
+            $nbSelectedStatus = count($allChoosenStatus);
+
+            $statusChoosen = '';
+            foreach ($allChoosenStatus as $key => $status) {
+                $statusChoosen .= $statusIds[$status];
+                if ($key !== ($nbSelectedStatus - 1)) {
+                    $statusChoosen .= ',';
+                }
+            }
+
+            ntav_updateConfig('ORDERSTATESCHOOSEN', str_replace(',', ';', $statusChoosen), $wpmlLang);
+        }
+
         foreach ($results as $key => $status) {
             $orderStatusList[] = $status;
         }

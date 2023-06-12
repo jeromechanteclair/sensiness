@@ -10,7 +10,7 @@ if (!class_exists('MGInfo')) :
 		public $badgeinfo = 'bvmgbadge';
 		public $ip_header_option = 'bvmgipheader';
 		public $brand_option = 'bvmgbrand';
-		public $version = '4.95';
+		public $version = '5.05';
 		public $webpage = 'https://www.migrateguru.com';
 		public $appurl = 'https://mg.blogvault.net';
 		public $slug = 'migrate-guru/migrateguru.php';
@@ -21,7 +21,7 @@ if (!class_exists('MGInfo')) :
 		public $author = 'Migrate Guru';
 		public $title = 'Migrate Guru';
 
-		const DB_VERSION = '3';
+		const DB_VERSION = '4';
 
 		public function __construct($settings) {
 			$this->settings = $settings;

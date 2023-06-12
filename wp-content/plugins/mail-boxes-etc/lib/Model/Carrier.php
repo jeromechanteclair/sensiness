@@ -175,6 +175,8 @@ class Mbe_Shipping_Model_Carrier {
 				// $boxesSingleParcelDimensionWeight is used directly, since we always use 1 box for each item (we're not using packages CSV)
 				$shipments = $this->getRates( $destCountry, $destRegion, $city, $destPostCode, $baseSubtotalInclTax, $boxesSingleParcelDimensionWeight, $numBoxes, array(), 1, $insuranceValue );
 
+			} else {
+				$this->logger->log( 'SHIPMENT CONFIGURATION MODE - Value not set or incorrect, try to save the settings page again '.($shipmentConfigurationMode?' - '.$shipmentConfigurationMode:''), true);
 			}
 
 

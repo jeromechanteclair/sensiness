@@ -5,7 +5,7 @@ Plugin URI: https://www.migrateguru.com
 Description: Migrating your site(s) to any WordPress Hosting platform has never been so easy.
 Author: Migrate Guru
 Author URI: http://www.migrateguru.com
-Version: 4.95
+Version: 5.05
 Network: True
  */
 
@@ -37,6 +37,7 @@ require_once dirname( __FILE__ ) . '/wp_api.php';
 require_once dirname( __FILE__ ) . '/wp_actions.php';
 require_once dirname( __FILE__ ) . '/info.php';
 require_once dirname( __FILE__ ) . '/account.php';
+require_once dirname( __FILE__ ) . '/helper.php';
 ##WPCACHEMODULE##
 
 
@@ -66,7 +67,7 @@ if (is_admin()) {
 	add_action('admin_init', array($wpadmin, 'initHandler'));
 	add_filter('all_plugins', array($wpadmin, 'initBranding'));
 	add_filter('plugin_row_meta', array($wpadmin, 'hidePluginDetails'), 10, 2);
-	add_filter('debug_information', array($wpadmin, 'handlePluginHealthInfo'), 10, 1);
+	##HEALTH_INFO_HOOK##
 	if ($bvsiteinfo->isMultisite()) {
 		add_action('network_admin_menu', array($wpadmin, 'menu'));
 	} else {

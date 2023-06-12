@@ -1,28 +1,38 @@
 <?php
-// phpcs:ignoreFile
 
 namespace AutomateWoo\Referrals;
 
 use AutomateWoo;
 
 /**
+ * Class for handling the invitation email.
+ *
  * @class Invite_Email
  */
 class Invite_Email {
 
-	/** @var string */
+	/**
+	 * The email to send the invite
+	 *
+	 * @var string
+	 */
 	public $email;
 
-	/** @var Advocate */
+	/**
+	 * The advocate sending the invitation
+	 *
+	 * @var Advocate
+	 */
 	public $advocate;
 
 
 	/**
 	 * Constructor
-	 * @param $email
-	 * @param Advocate $advocate
+	 *
+	 * @param string   $email The email to send the invite
+	 * @param Advocate $advocate The advocate sending the invitation
 	 */
-	function __construct( $email, $advocate ) {
+	public function __construct( $email, $advocate ) {
 		WC()->mailer(); // wc mailer must be loaded
 		$this->email    = $email;
 		$this->advocate = $advocate;
@@ -30,25 +40,31 @@ class Invite_Email {
 
 
 	/**
-	 * @return string
+	 * Get the email subject replacing the variables
+	 *
+	 * @return string The email subject
 	 */
-	function get_subject() {
+	public function get_subject() {
 		return $this->replace_variables( AW_Referrals()->options()->share_email_subject );
 	}
 
 
 	/**
-	 * @return string
+	 * Get the email heading replacing the variables
+	 *
+	 * @return string The email heading
 	 */
-	function get_heading() {
+	public function get_heading() {
 		return $this->replace_variables( AW_Referrals()->options()->share_email_heading );
 	}
 
 
 	/**
-	 * @return string
+	 * Get the email content replacing the variables and adding tracking in the URLs
+	 *
+	 * @return string The email content
 	 */
-	function get_content() {
+	public function get_content() {
 		$content = $this->replace_variables( AW_Referrals()->options()->share_email_body );
 
 		if ( AW_Referrals()->options()->type === 'link' ) {
@@ -60,26 +76,32 @@ class Invite_Email {
 
 
 	/**
+	 * Get the email template
 	 *
+	 * @return string The email template
 	 */
-	function get_template() {
+	public function get_template() {
 		return AW_Referrals()->options()->share_email_template;
 	}
 
 
 	/**
+	 * Get the email body
 	 *
+	 * @return string The email body
 	 */
-	function get_html() {
+	public function get_html() {
 		$mailer = $this->get_mailer();
 		return $mailer->get_email_body();
 	}
 
 
 	/**
-	 * @return AutomateWoo\Mailer
+	 * Get the mailer object with all their fields set.
+	 *
+	 * @return AutomateWoo\Mailer The mailer object
 	 */
-	function get_mailer() {
+	public function get_mailer() {
 
 		$mailer = new AutomateWoo\Mailer();
 		$mailer->set_subject( $this->get_subject() );
@@ -93,39 +115,47 @@ class Invite_Email {
 
 
 	/**
-	 * @param $content string
-	 * @return string
+	 * Replace the variables for a given string
+	 *
+	 * @param string $content The string to replace the variables
+	 * @return string THe string with the variables replaced
 	 */
-	function replace_variables( $content ) {
+	public function replace_variables( $content ) {
 		return Option_Variables::process( $content, $this->advocate );
 	}
 
 
 	/**
-	 * @param $content string
-	 * @return string
+	 * Add tracking to the URLs in a given string
+	 *
+	 * @param string $content The content to add the tracking
+	 * @return string The content with the tracking added
 	 */
-	function make_trackable_urls( $content ) {
-		$replacer = new AutomateWoo\Replace_Helper( $content, [ $this, '_callback_trackable_urls' ], 'href_urls' );
+	public function make_trackable_urls( $content ) {
+		$replacer = new AutomateWoo\Replace_Helper( $content, [ $this, 'callback_trackable_urls' ], 'href_urls' );
 		return $replacer->process();
 	}
 
 
 	/**
-	 * @param $url
+	 * Add the Advocate parameter in a specific URL
 	 *
-	 * @return string
+	 * @param string $url The URL to add the tracking
+	 * @return string HREF attribute with the tracking added in the URL
 	 */
-	function _callback_trackable_urls( $url ) {
+	public function callback_trackable_urls( $url ) {
 
-		if ( ! $url )
+		if ( ! $url ) {
 			return '';
+		}
 
-		$url = add_query_arg(
-			[
-				AW_Referrals()->options()->share_link_parameter => $this->advocate->get_advocate_key()
-			],
-			$url
+		$url = esc_url(
+			add_query_arg(
+				[
+					AW_Referrals()->options()->share_link_parameter => $this->advocate->get_advocate_key(),
+				],
+				$url
+			)
 		);
 
 		return 'href="' . $url . '"';
@@ -133,10 +163,12 @@ class Invite_Email {
 
 
 	/**
-	 * @param bool $is_resend
-	 * @return \WP_Error|true
+	 * Send the email
+	 *
+	 * @param bool $is_resend True if this email is resend
+	 * @return \WP_Error|true True if the email was sent. WP_Error otherwise.
 	 */
-	function send( $is_resend = false ) {
+	public function send( $is_resend = false ) {
 
 		$mailer = $this->get_mailer();
 		$sent   = $mailer->send();
@@ -152,8 +184,10 @@ class Invite_Email {
 
 	/**
 	 * Record each email shared
+	 *
+	 * @return Invite The created invite record
 	 */
-	function create_record() {
+	public function create_record() {
 		$invite = new Invite();
 		$invite->set_email( $this->email );
 		$invite->set_advocate_id( $this->advocate->get_id() );

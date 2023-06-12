@@ -231,5 +231,9 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 		public function is_pro() {
 			return false;
 		}
+
+		public function get_pro_product_id() {
+			return 113;
+		}
 	}
 }

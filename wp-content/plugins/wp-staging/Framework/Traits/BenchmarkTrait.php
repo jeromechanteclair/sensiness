@@ -17,10 +17,10 @@ trait BenchmarkTrait
     protected function startBenchmark()
     {
         if (defined('WPSTG_DEBUG') && WPSTG_DEBUG) {
-            /** @var Logger $logger */
+            /** @var Logger */
             $this->benchmarkLogger = WPStaging::make(Logger::class);
 
-            // Eg: JobSiteExport_Benchmark
+            // Eg: JobSiteBackup_Benchmark
             $filename = sanitize_file_name(sprintf(
                 '%s_benchmark',
                 (new \ReflectionClass($this))->getShortName()

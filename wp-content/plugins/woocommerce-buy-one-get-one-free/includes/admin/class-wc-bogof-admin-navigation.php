@@ -54,7 +54,7 @@ class WC_BOGOF_Admin_Navigation {
 				'id'         => 'wc-buy-one-get-one-free-settings',
 				'title'      => __( 'Settings', 'wc-buy-one-get-one-free' ),
 				'capability' => 'manage_woocommerce',
-				'url'        => 'wc-settings&tab=products&section=buy-one-get-one-free',
+				'url'        => 'shop_bogof_rule_settings',
 				'parent'     => 'wc-buy-one-get-one-free',
 			)
 		);

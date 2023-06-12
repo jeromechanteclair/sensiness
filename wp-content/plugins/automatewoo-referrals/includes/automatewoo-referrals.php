@@ -7,6 +7,7 @@ if ( ! class_exists( 'AutomateWoo\Addon' ) ) {
 	include WP_PLUGIN_DIR . '/automatewoo/includes/abstracts/addon.php';
 }
 
+use AutomateWoo\Referrals\Admin\Analytics\Rest_API;
 
 class AW_Referrals_Addon extends AutomateWoo\Addon {
 
@@ -66,6 +67,8 @@ class AW_Referrals_Addon extends AutomateWoo\Addon {
 
 		new AutomateWoo\Referrals\Account_Endpoint();
 
+		Rest_API::init();
+
 		if ( is_admin() ) {
 			$this->admin = new AutomateWoo\Referrals\Admin();
 
@@ -86,6 +89,8 @@ class AW_Referrals_Addon extends AutomateWoo\Addon {
 		$path = $this->get_autoload_path( $class );
 
 		if ( $path && file_exists( $path ) ) {
+			// Exclusion reason: Not reaching any user input. THis is a wrapper for the autoload.
+			// nosemgrep: audit.php.lang.security.file.inclusion-arg
 			include $path;
 		}
 	}

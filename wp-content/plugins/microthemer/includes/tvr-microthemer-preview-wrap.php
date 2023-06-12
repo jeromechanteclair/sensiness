@@ -11,6 +11,8 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {
 
 	<div id="rHighlight" class="ruler-stuff"></div>
 
+    <?php require_once $this->thisplugindir . '/includes/default-ruler-markup.php'; ?>
+
 	<div id="v-frontend">
 
 		<?php

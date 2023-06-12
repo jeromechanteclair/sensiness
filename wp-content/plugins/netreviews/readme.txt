@@ -6,10 +6,10 @@ Requires at least: 1.3.1
 Tested up to: 6.1
 Stable tag: trunk
 
-We provide you with a solution that enables you to collect customer reviews about your website and products 
+We provide you with a solution that enables you to collect customer reviews about your website and products
 which will show on your website and on a attestation which will increase the credibility of published reviews.
--- 
-Spécialisée dans la collecte, modération et restitution des avis en ligne, Avis Vérifiés est une solution innovante facile à prendre en main vous permettant de récolter l’avis site et l’avis produits post transaction. 
+--
+Spécialisée dans la collecte, modération et restitution des avis en ligne, Avis Vérifiés est une solution innovante facile à prendre en main vous permettant de récolter l’avis site et l’avis produits post transaction.
 
 == Description ==
 Thanks to Avis Verifies, you increase your sales through customer reviews.
@@ -24,21 +24,21 @@ We provide you with a solution that enables you to collect customer reviews abou
 - Enjoy our multiple tools
 
 --
-En affichant sur votre site des avis de consommateurs, vous pourrez gagner en visibilité, en crédibilité et donner confiance aux internautes. Attirez ainsi plus de visiteurs et convertissez-les plus facilement en clients. 
+En affichant sur votre site des avis de consommateurs, vous pourrez gagner en visibilité, en crédibilité et donner confiance aux internautes. Attirez ainsi plus de visiteurs et convertissez-les plus facilement en clients.
 
-Collectez et publiez les avis de vos clients avec le tiers de confiance Avis Vérifiés ! ﻿ 
- 
-Pourquoi nous ? 
- 
-Commencez dès maintenant à profiter : 
+Collectez et publiez les avis de vos clients avec le tiers de confiance Avis Vérifiés ! ﻿
 
-- d’une solution entièrement personnalisable 
-- de forfaits comprenant la collecte d’avis site ET d’avis produit-de prix imbattables 
-- du taux de réponse le plus haut du marché ! 
-- de nos applications facebook 
+Pourquoi nous ?
+
+Commencez dès maintenant à profiter :
+
+- d’une solution entièrement personnalisable
+- de forfaits comprenant la collecte d’avis site ET d’avis produit-de prix imbattables
+- du taux de réponse le plus haut du marché !
+- de nos applications facebook
 - d'une attestation d'avis approuvée par la marque NF Services
-- d’étoiles en Adwords grâce à notre partenariat avec Google 
-- d’une offre SANS ENGAGEMENT 
+- d’étoiles en Adwords grâce à notre partenariat avec Google
+- d’une offre SANS ENGAGEMENT
 
 http://www.youtube.com/watch?v=S-qZnETZu_s
 
@@ -56,8 +56,14 @@ This section describes how to install the plugin and get it working.
 1. Product reviews display / Encart des avis produits
 
 == Changelog ==
+Version 2.3.14 / 03/05/2023
+- Fix order status bug for trigger order
+- Fix: fix error on manual orders export when locale EN_US
+- Fix: add security on plugin admin settings page
+- Feature: update link to Transparency Charter
+
 Version 2.3.13 / 11/01/2023
-- Fix order status for trigger order 
+- Fix order status for trigger order
 - Fix richSnipppet JSON+LD for WPML
 - Feat compatibility with Wordpress 6.1 and woocommerce 7.2.2
 

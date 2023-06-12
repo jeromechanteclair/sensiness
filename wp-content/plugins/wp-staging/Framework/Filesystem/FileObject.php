@@ -11,19 +11,19 @@ use RuntimeException;
 use SplFileObject;
 use WPStaging\Core\WPStaging;
 use WPStaging\functions;
-use WPStaging\Pro\Backup\Exceptions\DiskNotWritableException;
+use WPStaging\Backup\Exceptions\DiskNotWritableException;
 
 use function tad\WPBrowser\debug;
 use function WPStaging\functions\debug_log;
 
 class FileObject extends SplFileObject
 {
-    const MODE_READ = 'rb'; // read only, binary
-    const MODE_WRITE = 'wb'; // write only, binary
-    const MODE_APPEND = 'ab'; // append with create, binary
+    const MODE_READ            = 'rb'; // read only, binary
+    const MODE_WRITE           = 'wb'; // write only, binary
+    const MODE_APPEND          = 'ab'; // append with create, binary
     const MODE_APPEND_AND_READ = 'ab+'; // append with read and create if not exists, binary
-    const MODE_WRITE_SAFE = 'xb'; // write if exists E_WARNING & return false, binary
-    const MODE_WRITE_UNSAFE = 'cb'; // append, if exists cursor to top, binary
+    const MODE_WRITE_SAFE      = 'xb'; // write if exists E_WARNING & return false, binary
+    const MODE_WRITE_UNSAFE    = 'cb'; // append, if exists cursor to top, binary
 
     const AVERAGE_LINE_LENGTH = 4096;
 
@@ -46,13 +46,14 @@ class FileObject extends SplFileObject
 
     /**
      * @throws DiskNotWritableException
+     * @throws FilesystemExceptions
      */
     public function __construct($fullPath, $openMode = self::MODE_READ)
     {
         $fullPath = untrailingslashit($fullPath);
 
         if (!file_exists($fullPath)) {
-            (new Filesystem())->mkdir(dirname($fullPath));
+            WPStaging::make(Filesystem::class)->mkdir(dirname($fullPath), true);
         }
 
         try {
@@ -66,11 +67,17 @@ class FileObject extends SplFileObject
         }
     }
 
-    // Not sure if we need this, if not, delete it as we already open file with binary mode.
+    /**
+     * @param $str
+     * @param $length
+     * @return false|int False on error, number of bytes written on success
+     */
     public function fwriteSafe($str, $length = null)
     {
+        // Not sure if we need mbstring_binary_safe_encoding. If not, delete it as we already open file with binary mode.
         mbstring_binary_safe_encoding();
-        $strLen = strlen($str);
+
+        $strLen       = strlen($str);
         $writtenBytes = $length !== null ? $this->fwrite($str, $length) : $this->fwrite($str);
         reset_mbstring_encoding();
 
@@ -92,7 +99,7 @@ class FileObject extends SplFileObject
     {
         $this->seek(PHP_INT_MAX);
         $lastLine = $this->key();
-        $offset = $lastLine - $lines;
+        $offset   = $lastLine - $lines;
         if ($offset < 0) {
             $offset = 0;
         }
@@ -121,14 +128,15 @@ class FileObject extends SplFileObject
 
         do {
             $this->existingMetadataPosition = $this->ftell();
-            $line = trim($this->readAndMoveNext());
+            $line                           = trim($this->readAndMoveNext());
             if ($this->isValidMetadata($line)) {
                 $backupMetadata = $this->extractMetadata($line);
             }
         } while ($this->valid() && !is_array($backupMetadata));
 
         if (!is_array($backupMetadata)) {
-            throw new RuntimeException('Could not find metadata in the backup. This file could be corrupt.');
+            $error = sprintf('Could not find metadata in the backup file %s - This file could be corrupt.', $this->getFilename());
+            throw new RuntimeException($error);
         }
 
         return $backupMetadata;
@@ -220,7 +228,7 @@ class FileObject extends SplFileObject
             throw new Exception("Can't seek file: " . $this->getPathname() . " to negative offset: $offset");
         }
 
-        $this->fseekUsed = false;
+        $this->fseekUsed       = false;
         $this->fgetsUsedOnKey0 = false;
         if ($offset === 0 || version_compare(PHP_VERSION, '8.0.1', '<')) {
             parent::seek($offset);
@@ -234,7 +242,7 @@ class FileObject extends SplFileObject
         }
 
         $originalFlags = $this->getFlags();
-        $newFlags = $originalFlags & ~self::READ_AHEAD;
+        $newFlags      = $originalFlags & ~self::READ_AHEAD;
         $this->setFlags($newFlags);
 
         parent::seek($offset);
@@ -271,7 +279,7 @@ class FileObject extends SplFileObject
         }
 
         $originalFlags = $this->getFlags();
-        $newFlags = $originalFlags & ~self::READ_AHEAD;
+        $newFlags      = $originalFlags & ~self::READ_AHEAD;
         $this->setFlags($newFlags);
 
         $line = $this->current();
@@ -361,7 +369,7 @@ class FileObject extends SplFileObject
         }
 
         $originalFlags = $this->getFlags();
-        $newFlags = $originalFlags & ~self::READ_AHEAD;
+        $newFlags      = $originalFlags & ~self::READ_AHEAD;
         $this->setFlags($newFlags);
 
         $line = $this->current();
@@ -378,12 +386,22 @@ class FileObject extends SplFileObject
     public function flock($operation, &$wouldBlock = null)
     {
         if (!WPStaging::isWindowsOs()) {
+            $parentMethodFlock = 'parent::flock';
+            if (version_compare(PHP_VERSION, '8.2', '>=')) {
+                // phpcs:ignore SlevomatCodingStandard.PHP.ForbiddenClasses.ForbiddenClass
+                $parentMethodFlock = \SplFileObject::class . '::flock';
+            }
+
+            if (!is_callable($parentMethodFlock)) {
+                return false;
+            }
+
             return parent::flock($operation, $wouldBlock);
         }
 
         // create a lock file for Windows
-        $lockFileName = untrailingslashit($this->getPathname()) . '.lock';
-        $this->lockHandle = fopen($lockFileName, 'c');
+        $lockFileName     = untrailingslashit($this->getPathname()) . '.lock';
+        $this->lockHandle = fopen($lockFileName, 'cb');
 
         if (!is_resource($this->lockHandle)) {
             throw new RuntimeException("Could not open lock file {$this->getPathname()}");
