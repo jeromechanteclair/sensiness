@@ -4,7 +4,10 @@ function scroll() {
     
     var formtop = $('.single-product .cart').offset().top;
     var formtrigger = formtop + $('.single-product .cart').outerHeight();
-    var formtrigger =  $('.summary').outerHeight()+100;
+    var formtrigger =  $('.summary').outerHeight();
+            let summaryheigth = $('.summary').outerHeight();
+
+               $('.summary').css('height',summaryheigth+'px')
 }
     function isInViewport($element) {
         let elementTop = $($element).offset().top;
@@ -32,8 +35,8 @@ function scroll() {
             }
         }
         if (formtrigger < $(window).scrollTop()) {
-            let bodyheight = $('body').outerHeight();
-            $('body').css('height', bodyheight + 'px')
+                
+
 
             let reworked = $('.single-product .cart').outerHeight();
             if (!$('.single-product .cart').hasClass('sticky')) {
