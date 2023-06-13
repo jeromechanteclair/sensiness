@@ -57,6 +57,10 @@ function hello_elementor_child_enqueue_scripts() {
 		'1.0.0'
 	);
 	// Scripts
+	$vendor_script_uri = get_stylesheet_directory_uri() . '/dist/js/vendor.js';
+	wp_enqueue_script( 'sensiness-theme-vendor', $vendor_script_uri,[], '1.0', false);
+	$manifest_script_url = get_stylesheet_directory_uri() . '/dist/js/manifest.js';
+	wp_enqueue_script( 'sensiness-theme-manifest', $manifest_script_url,[], '1.0', false);
 	$main_script_uri = get_stylesheet_directory_uri() . '/dist/js/main.js';
 	wp_enqueue_script( 'sensiness-theme', $main_script_uri,[], '1.0', false);
 }
@@ -323,5 +327,3 @@ add_action('shutdown', function () {
     while (@ob_end_flush());
 });
 
-add_image_size('product_slide_thumbnail', 62, 62);
-add_image_size('product_slide', 500, 961,true);

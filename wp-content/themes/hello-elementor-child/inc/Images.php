@@ -13,6 +13,10 @@ class Images
 		add_image_size('woocommerce_gallery_thumbnail', '300', '300', true);
 		add_image_size('woocommerce_thumbnail', '600', '600', true);
 		add_image_size('woocommerce_single', '1024', '0', false);
+		add_image_size('product_slide_thumbnail', 62, 62);
+		add_image_size('product_slide', 500, 961, true);
+		add_image_size('product_slide_mobile', 428, 740, true);
+		add_image_size('product_slide_mobile_double', 856, 1480, true);
 
     }
 }

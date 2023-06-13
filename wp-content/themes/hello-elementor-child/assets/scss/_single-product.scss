@@ -119,16 +119,24 @@
                 max-height: 100vh;
                 width: 100%;
                 position: relative;
-      @media screen and (max-width:810px) {
-        max-height: 80vh;
-      }
+
+                @media screen and (max-width:810px) {
+                    max-height: 80vh;
+                }
+
                 .swiper-wrapper {
                     width: calc(var(--max-width)*0.3472);
                 }
 
                 .swiper-slide {
                     height: 100vh;
+
+                    @media screen and (max-width:810px) {
+                        height: 80vh;
+                    }
+
                     width: calc(var(--max-width)*0.3472);
+                    margin-bottom: 0;
 
                     img,
                     video {
@@ -156,7 +164,7 @@
                     align-self: end;
                     justify-self: center;
                     z-index: 1;
-                    bottom: 5vh;
+                    bottom: 24px;
                     flex-flow: row;
                 }
 
@@ -173,8 +181,9 @@
                     border-radius: 10px;
                     margin: 0;
                     overflow: hidden;
-                     border: 1px solid transparent;
-                    img{
+                    border: 1px solid transparent;
+
+                    img {
                         object-fit: cover;
                         height: 100%;
                         width: 100%;
@@ -196,21 +205,22 @@
                 position: absolute;
                 justify-self: flex-end;
                 right: 24px;
-               top: 72px;
+                top: 72px;
                 width: 112px;
                 height: 112px;
                 z-index: 1;
-                   @media screen and (max-width:810px) {
-                              .icon{
-                                max-height: 28px;
-                              }
-                        }
 
                 @media screen and (max-width:810px) {
-                    left: 24px;
+                    .icon {
+                        max-height: 28px;
+                    }
+                }
+
+                @media screen and (max-width:810px) {
+                    top: 98px;
                     width: 80px;
                     height: 80px;
-                    
+
                 }
 
                 .textpath {
@@ -220,9 +230,11 @@
                     transform-origin: center;
                     width: 100%;
                     animation: rotating 8s linear infinite;
-                        @media screen and (max-width:810px) {
-                            max-width: 68px;
-                        }
+
+                    @media screen and (max-width:810px) {
+                        max-width: 68px;
+                    }
+
                     @keyframes rotating {
                         from {
                             -ms-transform: rotate(0deg);
@@ -248,12 +260,13 @@
                         font-size: 11px;
                         line-height: 11px;
                         letter-spacing: 1px;
-                         @media screen and (max-width:810px) {
-                               font-size: 10px;
-                        line-height: 10px;
+
+                        @media screen and (max-width:810px) {
+                            font-size: 10px;
+                            line-height: 10px;
                         }
                     }
-                    
+
 
                     display: flex;
                     align-items: flex-end;
@@ -325,9 +338,10 @@
                 font-size: 56px;
                 line-height: 64px;
                 color: var(--green);
+
                 @media screen and (max-width:640px) {
- font-size: 48px;
-                line-height: 56px;
+                    font-size: 48px;
+                    line-height: 56px;
                 }
             }
 
@@ -362,9 +376,11 @@
 
     }
 
-    .product form.cart .button{
-               @include button;
-    } .cart {
+    .product form.cart .button {
+        @include button;
+    }
+
+    .cart {
         .woocommerce-variation-availability {
             display: none;
         }
@@ -430,7 +446,7 @@
                 gap: 12px;
                 @include container;
                 width: 100%;
-                    border: 1px solid #DBDBDB;
+                border: 1px solid #DBDBDB;
 
                 @media screen and (max-width:810px) {
                     max-width: calc(var(--max-width) - 48px);
@@ -483,9 +499,13 @@
             border-radius: unset;
 
             .variation-item {
-                &:nth-child(5), &:nth-child(6), &:nth-child(7){
+
+                &:nth-child(5),
+                &:nth-child(6),
+                &:nth-child(7) {
                     display: none;
                 }
+
                 cursor: pointer;
                 display: grid;
                 grid-template-columns: auto 3.5fr auto;
@@ -610,9 +630,11 @@
     .mc_variable-from {
 
         grid-area: top;
+
         +.amount {
-              grid-area: bottom;
+            grid-area: bottom;
         }
+
         // padding-right: 12px;
     }
 
@@ -670,18 +692,19 @@
         grid-template-rows: 1fr 1fr;
         text-align: right;
         align-items: center;
-        del{
-               .woocommerce-Price-amount {
-               text-decoration: line-through;
-                    font-family: 'NeueHaasDisplay-Roman';
-                    font-style: normal;
-                    font-weight: 450;
-                    font-size: 16px;
-                    color: var(--red);
-        
+
+        del {
+            .woocommerce-Price-amount {
+                text-decoration: line-through;
+                font-family: 'NeueHaasDisplay-Roman';
+                font-style: normal;
+                font-weight: 450;
+                font-size: 16px;
+                color: var(--red);
+
+            }
         }
-                }
-     
+
         .woocommerce-Price-amount {
             font-family: "Recoleta";
             font-style: normal;
@@ -851,10 +874,11 @@
 
     .swiper-pagination {
         position: relative;
-        gap: 6px;   display: flex;
+        gap: 6px;
+        display: flex;
         align-items: center;
         justify-content: center;
-        
+
 
         .swiper-pagination-bullet {
             width: 6px;
@@ -896,11 +920,9 @@
                 font-family: 'NeueHaasDisplay-Roman';
                 font-style: normal;
                 font-weight: 450;
-                font-size: 16px;
-                line-height: 24px;
-                      @media screen and (max-width:810px) {
-                          font-size: 12px;
-                      }
+                line-height: 16px;
+                font-size: 12px;
+
             }
         }
 
@@ -1111,7 +1133,7 @@ html {
     @media screen and (max-width:640px) {
         grid-template-columns: 1fr;
         gap: 0;
-           grid-auto-rows:auto;
+        grid-auto-rows: auto;
     }
 
     &__left {
@@ -1405,7 +1427,7 @@ html {
 .single-product {
     .related.products {
         padding: 96px 0;
-       
+
         header {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1453,9 +1475,11 @@ html {
                 display: flex;
                 flex-flow: column;
                 align-items: center;
-            .star-rating{
-            margin: 12px auto;
-        }
+
+                .star-rating {
+                    margin: 12px auto;
+                }
+
                 @media screen and (max-width:640px) {
                     float: none;
                     width: 100%;
@@ -1573,7 +1597,7 @@ html {
             @media screen and (max-width:640px) {
                 padding: 24px;
                 gap: 0;
-                            max-width: calc(var(--max-width) - 48px);
+                max-width: calc(var(--max-width) - 48px);
 
             }
 
@@ -1759,11 +1783,13 @@ Calculator
                     p {
                         display: flex;
                         justify-content: space-between;
-
+      @media screen and (max-width:640px) {
+flex-flow: column;
+      }
                         .posologie {
                             font-family: 'Recoleta';
                             font-style: normal;
-                            font-weight: 400;
+                            font-weight: 500;
                             font-size: 16px;
                             line-height: 24px;
                         }
@@ -1829,20 +1855,23 @@ FAQ
         }
     }
 }
+
 /*
 *caractéristiques
 */
-.single-product{
-    .sub-infos{
+.single-product {
+    .sub-infos {
         display: flex;
         width: 100%;
         justify-content: space-between;
         align-items: flex-start;
+
         @media screen and (max-width:640px) {
             flex-flow: column;
         }
     }
-ul{
-    padding-left: 18px;
-}
+
+    ul {
+        padding-left: 18px;
+    }
 }

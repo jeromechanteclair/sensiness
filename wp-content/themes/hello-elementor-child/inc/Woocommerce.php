@@ -23,6 +23,8 @@ class Woocommerce  {
 		add_action('woocommerce_process_product_meta', array( $this,'save_product_fields'), 10, 2);
 		add_action('woocommerce_single_product_summary', array($this,'yoast_breadcrumbs'), 0);
 		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+		remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
+		add_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
 		add_action('woocommerce_single_product_summary', array( $this,'display_subtitle'), 7);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_reassurance'), 10);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_description'), 11);

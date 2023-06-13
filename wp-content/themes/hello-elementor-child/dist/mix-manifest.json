@@ -1,6 +1,8 @@
 {
     "/js/main.js": "/js/main.js",
+    "/js/manifest.js": "/js/manifest.js",
     "/css/style.css": "/css/style.css",
+    "/js/vendor.js": "/js/vendor.js",
     "/css/fonts/NeueHaasDisplayRoman.woff": "/css/fonts/NeueHaasDisplayRoman.woff",
     "/css/fonts/Recoleta-Black.woff": "/css/fonts/Recoleta-Black.woff",
     "/css/fonts/Recoleta-Bold.woff": "/css/fonts/Recoleta-Bold.woff",

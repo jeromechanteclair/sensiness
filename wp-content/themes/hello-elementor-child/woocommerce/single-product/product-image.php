@@ -72,11 +72,33 @@ if(!empty($gif)) {
 			    } else {
 			        $class='';
 			        if($key ==0) {
-			            $src= wp_get_attachment_image($attachment_id, 'product_slide', false, array('loading'=>true));
+			            // $src= wp_get_attachment_image($attachment_id, 'product_slide', false, array('loading'=>true));
+					$desktop= wp_get_attachment_image_src($attachment_id, 'product_slide' );
+					$mobile= wp_get_attachment_image_src($attachment_id, 'product_slide_mobile' );
+					$mobile_double= wp_get_attachment_image_src($attachment_id, 'product_slide_mobile_double' );
+					$image_alt = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
 
+					$src='  
+					<picture>
+						<source srcset="'.$desktop[0].'" media="(min-width: 999px)">
+						<source srcset="'.$mobile_double[0].' 2x,'.$mobile[0].'" media="(max-width: 999px)">
+							<img src="'.$desktop[0].'" alt="'. $image_alt.'" loading="lazy">
+						</picture>';
 			        } else {
 
-			            $src= wp_get_attachment_image($attachment_id, 'product_slide', false);
+
+					$desktop= wp_get_attachment_image_src($attachment_id, 'product_slide');
+					$image_alt = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
+					$mobile= wp_get_attachment_image_src($attachment_id, 'product_slide_mobile');
+					
+					$mobile_double= wp_get_attachment_image_src($attachment_id, 'product_slide_mobile_double');
+
+					$src='  
+					<picture>
+						<source srcset="'.$desktop[0].'" media="(min-width: 999px)">
+						<source srcset="'.$mobile_double[0].' 2x,'.$mobile[0].'" media="(max-width: 999px)">
+						<img src="'.$desktop[0].'" alt="'. $image_alt.'" loading="lazy">
+					</picture>';
 			        }
 			    }
 			    ?>
