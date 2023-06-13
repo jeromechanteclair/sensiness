@@ -21,7 +21,7 @@ class Woocommerce  {
 		add_action('woocommerce_save_product_variation',  array($this,'save_variation_fields'), 10, 2);
 		add_action('woocommerce_product_options_general_product_data', array( $this,'product_fields'),10);
 		add_action('woocommerce_process_product_meta', array( $this,'save_product_fields'), 10, 2);
-		add_action('woocommerce_single_product_summary', 'woocommerce_breadcrumb', 0);
+		add_action('woocommerce_single_product_summary', array($this,'yoast_breadcrumbs'), 0);
 		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
 		add_action('woocommerce_single_product_summary', array( $this,'display_subtitle'), 7);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_reassurance'), 10);
@@ -35,6 +35,14 @@ class Woocommerce  {
 
 		add_action('woocommerce_reviews', 'comments_template', 61);
 		add_action('wp_body_open', array($this,'site_loader'));
+
+	}
+
+	public function yoast_breadcrumbs(){
+		
+		if (function_exists('yoast_breadcrumb')) {
+			yoast_breadcrumb('<p class="woocommerce-breadcrumb">', '</p>');
+		}
 
 	}
 	public function site_loader(){

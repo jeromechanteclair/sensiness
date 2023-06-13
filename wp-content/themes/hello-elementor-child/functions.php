@@ -10,6 +10,7 @@
  /***
   * Load Inc dependancies
   */
+require_once(get_stylesheet_directory() . '/inc/Commands.php');
 require_once(get_stylesheet_directory() . '/inc/Woocommerce.php');
 require_once(get_stylesheet_directory() . '/inc/Images.php');
 
@@ -267,13 +268,13 @@ function display_variations($attributes, $available_variations){
                             $html .='<p class="description">'.$datas[$key][$valuekey]['description'].'</p>';
                         $html .='</div>';   
                         $html .='<div class="variation-item__prices">';  
-if(isset($datas[$key][$valuekey]['display_regular_price']) && $datas[$key][$valuekey]['display_regular_price'] !=0) {
+                        if(isset($datas[$key][$valuekey]['display_regular_price']) && $datas[$key][$valuekey]['display_regular_price'] !=0) {
 
-    $percentage = round(($datas[$key][$valuekey]['display_regular_price'] - $datas[$key][$valuekey]['display_price']) / $datas[$key][$valuekey]['display_regular_price'] * 100);
-}
-else{
-$percentage=0;
-} if(intval($percentage)!==0){
+                            $percentage = round(($datas[$key][$valuekey]['display_regular_price'] - $datas[$key][$valuekey]['display_price']) / $datas[$key][$valuekey]['display_regular_price'] * 100);
+                        }
+                        else{
+                        $percentage=0;
+                        } if(intval($percentage)!==0){
                                 $html .='<span class="display_regular_price">'. wc_price(esc_attr($datas[$key][$valuekey]['display_regular_price'])) .'</span>';    
                                 $html .='<span class="display_price">'. wc_price(esc_attr($datas[$key][$valuekey]['display_price']) ).'</span>';                    
                                 $html .='<span class="percent">-'.$percentage .'%</span>';

@@ -10,7 +10,7 @@
 
               new Swiper(slider, {
                   // Optional parameters
-                  direction: "vertical",
+                  direction: "horizontal",
                   loop: true,
                   slidesPerView: 1,
                   allowTouchMove: false,
@@ -27,7 +27,7 @@
                     },
                     640: {
              
-                      direction: "vertical",
+                      direction: "horizontal",
                     }
                   },
                   // If we need pagination
