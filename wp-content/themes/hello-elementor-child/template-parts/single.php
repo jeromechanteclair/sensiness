@@ -80,7 +80,7 @@ while ( have_posts() ) :
 				?>
 				<li class="<?=$link['balise']?>">
 					<a href="<?= $anchor;?>">
-						<?= ucfirst(mb_strtolower($link['contenu']));?>
+						<?= wp_strip_all_tags(ucfirst(mb_strtolower($link['contenu'])));?>
 					</a>
 				</li>
 			<?php endforeach;?>
