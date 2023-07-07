@@ -12,6 +12,10 @@ class Images
 		add_image_size('2048x2048', '2048', '2048', false);
 		add_image_size('woocommerce_gallery_thumbnail', '300', '300', true);
 		add_image_size('woocommerce_thumbnail', '600', '600', true);
+		add_image_size('single_thumbnail', '600', '336', true);
+		add_image_size('single_thumbnail_mobile', '300', '168', true);
+		add_image_size('single_hero', '500', '350', true);
+		// add_image_size('single_hero_mobile', '300', '168', true);
 		add_image_size('woocommerce_single', '1024', '0', false);
 		add_image_size('product_slide_thumbnail', 62, 62);
 		add_image_size('product_slide', 500, 961, true);

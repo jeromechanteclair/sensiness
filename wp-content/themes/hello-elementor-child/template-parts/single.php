@@ -12,6 +12,9 @@ $summary = get_post_meta(get_the_id(),'summary',true);
 $category = get_the_category(  );
 $tags = get_the_tags(  );
 
+$desktop = get_the_post_thumbnail_url($post, 'single_hero');
+$mobile = get_the_post_thumbnail_url($post, 'single_hero');
+
 $related_query = new WP_Query(array(
     'post_type' => 'post',
     'category__in' => wp_get_post_categories(get_the_ID()),
@@ -19,6 +22,7 @@ $related_query = new WP_Query(array(
     'posts_per_page' => 3,
     'orderby' => 'date',
 ));
+
 
 while ( have_posts() ) :
 	the_post();
@@ -40,7 +44,12 @@ while ( have_posts() ) :
 			</div>
 		</div>
 		<picture class="single-header__right">
-		<?php the_post_thumbnail();?>
+			
+			<source srcset="<?=$desktop;?>" media="(min-width: 999px)">
+			<source srcset="<?=$mobile;?>" media="(max-width: 999px)">
+
+			<img src="<?=$desktop;?>" alt="<?= the_title();?>">
+
 		</picture>
 </header>
 <div class="article-container container">
@@ -62,7 +71,7 @@ while ( have_posts() ) :
 	</main>
 	<aside>
 		<?php if(!empty($summary)):?>
-			<h2>Dans cet article :</h2>
+			<p class="title">Sommaire :</p>
 			<ul class="summary">
 
 			
@@ -77,20 +86,37 @@ while ( have_posts() ) :
 			<?php endforeach;?>
 			</ul>
 		<?php endif;?>
+		<div class="sharing">
+			<p class="title">Partager l'article :</p>
+			<div class="social-buttons">
+					<a href="https://twitter.com/intent/tweet?text=<?=get_the_permalink();?>" >
+				<?php get_template_part('template-parts/svg/twitter.svg');?>
 
+					</a>
+					<a href="https://www.linkedin.com/sharing/share-offsite/?url=<?=get_the_permalink();?>" >
+					
+					<?php get_template_part('template-parts/svg/linkedin.svg');?>
+					</a>
+					<a href="https://www.facebook.com/sharer/sharer.php?u=<?=get_the_permalink();?>" >
+
+					<?php get_template_part('template-parts/svg/facebook.svg');?>
+					</a>
+				</div>
+		</div>
 	</aside>
 
 </div>
 <?php if ($related_query->have_posts()) { ?>
 <div class="related-posts">
-	<div class="container container--min">
+	<div class="container ">
+		<h2>Lire aussi</h2>
     <div class="related-posts-grid">
 
         <?php while ($related_query->have_posts()) { ?>
 
             <?php $related_query->the_post(); ?>
-
-          <?= the_title();?>
+				<?php get_template_part( 'template-parts/single','post' );?>
+      
 
         <?php } ?>
 

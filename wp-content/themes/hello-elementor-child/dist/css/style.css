@@ -288,7 +288,7 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   text-transform: none;
   background-color: white;
   color: var(--green);
@@ -408,7 +408,7 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 #review_form_wrapper #review_form #commentform .form-submit input:hover {
   background-color: #607440;
@@ -534,7 +534,7 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 .single-product #reviews #comments .reviews-header .toggle-review-form:hover {
   background-color: #607440;
@@ -562,7 +562,7 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 .file-drop:hover {
@@ -652,7 +652,7 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 .single-product .button:hover {
   background-color: #607440;
@@ -831,7 +831,7 @@ ul.accordions span {
   line-height: 24px;
   background-color: rgba(255, 255, 255, 0.2);
   /* identical to box height, or 150% */
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   text-transform: uppercase;
 }
 .single-product #main .product-wrapper .diagnostic-cta:hover {
@@ -907,7 +907,7 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 .single-product .product form.cart .button:hover {
   background-color: #607440;
@@ -1104,7 +1104,7 @@ ul.accordions span {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 .single-product .cart .button:hover {
   background-color: #607440;
@@ -1860,7 +1860,7 @@ html {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   display: flex;
   align-items: center;
   width: auto;
@@ -1921,7 +1921,7 @@ html {
   background-color: transparent;
   border: 1px solid var(--green);
   border-radius: 10px;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
@@ -2041,7 +2041,7 @@ html {
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   width: auto;
   text-align: center;
 }
@@ -2238,7 +2238,7 @@ FAQ
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
@@ -2349,7 +2349,7 @@ FAQ
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   text-align: center;
   width: auto;
   padding: 12px 18px;
@@ -2389,7 +2389,7 @@ FAQ
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   text-align: center;
   width: auto;
   padding: 12px 18px;
@@ -2402,6 +2402,91 @@ FAQ
   color: white;
 }
 
+.bandeau {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.bandeau picture {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  height: 100%;
+}
+.bandeau picture img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.bandeau .bandeau-container {
+  background-color: var(--beige);
+  position: relative;
+  margin: 24px 0;
+  border-radius: 10px;
+  padding: 36px;
+  display: flex;
+  flex-flow: column;
+  gap: 24px;
+}
+@media screen and (max-width: 640px) {
+  .bandeau .bandeau-container {
+    gap: 0;
+    max-width: calc(var(--max-width) - 48px);
+  }
+}
+@media screen and (max-width: 810px) {
+  .bandeau .bandeau-container {
+    grid-template-columns: 1fr;
+  }
+}
+.bandeau .bandeau-container__left h2 {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+}
+.bandeau .bandeau-container__right {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+@media screen and (max-width: 810px) {
+  .bandeau .bandeau-container__right {
+    justify-content: flex-start;
+  }
+}
+.bandeau .bandeau-container__right .bandeau-button {
+  font-family: "NeueHaasDisplay-Roman";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--beige);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: var(--green);
+  border-radius: 10px;
+  border: none;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+}
+.bandeau .bandeau-container__right .bandeau-button:hover {
+  background-color: #607440;
+}
+
 .single-post {
   background-color: white;
 }
@@ -2410,6 +2495,7 @@ FAQ
 }
 .single-post a {
   color: #f8b82e;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 .single-post h2 {
   font-family: "Recoleta";
@@ -2441,12 +2527,15 @@ FAQ
 }
 .single-post .single-header .container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr auto;
   align-items: flex-start;
   gap: 48px;
 }
 .single-post .single-header picture {
   line-height: 0;
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .single-post .single-header h1 {
   margin-top: 24px;
@@ -2488,6 +2577,7 @@ FAQ
 }
 .single-post .article-container main {
   max-width: calc(var(--max-width) * 0.55);
+  margin-bottom: 48px;
 }
 .single-post .article-container main .wc-block-grid__products {
   display: grid;
@@ -2535,7 +2625,7 @@ FAQ
   background-color: transparent;
   border: 1px solid var(--green);
   border-radius: 10px;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   text-decoration: none;
 }
 .single-post .article-container main .wc-block-grid__products .wc-block-grid__product .wp-block-button__link:hover {
@@ -2556,12 +2646,42 @@ FAQ
   top: 128px;
   margin-bottom: 48px;
 }
-.single-post .article-container aside h2 {
+.single-post .article-container aside .sharing {
+  margin-top: 24px;
+}
+.single-post .article-container aside .sharing .social-buttons {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.single-post .article-container aside .sharing a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  padding: 12px;
+  height: 48px;
+  width: 48px;
+  background-color: var(--beige-light);
+}
+.single-post .article-container aside .sharing a svg * {
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+}
+.single-post .article-container aside .sharing a:hover {
+  background-color: var(--beige);
+}
+.single-post .article-container aside .sharing a:hover svg * {
+  fill: #f8b82e;
+}
+.single-post .article-container aside .title {
   font-family: "Recoleta";
   font-style: normal;
   font-weight: 400;
-  font-size: 38px;
-  line-height: 56px;
+  font-size: 28px;
+  line-height: 38px;
   color: var(--green);
   margin-top: 0;
 }
@@ -2596,8 +2716,8 @@ FAQ
   font-family: "NeueHaasDisplay-Roman";
 }
 .single-post .single-comments {
-  background-color: var(--beige-light);
-  margin: 48px 0 0 0;
+  background-color: white;
+  margin: 48px 0;
   padding: 48px 0;
   color: var(--green);
 }
@@ -2634,7 +2754,7 @@ FAQ
   background-color: transparent;
   border: 1px solid var(--green);
   border-radius: 10px;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   display: flex;
   text-decoration: none;
   margin: 24px 0;
@@ -2766,9 +2886,81 @@ FAQ
   background-color: var(--green);
   border-radius: 10px;
   border: none;
-  transition: all 0.2s ease-in-out;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 .single-post .single-comments #commentform .submit:hover {
+  background-color: #607440;
+}
+
+.related-posts {
+  background-color: var(--beige-light);
+  padding: 48px 0;
+}
+.related-posts .related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  grid-auto-rows: 1fr;
+}
+.related-posts .related-posts-grid .post-preview {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.related-posts .related-posts-grid .post-preview:hover .post-preview__content .title {
+  color: #f8b82e;
+}
+.related-posts .related-posts-grid .post-preview__thumbnail {
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.related-posts .related-posts-grid .post-preview__content {
+  padding: 24px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 12px;
+}
+.related-posts .related-posts-grid .post-preview__content > * {
+  margin: 0;
+}
+.related-posts .related-posts-grid .post-preview__content .title {
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--green);
+}
+.related-posts .related-posts-grid .post-preview__content time {
+  color: var(--green);
+}
+.related-posts .related-posts-grid .post-preview__content .excerpt {
+  color: var(--green);
+}
+.related-posts .related-posts-grid .post-preview__content__link {
+  font-family: "NeueHaasDisplay-Roman";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--beige);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: var(--green);
+  border-radius: 10px;
+  border: none;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  display: inline-flex;
+  width: auto;
+  justify-self: flex-end;
+  margin-top: 12px;
+}
+.related-posts .related-posts-grid .post-preview__content__link:hover {
   background-color: #607440;
 }
 

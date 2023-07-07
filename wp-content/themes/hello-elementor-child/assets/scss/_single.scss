@@ -8,6 +8,7 @@
 
     a {
         color: #f8b82e;
+        @include transition;
     }
 
     h2 {
@@ -45,13 +46,16 @@
 
         .container {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 2fr auto;
             align-items: flex-start;
             gap: 48px;
         }
 
         picture {
             line-height: 0;
+            overflow: hidden;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
         h1 {
@@ -101,7 +105,7 @@
 
         main {
             max-width: calc(var(--max-width) * 0.55);
-
+  margin-bottom: 48px;
             .wc-block-grid__products {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -166,14 +170,50 @@
             position: sticky;
             top: 128px;
             margin-bottom: 48px;
+            .sharing{
+                margin-top: 24px;
+                .social-buttons{
+                      margin-top: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 12px;
+                }
+                a{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid var(--green);
+                    border-radius: 4px;
+                    padding: 12px;
+                    height: 48px;
+                    width: 48px;
+                    background-color: var(--beige-light);
+              
+                      svg{
+                        *{
 
-            h2 {
+                            @include transition;
+                        }
+                      }
+                    &:hover{
+                        background-color: var(--beige);
+                        svg{
+                            *{
+                                fill: #f8b82e;
+                            }
+                        }
+                    }
+
+                }
+            }
+            .title {
 
                 font-family: "Recoleta";
                 font-style: normal;
                 font-weight: 400;
-                font-size: 38px;
-                line-height: 56px;
+                font-size: 28px;
+                line-height: 38px;
                 color: var(--green);
                 margin-top: 0;
             }
@@ -187,8 +227,9 @@
                     display: flex;
                     border-bottom: 1px solid #EBE9E0;
                     align-items: flex-start;
-                    &.h3{
-                        padding-left:24px ;
+
+                    &.h3 {
+                        padding-left: 24px;
                     }
 
                     &:before {
@@ -214,7 +255,7 @@
                         font-size: 16px;
                         font-family: "NeueHaasDisplay-Roman";
 
-                    
+
                     }
                 }
             }
@@ -222,8 +263,8 @@
     }
 
     .single-comments {
-        background-color: var(--beige-light);
-        margin: 48px 0 0 0;
+        background-color: white;
+        margin: 48px 0;
         padding: 48px 0;
         color: var(--green);
 
@@ -402,6 +443,76 @@
             .submit {
                 @include button;
             }
+        }
+    }
+}
+
+.related-posts {
+    background-color: var(--beige-light);
+    padding: 48px 0;
+
+    .related-posts-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 48px;
+        grid-auto-rows: 1fr;
+
+        .post-preview {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            &:hover{
+                 .post-preview__content .title{
+
+                     color: #f8b82e;
+                 }
+            }
+            &__thumbnail {
+                line-height: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            &__content {
+               
+                padding: 24px;
+                display: grid;
+                grid-template-rows: auto auto auto;
+                gap: 12px;
+                >*{
+                    margin: 0;
+                }
+                .title {
+                    @include transition;
+                    font-family: "Recoleta";
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 32px;
+                    color: var(--green);
+
+                }
+
+                time {
+                    color: var(--green)
+                }
+
+                .excerpt {
+                    color: var(--green)
+                }
+
+                &__link {
+                    @include button;
+                    display: inline-flex;
+                    width: auto;
+                    justify-self: flex-end;
+                    margin-top: 12px;
+                }
+            }
+
+
         }
     }
 }
