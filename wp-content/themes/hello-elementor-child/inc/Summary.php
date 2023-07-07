@@ -21,7 +21,7 @@ class Summary
 		$contenu_article = get_post_field('post_content', $post_id);
 
 		// Utiliser une expression régulière pour extraire les attributs id et le contenu des titres
-		preg_match_all('/<(h[2-6])[^>]*id=["\']([^"\']+)["\'][^>]*>(.*?)<\/\1>/is', $contenu_article, $correspondances, PREG_SET_ORDER);
+		preg_match_all('/<(h[2-2])[^>]*id=["\']([^"\']+)["\'][^>]*>(.*?)<\/\1>/is', $contenu_article, $correspondances, PREG_SET_ORDER);
 
 		// Enregistrer les attributs id et le contenu des titres dans un post meta
 		$attributs_id_titres = array();
