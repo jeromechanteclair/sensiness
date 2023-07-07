@@ -41,6 +41,8 @@ if ( ! comments_open() ) {
 				</button>
 			</div>
 		</header>
+				<p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
+
 
 		<?php if ( have_comments() ) : ?>
 			<ol class="commentlist">
@@ -68,8 +70,10 @@ if ( ! comments_open() ) {
 		<?php endif; ?>
 	</div>
 
-	<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
-		<div id="review_form_wrapper" class="hide">
+	<?php 
+	// if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : 
+	?>
+		<div id="review_form_wrapper" class="<?php if(!isset($_GET['show_review'])):?>hide<?php endif;?>">
 			<div id="review_form">
 				<h3>Donnez votre avis</h3>
 				<span class="toggle-review-form">
@@ -124,6 +128,10 @@ if ( ! comments_open() ) {
 				}
 
 				$account_page_url = wc_get_page_permalink( 'myaccount' );
+
+				$current_review_url = get_the_permalink().'?show_review#reviews';
+				$account_page_url = $account_page_url.'?redirect='.$current_review_url;
+				
 				if ( $account_page_url ) {
 					/* translators: %s opening and closing link tags respectively */
 					$comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a review.', 'woocommerce' ), '<a href="' . esc_url( $account_page_url ) . '">', '</a>' ) . '</p>';
@@ -153,7 +161,7 @@ if ( ! comments_open() ) {
 							</g>
 							</svg>
 
-							<input type="file" multiple data-parsley-fileextension="jpg,png" name="comment_file" id="comment_file"  accept=".jpg, .png">
+							<input type="file" multiple data-parsley-fileextension="jpg,png" name="comment_file" id="comment_file"  accept=".jpg, .png, .heic">
 
 						</label>
 					</p>';
@@ -162,16 +170,32 @@ if ( ! comments_open() ) {
 				}
 
 				$comment_form['comment_field'] .= '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'woocommerce' ) . '&nbsp;<span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>';
+				if(wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ){
 
-				comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ) );
+					comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ) );
+				}
+				else{
+					// if(is_user_logged_in(  )){
+
+					// 	echo'<p>Vous devez avoir acheté le produit pour laisser un avis</p>';
+					// }
+					// else{
+						
+					comment_form(apply_filters('woocommerce_product_review_comment_form_args', $comment_form));
+
+					// }
+				}
 				?>
 			
 			</div>
 		
 		</div>
-	<?php else : ?>
-		<p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
-	<?php endif; ?>
+	<?php 
+	// else : 
+	?>
+	<?php
+//  endif;
+  ?>
 
 	<div class="clear"></div>
 

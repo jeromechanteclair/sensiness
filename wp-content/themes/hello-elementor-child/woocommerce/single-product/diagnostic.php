@@ -14,19 +14,21 @@ if(have_rows('diagnostic' )): ?>
 	if($title):
 	?>
 	<section class="diagnostic">
-	<?php if($image):?>
+		<?php if($image):?>
 		<picture>
 			<img src="<?=$image['url'];?>" alt="<?=$title;?>">
 		</picture>
-	<?php endif;?>
-	<div class="diagnostic-container container">
-		
-		<div class="diagnostic-container__left">
-			<h2><?=$title;?></h2>
-			<?=$content;?>
-		</div>
-		<div class="diagnostic-container__right">
-		<a class="diagnostic-button" href="<?=$link['url'];?>"><?=wp_strip_all_tags($link['title']);?></a>
+		<?php endif;?>
+		<div class="diagnostic-container container">
+			
+			<div class="diagnostic-container__left">
+				<h2><?=$title;?></h2>
+				<?=$content;?>
+			</div>
+			<div class="diagnostic-container__right">
+			<?php if($link):?>
+			<a class="diagnostic-button" href="<?=$link['url'];?>"><?=wp_strip_all_tags($link['title']);?></a>
+			<?php endif;?>
 		</div>
 		
 	</div>

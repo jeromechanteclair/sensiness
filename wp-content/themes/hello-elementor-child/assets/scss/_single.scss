@@ -1,0 +1,407 @@
+.single-post {
+    background-color: white;
+
+    .woocommerce-breadcrumb {
+        color: var(--green);
+
+    }
+
+    a {
+        color: #f8b82e;
+    }
+
+    h2 {
+
+        font-family: "Recoleta";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 38px;
+        line-height: 56px;
+        color: var(--green);
+
+        strong,
+        b {
+            font-weight: 400;
+        }
+    }
+
+    h3 {
+        font-family: "Recoleta";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 56px;
+        color: var(--green);
+
+        strong,
+        b {
+            font-weight: 400;
+        }
+    }
+
+    .single-header {
+        background-color: var(--beige);
+        padding-top: 120px;
+
+        .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            align-items: flex-start;
+            gap: 48px;
+        }
+
+        picture {
+            line-height: 0;
+        }
+
+        h1 {
+            margin-top: 24px;
+            font-family: "Recoleta";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 56px;
+            line-height: 64px;
+            color: var(--green);
+        }
+
+        &__metas {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            color: var(--green);
+
+            .separator {
+                display: block;
+                height: 8px;
+                width: 8px;
+                border-radius: 8px;
+                border: 1px solid var(--green);
+                background-color: white;
+                margin-top: 4px;
+            }
+
+            a {
+                color: var(--green);
+
+                &:hover {
+
+                    color: #f8b82e;
+                }
+            }
+        }
+    }
+
+    .article-container {
+        display: flex;
+        align-items: flex-start;
+        flex-flow: row-reverse;
+        gap: 84px;
+        margin-top: 72px;
+
+        main {
+            max-width: calc(var(--max-width) * 0.55);
+
+            .wc-block-grid__products {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+                margin: 24px 0;
+
+                .wc-block-grid__product {
+                    width: 100%;
+                    max-width: 100%;
+                    border: none;
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+
+                    .star-rating {
+                        color: var(--yellow)
+                    }
+
+                    padding: 0;
+
+                    >a {
+                        text-decoration: none;
+                    }
+
+                    .wc-block-grid__product-title {
+                        font-family: 'Recoleta';
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 32px;
+                        text-align: center;
+                        color: var(--green);
+                    }
+
+                    .wc-block-grid__product-price {
+                        font-family: "NeueHaasDisplay-Roman";
+                    }
+
+                    .wp-block-button__link {
+                        @include button-transparent;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+
+
+
+            p,
+            li {
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 450;
+                line-height: 24px;
+                font-family: "NeueHaasDisplay-Roman";
+                color: var(--green);
+            }
+        }
+
+        aside {
+            position: sticky;
+            top: 128px;
+            margin-bottom: 48px;
+
+            h2 {
+
+                font-family: "Recoleta";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 38px;
+                line-height: 56px;
+                color: var(--green);
+                margin-top: 0;
+            }
+
+            .summary {
+                margin-left: 0;
+                list-style: none;
+                padding-left: 0;
+
+                li {
+                    display: flex;
+                    border-bottom: 1px solid #EBE9E0;
+                    align-items: flex-start;
+                    &.h3{
+                        padding-left:24px ;
+                    }
+
+                    &:before {
+                        padding-top: 10px;
+                        content: '+';
+                        font-size: 18px;
+                        display: inline-block;
+                        margin-right: 12px;
+
+                    }
+
+                    &:hover {
+
+                        a {
+                            color: #f8b82e;
+                        }
+                    }
+
+                    a {
+                        width: 100%;
+                        padding: 12px 0;
+                        color: var(--green);
+                        font-size: 16px;
+                        font-family: "NeueHaasDisplay-Roman";
+
+                    
+                    }
+                }
+            }
+        }
+    }
+
+    .single-comments {
+        background-color: var(--beige-light);
+        margin: 48px 0 0 0;
+        padding: 48px 0;
+        color: var(--green);
+
+        #respond {
+            order: 4;
+        }
+
+        #comments {
+            display: flex;
+            flex-flow: column;
+
+            .comment-navigation {
+
+                display: flex;
+
+                .nav-links {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                &:first-of-type {
+                    display: none;
+                }
+
+                a {
+                    @include button-transparent;
+                    display: flex;
+                    text-decoration: none;
+                    margin: 24px 0;
+                }
+
+                order: 3;
+
+            }
+
+            .title-comments {
+                text-align: center;
+                order: 1;
+            }
+
+            .comment-reply-login {
+                font-size: 16px;
+                // @include button-transparent;
+            }
+
+            .comment-list {
+                order: 2;
+
+                li {
+                    width: 100%;
+                    border-bottom: 1px solid #EBE9E0;
+
+                    .children {
+                        border-top: 1px solid #EBE9E0;
+                        padding-left: 0;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 12px;
+                        flex-flow: column;
+
+                        li {
+                            padding-left: 32px;
+                        }
+
+                        &::before {
+                            width: 18px;
+                            transform: rotate(-90deg);
+                            height: 18px;
+                            content: '';
+                            position: absolute;
+                            top: 24px;
+                            background-size: contain;
+                            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='mask0_410_7484' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23D9D9D9'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_410_7484)'%3E%3Cpath d='M12.0005 14.6538L7.59668 10.25H16.4043L12.0005 14.6538Z' fill='%23364321'/%3E%3C/g%3E%3C/svg%3E%0A");
+                            // background-color: var;
+                        }
+                    }
+
+                    article.comment-body {
+                        border-bottom: none;
+                        width: 100%;
+                        padding: 24px 0;
+                        font-family: "NeueHaasDisplay-Roman";
+                        font-size: 16px;
+
+                        .comment-metadata {
+                            a {
+                                text-decoration: none;
+                            }
+                        }
+
+                        time {
+                            color: var(--green);
+                            font-size: 16px;
+                        }
+
+                        .comment-author {
+                            font-family: 'Recoleta';
+                            font-size: 20px;
+                            color: var(--green);
+                            text-decoration: none;
+
+                            b {
+                                font-weight: 500;
+                            }
+
+                            a {
+                                color: var(--green);
+                                text-decoration: none;
+                            }
+                        }
+
+                        padding-left: 0;
+
+                        .comment-content {
+                            color: var(--green);
+                        }
+                    }
+                }
+            }
+        }
+
+        #reply-title {
+            font-family: "Recoleta";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 56px;
+            color: var(--green);
+            display: flex;
+            flex-flow: row wrap;
+
+            align-items: center;
+            justify-content: space-between;
+
+            a,
+            small {
+                font-size: 16px;
+                line-height: 18px;
+                font-family: "NeueHaasDisplay-Roman";
+            }
+
+            strong,
+            b {
+                font-weight: 400;
+            }
+        }
+
+        #commentform {
+
+            label {
+                margin-bottom: 12px;
+            }
+
+            textarea {
+                font-family: "NeueHaasDisplay-Roman";
+                font-style: normal;
+                font-weight: 450;
+                font-size: 16px;
+                line-height: 24px;
+                color: var(--beige);
+                width: 100%;
+                padding: 16px 24px;
+                text-transform: uppercase;
+                background-color: var(--green);
+                border-radius: 10px;
+                border: none;
+                transition: all 0.2s ease-in-out;
+                text-transform: none;
+                background-color: white;
+                color: var(--green);
+                border: 1px solid #364321;
+            }
+
+            .submit {
+                @include button;
+            }
+        }
+    }
+}

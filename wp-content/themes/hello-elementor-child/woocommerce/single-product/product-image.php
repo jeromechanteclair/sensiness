@@ -74,13 +74,14 @@ if(!empty($gif)) {
 			        if($key ==0) {
 			            // $src= wp_get_attachment_image($attachment_id, 'product_slide', false, array('loading'=>true));
 					$desktop= wp_get_attachment_image_src($attachment_id, 'product_slide' );
+					$desktop_double= wp_get_attachment_image_src($attachment_id, 'product_slide_double' );
 					$mobile= wp_get_attachment_image_src($attachment_id, 'product_slide_mobile' );
 					$mobile_double= wp_get_attachment_image_src($attachment_id, 'product_slide_mobile_double' );
 					$image_alt = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
 
 					$src='  
 					<picture>
-						<source srcset="'.$desktop[0].'" media="(min-width: 999px)">
+						<source srcset="'.$desktop_double[0].' 2x,'.$desktop[0].'" media="(min-width: 999px)">
 						<source srcset="'.$mobile_double[0].' 2x,'.$mobile[0].'" media="(max-width: 999px)">
 							<img src="'.$desktop[0].'" alt="'. $image_alt.'" loading="lazy">
 						</picture>';
@@ -90,12 +91,12 @@ if(!empty($gif)) {
 					$desktop= wp_get_attachment_image_src($attachment_id, 'product_slide');
 					$image_alt = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
 					$mobile= wp_get_attachment_image_src($attachment_id, 'product_slide_mobile');
-					
+					$desktop_double= wp_get_attachment_image_src($attachment_id, 'product_slide_double');
 					$mobile_double= wp_get_attachment_image_src($attachment_id, 'product_slide_mobile_double');
 
 					$src='  
 					<picture>
-						<source srcset="'.$desktop[0].'" media="(min-width: 999px)">
+						<source srcset="'.$desktop_double[0].' 2x,'.$desktop[0].'" media="(min-width: 999px)">
 						<source srcset="'.$mobile_double[0].' 2x,'.$mobile[0].'" media="(max-width: 999px)">
 						<img src="'.$desktop[0].'" alt="'. $image_alt.'" loading="lazy">
 					</picture>';
@@ -134,35 +135,6 @@ if(!empty($gif)) {
 	<a href="" class="diagnostic-cta">
 		Faire le diagnostic
 	</a>
-	<?php 
-	$referlink =get_field('link_refer', 'option');
-	
-	if($referlink ):
-		;?>
-	<a class="referlink" href="<?=$referlink['url'];?>" class="diagnostic-cta">
-
-		<svg viewBox="0 0 100 100" class="textpath" width="100" height="100">
-			<defs>
-				<path id="circle"
-				d="
-					M 50, 50
-					m -37, 0
-					a 37,37 0 1,1 74,0
-					a 37,37 0 1,1 -74,0"/>
-			</defs>
-			<text font-size="17">
-				<textPath xlink:href="#circle">
-				<?=$referlink['title'];?>
-				</textPath>
-			</text>
-			</svg>
-			<svg class="icon" width="24" height="37" viewBox="0 0 24 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M10.3232 0.999999C11.0684 -0.333334 12.9316 -0.333333 13.6768 1L23.7377 19C24.483 20.3333 23.5514 22 22.0609 22H1.93911C0.448604 22 -0.482958 20.3333 0.262293 19L10.3232 0.999999Z" fill="#364321"/>
-			<path d="M10.7596 16.2439C11.3141 15.252 12.6859 15.252 13.2404 16.2439L23.3013 34.2439C23.8737 35.2682 23.1422 36.5 22.0609 36.5H1.93911C0.857755 36.5 0.126276 35.2682 0.698744 34.2439L10.7596 16.2439Z" fill="#364321" stroke="#FFD372"/>
-			</svg>
-
-	</a>
-	<?php endif;?>
 
 </div>
 

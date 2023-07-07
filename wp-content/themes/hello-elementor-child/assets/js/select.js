@@ -18,7 +18,7 @@ function select() {
 
 
                         if (data.pricePromo.length > 0) {
-                            return `<div><p>${data.text}</p><div class="select-prices"><span class="promo">${JSON.parse(data.pricePromo)}</span><span class="reg">${JSON.parse(data.priceReg)}</span></div></div>`;
+                            return `<div><p>${data.text}</p><div class="select-prices"><span class="promo">${JSON.parse(data.priceReg)}</span><span class="reg">${JSON.parse(data.pricePromo)}</span></div></div>`;
                         } else {
                             return `<div><p>${data.text}</p><div class="select-prices"><span class="reg">${JSON.parse(data.priceReg)}</span></div></div>`;
 
@@ -34,7 +34,7 @@ function select() {
                     if (item.pricePromo) {
                         if (item.pricePromo.length > 0) {
 
-                            return `<div><p>${item.text}</p><div class="select-prices"><span class="promo">${JSON.parse(item.pricePromo)}</span><span class="reg">${JSON.parse(item.priceReg)}</span>${$svg}</div></div>`;
+                            return `<div><p>${item.text}</p><div class="select-prices"><span class="promo">${JSON.parse(item.priceReg)}</span><span class="reg">${JSON.parse(item.pricePromo)}</span>${$svg}</div></div>`;
                         } else {
                             return `<div><p>${item.text}</p><div class="select-prices"><span class="reg">${JSON.parse(item.priceReg)}</span>${$svg}</div></div>`;
 

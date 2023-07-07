@@ -29,8 +29,16 @@ class Woocommerce  {
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_reassurance'), 10);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_description'), 11);
 		add_action('woocommerce_after_single_product_summary', array( $this,'display_satisfaction'), 12);
-		// add_action('comment_form_logged_in_before',  array( $this,'woocommerce_add_file_upload_field'));
-		// add_action('comment_form_before_fields',  array( $this,'woocommerce_add_file_upload_field'));
+	
+		add_filter('comment_moderation_recipients', array( $this,'new_comment_moderation_recipients'), 24, 2);
+		add_filter('comment_notification_recipients', array( $this,'new_comment_moderation_recipients'), 24, 2);
+
+
+		add_filter('comments_template_query_args', function ($comment_args) {
+			$comment_args['order'] = 'DESC';
+			return $comment_args;
+		});
+
 		add_action('comment_form_after_fields',  array( $this,'woocommerce_add_comment_infos'));
 		add_action('comment_form_logged_in_after',  array( $this,'woocommerce_add_comment_infos'));
 		add_action('comment_post', array( $this,'woocommerce_save_comment_file_field'));
@@ -39,6 +47,10 @@ class Woocommerce  {
 		add_action('wp_body_open', array($this,'site_loader'));
 
 	}
+	public  function new_comment_moderation_recipients($emails, $comment_id){
+		return array( 'info@sensiness.com' );
+	}
+
 
 	public function yoast_breadcrumbs(){
 		
@@ -71,18 +83,14 @@ class Woocommerce  {
 			
 	public function woocommerce_add_comment_infos()
 	{
-		$html='	<div class="review-infos">
-					<p>Conseils et directives</p>
-					<p>
-						Les avis sont là pour aider les autres utilisateurs. Voici comment écrire les meilleurs avis possibles :
-						Partagez combien de temps vous avez utilisé ce produit.
-						Au besoin, comparez le produit avec un produit similaire.
-						Identifiez les attributs spécifiques du produit (p. ex. les résultats d\'une crème hydratante ou l\'odeur d\'un savon) et dites s\'ils répondent à vos attentes.
-					</p>
-					<p><i>* Champs obligatoires</i></p>
-				</div>
-				';
-				echo $html;
+		$html='	<div class="review-infos">';
+	
+			$html.= get_field('comments_description','options');
+		
+			$html.='<p><i>* Champs obligatoires</i></p>
+		</div>
+		';
+		echo $html;
 	}
 
 	public function woocommerce_save_comment_file_field($comment_id)
@@ -281,9 +289,22 @@ wc_get_template('single-product/accordeon.php');
 		add_filter('woocommerce_product_tabs', array($this,'remove_tabs'), 11);
 
 	add_filter('woocommerce_output_related_products_args', array($this,'related_count'), 20);
+	add_action('woocommerce_login_redirect', array($this,'login_redirect'), 99);
+
 
 
 	}
+	public function login_redirect($redirect_to ){
+		
+
+	if(isset( $_GET['redirect'])){
+$redirect_to = $_GET['redirect'];
+
+	}
+		return	$redirect_to ;
+
+	}
+
 	public function related_count($args)
 	{
 		$args['posts_per_page'] = 3; // 4 related products

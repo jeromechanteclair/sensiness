@@ -15,6 +15,7 @@ class Images
 		add_image_size('woocommerce_single', '1024', '0', false);
 		add_image_size('product_slide_thumbnail', 62, 62);
 		add_image_size('product_slide', 500, 961, true);
+		add_image_size('product_slide_double', 1000, 1922, true);
 		add_image_size('product_slide_mobile', 428, 740, true);
 		add_image_size('product_slide_mobile_double', 856, 1480, true);
 

@@ -17,8 +17,8 @@ function scroll() {
         var formtrigger = $('.summary').outerHeight()+$('.summary').offset().top;
 
         }
-
         $('.summary').css('min-height', summaryheigth + 'px')
+      
     }
 
     function isInViewport($element) {

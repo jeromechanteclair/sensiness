@@ -13,6 +13,7 @@
 require_once(get_stylesheet_directory() . '/inc/Commands.php');
 require_once(get_stylesheet_directory() . '/inc/Woocommerce.php');
 require_once(get_stylesheet_directory() . '/inc/Images.php');
+require_once(get_stylesheet_directory() . '/inc/Summary.php');
 
 
 /***
@@ -327,3 +328,24 @@ add_action('shutdown', function () {
     while (@ob_end_flush());
 });
 
+
+/**
+ * Reading time
+ */
+
+function reading_time()
+{
+    global $post;
+    $content = get_post_field('post_content', $post->ID);
+    $word_count = str_word_count(strip_tags($content));
+    $readingtime = ceil($word_count / 200);
+
+    if ($readingtime == 1) {
+        $timer = " minute";
+    } else {
+        $timer = " minutes";
+    }
+    $totalreadingtime = $readingtime . $timer.' de lecture';
+
+    return $totalreadingtime;
+}

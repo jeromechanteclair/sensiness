@@ -83,7 +83,7 @@ if ( post_password_required() ) {
 <?php if(get_field('video')):?>
 		
 		<div class="video-container">
-			<video  id='video-player' preload='metadata' loop>
+			<video  id='video-player' playsinline preload='metadata' width='100%' height='100%' loop>
 			<source src="<?=get_field('video')['url'];?>" type=
 			"video/mp4">
 
@@ -99,6 +99,7 @@ if ( post_password_required() ) {
 <?php do_action('woocommerce_reviews');?>
 <?php wc_get_template('single-product/diagnostic.php');?>
 <?php woocommerce_output_related_products();?>
+<?php wc_get_template('single-product/refer.php');?>
 
 <?php wc_get_template('single-product/bandeau-marquee.php');?>
 <?php wc_get_template('single-product/images.php');

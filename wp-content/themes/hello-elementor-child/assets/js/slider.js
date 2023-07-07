@@ -13,7 +13,7 @@
                   direction: "horizontal",
                   loop: true,
                   slidesPerView: 1,
-                  allowTouchMove: false,
+                  allowTouchMove: true,
                   speed: 1000,
                   centeredSlides: true,
                   autoplay: {
@@ -24,10 +24,12 @@
                     // when window width is >= 320px
                     320: {
                     direction: "horizontal",
+                     allowTouchMove: true,
                     },
                     640: {
              
                       direction: "horizontal",
+                       allowTouchMove: true,
                     }
                   },
                   // If we need pagination
