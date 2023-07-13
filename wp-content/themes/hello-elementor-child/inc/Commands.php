@@ -4,7 +4,52 @@
 class Commands  {
    public function __invoke( $args ) {
       
-			
+
+	if(isset($args[0])=='update'){
+				
+		$args = array(
+			'type' => 'comment',
+			'fields' => 'comment_ID'
+		);
+
+		$comments_query = new WP_Comment_Query($args);
+$comments = $comments_query->comments;
+
+
+
+		if (!empty($comments)) {
+			foreach ($comments as $comment) {
+				// var_dump($comment_id);die();
+$comment_id = $comment->comment_ID;
+				// $comment = get_comment($comment_id);
+				$comment_post_id = $comment->comment_post_ID;
+
+				// Vérifier si le comment_post_id correspond à un produit
+				$product = wc_get_product($comment_post_id);
+				if ($product) {
+					// Mettre à jour le comment_type en "review"
+					$updated_comment_data = array(
+						'comment_ID' => $comment_id,
+						'comment_type' => 'review'
+					);
+					wp_update_comment($updated_comment_data);
+
+					// Afficher un message de confirmation
+					WP_CLI::success( "Comment ID: $comment_id - Commentaire mis à jour en tant que 'review'");
+				} else {
+					// Le comment_post_id ne correspond pas à un produit
+						WP_CLI::error ("Comment ID: $comment_id - Ne correspond pas à un produit");
+				}
+
+				
+			}
+		} 
+
+
+
+		}
+		else{
+		
 		$file_path = __DIR__;
 		$file = $file_path.'/import/import.csv';
 	
@@ -36,7 +81,7 @@ class Commands  {
 				'comment_author_email' => $name, // <== Important
 				'comment_author_url'   => '',
 				'comment_content'      => $content,
-				'comment_type'         => '',
+				// 'comment_type'         => 'review',
 				'comment_parent'       => 0,
 				'user_id'              => 0, // <== Important
 				'comment_author_IP'    => '',
@@ -55,6 +100,8 @@ class Commands  {
 			fclose($handle);
 		}
 		WP_CLI::success("Commentaires importés!");
+			
+		}
 
 
     }

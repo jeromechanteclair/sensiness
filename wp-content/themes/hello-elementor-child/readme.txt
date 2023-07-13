@@ -55,3 +55,9 @@ Use it as your springboard to building a site with ***Elementor***.
 
 = 1.0.0 - 2019-05-23 =
 * Initial Public Release
+
+
+import comments 
+wp import_comments
+update comments 
+wp import_comments update

@@ -104,11 +104,16 @@ function scroll() {
     var formtop = $('.single-product .cart').offset().top;
     var formtrigger = formtop + $('.single-product .cart').outerHeight();
     var formtrigger = $('.summary').outerHeight(true);
-    var summaryheigth = $('.summary').outerHeight(true);
     if (isMobile) {
       var formtrigger = $('.summary').outerHeight() + $('.summary').offset().top;
     }
-    $('.summary').css('min-height', summaryheigth + 'px');
+    //  formtrigger = $('.summary').outerHeight(true);
+    var stickyheight = $('.form-sticky-wrapper').outerHeight(true);
+    // if(isMobile){
+    //  formtrigger = $('.bandeau-marquee').offset().top;
+
+    // }
+    $('.form-sticky-wrapper').css('min-height', stickyheight + 'px');
   }
   function isInViewport($element) {
     var elementTop = $($element).offset().top;

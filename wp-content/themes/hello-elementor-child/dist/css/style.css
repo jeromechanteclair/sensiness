@@ -2018,9 +2018,10 @@ html {
   font-family: "Recoleta";
   font-style: normal;
   font-weight: 400;
-  font-size: 48px;
-  line-height: 56px;
-  margin-bottom: 32px;
+  font-size: 38px;
+  line-height: 48px;
+  white-space: break-spaces;
+  word-break: break-word;
 }
 .single-product .diagnostic .diagnostic-container__right {
   display: flex;
@@ -2461,15 +2462,10 @@ FAQ
   font-family: "Recoleta";
   font-style: normal;
   font-weight: 400;
-  font-size: 48px;
-  line-height: 56px;
+  font-size: 38px;
+  line-height: 48px;
   white-space: break-spaces;
-}
-@media screen and (max-width: 640px) {
-  .bandeau .bandeau-container__left h2 {
-    font-size: 38px;
-    line-height: 48px;
-  }
+  word-break: break-word;
 }
 .bandeau .bandeau-container__right {
   display: flex;
