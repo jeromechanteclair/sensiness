@@ -26,5 +26,5 @@ $rating_count = $product->get_rating_count();
 
 echo wc_get_rating_html( $product->get_average_rating() ); // WordPress.XSS.EscapeOutput.OutputNotEscaped.
 if($rating_count>0){
-	echo('<p style="text-align:center;  font-family: \'NeueHaasDisplay-Roman\';">('.$rating_count.' avis)</p>');
+	echo('<p class="product-rating-count" style="text-align:center;  font-family: \'NeueHaasDisplay-Roman\';">('.$rating_count.' avis)</p>');
 }

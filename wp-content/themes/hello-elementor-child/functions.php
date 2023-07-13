@@ -15,6 +15,7 @@ require_once(get_stylesheet_directory() . '/inc/Woocommerce.php');
 require_once(get_stylesheet_directory() . '/inc/Images.php');
 require_once(get_stylesheet_directory() . '/inc/Summary.php');
 require_once(get_stylesheet_directory() . '/inc/acf.php');
+require_once(get_stylesheet_directory() . '/inc/Post.php');
 
 
 /***

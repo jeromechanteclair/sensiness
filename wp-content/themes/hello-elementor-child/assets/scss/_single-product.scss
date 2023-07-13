@@ -1424,11 +1424,16 @@ html {
 
                 a {
                     overflow: hidden;
+                    width: 100%;
                 }
 
                 .star-rating {
                     margin: 12px auto;
                 }
+                .product-rating-count{
+                    color:var(--green);
+                }
+
 
                 @media screen and (max-width:640px) {
                     float: none;

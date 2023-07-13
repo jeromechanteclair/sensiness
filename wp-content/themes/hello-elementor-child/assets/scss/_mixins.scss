@@ -108,7 +108,7 @@
     max-width: calc(var(--max-width) * .833);
 }
 .container{
-      @include container;
+    @include container;
     margin: 0 auto;
     &.container--min {
     @include container-min;

@@ -9,6 +9,11 @@
      margin: 24px 0;
     border-radius: 10px;
     overflow: hidden;
+     @media screen and (max-width:640px) {
+       margin-left: calc(var(--max-width) * -0.0835);
+       margin-right: calc(var(--max-width) * -0.0835);
+    //    padding: 10px;
+     }
      picture {
          width: 100%;
          display: flex;
@@ -34,7 +39,7 @@
          @media screen and (max-width:640px) {
 
              gap: 0;
-             max-width: calc(var(--max-width) - 48px);
+             max-width:100%;
 
          }
 
@@ -55,6 +60,11 @@
                  font-weight: 400;
                  font-size: 48px;
                  line-height: 56px;
+                white-space:break-spaces;
+                  @media screen and (max-width:640px) {
+                  font-size: 38px;
+                     line-height: 48px;
+                }
                  
              }
 
@@ -71,6 +81,7 @@
              }
 
              .bandeau-button {
+                margin-top: 32px;
                  @include button;
                  width: auto;
                  text-decoration: none;

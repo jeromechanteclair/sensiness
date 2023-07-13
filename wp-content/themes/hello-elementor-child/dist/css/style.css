@@ -1876,9 +1876,13 @@ html {
 }
 .single-product .related.products ul li.product a {
   overflow: hidden;
+  width: 100%;
 }
 .single-product .related.products ul li.product .star-rating {
   margin: 12px auto;
+}
+.single-product .related.products ul li.product .product-rating-count {
+  color: var(--green);
 }
 @media screen and (max-width: 640px) {
   .single-product .related.products ul li.product {
@@ -2414,6 +2418,12 @@ FAQ
   border-radius: 10px;
   overflow: hidden;
 }
+@media screen and (max-width: 640px) {
+  .bandeau {
+    margin-left: calc(var(--max-width) * -0.0835);
+    margin-right: calc(var(--max-width) * -0.0835);
+  }
+}
 .bandeau picture {
   width: 100%;
   display: flex;
@@ -2439,7 +2449,7 @@ FAQ
 @media screen and (max-width: 640px) {
   .bandeau .bandeau-container {
     gap: 0;
-    max-width: calc(var(--max-width) - 48px);
+    max-width: 100%;
   }
 }
 @media screen and (max-width: 810px) {
@@ -2453,6 +2463,13 @@ FAQ
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
+  white-space: break-spaces;
+}
+@media screen and (max-width: 640px) {
+  .bandeau .bandeau-container__left h2 {
+    font-size: 38px;
+    line-height: 48px;
+  }
 }
 .bandeau .bandeau-container__right {
   display: flex;
@@ -2465,6 +2482,7 @@ FAQ
   }
 }
 .bandeau .bandeau-container__right .bandeau-button {
+  margin-top: 32px;
   font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
@@ -2502,8 +2520,9 @@ FAQ
   font-style: normal;
   font-weight: 400;
   font-size: 38px;
-  line-height: 56px;
+  line-height: 48px;
   color: var(--green);
+  margin: 24px 0;
 }
 .single-post h2 strong,
 .single-post h2 b {
@@ -2514,12 +2533,19 @@ FAQ
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
-  line-height: 56px;
+  line-height: 48px;
   color: var(--green);
 }
 .single-post h3 strong,
 .single-post h3 b {
   font-weight: 400;
+}
+.single-post ul {
+  margin-left: 0;
+  padding-left: 18px;
+}
+.single-post ul li {
+  margin-bottom: 12px;
 }
 .single-post .single-header {
   background-color: var(--beige);
@@ -2530,6 +2556,27 @@ FAQ
   grid-template-columns: 2fr auto;
   align-items: flex-start;
   gap: 48px;
+}
+@media screen and (max-width: 1200px) {
+  .single-post .single-header .container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .single-post .single-header .container {
+    grid-template-columns: 1fr;
+  }
+}
+.single-post .single-header__left {
+  margin-bottom: 24px;
+}
+@media screen and (max-width: 640px) {
+  .single-post .single-header__left {
+    margin-bottom: 0;
+  }
+}
+.single-post .single-header__right {
+  align-self: flex-end;
 }
 .single-post .single-header picture {
   line-height: 0;
@@ -2546,12 +2593,24 @@ FAQ
   line-height: 64px;
   color: var(--green);
 }
+@media screen and (max-width: 640px) {
+  .single-post .single-header h1 {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
 .single-post .single-header__metas {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
   color: var(--green);
+}
+@media screen and (max-width: 640px) {
+  .single-post .single-header__metas {
+    flex-flow: column;
+    align-items: start;
+  }
 }
 .single-post .single-header__metas .separator {
   display: block;
@@ -2562,6 +2621,11 @@ FAQ
   background-color: white;
   margin-top: 4px;
 }
+@media screen and (max-width: 640px) {
+  .single-post .single-header__metas .separator {
+    display: none;
+  }
+}
 .single-post .single-header__metas a {
   color: var(--green);
 }
@@ -2569,21 +2633,56 @@ FAQ
   color: #f8b82e;
 }
 .single-post .article-container {
-  display: flex;
-  align-items: flex-start;
-  flex-flow: row-reverse;
-  gap: 84px;
+  display: grid;
+  grid-template-columns: 0.4fr 1fr 0.4fr;
+  grid-template-areas: "aside main sticky";
+  grid-template-rows: 1fr;
+  align-items: start;
+  gap: 48px;
   margin-top: 72px;
+  position: relative;
+}
+@media screen and (max-width: 1024px) {
+  .single-post .article-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
 }
 .single-post .article-container main {
-  max-width: calc(var(--max-width) * 0.55);
+  grid-area: main;
+  padding-left: 0;
+  padding-right: 0;
   margin-bottom: 48px;
+}
+@media screen and (max-width: 1024px) {
+  .single-post .article-container main {
+    grid-area: unset;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.single-post .article-container main .wp-block-image {
+  overflow: hidden;
+  border-radius: 10px;
 }
 .single-post .article-container main .wc-block-grid__products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  background-color: var(--beige-light);
+  border-radius: 10px;
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  padding: 24px;
   margin: 24px 0;
+}
+@media screen and (max-width: 1024px) {
+  .single-post .article-container main .wc-block-grid__products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 640px) {
+  .single-post .article-container main .wc-block-grid__products {
+    grid-template-columns: 1fr;
+  }
 }
 .single-post .article-container main .wc-block-grid__products .wc-block-grid__product {
   width: 100%;
@@ -2599,15 +2698,16 @@ FAQ
 }
 .single-post .article-container main .wc-block-grid__products .wc-block-grid__product > a {
   text-decoration: none;
+  width: 100%;
 }
 .single-post .article-container main .wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-title {
   font-family: "Recoleta";
-  font-size: 18px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 24px;
   line-height: 32px;
-  text-align: center;
   color: var(--green);
+  text-align: center;
 }
 .single-post .article-container main .wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-price {
   font-family: "NeueHaasDisplay-Roman";
@@ -2626,7 +2726,10 @@ FAQ
   border: 1px solid var(--green);
   border-radius: 10px;
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  background-color: white;
   text-decoration: none;
+  padding: 16px 18px;
+  font-size: 14px;
 }
 .single-post .article-container main .wc-block-grid__products .wc-block-grid__product .wp-block-button__link:hover {
   background-color: var(--green);
@@ -2634,47 +2737,27 @@ FAQ
 }
 .single-post .article-container main p,
 .single-post .article-container main li {
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 450;
-  line-height: 24px;
+  line-height: 28px;
   font-family: "NeueHaasDisplay-Roman";
   color: var(--green);
 }
 .single-post .article-container aside {
+  grid-area: aside;
+  justify-self: flex-start;
   position: sticky;
   top: 128px;
   margin-bottom: 48px;
 }
-.single-post .article-container aside .sharing {
-  margin-top: 24px;
-}
-.single-post .article-container aside .sharing .social-buttons {
-  margin-top: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-}
-.single-post .article-container aside .sharing a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--green);
-  border-radius: 4px;
-  padding: 12px;
-  height: 48px;
-  width: 48px;
-  background-color: var(--beige-light);
-}
-.single-post .article-container aside .sharing a svg * {
-  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
-}
-.single-post .article-container aside .sharing a:hover {
-  background-color: var(--beige);
-}
-.single-post .article-container aside .sharing a:hover svg * {
-  fill: #f8b82e;
+@media screen and (max-width: 1024px) {
+  .single-post .article-container aside {
+    grid-area: unset;
+    width: 100%;
+    position: relative;
+    top: unset;
+  }
 }
 .single-post .article-container aside .title {
   font-family: "Recoleta";
@@ -2715,11 +2798,143 @@ FAQ
   font-size: 16px;
   font-family: "NeueHaasDisplay-Roman";
 }
+.single-post .article-container .sticky-nl {
+  grid-area: sticky;
+  justify-self: flex-start;
+  position: sticky;
+  top: 128px;
+  margin-bottom: 48px;
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .single-post .article-container .sticky-nl {
+    grid-area: unset;
+    width: 100%;
+    top: unset;
+    position: relative;
+  }
+}
+.single-post .article-container .sticky-nl .sharing {
+  margin-top: 24px;
+}
+.single-post .article-container .sticky-nl .sharing .social-buttons {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.single-post .article-container .sticky-nl .sharing a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  padding: 12px;
+  height: 48px;
+  width: 48px;
+  background-color: var(--beige-light);
+}
+.single-post .article-container .sticky-nl .sharing a svg * {
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+}
+.single-post .article-container .sticky-nl .sharing a:hover {
+  background-color: var(--beige);
+}
+.single-post .article-container .sticky-nl .sharing a:hover svg * {
+  fill: #f8b82e;
+}
+.single-post .article-container .sticky-nl .title {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 38px;
+  color: var(--green);
+  margin-top: 0;
+}
+.single-post .article-container .sticky-nl div#probance_form_block form {
+  margin: 0;
+  width: 100%;
+}
+.single-post .article-container .sticky-nl .p-nlform-maintitle,
+.single-post .article-container .sticky-nl .p-nlform-subtitle {
+  display: none;
+}
+.single-post .article-container .sticky-nl label {
+  margin-bottom: 12px;
+  display: none;
+}
+.single-post .article-container .sticky-nl .probance_message_submit {
+  padding: 12px;
+  position: relative;
+  margin-top: 12px;
+}
+.single-post .article-container .sticky-nl .probance_message_submit.hidden {
+  display: none;
+}
+.single-post .article-container .sticky-nl .probance_message_submit .message {
+  text-align: left;
+}
+.single-post .article-container .sticky-nl input,
+.single-post .article-container .sticky-nl textarea {
+  font-family: "NeueHaasDisplay-Roman";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--beige);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: var(--green);
+  border-radius: 10px;
+  border: none;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  text-transform: none;
+  background-color: white;
+  color: var(--green);
+  border: 1px solid #364321;
+}
+.single-post .article-container .sticky-nl input:hover,
+.single-post .article-container .sticky-nl textarea:hover {
+  background-color: #607440;
+}
+.single-post .article-container .sticky-nl input:hover,
+.single-post .article-container .sticky-nl textarea:hover {
+  background-color: white;
+  color: var(--green);
+  border: 1px solid #364321;
+}
+.single-post .article-container .sticky-nl input[type=submit] {
+  font-family: "NeueHaasDisplay-Roman";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--beige);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: var(--green);
+  border-radius: 10px;
+  border: none;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+}
+.single-post .article-container .sticky-nl input[type=submit]:hover {
+  background-color: #607440;
+}
 .single-post .single-comments {
   background-color: white;
   margin: 48px 0;
   padding: 48px 0;
   color: var(--green);
+}
+@media screen and (max-width: 640px) {
+  .single-post .single-comments .container {
+    max-width: 100%;
+    max-width: calc(var(--max-width) * 0.833);
+  }
 }
 .single-post .single-comments #respond {
   order: 4;
@@ -2819,6 +3034,9 @@ FAQ
   color: var(--green);
   text-decoration: none;
 }
+.single-post .single-comments #comments .comment-list li article.comment-body .comment-author .avatar {
+  display: none;
+}
 .single-post .single-comments #comments .comment-list li article.comment-body .comment-author b {
   font-weight: 500;
 }
@@ -2901,6 +3119,16 @@ FAQ
   grid-template-columns: repeat(3, 1fr);
   gap: 48px;
   grid-auto-rows: 1fr;
+}
+@media screen and (max-width: 1024px) {
+  .related-posts .related-posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 640px) {
+  .related-posts .related-posts-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .related-posts .related-posts-grid .post-preview {
   position: relative;

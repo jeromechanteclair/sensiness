@@ -3,9 +3,9 @@
     "title": "Options : Réglages",
     "fields": [
         {
-            "key": "field_6489a50145de3",
-            "label": "Bloc parrainage",
-            "name": "refer",
+            "key": "field_64afa58d14fbf",
+            "label": "Newsletter",
+            "name": "newsletter",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -19,25 +19,9 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_6489a51545de4",
-                    "label": "Lien",
-                    "name": "link_refer",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array"
-                },
-                {
-                    "key": "field_6489a52345de5",
-                    "label": "Titre",
-                    "name": "title",
+                    "key": "field_64afa5a314fc0",
+                    "label": "TItre newsletter article",
+                    "name": "newsletter_post_title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -55,11 +39,11 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6489a52a45de6",
-                    "label": "Sous titre",
-                    "name": "subtitle",
+                    "key": "field_64afa5b114fc1",
+                    "label": "Sous titre newsletter article",
+                    "name": "newsletter_post_subtitle",
                     "aria-label": "",
-                    "type": "textarea",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -70,43 +54,18 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "rows": "",
                     "placeholder": "",
-                    "new_lines": ""
-                },
-                {
-                    "key": "field_6489a53845de7",
-                    "label": "Image",
-                    "name": "image",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "preview_size": "medium"
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
         {
-            "key": "field_6489aa989147e",
-            "label": "Commentaire pour les avis",
-            "name": "comments_description",
+            "key": "field_6481d7055d7a2",
+            "label": "Lien parrainage",
+            "name": "link_refer",
             "aria-label": "",
-            "type": "wysiwyg",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -115,11 +74,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            "return_format": "array"
         },
         {
             "key": "field_64775a46cca2b",
@@ -293,5 +248,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686743779
+    "modified": 1689232841
 }

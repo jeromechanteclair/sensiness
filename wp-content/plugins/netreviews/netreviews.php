@@ -278,7 +278,7 @@ function add_specific_style()
 //////////////////////////////////      LISTE PRODUIT     ////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-add_action('woocommerce_after_shop_loop_item_title', 'ntav_netreviews_loop_rating', 31);
+// add_action('woocommerce_after_shop_loop_item_title', 'ntav_netreviews_loop_rating', 31);
 add_action('netreviews_category_rating', 'ntav_netreviews_loop_rating');
 add_shortcode('netreviews_loop_product_rating', 'ntav_netreviews_loop_rating_short_code');
 

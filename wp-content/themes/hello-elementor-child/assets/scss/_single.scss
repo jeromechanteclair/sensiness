@@ -17,8 +17,10 @@
         font-style: normal;
         font-weight: 400;
         font-size: 38px;
-        line-height: 56px;
+        line-height: 48px;
         color: var(--green);
+        margin: 24px 0;
+
 
         strong,
         b {
@@ -31,12 +33,21 @@
         font-style: normal;
         font-weight: 400;
         font-size: 32px;
-        line-height: 56px;
+        line-height: 48px;
         color: var(--green);
 
         strong,
         b {
             font-weight: 400;
+        }
+    }
+
+    ul {
+        margin-left: 0;
+        padding-left: 18px;
+
+        li {
+            margin-bottom: 12px;
         }
     }
 
@@ -49,6 +60,28 @@
             grid-template-columns: 2fr auto;
             align-items: flex-start;
             gap: 48px;
+
+            @media screen and (max-width:1200px) {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @media screen and (max-width:1024px) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        &__left {
+
+            margin-bottom: 24px;
+
+            @media screen and (max-width:640px) {
+                margin-bottom: 0;
+            }
+        }
+
+        &__right {
+            align-self: flex-end;
+
         }
 
         picture {
@@ -66,6 +99,11 @@
             font-size: 56px;
             line-height: 64px;
             color: var(--green);
+
+            @media screen and (max-width:640px) {
+                font-size: 48px;
+                line-height: 56px;
+            }
         }
 
         &__metas {
@@ -75,6 +113,12 @@
             gap: 12px;
             color: var(--green);
 
+            @media screen and (max-width:640px) {
+                flex-flow: column;
+                align-items: start;
+
+            }
+
             .separator {
                 display: block;
                 height: 8px;
@@ -83,6 +127,10 @@
                 border: 1px solid var(--green);
                 background-color: white;
                 margin-top: 4px;
+
+                @media screen and (max-width:640px) {
+                    display: none;
+                }
             }
 
             a {
@@ -97,19 +145,57 @@
     }
 
     .article-container {
-        display: flex;
-        align-items: flex-start;
-        flex-flow: row-reverse;
-        gap: 84px;
+        display: grid;
+        grid-template-columns: 0.4fr 1fr 0.4fr;
+        grid-template-areas:
+            "aside main sticky";
+
+        @media screen and (max-width:1024px) {
+            grid-template-columns: 1fr;
+            grid-template-areas: none;
+        }
+
+        grid-template-rows: 1fr;
+        ;
+        align-items: start;
+        gap: 48px;
         margin-top: 72px;
+        position: relative;
 
         main {
-            max-width: calc(var(--max-width) * 0.55);
-  margin-bottom: 48px;
+            grid-area: main;
+            padding-left: 0;
+            padding-right: 0;
+
+            @media screen and (max-width:1024px) {
+                grid-area: unset;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            margin-bottom: 48px;
+
+            .wp-block-image {
+                overflow: hidden;
+                border-radius: 10px;
+            }
+
             .wc-block-grid__products {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                background-color: var(--beige-light);
+                border-radius: 10px;
+                grid-template-columns: repeat(2, 1fr);
+
+                @media screen and (max-width:1024px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @media screen and (max-width:640px) {
+                    grid-template-columns: 1fr;
+                }
+
                 gap: 24px;
+                padding: 24px;
                 margin: 24px 0;
 
                 .wc-block-grid__product {
@@ -124,21 +210,25 @@
                     .star-rating {
                         color: var(--yellow)
                     }
+                  
 
                     padding: 0;
 
                     >a {
                         text-decoration: none;
+                        width: 100%;
                     }
 
                     .wc-block-grid__product-title {
-                        font-family: 'Recoleta';
-                        font-size: 18px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 32px;
+
+  font-family: "Recoleta";
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 32px;
+                    color: var(--green);
                         text-align: center;
-                        color: var(--green);
+                    
                     }
 
                     .wc-block-grid__product-price {
@@ -147,7 +237,10 @@
 
                     .wp-block-button__link {
                         @include button-transparent;
+                        background-color: white;
                         text-decoration: none;
+                        padding: 16px 18px;
+                        font-size: 14px;
                     }
                 }
             }
@@ -157,56 +250,30 @@
 
             p,
             li {
-                font-size: 16px;
+                font-size: 18px;
                 font-style: normal;
                 font-weight: 450;
-                line-height: 24px;
+                line-height: 28px;
                 font-family: "NeueHaasDisplay-Roman";
                 color: var(--green);
             }
         }
 
         aside {
+            grid-area: aside;
+
+            justify-self: flex-start;
             position: sticky;
             top: 128px;
             margin-bottom: 48px;
-            .sharing{
-                margin-top: 24px;
-                .social-buttons{
-                      margin-top: 24px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                    gap: 12px;
-                }
-                a{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border: 1px solid var(--green);
-                    border-radius: 4px;
-                    padding: 12px;
-                    height: 48px;
-                    width: 48px;
-                    background-color: var(--beige-light);
-              
-                      svg{
-                        *{
 
-                            @include transition;
-                        }
-                      }
-                    &:hover{
-                        background-color: var(--beige);
-                        svg{
-                            *{
-                                fill: #f8b82e;
-                            }
-                        }
-                    }
-
-                }
+            @media screen and (max-width:1024px) {
+                grid-area: unset;
+                width: 100%;
+                position: relative;
+                top: unset;
             }
+
             .title {
 
                 font-family: "Recoleta";
@@ -260,6 +327,130 @@
                 }
             }
         }
+
+        .sticky-nl {
+            grid-area: sticky;
+            justify-self: flex-start;
+            position: sticky;
+
+
+            top: 128px;
+            margin-bottom: 48px;
+            width: 100%;
+
+            @media screen and (max-width:1024px) {
+                grid-area: unset;
+                width: 100%;
+                top: unset;
+                position: relative;
+            }
+
+            .sharing {
+                margin-top: 24px;
+
+                .social-buttons {
+                    margin-bottom: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 12px;
+                }
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid var(--green);
+                    border-radius: 4px;
+                    padding: 12px;
+                    height: 48px;
+                    width: 48px;
+                    background-color: var(--beige-light);
+
+                    svg {
+                        * {
+
+                            @include transition;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: var(--beige);
+
+                        svg {
+                            * {
+                                fill: #f8b82e;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .title {
+
+                font-family: "Recoleta";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 28px;
+                line-height: 38px;
+                color: var(--green);
+                margin-top: 0;
+            }
+
+            div#probance_form_block {
+
+                form {
+                    margin: 0;
+                    width: 100%;
+                }
+            }
+
+            .p-nlform-maintitle,
+            .p-nlform-subtitle {
+                display: none;
+            }
+
+            label {
+                margin-bottom: 12px;
+                display: none;
+            }
+
+            .probance_message_submit {
+                padding: 12px;
+                position: relative;
+
+                &.hidden {
+                    display: none;
+                }
+
+                margin-top: 12px;
+
+                .message {
+                    text-align: left;
+                }
+            }
+
+            input,
+            textarea {
+                @include button;
+                text-transform: none;
+                background-color: white;
+                color: var(--green);
+                border: 1px solid #364321;
+
+                &:hover {
+                    background-color: white;
+                    color: var(--green);
+                    border: 1px solid #364321;
+                }
+
+            }
+
+            input[type="submit"] {
+                @include button;
+            }
+        }
     }
 
     .single-comments {
@@ -267,6 +458,15 @@
         margin: 48px 0;
         padding: 48px 0;
         color: var(--green);
+
+        @media screen and (max-width:1024px) {}
+
+        @media screen and (max-width:640px) {
+            .container {
+                max-width: 100%;
+                @include container;
+            }
+        }
 
         #respond {
             order: 4;
@@ -368,6 +568,10 @@
                             color: var(--green);
                             text-decoration: none;
 
+                            .avatar {
+                                display: none;
+                            }
+
                             b {
                                 font-weight: 500;
                             }
@@ -457,17 +661,27 @@
         gap: 48px;
         grid-auto-rows: 1fr;
 
+        @media screen and (max-width:1024px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (max-width:640px) {
+            grid-template-columns: 1fr;
+        }
+
         .post-preview {
             position: relative;
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
-            &:hover{
-                 .post-preview__content .title{
 
-                     color: #f8b82e;
-                 }
+            &:hover {
+                .post-preview__content .title {
+
+                    color: #f8b82e;
+                }
             }
+
             &__thumbnail {
                 line-height: 0;
                 display: flex;
@@ -476,14 +690,16 @@
             }
 
             &__content {
-               
+
                 padding: 24px;
                 display: grid;
                 grid-template-rows: auto auto auto;
                 gap: 12px;
-                >*{
+
+                >* {
                     margin: 0;
                 }
+
                 .title {
                     @include transition;
                     font-family: "Recoleta";

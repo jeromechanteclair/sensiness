@@ -55,6 +55,7 @@ while ( have_posts() ) :
 <div class="article-container container">
 
 
+
 	<main id="content" <?php post_class( 'site-main container container--min' ); ?>>
 		<?php if ( apply_filters( 'hello_elementor_page_title', true ) ) : ?>
 	
@@ -69,7 +70,8 @@ while ( have_posts() ) :
 
 		
 	</main>
-	<aside>
+		<aside>
+			
 		<?php if(!empty($summary)):?>
 			<p class="title">Sommaire :</p>
 			<ul class="summary">
@@ -86,7 +88,16 @@ while ( have_posts() ) :
 			<?php endforeach;?>
 			</ul>
 		<?php endif;?>
-		<div class="sharing">
+	
+
+	</aside>
+	<div class="sticky-nl">
+		<?php 
+		$nl_fields=get_field('newsletter','options');?>
+		<p class="title"><?=$nl_fields['newsletter_post_title'];?></p>
+		<p class="subtitle"><?=$nl_fields['newsletter_post_subtitle'];?></p>
+		<?php echo do_shortcode('[probance_newsletter]');?>
+			<div class="sharing">
 			<p class="title">Partager l'article :</p>
 			<div class="social-buttons">
 					<a href="https://twitter.com/intent/tweet?text=<?=get_the_permalink();?>" >
@@ -103,8 +114,8 @@ while ( have_posts() ) :
 					</a>
 				</div>
 		</div>
-	</aside>
-
+	
+	</div>			
 </div>
 <?php if ($related_query->have_posts()) { ?>
 <div class="related-posts">
