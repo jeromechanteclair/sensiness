@@ -46,7 +46,7 @@ class Summary
 				}
 				else{
 					echo '<input type="checkbox" id="frontend_summary['.$key.'][is_display]" name="frontend_summary['.$key.'][is_display]" 
-					value="" >';
+					value="1" >';
 				}
 		
 				echo ' Afficher le lien';
