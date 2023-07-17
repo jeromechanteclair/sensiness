@@ -23,6 +23,8 @@ $related_query = new WP_Query(array(
     'orderby' => 'date',
 ));
 
+$frontend_summary = get_post_meta($post->ID, 'frontend_summary', true);
+
 
 while ( have_posts() ) :
 	the_post();
@@ -72,20 +74,21 @@ while ( have_posts() ) :
 	</main>
 		<aside>
 			
-		<?php if(!empty($summary)):?>
+		<?php if(!empty($frontend_summary)):?>
 			<p class="title">Sommaire :</p>
 			<ul class="summary">
 
 			
-			<?php foreach($summary as $link):
+			<?php foreach($frontend_summary as $link):
 				$anchor = get_the_permalink().'#'.$link['id'];
+				if(isset($link['is_display'])):
 				?>
-				<li class="<?=$link['balise']?>">
+				<li >
 					<a href="<?= $anchor;?>">
-						<?= wp_strip_all_tags(ucfirst(mb_strtolower($link['contenu'])));?>
+						<?= wp_strip_all_tags($link['content']);?>
 					</a>
 				</li>
-			<?php endforeach;?>
+			<?php endif;endforeach;?>
 			</ul>
 		<?php endif;?>
 	

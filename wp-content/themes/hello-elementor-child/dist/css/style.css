@@ -2630,7 +2630,7 @@ FAQ
 }
 .single-post .article-container {
   display: grid;
-  grid-template-columns: 0.4fr 1fr 0.4fr;
+  grid-template-columns: auto 55% 20%;
   grid-template-areas: "aside main sticky";
   grid-template-rows: 1fr;
   align-items: start;
@@ -2746,6 +2746,9 @@ FAQ
   position: sticky;
   top: 128px;
   margin-bottom: 48px;
+  max-height: calc(100vh - 128px);
+  padding-right: 24px;
+  overflow: auto;
 }
 @media screen and (max-width: 1024px) {
   .single-post .article-container aside {
@@ -2753,6 +2756,8 @@ FAQ
     width: 100%;
     position: relative;
     top: unset;
+    min-height: unset;
+    overflow: hidden;
   }
 }
 .single-post .article-container aside .title {
@@ -2768,6 +2773,7 @@ FAQ
   margin-left: 0;
   list-style: none;
   padding-left: 0;
+  margin-bottom: 48px;
 }
 .single-post .article-container aside .summary li {
   display: flex;
@@ -2791,7 +2797,7 @@ FAQ
   width: 100%;
   padding: 12px 0;
   color: var(--green);
-  font-size: 16px;
+  font-size: 15px;
   font-family: "NeueHaasDisplay-Roman";
 }
 .single-post .article-container .sticky-nl {
