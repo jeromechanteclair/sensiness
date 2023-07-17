@@ -40,8 +40,15 @@ class Summary
 				echo'<br>';
 				echo'<br>';
 				echo '<label for="frontend_summary['.$key.'][is_display]">';
-				echo '<input type="checkbox" id="frontend_summary['.$key.'][is_display]" name="frontend_summary['.$key.'][is_display]" 
-				value="'.$frontend_summary[$key]['is_display'].'" ' . checked(1, $frontend_summary[$key]['is_display'], false) . '>';
+				if(isset($frontend_summary[$key]['is_display'])) {
+					echo '<input type="checkbox" id="frontend_summary['.$key.'][is_display]" name="frontend_summary['.$key.'][is_display]" 
+					value="'.$frontend_summary[$key]['is_display'].'" ' . checked(1, $frontend_summary[$key]['is_display'], false) . '>';
+				}
+				else{
+					echo '<input type="checkbox" id="frontend_summary['.$key.'][is_display]" name="frontend_summary['.$key.'][is_display]" 
+					value="" >';
+				}
+		
 				echo ' Afficher le lien';
 				echo '</label>';
 				echo'<br>';
