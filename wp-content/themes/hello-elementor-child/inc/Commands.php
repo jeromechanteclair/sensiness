@@ -38,7 +38,7 @@ $comment_id = $comment->comment_ID;
 					WP_CLI::success( "Comment ID: $comment_id - Commentaire mis à jour en tant que 'review'");
 				} else {
 					// Le comment_post_id ne correspond pas à un produit
-						WP_CLI::error ("Comment ID: $comment_id - Ne correspond pas à un produit");
+						WP_CLI::error ("Comment ID: $comment_id - Ne correspond pas à un produit",false);
 				}
 
 				
