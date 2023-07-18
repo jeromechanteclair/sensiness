@@ -2410,7 +2410,6 @@ FAQ
 .bandeau {
   overflow: hidden;
   position: relative;
-  height: 100%;
   padding: 24px;
   display: flex;
   align-items: center;
