@@ -2519,6 +2519,12 @@ FAQ
   color: var(--green);
   margin: 24px 0;
 }
+@media screen and (max-width: 640px) {
+  .single-post h2 {
+    font-size: 28px;
+    line-height: 38px;
+  }
+}
 .single-post h2 strong,
 .single-post h2 b {
   font-weight: 400;
@@ -2530,6 +2536,12 @@ FAQ
   font-size: 32px;
   line-height: 48px;
   color: var(--green);
+}
+@media screen and (max-width: 640px) {
+  .single-post h3 {
+    font-size: 22px;
+    line-height: 32px;
+  }
 }
 .single-post h3 strong,
 .single-post h3 b {
@@ -2590,8 +2602,8 @@ FAQ
 }
 @media screen and (max-width: 640px) {
   .single-post .single-header h1 {
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 32px;
+    line-height: 48px;
   }
 }
 .single-post .single-header__metas {
@@ -2647,6 +2659,7 @@ FAQ
   grid-area: main;
   padding-left: 0;
   padding-right: 0;
+  word-break: break-word;
   margin-bottom: 48px;
 }
 @media screen and (max-width: 1024px) {
@@ -2751,6 +2764,7 @@ FAQ
 }
 @media screen and (max-width: 1024px) {
   .single-post .article-container aside {
+    display: none;
     grid-area: unset;
     width: 100%;
     position: relative;

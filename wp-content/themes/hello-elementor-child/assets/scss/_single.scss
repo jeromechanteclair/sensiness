@@ -21,6 +21,10 @@
         color: var(--green);
         margin: 24px 0;
 
+        @media screen and (max-width:640px) {
+            font-size: 28px;
+            line-height: 38px;
+        }
 
         strong,
         b {
@@ -35,6 +39,11 @@
         font-size: 32px;
         line-height: 48px;
         color: var(--green);
+
+        @media screen and (max-width:640px) {
+            font-size: 22px;
+            line-height: 32px;
+        }
 
         strong,
         b {
@@ -101,8 +110,8 @@
             color: var(--green);
 
             @media screen and (max-width:640px) {
-                font-size: 48px;
-                line-height: 56px;
+                font-size: 32px;
+                line-height: 48px;
             }
         }
 
@@ -146,7 +155,7 @@
 
     .article-container {
         display: grid;
-        grid-template-columns: auto  55% 20%;
+        grid-template-columns: auto 55% 20%;
         grid-template-areas:
             "aside main sticky";
 
@@ -166,6 +175,7 @@
             grid-area: main;
             padding-left: 0;
             padding-right: 0;
+            word-break: break-word;
 
             @media screen and (max-width:1024px) {
                 grid-area: unset;
@@ -210,7 +220,7 @@
                     .star-rating {
                         color: var(--yellow)
                     }
-                  
+
 
                     padding: 0;
 
@@ -221,14 +231,14 @@
 
                     .wc-block-grid__product-title {
 
-  font-family: "Recoleta";
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 24px;
-                    line-height: 32px;
-                    color: var(--green);
+                        font-family: "Recoleta";
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 24px;
+                        line-height: 32px;
+                        color: var(--green);
                         text-align: center;
-                    
+
                     }
 
                     .wc-block-grid__product-price {
@@ -266,18 +276,20 @@
             position: sticky;
             top: 128px;
             margin-bottom: 48px;
-            max-height: calc(100vh - 128px );
-padding-right: 24px;
-overflow: auto;
+            max-height: calc(100vh - 128px);
+            padding-right: 24px;
+            overflow: auto;
 
 
             @media screen and (max-width:1024px) {
+                display: none;
                 grid-area: unset;
                 width: 100%;
                 position: relative;
                 top: unset;
-            min-height: unset;
-        overflow: hidden;            }
+                min-height: unset;
+                overflow: hidden;
+            }
 
             .title {
 
@@ -295,6 +307,7 @@ overflow: auto;
                 list-style: none;
                 padding-left: 0;
                 margin-bottom: 48px;
+
                 li {
                     display: flex;
                     border-bottom: 1px solid #EBE9E0;
