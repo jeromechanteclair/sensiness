@@ -2502,6 +2502,7 @@ FAQ
 
 .single-post {
   background-color: white;
+  font-family: "NeueHaasDisplay-Roman";
 }
 .single-post .woocommerce-breadcrumb {
   color: var(--green);
@@ -2509,6 +2510,12 @@ FAQ
 .single-post a {
   color: #f8b82e;
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+}
+.single-post h4, .single-post h5, .single-post h6 {
+  font-family: "Recoleta";
+  font-style: normal;
+  font-weight: 400;
+  color: var(--green);
 }
 .single-post h2 {
   font-family: "Recoleta";

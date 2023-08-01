@@ -1,6 +1,6 @@
 .single-post {
     background-color: white;
-
+font-family: "NeueHaasDisplay-Roman";
     .woocommerce-breadcrumb {
         color: var(--green);
 
@@ -10,7 +10,12 @@
         color: #f8b82e;
         @include transition;
     }
-
+    h4,h5,h6{
+              font-family: "Recoleta";
+        font-style: normal;
+        font-weight: 400; 
+           color: var(--green);
+    }
     h2 {
 
         font-family: "Recoleta";
