@@ -2,6 +2,7 @@
 :root {
   --green:#364321;
   --beige:#F5F3E6;
+  --beige-med:#E7E4D1;
   --beige-light:#F5F3E6;
   --yellow:#FFD372;
   --red:#FC6565;
@@ -43,11 +44,15 @@
   font-weight: 900;
   font-display: swap;
 }
-.single-product, .single-post {
+:root {
+  --max-width: 1440px;
+}
+
+.single-product, .single-post, .page {
   --max-width: 1440px;
 }
 @media screen and (max-width: 1440px) {
-  .single-product, .single-post {
+  .single-product, .single-post, .page {
     --max-width: 100%;
   }
 }
@@ -58,6 +63,53 @@
 }
 .container.container--min {
   max-width: calc(var(--max-width) * 0.55);
+}
+
+.custom-logo-link img {
+  max-height: 50px;
+  width: auto;
+}
+
+#site-header {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background-color: var(--beige-light);
+}
+#site-header .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: var(--max-width);
+  width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+#site-header .site-navigation {
+  justify-content: center;
+  grid-area: unset;
+}
+#site-header .site-navigation ul.menu li {
+  position: unset;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+#site-header .site-navigation ul.menu li:hover .sub-menu {
+  display: grid;
+}
+#site-header .site-navigation ul.menu li a {
+  padding: 0;
+}
+#site-header .site-navigation ul.menu li .sub-menu {
+  width: 100vw;
+  background-color: var(--beige-med);
+}
+#site-header .end-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 ul.accordions {
