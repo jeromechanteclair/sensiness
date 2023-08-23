@@ -1,6 +1,8 @@
 @charset "UTF-8";
 :root {
   --green:#364321;
+  --black:#131313;
+  --white:#ffffff;
   --beige:#F5F3E6;
   --beige-med:#E7E4D1;
   --beige-light:#F5F3E6;
@@ -76,8 +78,11 @@
   padding: 0;
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 95;
   background-color: var(--beige-light);
+}
+#site-header + div {
+  margin-top: 75px;
 }
 #site-header .container {
   display: grid;
@@ -90,14 +95,84 @@
 #site-header .site-navigation {
   justify-content: center;
   grid-area: unset;
+  --innerpadding: calc(((100vw - var(--max-width))/2) + 141px);
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+#site-header .site-navigation a {
+  font-family: "NeueHaasDisplay-Roman";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--black);
 }
 #site-header .site-navigation ul.menu li {
   position: unset;
   padding-top: 24px;
   padding-bottom: 24px;
 }
+#site-header .site-navigation ul.menu li.has-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+#site-header .site-navigation ul.menu li.has-child:hover svg {
+  transform: rotate(180deg);
+}
 #site-header .site-navigation ul.menu li:hover .sub-menu {
+  padding-left: var(--innerpadding);
+  padding-right: var(--innerpadding);
   display: grid;
+}
+#site-header .site-navigation ul.menu li:hover .sub-menu .menu-list {
+  align-items: center;
+}
+#site-header .site-navigation ul.menu li:hover .sub-menu .menu-list ul {
+  position: relative;
+  top: unset;
+  left: unset;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+  grid-auto-rows: max-content;
+  justify-content: space-between;
+  background-color: transparent;
+}
+#site-header .site-navigation ul.menu li:hover .sub-menu .menu-list ul li {
+  border: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+#site-header .site-navigation ul.menu li:hover .sub-menu .menu-list ul li a {
+  font-family: "NeueHaasDisplay-Roman";
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#site-header .site-navigation ul.menu li:hover .sub-menu .menu-list ul li a span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+#site-header .site-navigation ul.menu li:hover .sub-menu .menu-list ul li:first-of-type {
+  grid-column: span 2;
+}
+#site-header .site-navigation ul.menu li:hover .sub-menu .menu-list ul li:first-of-type a {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  font-family: "Recoleta";
 }
 #site-header .site-navigation ul.menu li a {
   padding: 0;
@@ -105,11 +180,511 @@
 #site-header .site-navigation ul.menu li .sub-menu {
   width: 100vw;
   background-color: var(--beige-med);
+  grid-template-areas: "left right";
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  align-items: flex-start;
+  padding-top: 30px;
+  padding-bottom: 42px;
+}
+#site-header .site-navigation ul.menu li .sub-menu .menu-list {
+  grid-area: left;
+  width: 100%;
+  padding: 0;
+}
+#site-header .site-navigation ul.menu li .sub-menu .banner {
+  grid-area: right;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+#site-header .site-navigation ul.menu li .sub-menu .banner .banner-item {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+#site-header .site-navigation ul.menu li .sub-menu .banner .banner-item picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+#site-header .site-navigation ul.menu li .sub-menu .banner .banner-item picture img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+#site-header .site-navigation ul.menu li .sub-menu .banner .banner-item__container {
+  position: relative;
+  z-index: 1;
+  padding: 72px 24px 24px 24px;
+  color: var(--white);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  align-items: flex-end;
+  gap: 140px;
+}
+#site-header .site-navigation ul.menu li .sub-menu .banner .banner-item__container__left p {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  /* 150% */
+  max-width: 200px;
+  margin-bottom: 0;
+}
+#site-header .site-navigation ul.menu li .sub-menu .banner .banner-item__container__left .h3 {
+  font-family: "Recoleta";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  max-width: 100%;
+}
+#site-header .site-navigation ul.menu li .sub-menu .banner .banner-item__container__right .button {
+  font-family: "NeueHaasDisplay-Roman";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--beige);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: var(--green);
+  border-radius: 10px;
+  border: none;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  color: #59614D;
+  background-color: var(--white);
+  font-family: "Recoleta";
+  font-size: 16px;
+  font-style: normal;
+  text-transform: none;
+  font-weight: 400;
+  line-height: 24px;
+  /* 150% */
+}
+#site-header .site-navigation ul.menu li .sub-menu .banner .banner-item__container__right .button:hover {
+  background-color: #607440;
 }
 #site-header .end-navigation {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 16px;
+}
+#site-header .end-navigation a {
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#site-header .end-navigation .cart-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-overlay {
+  display: none;
+}
+.cart-overlay.show {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 95;
+}
+
+.woocommerce-notices-wrapper,
+.global-notices {
+  position: fixed;
+  top: 6rem;
+  max-width: 26rem;
+  right: 24px;
+  z-index: 999;
+  border: 0.1rem solid #63B227;
+  color: #63B227;
+  box-shadow: 0px 4px 10px rgba(80, 49, 36, 0.1);
+  border-radius: 0.4rem;
+  animation-name: notif, vanish;
+  animation-duration: 800ms, 800ms;
+  animation-delay: 0ms, 3000ms;
+  /* add this */
+  animation-iteration-count: 1, 1;
+  animation-fill-mode: forwards, forwards;
+}
+@media screen and (max-width: 820px) {
+  .woocommerce-notices-wrapper,
+  .global-notices {
+    right: 1.7rem;
+    top: 7rem;
+  }
+}
+@keyframes notif {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes vanish {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-500%);
+  }
+}
+.woocommerce-notices-wrapper .notice,
+.woocommerce-notices-wrapper .woocommerce-message,
+.global-notices .notice,
+.global-notices .woocommerce-message {
+  display: flex;
+  flex-flow: column-reverse;
+  padding: 1rem;
+  font-size: 0.7rem;
+}
+@media screen and (max-width: 820px) {
+  .woocommerce-notices-wrapper .notice,
+  .woocommerce-notices-wrapper .woocommerce-message,
+  .global-notices .notice,
+  .global-notices .woocommerce-message {
+    font-size: 1rem;
+  }
+}
+.woocommerce-notices-wrapper .notice .button,
+.woocommerce-notices-wrapper .woocommerce-message .button,
+.global-notices .notice .button,
+.global-notices .woocommerce-message .button {
+  margin-left: 0;
+  display: none;
+}
+.woocommerce-notices-wrapper .notice.success,
+.woocommerce-notices-wrapper .woocommerce-message.success,
+.global-notices .notice.success,
+.global-notices .woocommerce-message.success {
+  display: flex;
+  flex-flow: row;
+  gap: 1rem;
+}
+
+#site-header .end-navigation {
+  color: var(--black);
+}
+#site-header .end-navigation .minicart-aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+#site-header .end-navigation .mini-cart {
+  position: relative;
+}
+#site-header .end-navigation .mini-cart .toggle-cart,
+#site-header .end-navigation .mini-cart .woocart-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#site-header .end-navigation .mini-cart .toggle-cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#site-header .end-navigation .mini-cart .toggle-cart .count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--red);
+  color: var(--white);
+  position: absolute;
+  top: -6px;
+  font-size: 8px;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  border-radius: 18px;
+  right: -8px;
+}
+#site-header .end-navigation .minicart-aside {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: var(--beige);
+  border-left: 1px solid var(--beige-med);
+  max-width: 26rem;
+  width: 100%;
+  height: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow-y: hidden;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  z-index: 999;
+}
+@media screen and (max-width: 820px) {
+  #site-header .end-navigation .minicart-aside {
+    max-width: 100%;
+  }
+}
+#site-header .end-navigation .minicart-aside.hide {
+  opacity: 0;
+  transform: translateX(100%);
+}
+#site-header .end-navigation .minicart-aside__header {
+  background-color: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  padding: 0 1rem;
+  padding-top: 24px;
+  position: fixed;
+  max-width: 26rem;
+  width: 100%;
+  z-index: 1;
+}
+@media screen and (max-width: 820px) {
+  #site-header .end-navigation .minicart-aside__header {
+    max-width: 100%;
+    max-height: 6.15rem;
+  }
+}
+#site-header .end-navigation .minicart-aside__header #wfspb-shortcode {
+  grid-column: span 2;
+  width: 100%;
+}
+#site-header .end-navigation .minicart-aside__header #wfspb-shortcode .woocommerce-free-shipping-bar-order-bar {
+  background-color: var(--beige-med);
+}
+#site-header .end-navigation .minicart-aside__header #wfspb-shortcode .woocommerce-free-shipping-bar-order-bar-inner {
+  background-color: var(--yellow);
+}
+#site-header .end-navigation .minicart-aside__header #wfspb-shortcode #wfspb-main-content {
+  text-align: left;
+}
+#site-header .end-navigation .minicart-aside__header .minicart-title {
+  margin: 0;
+  font-weight: bold;
+}
+#site-header .end-navigation .minicart-aside__header .minicart-title span {
+  font-weight: normal;
+}
+#site-header .end-navigation .minicart-aside__header .toggle-close {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-end;
+  width: 2rem;
+  height: 2rem;
+}
+#site-header .end-navigation .minicart-aside__header .toggle-close span {
+  height: 0.1rem;
+  position: absolute;
+  right: 1rem;
+  width: 1rem;
+  transform: rotate(45deg);
+}
+#site-header .end-navigation .minicart-aside__header .toggle-close span:last-of-type {
+  transform: rotate(135deg);
+}
+#site-header .end-navigation .minicart-aside .cart_list {
+  padding: 0;
+  padding-bottom: 10rem;
+  padding-top: 120px;
+  overflow: auto;
+  max-height: 100%;
+}
+@media screen and (max-width: 820px) {
+  #site-header .end-navigation .minicart-aside .cart_list {
+    padding-top: 6.2rem;
+  }
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item {
+  display: grid;
+  grid-template-columns: 0.5fr 3fr 1fr;
+  float: none;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 0.05rem solid var(--beige-med);
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item .remove_from_cart_button {
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 80%;
+  color: var(--red);
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__thumbnail figure {
+  max-width: 4rem;
+  max-height: 4rem;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  display: block;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__thumbnail figure img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__datas {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-weight: normal;
+  flex-flow: column;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__datas > p {
+  margin: 0;
+  font-weight: bold;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__datas .qty {
+  font-weight: normal;
+  font-size: 80%;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__datas .variation {
+  margin: 0;
+  align-items: flex-start;
+  gap: 0.5rem;
+  row-gap: 0.5rem;
+  row-gap: 0;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 0.5rem;
+  row-gap: 0;
+  font-size: 80%;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__datas .variation *:nth-child(even) {
+  font-weight: bold;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__datas .variation dl,
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__datas .variation dt,
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__datas .variation dd {
+  display: inline-flex;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 0;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__datas .variation p {
+  margin: 0;
+  text-align: left;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item__aside {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+#site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item:before, #site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item:after {
+  content: none;
+  display: none;
+}
+#site-header .end-navigation .minicart-aside__footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--white);
+  border-top: 0.05rem solid var(--beige-med);
+  display: flex;
+  flex-flow: column;
+  gap: 12px;
+}
+#site-header .end-navigation .minicart-aside__footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.15rem;
+}
+#site-header .end-navigation .minicart-aside__footer .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row;
+  gap: 24px;
+}
+#site-header .end-navigation .minicart-aside__footer .button {
+  margin-left: 0;
+  font-family: "NeueHaasDisplay-Roman";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--green);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid var(--green);
+  border-radius: 10px;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  display: inline-flex;
+  padding: 16px 24px;
+  text-transform: none;
+  line-height: 18px;
+  justify-content: center;
+}
+#site-header .end-navigation .minicart-aside__footer .button:hover {
+  background-color: var(--green);
+  color: white;
+}
+#site-header .end-navigation .minicart-aside__footer .button.checkout {
+  font-family: "NeueHaasDisplay-Roman";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--beige);
+  width: 100%;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  background-color: var(--green);
+  border-radius: 10px;
+  border: none;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  text-transform: none;
+  color: var(--white);
+}
+#site-header .end-navigation .minicart-aside__footer .button.checkout:hover {
+  background-color: #607440;
+}
+#site-header .end-navigation .toggle-close {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#site-header .end-navigation .toggle-close span {
+  height: 0.1rem;
+  position: absolute;
+  width: 1rem;
+  transform: rotate(45deg);
+}
+#site-header .end-navigation .toggle-close span:last-of-type {
+  transform: rotate(135deg);
 }
 
 ul.accordions {
@@ -2557,7 +3132,7 @@ FAQ
   font-family: "NeueHaasDisplay-Roman";
 }
 .single-post .woocommerce-breadcrumb {
-  color: var(--green);
+  color: var(--black);
 }
 .single-post a {
   color: #f8b82e;
@@ -2567,7 +3142,7 @@ FAQ
   font-family: "Recoleta";
   font-style: normal;
   font-weight: 400;
-  color: var(--green);
+  color: var(--black);
 }
 .single-post h2 {
   font-family: "Recoleta";
@@ -2575,7 +3150,7 @@ FAQ
   font-weight: 400;
   font-size: 38px;
   line-height: 48px;
-  color: var(--green);
+  color: var(--black);
   margin: 24px 0;
 }
 @media screen and (max-width: 640px) {
@@ -2594,7 +3169,7 @@ FAQ
   font-weight: 400;
   font-size: 32px;
   line-height: 48px;
-  color: var(--green);
+  color: var(--black);
 }
 @media screen and (max-width: 640px) {
   .single-post h3 {
@@ -2651,7 +3226,7 @@ FAQ
   border-top-right-radius: 10px;
 }
 .single-post .single-header b, .single-post .single-header strong {
-  color: var(--green);
+  color: var(--black);
 }
 .single-post .single-header h1 {
   margin-top: 24px;
@@ -2660,7 +3235,7 @@ FAQ
   font-weight: 400;
   font-size: 56px;
   line-height: 64px;
-  color: var(--green);
+  color: var(--black);
 }
 @media screen and (max-width: 640px) {
   .single-post .single-header h1 {
@@ -2673,7 +3248,7 @@ FAQ
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
-  color: var(--green);
+  color: var(--black);
 }
 @media screen and (max-width: 640px) {
   .single-post .single-header__metas {
@@ -2686,7 +3261,7 @@ FAQ
   height: 8px;
   width: 8px;
   border-radius: 8px;
-  border: 1px solid var(--green);
+  border: 1px solid var(--black);
   background-color: white;
   margin-top: 4px;
 }
@@ -2696,7 +3271,7 @@ FAQ
   }
 }
 .single-post .single-header__metas a {
-  color: var(--green);
+  color: var(--black);
 }
 .single-post .single-header__metas a:hover {
   color: #f8b82e;
@@ -2776,7 +3351,7 @@ FAQ
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: var(--green);
+  color: var(--black);
   text-align: center;
 }
 .single-post .article-container main .wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-price {
@@ -2812,7 +3387,7 @@ FAQ
   font-weight: 450;
   line-height: 28px;
   font-family: "NeueHaasDisplay-Roman";
-  color: var(--green);
+  color: var(--black);
 }
 .single-post .article-container aside {
   grid-area: aside;
@@ -2841,7 +3416,7 @@ FAQ
   font-weight: 400;
   font-size: 28px;
   line-height: 38px;
-  color: var(--green);
+  color: var(--black);
   margin-top: 0;
 }
 .single-post .article-container aside .summary {
@@ -2871,7 +3446,7 @@ FAQ
 .single-post .article-container aside .summary li a {
   width: 100%;
   padding: 12px 0;
-  color: var(--green);
+  color: var(--black);
   font-size: 15px;
   font-family: "NeueHaasDisplay-Roman";
 }
@@ -2905,7 +3480,7 @@ FAQ
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--green);
+  border: 1px solid var(--black);
   border-radius: 4px;
   padding: 12px;
   height: 48px;
@@ -2927,7 +3502,7 @@ FAQ
   font-weight: 400;
   font-size: 28px;
   line-height: 38px;
-  color: var(--green);
+  color: var(--black);
   margin-top: 0;
 }
 .single-post .article-container .sticky-nl div#probance_form_block br {
@@ -2973,7 +3548,7 @@ FAQ
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   text-transform: none;
   background-color: white;
-  color: var(--green);
+  color: var(--black);
   border: 1px solid #364321;
 }
 .single-post .article-container .sticky-nl input:hover,
@@ -2983,7 +3558,7 @@ FAQ
 .single-post .article-container .sticky-nl input:hover,
 .single-post .article-container .sticky-nl textarea:hover {
   background-color: white;
-  color: var(--green);
+  color: var(--black);
   border: 1px solid #364321;
 }
 .single-post .article-container .sticky-nl input[type=submit] {
@@ -3008,7 +3583,7 @@ FAQ
   background-color: white;
   margin: 48px 0;
   padding: 48px 0;
-  color: var(--green);
+  color: var(--black);
 }
 @media screen and (max-width: 640px) {
   .single-post .single-comments .container {
@@ -3105,13 +3680,13 @@ FAQ
   text-decoration: none;
 }
 .single-post .single-comments #comments .comment-list li article.comment-body time {
-  color: var(--green);
+  color: var(--black);
   font-size: 16px;
 }
 .single-post .single-comments #comments .comment-list li article.comment-body .comment-author {
   font-family: "Recoleta";
   font-size: 20px;
-  color: var(--green);
+  color: var(--black);
   text-decoration: none;
 }
 .single-post .single-comments #comments .comment-list li article.comment-body .comment-author .avatar {
@@ -3121,11 +3696,11 @@ FAQ
   font-weight: 500;
 }
 .single-post .single-comments #comments .comment-list li article.comment-body .comment-author a {
-  color: var(--green);
+  color: var(--black);
   text-decoration: none;
 }
 .single-post .single-comments #comments .comment-list li article.comment-body .comment-content {
-  color: var(--green);
+  color: var(--black);
 }
 .single-post .single-comments #reply-title {
   font-family: "Recoleta";
@@ -3133,7 +3708,7 @@ FAQ
   font-weight: 400;
   font-size: 32px;
   line-height: 56px;
-  color: var(--green);
+  color: var(--black);
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -3162,13 +3737,13 @@ FAQ
   width: 100%;
   padding: 16px 24px;
   text-transform: uppercase;
-  background-color: var(--green);
+  background-color: var(--black);
   border-radius: 10px;
   border: none;
   transition: all 0.2s ease-in-out;
   text-transform: none;
   background-color: white;
-  color: var(--green);
+  color: var(--black);
   border: 1px solid #364321;
 }
 .single-post .single-comments #commentform .submit {
@@ -3241,13 +3816,13 @@ FAQ
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: var(--green);
+  color: var(--black);
 }
 .related-posts .related-posts-grid .post-preview__content time {
-  color: var(--green);
+  color: var(--black);
 }
 .related-posts .related-posts-grid .post-preview__content .excerpt {
-  color: var(--green);
+  color: var(--black);
 }
 .related-posts .related-posts-grid .post-preview__content__link {
   font-family: "NeueHaasDisplay-Roman";
@@ -3310,4 +3885,8 @@ FAQ
   to {
     transform: rotate(360deg);
   }
+}
+
+body > #wfspb-top-bar {
+  display: none;
 }

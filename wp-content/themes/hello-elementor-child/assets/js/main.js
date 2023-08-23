@@ -3,6 +3,7 @@ import { select  } from "./select";
 import { slider  } from "./slider";
 import { file  } from "./file";
 import { scroll  } from "./scroll";
+import { cart  } from "./cart";
 
 	if ($('#commentform').length > 0) {
 		$('#commentform')[0].encoding = 'multipart/form-data';
@@ -15,6 +16,7 @@ import { scroll  } from "./scroll";
     setTimeout(() => {
           $(document).find('.body-overlay').addClass('hide');
     }, 300);
+    cart();
 variation();
 select();
 slider();

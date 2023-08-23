@@ -3,6 +3,8 @@
 @import 'colors';
 @import 'mixins';
 @import 'header';
+@import 'notices';
+@import 'minicart';
 @import 'faq';
 @import 'accordeons';
 @import 'reviews';
@@ -57,5 +59,10 @@
                             transform: rotate(360deg);
                         }
                     }
+    }
+}
+body{
+    >#wfspb-top-bar{
+        display: none;
     }
 }

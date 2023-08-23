@@ -1,6 +1,194 @@
 "use strict";
 (self["webpackChunksensiness_theme"] = self["webpackChunksensiness_theme"] || []).push([["/js/main"],{
 
+/***/ "./assets/js/ajax.js":
+/*!***************************!*\
+  !*** ./assets/js/ajax.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ajax_call: () => (/* binding */ ajax_call)
+/* harmony export */ });
+function ajax_call($action) {
+  var $formdata = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var $submitbutton = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  var $replaceEl = arguments.length > 3 ? arguments[3] : undefined;
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    var submit_button = $submitbutton;
+    if (submit_button) {
+      submit_button.classList.add('loading');
+    }
+    xhr.open('POST', wc_add_to_cart_params.ajax_url);
+    // set the request header
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // send the request
+    var params = new URLSearchParams($formdata).toString();
+    var $string = "action=".concat($action, "&") + params;
+    xhr.send($string);
+
+    // listen for the response
+    xhr.onload = function () {
+      // get the response
+      var response = JSON.parse(xhr.responseText);
+      var notices = response.notices;
+      // console.log($replaceEl)
+      // console.log(response)
+      if (notices.success) {
+        // replace form with success message
+        if ($replaceEl) {
+          $replaceEl.innerHTML = response.html;
+        }
+      }
+      if (submit_button) {
+        submit_button.classList.remove('loading');
+      }
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(xhr.response);
+      } else {
+        reject(xhr.statusText);
+      }
+    };
+  });
+}
+
+
+/***/ }),
+
+/***/ "./assets/js/cart.js":
+/*!***************************!*\
+  !*** ./assets/js/cart.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   cart: () => (/* binding */ cart)
+/* harmony export */ });
+/* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./assets/js/ajax.js");
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+function cart() {
+  var buttons = $(document).find('.single_add_to_cart_button');
+  var forms = $(document).find('.ajax-cart');
+  var minicart = document.querySelector('.mini-cart');
+  $(document).on('submit', '.ajax-cart', function (e) {
+    e.preventDefault();
+    var data = new FormData(this);
+    data.append("loaded", false);
+    // console.log(data)
+    // const el= document.querySelector('#booking-list');
+    var promise = (0,_ajax__WEBPACK_IMPORTED_MODULE_0__.ajax_call)('ajax_add_to_cart', data, '', minicart);
+    promise.then(function (val) {
+      var values = JSON.parse(val);
+      console.log(values);
+
+      // refresh list
+    });
+  });
+
+  $(document).on('click', '.remove_from_cart_button', function (e) {
+    e.preventDefault();
+    var product_id = $(this).attr("data-product_id"),
+      cart_item_key = $(this).attr("data-cart_item_key"),
+      product_container = $(this).parents('.mini_cart_item');
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      url: wc_add_to_cart_params.ajax_url,
+      data: {
+        action: "ajax_remove_from_cart",
+        product_id: product_id,
+        cart_item_key: cart_item_key
+      },
+      success: function success(response) {
+        if (!response || response.error) return;
+        if (response.counter < 1) {
+          var _bodyoverlay = document.querySelector('.cart-overlay');
+          var _body = document.querySelector('body');
+          _bodyoverlay.classList.toggle('show');
+          _body.classList.toggle('lock');
+        }
+        $('.mini-cart').html(response.html);
+        // refresh list
+        var booking_start_date = document.getElementById('booking_start_date');
+        if (booking_start_date) {
+          var _product_id = booking_start_date.dataset.product;
+          var is_array = JSON.parse(_product_id).length > 0;
+          if (is_array) {
+            var product_ids = JSON.parse(_product_id);
+            update_booking_list(product_ids, false, false, 'ajax_get_bookings_by_products_range');
+          } else {
+            update_booking_list(_product_id, false, false, 'ajax_get_bookings_by_product_range');
+          }
+        }
+      }
+    });
+  });
+  var bodyoverlay = document.querySelector('.cart-overlay');
+  var body = document.querySelector('body');
+  document.addEventListener("click", function (e) {
+    var target = e.target.closest(".toggle-cart"); // Or any other selector.
+
+    if (target) {
+      var _minicart = target.nextElementSibling;
+      _minicart.classList.toggle('hide');
+      bodyoverlay.classList.toggle('show');
+      body.classList.toggle('lock');
+    }
+  });
+  document.addEventListener("click", function (e) {
+    var target = e.target.closest(".toggle-close"); // Or any other selector.
+
+    if (target) {
+      var _minicart2 = target.closest(".minicart-aside");
+      _minicart2.classList.toggle('hide');
+      bodyoverlay.classList.toggle('show');
+      body.classList.toggle('lock');
+    }
+  });
+  $(document).on('click', '.woocommerce-delete-coupon', function (e) {
+    e.preventDefault();
+    var coupon = $(this).attr('data-coupon');
+    var $form = $(this).parents('form');
+    var data = new FormData($form[0]);
+    data.append("coupon", coupon);
+    // console.log(data)
+    // const el= document.querySelector('#booking-list');
+    var promise = (0,_ajax__WEBPACK_IMPORTED_MODULE_0__.ajax_call)('ajax_delete_coupon_code', data, '', minicart);
+    promise.then(function (val) {
+      var values = JSON.parse(val);
+      // console.log(values.fragments['.woocommerce-checkout-review-order-table']);
+      if (values.fragments) {
+        $(document).find('.woocommerce-checkout-review-order-table').replaceWith(values.fragments['.woocommerce-checkout-review-order-table']);
+        $(document).find('.woocommerce-checkout-payment').replaceWith(values.fragments['.woocommerce-checkout-payment']);
+      }
+    });
+  });
+  $(document).on('click', '.ajax_coupon', function (e) {
+    e.preventDefault();
+    var $form = $(this).parents('form');
+    var data = new FormData($form[0]);
+    data.append("loaded", false);
+    // console.log(data)
+    // const el= document.querySelector('#booking-list');
+    var promise = (0,_ajax__WEBPACK_IMPORTED_MODULE_0__.ajax_call)('ajax_apply_coupon_code', data, '', minicart);
+    promise.then(function (val) {
+      var values = JSON.parse(val);
+      // console.log(values.fragments['.woocommerce-checkout-review-order-table']);
+      if (values.fragments) {
+        $(document).find('.woocommerce-checkout-review-order-table').replaceWith(values.fragments['.woocommerce-checkout-review-order-table']);
+        $(document).find('.woocommerce-checkout-payment').replaceWith(values.fragments['.woocommerce-checkout-payment']);
+      }
+    });
+  });
+}
+
+
+/***/ }),
+
 /***/ "./assets/js/file.js":
 /*!***************************!*\
   !*** ./assets/js/file.js ***!
@@ -59,7 +247,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider */ "./assets/js/slider.js");
 /* harmony import */ var _file__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./file */ "./assets/js/file.js");
 /* harmony import */ var _scroll__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scroll */ "./assets/js/scroll.js");
+/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cart */ "./assets/js/cart.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
 
 
 
@@ -75,6 +265,7 @@ $(document).find('.body-overlay').addClass('fade');
 setTimeout(function () {
   $(document).find('.body-overlay').addClass('hide');
 }, 300);
+(0,_cart__WEBPACK_IMPORTED_MODULE_5__.cart)();
 (0,_variation__WEBPACK_IMPORTED_MODULE_0__.variation)();
 (0,_select__WEBPACK_IMPORTED_MODULE_1__.select)();
 (0,_slider__WEBPACK_IMPORTED_MODULE_2__.slider)();
