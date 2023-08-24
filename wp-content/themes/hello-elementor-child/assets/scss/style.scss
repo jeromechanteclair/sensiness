@@ -5,15 +5,20 @@
 @import 'header';
 @import 'notices';
 @import 'minicart';
+@import 'footer';
 @import 'faq';
 @import 'accordeons';
 @import 'reviews';
 @import 'single-product';
 @import 'blocks';
 @import 'single';
-
+body{
+    &.lock{
+        overflow-y: hidden;
+    }
+}
 .body-overlay{
-    background-color: #F7DFAA;
+    background-color: var(--beige);
     position: fixed;
     top: 0;
     left: 0;

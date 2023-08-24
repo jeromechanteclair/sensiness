@@ -3,6 +3,7 @@ import { select  } from "./select";
 import { slider  } from "./slider";
 import { file  } from "./file";
 import { scroll  } from "./scroll";
+import { scrollbar  } from "./scrollbar";
 import { cart  } from "./cart";
 
 	if ($('#commentform').length > 0) {
@@ -17,6 +18,7 @@ import { cart  } from "./cart";
           $(document).find('.body-overlay').addClass('hide');
     }, 300);
     cart();
+    scrollbar();
 variation();
 select();
 slider();

@@ -247,8 +247,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider */ "./assets/js/slider.js");
 /* harmony import */ var _file__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./file */ "./assets/js/file.js");
 /* harmony import */ var _scroll__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scroll */ "./assets/js/scroll.js");
-/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cart */ "./assets/js/cart.js");
+/* harmony import */ var _scrollbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scrollbar */ "./assets/js/scrollbar.js");
+/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./cart */ "./assets/js/cart.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
 
 
 
@@ -265,7 +267,8 @@ $(document).find('.body-overlay').addClass('fade');
 setTimeout(function () {
   $(document).find('.body-overlay').addClass('hide');
 }, 300);
-(0,_cart__WEBPACK_IMPORTED_MODULE_5__.cart)();
+(0,_cart__WEBPACK_IMPORTED_MODULE_6__.cart)();
+(0,_scrollbar__WEBPACK_IMPORTED_MODULE_5__.scrollbar)();
 (0,_variation__WEBPACK_IMPORTED_MODULE_0__.variation)();
 (0,_select__WEBPACK_IMPORTED_MODULE_1__.select)();
 (0,_slider__WEBPACK_IMPORTED_MODULE_2__.slider)();
@@ -349,6 +352,46 @@ function scroll() {
   });
 }
 
+
+
+/***/ }),
+
+/***/ "./assets/js/scrollbar.js":
+/*!********************************!*\
+  !*** ./assets/js/scrollbar.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   scrollbar: () => (/* binding */ scrollbar)
+/* harmony export */ });
+/* harmony import */ var simplebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar */ "./node_modules/simplebar/dist/index.mjs");
+/* harmony import */ var simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! simplebar/dist/simplebar.css */ "./node_modules/simplebar/dist/simplebar.css");
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+ // or "import SimpleBar from 'simplebar';" if you want to use it manually.
+
+function detectmob() {
+  return window.innerWidth < 1025;
+}
+function scrollbar() {
+  if (detectmob()) {
+    new simplebar__WEBPACK_IMPORTED_MODULE_0__["default"]($('.scroll-menus')[0]);
+    $(document).find('.sub-menu').each(function (i, el) {
+      new simplebar__WEBPACK_IMPORTED_MODULE_0__["default"]($(el)[0]);
+    });
+  }
+  $(document).on('click', '.toggle-menu', function () {
+    $(document).find('body').toggleClass('lock');
+    $(document).find('.scroll-menus').toggleClass('show');
+    $(document).find('.scroll-menus .menu').first().find('li').first().toggleClass('active');
+  });
+  $(document).on('click ', '.has-child >a', function (e) {
+    e.preventDefault();
+    $(document).find('.has-child').removeClass('active');
+    $(this).parent().addClass('active');
+  });
+}
 
 
 /***/ }),

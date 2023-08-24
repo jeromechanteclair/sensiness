@@ -47,7 +47,8 @@ $marque_menu = wp_nav_menu( [
 		</a>
 	</div>
 
-	<nav class="site-navigation">
+	<nav class="site-navigation scrollbar "   >
+		<div class="scroll-menus">
 		<?php if ( $product_menu ) : ?>
 		<?php
 		// PHPCS - escaped by WordPress with "wp_nav_menu"
@@ -57,10 +58,22 @@ $marque_menu = wp_nav_menu( [
 		<?php if ( $product_menu ) : ?>
 		<?php
 		// PHPCS - escaped by WordPress with "wp_nav_menu"
-		echo $besoins_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $product_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		?>
+		<?php endif; ?>
+		<?php if ( $product_menu ) : ?>
+		<?php
+		// PHPCS - escaped by WordPress with "wp_nav_menu"
+		echo $product_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
 		<?php endif; ?>
 		<?php if ( $besoins_menu ) : ?>
+		<?php
+		// PHPCS - escaped by WordPress with "wp_nav_menu"
+		echo $besoins_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		?>
+		<?php endif; ?>
+		<?php if ( $guidecbd_menu ) : ?>
 		<?php
 		// PHPCS - escaped by WordPress with "wp_nav_menu"
 		echo $guidecbd_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -72,9 +85,10 @@ $marque_menu = wp_nav_menu( [
 		echo $marque_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
 		<?php endif; ?>
+		</div>
 	</nav>
 	<div class="end-navigation">
-		<a href="<?php get_permalink(get_option('page_for_posts'));?>">
+		<a class="blog" href="<?php get_permalink(get_option('page_for_posts'));?>">
 			<span>Notre blog</span>
 		</a>
 		<a href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id'));?>">
@@ -90,6 +104,16 @@ $marque_menu = wp_nav_menu( [
 		<div class="toggle-cart mini-cart">
 			<?php woocommerce_mini_cart();?>
 		
+
+		</div>
+		<div class="toggle-menu">
+			<svg class="close" width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M0 5.5V4.5H14V5.5H0ZM0 1.5V0.5H14V1.5H0Z" fill="#1C1B1F"/>
+			</svg>
+			<svg class="open" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M1.39911 13.3078L0.691406 12.6001L6.29141 7.00008L0.691406 1.40008L1.39911 0.692383L6.99911 6.29238L12.5991 0.692383L13.3068 1.40008L7.70681 7.00008L13.3068 12.6001L12.5991 13.3078L6.99911 7.70778L1.39911 13.3078Z" fill="#1C1B1F"/>
+			</svg>
+
 
 		</div>
 		<div class="cart-overlay"></div>
