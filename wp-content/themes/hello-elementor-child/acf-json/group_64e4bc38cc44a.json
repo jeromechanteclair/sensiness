@@ -40,6 +40,11 @@
                 "param": "nav_menu",
                 "operator": "==",
                 "value": "all"
+            },
+            {
+                "param": "nav_menu",
+                "operator": "!=",
+                "value": "106"
             }
         ]
     ],
@@ -52,5 +57,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1692712045
+    "modified": 1692956829
 }

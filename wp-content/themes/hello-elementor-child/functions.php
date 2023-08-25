@@ -19,6 +19,10 @@ require_once(get_stylesheet_directory() . '/inc/Summary.php');
 require_once(get_stylesheet_directory() . '/inc/acf.php');
 require_once(get_stylesheet_directory() . '/inc/Post.php');
 
+@ini_set('upload_max_size', '80M');
+@ini_set('post_max_size', '80M');
+@ini_set('max_execution_time', '300');
+
 
 /***
  * Defer scripts

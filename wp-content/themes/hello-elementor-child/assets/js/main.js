@@ -5,6 +5,7 @@ import { file  } from "./file";
 import { scroll  } from "./scroll";
 import { scrollbar  } from "./scrollbar";
 import { cart  } from "./cart";
+import { video  } from "./video";
 
 	if ($('#commentform').length > 0) {
 		$('#commentform')[0].encoding = 'multipart/form-data';
@@ -17,6 +18,7 @@ import { cart  } from "./cart";
     setTimeout(() => {
           $(document).find('.body-overlay').addClass('hide');
     }, 300);
+    video();
     cart();
     scrollbar();
 variation();
@@ -24,3 +26,12 @@ select();
 slider();
 file();
 scroll();
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});

@@ -74,8 +74,53 @@ class Woocommerce  {
 		</div>';
 		echo $html;
 	}
+	/**
+	 * retourne moyenne des avisd
+	 *
+	 * @return void
+	 */
+	public static function get_average_review_rating()
+		{
+			global $wpdb;
+
+			// Remplacez 'wp_comments' par le nom de table des commentaires si nécessaire
+			$table_name = $wpdb->prefix . 'comments';
+
+			$query = "SELECT AVG(comment_meta.meta_value) AS average_rating
+					FROM $table_name AS comments
+					INNER JOIN $wpdb->commentmeta AS comment_meta ON comments.comment_ID = comment_meta.comment_id
+					WHERE comments.comment_approved = '1' 
+					AND comment_meta.meta_key = 'rating'"; // Assurez-vous d'ajuster 'rating' selon le méta-clé réelle pour les notes de review
+
+			$average_rating = $wpdb->get_var($query);
+
+			return number_format($average_rating, 1);
+
+		}
+ 
 
 	/**
+	 * Nombre total de commentaires
+	 *
+	 * @return void
+	 */
+	public static function get_total_review_comments(){
+		global $wpdb;
+
+		// Remplacez 'wp_comments' par le nom de table des commentaires si nécessaire
+		$table_name = $wpdb->prefix . 'comments';
+
+		$query = "SELECT COUNT(comment_ID) AS total_reviews
+				FROM $table_name
+				WHERE comment_approved = '1' 
+				AND comment_type = 'review'"; // Assurez-vous que 'review' correspond au type de commentaire pour les reviews
+
+		$total_reviews = $wpdb->get_var($query);
+
+		return $total_reviews;
+	}
+
+		/**
 	 *comment form
 	 *
 	 * @return void

@@ -32,6 +32,39 @@ class AcfBlocks
             'mode' => 'edit',
             'render_callback' => array($this,'acf_render'),
         ]);
+        acf_register_block_type([
+            'name' => 'hero-video',
+            'title' => __('hero vidéo'),
+            'description' => __('hero vidéo'),
+            'render_template' => 'block/hero-video',
+            'category' => 'blocks_sensiness',
+            'icon' => 'format-aside',
+            'keyword' => [__('hero vidéo')],
+            'mode' => 'edit',
+            'render_callback' => array($this,'acf_render'),
+        ]);
+        acf_register_block_type([
+            'name' => 'bandeau-marquee',
+            'title' => __('Bandeau marquee'),
+            'description' => __('Bandeau marquee'),
+            'render_template' => 'block/bandeau-marquee',
+            'category' => 'blocks_sensiness',
+            'icon' => 'format-aside',
+            'keyword' => [__('Bandeau marquee')],
+            'mode' => 'edit',
+            'render_callback' => array($this,'acf_render'),
+        ]);
+        acf_register_block_type([
+            'name' => 'highlights-products',
+            'title' => __('Mise en avant de produits'),
+            'description' => __('Mise en avant de produits'),
+            'render_template' => 'block/highlights-products',
+            'category' => 'blocks_sensiness',
+            'icon' => 'format-aside',
+            'keyword' => [__('Mise en avant de produits')],
+            'mode' => 'edit',
+            'render_callback' => array($this,'acf_render'),
+        ]);
      
     }
 
@@ -48,6 +81,9 @@ class AcfBlocks
 		$registered_blocks = array_keys(WP_Block_Type_Registry::get_instance()->get_all_registered());
 
 		$registered_blocks[]='bandeau';
+		$registered_blocks[]='bandeau-marquee';
+		$registered_blocks[]='hero-video';
+		$registered_blocks[]='highlights-products';
            
 
         return $registered_blocks;

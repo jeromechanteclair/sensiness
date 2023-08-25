@@ -21,6 +21,7 @@ class Images
 		add_image_size('product_slide', 500, 961, true);
 		add_image_size('product_slide_double', 1000, 1922, true);
 		add_image_size('banner_header', 684, 188, true);
+		add_image_size('menu_cat', 143, 96, true);
 		add_image_size('product_slide_mobile', 428, 740, true);
 		add_image_size('product_slide_mobile_double', 856, 1480, true);
 

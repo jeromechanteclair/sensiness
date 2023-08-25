@@ -1167,7 +1167,8 @@ html {
     align-items: center;
     justify-content: center;
     padding: 28px 0;
-
+    font-family: 'Recoleta';
+    color: var(--black);
     overflow: hidden;
     position: relative;
 
@@ -1430,8 +1431,9 @@ html {
                 .star-rating {
                     margin: 12px auto;
                 }
-                .product-rating-count{
-                    color:var(--green);
+
+                .product-rating-count {
+                    color: var(--green);
                 }
 
 
@@ -1568,14 +1570,14 @@ html {
 
             &__left {
                 h2 {
-                      font-family: 'Recoleta';
-                 font-style: normal;
-                 font-weight: 400;
-                font-size: 38px;
-                line-height: 48px;
-                white-space:break-spaces;
-                word-break: break-word;
-                    
+                    font-family: 'Recoleta';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 38px;
+                    line-height: 48px;
+                    white-space: break-spaces;
+                    word-break: break-word;
+
                 }
 
             }

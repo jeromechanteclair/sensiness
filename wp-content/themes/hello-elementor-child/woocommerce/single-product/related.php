@@ -37,6 +37,7 @@ if ( $related_products ) : ?>
 			<?php foreach ( $related_products as $related_product ) : ?>
 
 					<?php
+				
 					$post_object = get_post( $related_product->get_id() );
 
 					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found

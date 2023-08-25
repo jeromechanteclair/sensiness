@@ -66,14 +66,10 @@ if(!is_cart() && $counter> 0){
 <?php if ( ! WC()->cart->is_empty() ) : ?>
 	<div class="minicart-aside__header">
 		<p class="minicart-title">Panier : <span><?php echo $counter;?> article<?php if($counter > 1) :?>s<?php endif;?></span></p>
-		<span class="toggle-close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_155_2725" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
-<rect width="16" height="16" fill="#D9D9D9"/>
-</mask>
-<g mask="url(#mask0_155_2725)">
-<path d="M4.26672 12.2052L3.79492 11.7334L7.52825 8.00005L3.79492 4.26672L4.26672 3.79492L8.00005 7.52825L11.7334 3.79492L12.2052 4.26672L8.47186 8.00005L12.2052 11.7334L11.7334 12.2052L8.00005 8.47185L4.26672 12.2052Z" fill="#1C1B1F"/>
-</g>
-</svg>
+		<span class="toggle-close">
+	<svg class="" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M1.39911 13.3078L0.691406 12.6001L6.29141 7.00008L0.691406 1.40008L1.39911 0.692383L6.99911 6.29238L12.5991 0.692383L13.3068 1.40008L7.70681 7.00008L13.3068 12.6001L12.5991 13.3078L6.99911 7.70778L1.39911 13.3078Z" fill="#1C1B1F"/>
+			</svg>
 </span>
 			<?php echo  do_shortcode('[woo_free_shipping_bar ]');?>
 	</div>

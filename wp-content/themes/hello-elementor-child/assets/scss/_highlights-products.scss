@@ -1,0 +1,198 @@
+.highlights-products {
+    .container{
+        max-width: calc(var(--max-width) - 48px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 64px 0 24px 0;
+        h2{
+            font-size: 40px;
+font-style: normal;
+font-weight: 300;
+line-height: 48px; 
+ font-family: 'Recoleta';
+ color:var(--black);
+        }
+        a{
+            @include button;
+            width: auto;
+            font-family: 'Recoleta';
+            font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+        }
+
+    }
+    .products {
+        list-style: none;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: calc(var(--max-width) - 48px);
+        margin: 0 auto;
+        gap: 24px;
+
+        @media screen and (max-width:1024px) {
+            max-width: var(--max-width);
+        }
+
+        .product {
+            position: relative;
+            margin-bottom: 24px;
+
+            a {
+                text-decoration: none;
+            }
+
+            .title {
+                color: var(--black);
+                font-family: 'Recoleta';
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 32px;
+                margin: 16px 0 12px 0;
+            }
+
+            .custom-stars {
+                display: flex;
+                flex-flow: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 12px;
+              
+color: var(--black);
+                .product-rating-count {
+                     margin-bottom: 12px;
+                }
+
+                .star-rating {
+                    color: var(--yellow);
+                    float: none;
+                      margin-bottom: 12px;
+
+                }
+            }
+            .price{
+                display: flex;
+                gap: 8px;
+                margin-bottom: 24px;
+               color: var(--black);
+            font-family: "NeueHaasDisplay-Roman";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            del{
+                color:var(--red);
+                margin-right: 0!important;
+            }
+            }
+
+            &:hover {
+                .secondary-image {
+                    opacity: 1;
+                }
+            }
+
+            .button {
+
+                z-index: 2;
+                @include button;
+               width: 100%;
+                text-align: center;
+                text-decoration: none;
+                text-transform: none;
+                font-family: 'Recoleta';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px;
+                  background-color:transparent;
+                color: var(--black);
+                border: 1px solid var(--black);
+                &:hover {
+                    color: var(--white);
+                       border: 1px solid #607440;
+                }
+              
+            }
+
+
+            picture {
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-height: 448px;
+                height: 100%;
+                border-radius: 10px;
+
+
+            
+
+            img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+            }
+            }
+
+            .secondary-image {
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+
+            &:nth-of-type(2) {
+                 margin-bottom: 0;
+                .button {
+                    position: absolute;
+                    top: 520px;
+                      left: 24px;
+                     width: calc(100% - 48px);
+                       background-color: var(--white);
+                color: var(--green-med);
+                border: 1px solid var(--beige-med);
+                &:hover {
+                    border: 1px solid #607440;
+                        background-color:#607440;
+                    color: var(--white);
+                }
+                }
+
+                picture {
+                    max-height: 600px;
+                }
+            }
+
+            &:first-of-type {
+                grid-column: span 2;
+                
+                margin-bottom: 0;
+
+                .button {
+                    position: absolute;
+                    top: 520px;
+                    left: 24px;
+                     width: calc(100% - 48px);
+                       background-color: var(--white);
+                color: var(--green-med);
+                border: 1px solid var(--beige-med);
+                &:hover {
+                    border: 1px solid #607440;
+                        background-color:#607440;
+                    color: var(--white);
+                }
+                }
+
+                picture {
+                    max-height: 600px;
+                }
+            }
+        }
+    }
+}

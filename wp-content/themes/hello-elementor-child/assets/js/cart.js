@@ -75,30 +75,46 @@ function cart() {
     const bodyoverlay = document.querySelector('.cart-overlay');
     const body = document.querySelector('body');
 
-    document.addEventListener("click", function (e) {
-        const target = e.target.closest(".toggle-cart"); // Or any other selector.
 
-        if (target) {
+    $(document).on('click','.toggle-cart',function(){
+       
+          $(document).find('.cart-overlay').toggleClass('show')
+             $(document).find('.minicart-aside').toggleClass('hide')
+             $(document).find('body').addClass('lock')
+             $(document).find('.toggle-menu').removeClass('open')
+                 
+        $(document).find('.scroll-menus').removeClass('show')
+         $(document).find('.scroll-menus .menu').first().removeClass('active');
+        $(document).find('.scroll-menus .menu').first().find('li').first().removeClass('active');
 
-            const minicart = target.nextElementSibling;
 
-            minicart.classList.toggle('hide');
-            bodyoverlay.classList.toggle('show');
-            body.classList.toggle('lock');
-        }
-    });
 
-    document.addEventListener("click", function (e) {
-        const target = e.target.closest(".toggle-close"); // Or any other selector.
+    })
+    $(document).on('click','.toggle-close',function(){
+                $(document).find('body').toggleClass('lock')
 
-        if (target) {
+      $(document).find('.cart-overlay').toggleClass('show')
+        $(document).find('.minicart-aside').toggleClass('hide')
 
-            const minicart = target.closest(".minicart-aside")
-            minicart.classList.toggle('hide');
-            bodyoverlay.classList.toggle('show');
-            body.classList.toggle('lock');
-        }
-    });
+    })
+    $(document).on('click','.cart-overlay',function(){
+                $(document).find('body').toggleClass('lock')
+
+      $(document).find('.cart-overlay').toggleClass('show')
+   $(document).find('.minicart-aside').toggleClass('hide')
+
+    })
+    // document.addEventListener("click", function (e) {
+    //     const target = e.target.closest(".toggle-close"); // Or any other selector.
+
+    //     if (target) {
+
+    //         const minicart = target.closest(".minicart-aside")
+    //         minicart.classList.toggle('hide');
+
+    //         body.classList.toggle('lock');
+    //     }
+    // });
 
     $(document).on('click', '.woocommerce-delete-coupon', function (e) {
         e.preventDefault();

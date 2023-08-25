@@ -34,6 +34,12 @@ $marque_menu = wp_nav_menu( [
 	'echo' => false,
 	'walker' => new sensiness\app\Custom_Submenu_Walker(),
 ] );
+$categories = wp_nav_menu( [
+	'theme_location' => 'menu-categories',
+	'fallback_cb' => false,
+	'echo' => false,
+	'walker' => new sensiness\app\Categories_Walker(),
+] );
 
 ?>
 
@@ -86,6 +92,9 @@ $marque_menu = wp_nav_menu( [
 		?>
 		<?php endif; ?>
 		</div>
+	
+		
+		
 	</nav>
 	<div class="end-navigation">
 		<a class="blog" href="<?php get_permalink(get_option('page_for_posts'));?>">
@@ -101,7 +110,7 @@ $marque_menu = wp_nav_menu( [
 			</g>
 			</svg>
 		</a>
-		<div class="toggle-cart mini-cart">
+		<div class=" mini-cart">
 			<?php woocommerce_mini_cart();?>
 		
 
@@ -120,3 +129,10 @@ $marque_menu = wp_nav_menu( [
 	</div>
 	</div>
 </header>
+	<div class="categories-menu">
+
+		
+			<?php if($categories){
+				echo $categories;
+			}?>
+	</div>
