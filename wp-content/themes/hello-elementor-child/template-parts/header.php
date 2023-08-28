@@ -61,18 +61,8 @@ $categories = wp_nav_menu( [
 		echo $product_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
 		<?php endif; ?>
-		<?php if ( $product_menu ) : ?>
-		<?php
-		// PHPCS - escaped by WordPress with "wp_nav_menu"
-		echo $product_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		?>
-		<?php endif; ?>
-		<?php if ( $product_menu ) : ?>
-		<?php
-		// PHPCS - escaped by WordPress with "wp_nav_menu"
-		echo $product_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		?>
-		<?php endif; ?>
+
+	
 		<?php if ( $besoins_menu ) : ?>
 		<?php
 		// PHPCS - escaped by WordPress with "wp_nav_menu"

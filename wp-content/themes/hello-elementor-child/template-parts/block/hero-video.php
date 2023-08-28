@@ -57,16 +57,12 @@ $total = sensiness\app\Woocommerce::get_total_review_comments();
 				<?=$total;?> Avis
 		</span>
 		</div>
-	<picture>
-		<source srcset="<?= $thumbnail['url'];?>' 2x,<?= $thumbnail['url'];?>" media="(min-width: 999px)"/>
-		<source srcset="<?= $thumbnail['url'];?> 2x,<?= $thumbnail['url'];?>" media="(max-width: 999px)"/>
-		<img src="<?= $thumbnail['url'];?>" alt="hero" loading="lazy"/>
-	</picture>
-		<video  id='video-home' playsinline preload='metadata' width='100%' height='100%' loop muted preload="none" poster="<?= $thumbnail['url'];?>">
+
+		<video class="lazy" id='video-home' autoplay  playsinline preload='metadata' width='100%' height='100%' loop muted preload="none" poster="<?= $thumbnail['url'];?>">
 
 	
 
-		<source src="<?= $video['url'];?>" type="<?= $video['mime_type'];?>" />
+		<source data-src="<?= $video['url'];?>" type="<?= $video['mime_type'];?>" />
 
 	</video>
 		<?= $title ;?>

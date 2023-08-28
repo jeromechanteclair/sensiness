@@ -83,6 +83,12 @@ $support = wp_nav_menu([
 		    ?>
 		<?php endif; ?>
 	
+		<?php if ($guidecbd_menu) : ?>
+		<?php
+		    // PHPCS - escaped by WordPress with "wp_nav_menu"
+		    echo $guidecbd_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		    ?>
+		<?php endif; ?>
 		<?php if ($marque_menu) : ?>
 		<?php
 		    // PHPCS - escaped by WordPress with "wp_nav_menu"
@@ -110,12 +116,7 @@ $support = wp_nav_menu([
 		<a href="<?php get_permalink(get_option('page_for_posts'));?>">
 			<span>Nos partenaires</span>
 		</a>
-			<?php if ($besoins_menu) : ?>
-		<?php
-            // PHPCS - escaped by WordPress with "wp_nav_menu"
-            echo $besoins_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-    ?>
-		<?php endif; ?>
+	
 		</nav>
 		</div>
 

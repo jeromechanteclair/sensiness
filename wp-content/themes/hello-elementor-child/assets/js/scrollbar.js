@@ -11,24 +11,24 @@ var categorybar;
 
 function scrollbar() {
     let lastScrollTop = 0;
-      
-      $(window).scroll(function() {
-        const scrollTop = $(this).scrollTop();
-        
-        if (scrollTop > lastScrollTop) {
-              $('.categories-menu').addClass('scroll')
-        } else {
-          console.log("Scrolling up");
-          $('.categories-menu').removeClass('scroll')
-        }
-        
-        lastScrollTop = scrollTop;
-      });
-    if ( detectmob()) {
 
-      new SimpleBar($('.scroll-menus')[0]);
+    $(window).scroll(function () {
+        const scrollTop = $(this).scrollTop();
+
+        if (scrollTop > lastScrollTop) {
+            $('.categories-menu').addClass('scroll')
+        } else {
+            console.log("Scrolling up");
+            $('.categories-menu').removeClass('scroll')
+        }
+
+        lastScrollTop = scrollTop;
+    });
+    if (detectmob()) {
+
+        new SimpleBar($('.scroll-menus')[0]);
         $(document).find('.sub-menu').each(function (i, el) {
-              new SimpleBar($(el)[0]);
+            new SimpleBar($(el)[0]);
         })
         $(document).find('.categories-menu .menu').each(function (i, el) {
             new SimpleBar($(el)[0]);
@@ -43,12 +43,31 @@ function scrollbar() {
 
     })
     $(document).on('click ', '.has-child >a', function (e) {
+            if (detectmob()) {
         e.preventDefault()
+          }
         $(document).find('.has-child').removeClass('active');
         $(document).find('.menu').removeClass('active');
         $(this).parent().addClass('active');
         $(this).parent().parent().addClass('active');
+          
     })
+    if (!detectmob()) {
+        $('.has-child').hover(function (e) {
+            // alert('ok')
+
+            $(this).find('.sub-menu').removeClass('hide')
+            $(this).find('.sub-menu').addClass('active')
+            $(this).find('.sub-menu').css('z-index', '999')
+        }, function () {
+            $(this).find('.sub-menu').css('z-index', '998')
+            $(this).find('.sub-menu').addClass('hide')
+            setTimeout(() => {
+                $(this).find('.sub-menu').removeClass('active')
+
+            }, 300);
+        })
+    }
 }
 export {
     scrollbar

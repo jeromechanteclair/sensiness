@@ -428,12 +428,30 @@ function scrollbar() {
     $(document).find('.scroll-menus .menu').first().find('li').first().toggleClass('active');
   });
   $(document).on('click ', '.has-child >a', function (e) {
-    e.preventDefault();
+    if (detectmob()) {
+      e.preventDefault();
+    }
     $(document).find('.has-child').removeClass('active');
     $(document).find('.menu').removeClass('active');
     $(this).parent().addClass('active');
     $(this).parent().parent().addClass('active');
   });
+  if (!detectmob()) {
+    $('.has-child').hover(function (e) {
+      // alert('ok')
+
+      $(this).find('.sub-menu').removeClass('hide');
+      $(this).find('.sub-menu').addClass('active');
+      $(this).find('.sub-menu').css('z-index', '999');
+    }, function () {
+      var _this = this;
+      $(this).find('.sub-menu').css('z-index', '998');
+      $(this).find('.sub-menu').addClass('hide');
+      setTimeout(function () {
+        $(_this).find('.sub-menu').removeClass('active');
+      }, 300);
+    });
+  }
 }
 
 
@@ -705,6 +723,29 @@ function video() {
       video[0].play();
     });
   }
+  document.addEventListener("DOMContentLoaded", function () {
+    var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+    if ("IntersectionObserver" in window) {
+      var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (video) {
+          if (video.isIntersecting) {
+            for (var source in video.target.children) {
+              var videoSource = video.target.children[source];
+              if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                videoSource.src = videoSource.dataset.src;
+              }
+            }
+            video.target.load();
+            video.target.classList.remove("lazy");
+            lazyVideoObserver.unobserve(video.target);
+          }
+        });
+      });
+      lazyVideos.forEach(function (lazyVideo) {
+        lazyVideoObserver.observe(lazyVideo);
+      });
+    }
+  });
 }
 
 
