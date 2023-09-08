@@ -646,7 +646,7 @@ body.sensiness .categories-menu + main, body.sensiness .categories-menu + div {
   position: fixed;
   top: 136px;
   right: 48px;
-  z-index: 999;
+  z-index: 998;
   max-width: 460px;
   animation-name: notif, vanish;
   animation-duration: 800ms, 800ms;
@@ -883,7 +883,6 @@ body.sensiness .categories-menu + main, body.sensiness .categories-menu + div {
 @media screen and (max-width: 820px) {
   #site-header .end-navigation .minicart-aside__header {
     max-width: 100%;
-    max-height: 6.15rem;
   }
 }
 #site-header .end-navigation .minicart-aside__header #wfspb-shortcode {
@@ -934,7 +933,7 @@ body.sensiness .categories-menu + main, body.sensiness .categories-menu + div {
 }
 @media screen and (max-width: 820px) {
   #site-header .end-navigation .minicart-aside .cart_list {
-    padding-top: 6.2rem;
+    padding-top: 9.2rem;
   }
 }
 #site-header .end-navigation .minicart-aside .cart_list .woocommerce-mini-cart-item {
