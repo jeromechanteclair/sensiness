@@ -75,6 +75,10 @@
   width: auto;
 }
 
+body.admin-bar #site-header {
+  top: 25px;
+}
+
 #site-header {
   width: 100%;
   max-width: 100%;
