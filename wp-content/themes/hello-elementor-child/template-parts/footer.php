@@ -14,37 +14,58 @@ $product_menu = wp_nav_menu([
     'theme_location' => 'menu-produits',
     'fallback_cb' => false,
     'echo' => false,
-   
+	'walker' => new sensiness\app\Footer_Walker(),
+   	'logos'=>false
 ]);
 $besoins_menu = wp_nav_menu([
     'theme_location' => 'menu-besoins',
     'fallback_cb' => false,
     'echo' => false,
+	'walker' => new sensiness\app\Footer_Walker(),
+	 	'logos'=>false
 
 ]);
 $guidecbd_menu = wp_nav_menu([
     'theme_location' => 'menu-guidecbd',
     'fallback_cb' => false,
     'echo' => false,
-
+	'walker' => new sensiness\app\Footer_Walker(),
+		'logos'=>false
 ]);
 $marque_menu = wp_nav_menu([
     'theme_location' => 'menu-marque',
     'fallback_cb' => false,
     'echo' => false,
-
+	'walker' => new sensiness\app\Footer_Walker(),
+		'logos'=>false
 ]);
 $account = wp_nav_menu([
     'theme_location' => 'menu-account',
     'fallback_cb' => false,
     'echo' => false,
-
+	'walker' => new sensiness\app\Footer_Walker(),
+		'logos'=>false
 ]);
 $support = wp_nav_menu([
     'theme_location' => 'menu-support',
     'fallback_cb' => false,
     'echo' => false,
-
+	'walker' => new sensiness\app\Footer_Walker(),
+		'logos'=>false
+]);
+$follow = wp_nav_menu([
+    'theme_location' => 'menu-follow',
+    'fallback_cb' => false,
+    'echo' => false,
+	'walker' => new sensiness\app\Footer_Walker(),
+		'logos'=>false
+]);
+$partenaires = wp_nav_menu([
+    'theme_location' => 'menu-partenaires',
+    'fallback_cb' => false,
+    'echo' => false,
+	'walker' => new sensiness\app\Footer_Walker(),
+	'logos'=>true
 ]);
 
 ?>
@@ -95,9 +116,15 @@ $support = wp_nav_menu([
 		    echo $marque_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		    ?>
 		<?php endif; ?>
-		<a href="<?php get_permalink(get_option('page_for_posts'));?>">
-			<span>Notre blog</span>
-		</a>
+		<ul class="menu">
+			<li>
+
+				<a href="<?= get_permalink(get_option('page_for_posts'));?>">
+					<span>Notre blog</span>
+				</a>
+			</li>
+		</ul>
+		<div class="footer-divider"></div>
 		<?php if ($account) : ?>
 		<?php
 		    // PHPCS - escaped by WordPress with "wp_nav_menu"
@@ -110,14 +137,28 @@ $support = wp_nav_menu([
 		    echo $support; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		    ?>
 		<?php endif; ?>
-		<a href="<?php get_permalink(get_option('page_for_posts'));?>">
-			<span>Nous suivre</span>
-		</a>
-		<a href="<?php get_permalink(get_option('page_for_posts'));?>">
-			<span>Nos partenaires</span>
-		</a>
+		<?php if ($follow) : ?>
+		<?php
+		    // PHPCS - escaped by WordPress with "wp_nav_menu"
+		    echo $follow; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		    ?>
+		<?php endif; ?>
+		<?php if ($partenaires) : ?>
+		<?php
+		    // PHPCS - escaped by WordPress with "wp_nav_menu"
+		    echo $partenaires; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		    ?>
+		<?php endif; ?>
+	
 	
 		</nav>
-		</div>
+</div>
+<div class="footer__bottom">
+	<div class="footer__bottom--divider"></div>
+<div class="container">
+	<span>©<?=  date("Y");?> Sensiness · Tous droits réservés</span>
+	<a href="https://jerome-chanteclair.com" target="_blank">Développement Jérôme Chanteclair</a>
+</div>
+</div>
 
 </footer>

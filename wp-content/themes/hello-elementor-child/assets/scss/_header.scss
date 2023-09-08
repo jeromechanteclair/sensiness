@@ -78,6 +78,14 @@
                     align-items: center;
                     gap: 12px;
                     cursor: pointer;
+                    &.active,&.current{
+                         @media screen and (min-width: 1024px) {
+                        border-bottom: 1px solid var(--black);
+                         }
+                        //  background-color: red;
+
+
+                    }
 
                     >a {}
 
@@ -160,6 +168,34 @@
 
                             li {
                                 border: none;
+                                a{    
+                                    padding-bottom: 8px;
+                                        position: relative;
+                                        &:after{
+                                                @media screen and (min-width: 1024px) {
+                                            content:'';
+                                            width: 0;
+                                            height: 1px ;
+                                            background-color: var(--green);
+                                            display: block;
+                                            position: absolute;
+                                            bottom: 0;
+                                            left: 0;
+                                            @include transition;
+                                                }
+                                        }
+                                    }
+                                &:hover,&.current{
+                                    a{
+                                        position: relative;
+                                        &:after{
+                                              @media screen and (min-width: 1024px) {
+                                            width: 100%;
+                                              }
+                                          
+                                        }
+                                    }
+                                }
 
                                 a {
                                     font-family: "NeueHaasDisplay-Roman";
@@ -295,6 +331,9 @@
                                         text-transform: none;
                                         font-weight: 400;
                                         line-height: 24px;
+                                        &:hover{
+                                            color:var(--white);
+                                        }
                                         /* 150% */
                                     }
                                 }
@@ -355,8 +394,10 @@
                 position: relative;
 
                 .has-child {
+                   
                     &.active{
-                         .sub-menu{
+
+                        .sub-menu{
                         display: grid;
                     } 
                     }
@@ -539,7 +580,7 @@ body.sensiness {
         }
     }
 
-    .categories-menu+main {
+    .categories-menu+main , .categories-menu+div{
         margin-top: 75px;
     }
 }

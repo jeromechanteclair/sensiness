@@ -296,6 +296,12 @@ window.addEventListener('resize', function () {
   var vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
 });
+$(document).on('click', '.toggle-sublist', function () {
+  var parent = $(this).parent('li');
+  var siblings = $(this).parents('.menu ').find('li');
+  // parent.toggleClass('open')
+  siblings.toggleClass('open');
+});
 
 /***/ }),
 
@@ -439,12 +445,13 @@ function scrollbar() {
   if (!detectmob()) {
     $('.has-child').hover(function (e) {
       // alert('ok')
-
+      $(this).addClass('active');
       $(this).find('.sub-menu').removeClass('hide');
       $(this).find('.sub-menu').addClass('active');
       $(this).find('.sub-menu').css('z-index', '999');
     }, function () {
       var _this = this;
+      $(this).removeClass('active');
       $(this).find('.sub-menu').css('z-index', '998');
       $(this).find('.sub-menu').addClass('hide');
       setTimeout(function () {

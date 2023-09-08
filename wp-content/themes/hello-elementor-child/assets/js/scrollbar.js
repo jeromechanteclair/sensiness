@@ -43,23 +43,24 @@ function scrollbar() {
 
     })
     $(document).on('click ', '.has-child >a', function (e) {
-            if (detectmob()) {
-        e.preventDefault()
-          }
+        if (detectmob()) {
+            e.preventDefault()
+        }
         $(document).find('.has-child').removeClass('active');
         $(document).find('.menu').removeClass('active');
         $(this).parent().addClass('active');
         $(this).parent().parent().addClass('active');
-          
+
     })
     if (!detectmob()) {
         $('.has-child').hover(function (e) {
             // alert('ok')
-
+            $(this).addClass('active');
             $(this).find('.sub-menu').removeClass('hide')
             $(this).find('.sub-menu').addClass('active')
             $(this).find('.sub-menu').css('z-index', '999')
         }, function () {
+               $(this).removeClass('active');
             $(this).find('.sub-menu').css('z-index', '998')
             $(this).find('.sub-menu').addClass('hide')
             setTimeout(() => {

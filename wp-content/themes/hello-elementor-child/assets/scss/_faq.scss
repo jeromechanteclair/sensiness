@@ -20,6 +20,7 @@ ul.accordions {
 			font-size: 48px;
 			margin-bottom: 48px ;
 			font-family: 'Recoleta';
+			  color:var(--black);
 		}
 	}
 
@@ -28,14 +29,14 @@ ul.accordions {
 		width: 100%;
 		border-bottom:1px solid #EBE9E0;
 		
-
+  color:var(--black);
 		@media screen and (max-width: 834px) {
 			max-width: 100%;
 		}
 
 		.accordion-header {
 	
-			color: #506531;
+			  color:var(--black);
 font-family: 'Recoleta';
 font-style: normal;
 font-weight: 400;

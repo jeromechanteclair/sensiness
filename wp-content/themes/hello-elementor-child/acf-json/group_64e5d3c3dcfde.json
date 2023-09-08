@@ -1,6 +1,6 @@
 {
     "key": "group_64e5d3c3dcfde",
-    "title": "Menu : SVG",
+    "title": "Menu : item",
     "fields": [
         {
             "key": "field_64e5d3c867409",
@@ -26,6 +26,26 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_64f6f0220309c",
+            "label": "Afficher dans le footer",
+            "name": "show_footer",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
         }
     ],
     "location": [
@@ -46,5 +66,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1692783645
+    "modified": 1693904979
 }

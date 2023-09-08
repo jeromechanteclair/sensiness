@@ -13,14 +13,14 @@ font-family: "NeueHaasDisplay-Roman";
     h4,h5,h6{
               font-family: "Recoleta";
         font-style: normal;
-        font-weight: 400; 
+        font-weight: 300; 
            color: var(--black);
     }
     h2 {
 
         font-family: "Recoleta";
         font-style: normal;
-        font-weight: 400;
+        font-weight: 300;
         font-size: 38px;
         line-height: 48px;
         color: var(--black);
@@ -33,14 +33,14 @@ font-family: "NeueHaasDisplay-Roman";
 
         strong,
         b {
-            font-weight: 400;
+            font-weight: 300;
         }
     }
 
     h3 {
         font-family: "Recoleta";
         font-style: normal;
-        font-weight: 400;
+        font-weight: 300;
         font-size: 32px;
         line-height: 48px;
         color: var(--black);
@@ -52,7 +52,7 @@ font-family: "NeueHaasDisplay-Roman";
 
         strong,
         b {
-            font-weight: 400;
+            font-weight: 300;
         }
     }
 
@@ -111,7 +111,7 @@ b,strong{
             margin-top: 24px;
             font-family: "Recoleta";
             font-style: normal;
-            font-weight: 400;
+            font-weight: 300;
             font-size: 56px;
             line-height: 64px;
             color: var(--black);
@@ -240,7 +240,7 @@ b,strong{
 
                         font-family: "Recoleta";
                         font-style: normal;
-                        font-weight: 400;
+                        font-weight: 300;
                         font-size: 24px;
                         line-height: 32px;
                         color: var(--black);
@@ -269,7 +269,7 @@ b,strong{
             li {
                 font-size: 18px;
                 font-style: normal;
-                font-weight: 450;
+                font-weight: 400;
                 line-height: 28px;
                 font-family: "NeueHaasDisplay-Roman";
                 color: var(--black);
@@ -302,7 +302,7 @@ b,strong{
 
                 font-family: "Recoleta";
                 font-style: normal;
-                font-weight: 400;
+                font-weight: 300;
                 font-size: 28px;
                 line-height: 38px;
                 color: var(--black);
@@ -416,11 +416,15 @@ b,strong{
 
                 font-family: "Recoleta";
                 font-style: normal;
-                font-weight: 400;
+                font-weight: 300;
                 font-size: 28px;
                 line-height: 38px;
                 color: var(--black);
                 margin-top: 0;
+            }
+            .subtitle{
+                                color: var(--black);
+
             }
 
             div#probance_form_block {
@@ -622,7 +626,7 @@ br{
         #reply-title {
             font-family: "Recoleta";
             font-style: normal;
-            font-weight: 400;
+            font-weight: 300;
             font-size: 32px;
             line-height: 56px;
             color: var(--black);
@@ -641,7 +645,7 @@ br{
 
             strong,
             b {
-                font-weight: 400;
+                font-weight: 300;
             }
         }
 
@@ -654,7 +658,7 @@ br{
             textarea {
                 font-family: "NeueHaasDisplay-Roman";
                 font-style: normal;
-                font-weight: 450;
+                font-weight: 400;
                 font-size: 16px;
                 line-height: 24px;
                 color: var(--beige);
@@ -731,7 +735,7 @@ br{
                     @include transition;
                     font-family: "Recoleta";
                     font-style: normal;
-                    font-weight: 400;
+                    font-weight: 300;
                     font-size: 24px;
                     line-height: 32px;
                     color: var(--black);

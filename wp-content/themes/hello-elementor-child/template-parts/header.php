@@ -87,7 +87,7 @@ $categories = wp_nav_menu( [
 		
 	</nav>
 	<div class="end-navigation">
-		<a class="blog" href="<?php get_permalink(get_option('page_for_posts'));?>">
+		<a class="blog" href="<?= get_permalink(get_option('page_for_posts'));?>">
 			<span>Notre blog</span>
 		</a>
 		<a href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id'));?>">
