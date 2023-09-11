@@ -12,7 +12,7 @@ class Images
 		add_image_size('2048x2048', '2048', '2048', false);
 		add_image_size('woocommerce_gallery_thumbnail', '300', '300', true);
 		add_image_size('woocommerce_thumbnail', '600', '600', true);
-		add_image_size('single_thumbnail', '600', '336', true);
+		add_image_size('single_thumbnail', '448', '252', true);
 		add_image_size('single_thumbnail_mobile', '358', '200', true);
 		add_image_size('single_hero', '500', '350', true);
 		// add_image_size('single_hero_mobile', '300', '168', true);

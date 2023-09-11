@@ -274,14 +274,16 @@ class Footer_Walker extends \Walker_Nav_Menu {
 				
 		$show_in_footer = get_field('show_footer', $item->ID);
 		if($show_in_footer) {
-
-
-
-
 			$output .= '<li id="menu-item-' . $item->ID . '">';
 			if($item->url!='#'){
+	if($logo && $args->logos){
+		$output .=  '<a  class="logo" href="' . $item->url . '">';
 
-				$output .=  '<a href="' . $item->url . '">';
+	}
+	else{
+
+		$output .=  '<a href="' . $item->url . '">';
+	}
 			}
 			else{
 				$output .="<span>";

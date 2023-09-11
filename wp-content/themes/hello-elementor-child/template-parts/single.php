@@ -72,7 +72,7 @@ while ( have_posts() ) :
 
 		
 	</main>
-		<aside>
+		<aside class="scrollbar">
 			
 		<?php if(!empty($frontend_summary)):?>
 			<p class="title">Sommaire :</p>

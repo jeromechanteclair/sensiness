@@ -57,3 +57,17 @@ $(document).on('click', '.toggle-sublist', function () {
     // parent.toggleClass('open')
     siblings.toggleClass('open')
 })
+
+$(document).on('click','.popup .close-popup',function(){
+    let id = $(this).parent().attr('data-id');
+    let cookietime = $(this).parent().attr('data-cookie');
+
+    document.cookie = "popup_time_"+id+"=" + cookietime + "; path=/";
+    $(this).parent().addClass('hide');
+    console.log(id)
+    console.log(cookietime)
+})
+$(function() {
+setTimeout(() => {
+    $(document).find('.popup').addClass('show');
+}, 3000);})

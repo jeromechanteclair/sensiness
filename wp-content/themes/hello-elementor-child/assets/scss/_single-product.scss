@@ -1157,61 +1157,7 @@ html {
     }
 }
 
-/**
-* Marquee
-*
-*/
-.bandeau-marquee {
-    background-color: var(--yellow);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 28px 0;
-    font-family: 'Recoleta';
-    color: var(--black);
-    overflow: hidden;
-    position: relative;
-
-    &__item {
-        display: flex;
-        width: 200%;
-
-
-        position: absolute;
-        overflow: hidden;
-        gap: 24px;
-
-        animation: marquee 15s linear infinite;
-    }
-
-    span.marquee {
-        float: left;
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        width: 25%;
-
-        @media screen and (max-width:640px) {
-            gap: 12px;
-            width: 50%;
-        }
-
-        span {
-            white-space: nowrap;
-        }
-    }
-
-    @keyframes marquee {
-        0% {
-            left: 0;
-        }
-
-        100% {
-            left: -100%;
-        }
-    }
-}
 
 /**
 * Video
@@ -1793,7 +1739,7 @@ FAQ
             h2 {
                 font-family: 'Recoleta';
                 font-style: normal;
-                font-weight: 400;
+                font-weight: 300;
                 font-size: 48px;
                 line-height: 56px;
                   color:var(--black);

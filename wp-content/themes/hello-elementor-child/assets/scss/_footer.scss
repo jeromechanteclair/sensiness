@@ -5,6 +5,82 @@
     z-index: 94;
     padding: 0;
 
+
+    .nlcontainer {
+        @media screen and (max-width:640px) {
+            width: 100%
+        }
+
+        ;
+
+        .nltitle {
+            margin-top: 24px;
+            font-family: 'Recoleta';
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            color: var(--white);
+
+        }
+
+        div#probance_form_block {
+            br {
+                display: none;
+            }
+
+            form {
+                margin: 0;
+                width: 100%;
+            }
+        }
+
+        .p-nlform-maintitle,
+        .p-nlform-subtitle {
+            display: none;
+        }
+
+        label {
+            margin-bottom: 12px;
+            display: none;
+        }
+
+        .probance_message_submit {
+            padding: 12px;
+            position: relative;
+
+            &.hidden {
+                display: none;
+            }
+
+            margin-top: 12px;
+
+            .message {
+                text-align: left;
+            }
+        }
+
+        input,
+        textarea {
+            @include button;
+            text-transform: none;
+            background-color: white;
+            color: var(--black);
+            border: 1px solid #364321;
+
+            &:hover {
+                background-color: white;
+                color: var(--black);
+                border: 1px solid #364321;
+            }
+
+        }
+
+        input[type="submit"] {
+            @include button;
+        }
+    }
+
     .footer__bottom {
         .container {
             display: flex;
@@ -59,7 +135,7 @@
 
         .site-navigation {
             display: grid;
-            gap: 82px;
+            gap: 36px;
             grid-template-columns: repeat(5, 1fr);
 
             .footer-divider {
@@ -100,7 +176,8 @@
 
             a,
             span {
-                color: var(--white);
+
+                opacity: 1;
                 padding: 0;
 
             }
@@ -114,40 +191,80 @@
                 flex-flow: column;
             }
 
+            .menu-partenaires-container {
+                grid-column: span 2;
+            }
+
             ul.menu {
                 display: flex;
                 flex-flow: column;
 
                 li {
-                    padding: 8px 0;
-                    a{    
-                                    padding-bottom: 8px;
-                                        position: relative;
-                                        &:after{
-                                                @media screen and (min-width: 1024px) {
-                                            content:'';
-                                            width: 0;
-                                            height: 1px ;
-                                            background-color: var(--green);
-                                            display: block;
-                                            position: absolute;
-                                            bottom: 0;
-                                            left: 0;
-                                            @include transition;
-                                                }
-                                        }
-                                    }
-                                &:hover,&.current{
-                                    a{
-                                        position: relative;
-                                        &:after{
-                                              @media screen and (min-width: 1024px) {
-                                            width: 100%;
-                                              }
-                                          
-                                        }
-                                    }
+                    padding: 8px 0 0 0;
+
+                    a {
+                        padding-bottom: 8px;
+                        position: relative;
+                        color: #F5F3E6;
+                        opacity: 0.8;
+
+                        &:hover {
+                            opacity: 1;
+                        }
+
+                        &.logo {
+                            width: 50%;
+
+                            @media screen and (max-width:640px) {
+                                width: 100%;
+                            }
+
+                            picture {
+                                display: flex;
+                                align-items: flex-start;
+                                justify-content: flex-start;
+                                width: 100%;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: contain;
                                 }
+                            }
+
+                            &:after {
+                                display: none;
+                            }
+                        }
+
+                        &:after {
+                            @media screen and (min-width: 1024px) {
+                                content: '';
+                                width: 0;
+                                height: 1px;
+                                background-color: var(--green);
+                                display: block;
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                @include transition;
+                            }
+                        }
+                    }
+
+                    &:hover,
+                    &.current {
+                        a {
+                            position: relative;
+
+                            &:after {
+                                @media screen and (min-width: 1024px) {
+                                    width: 100%;
+                                }
+
+                            }
+                        }
+                    }
 
                     @media screen and (max-width:640px) {
                         padding: 0;
@@ -168,29 +285,31 @@
                         font-weight: 400;
                         line-height: 24px;
 
-                       
+
                     }
 
                     &:first-child {
-                           svg {
-                                display: none;
+                        svg {
+                            display: none;
 
-                                @media screen and (max-width:640px) {
-                                  
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                }
+                            @media screen and (max-width:640px) {
+
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
                             }
+                        }
+
                         @media screen and (max-width:640px) {
                             display: flex;
                             padding: 8px 0;
-                              &.open{
-                                  svg{
-                                            transform: rotate(180deg);
 
-                                        }
-                                    }
+                            &.open {
+                                svg {
+                                    transform: rotate(180deg);
+
+                                }
+                            }
                         }
 
                         span,
@@ -200,6 +319,9 @@
                             font-style: normal;
                             font-weight: 400;
                             line-height: 24px;
+                            color: var(--white);
+                            opacity: 1;
+
 
                             @media screen and (max-width:640px) {
                                 display: flex;
@@ -207,7 +329,7 @@
                                 justify-content: space-between;
                             }
 
-                         
+
                         }
                     }
                 }

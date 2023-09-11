@@ -302,6 +302,19 @@ $(document).on('click', '.toggle-sublist', function () {
   // parent.toggleClass('open')
   siblings.toggleClass('open');
 });
+$(document).on('click', '.popup .close-popup', function () {
+  var id = $(this).parent().attr('data-id');
+  var cookietime = $(this).parent().attr('data-cookie');
+  document.cookie = "popup_time_" + id + "=" + cookietime + "; path=/";
+  $(this).parent().addClass('hide');
+  console.log(id);
+  console.log(cookietime);
+});
+$(function () {
+  setTimeout(function () {
+    $(document).find('.popup').addClass('show');
+  }, 3000);
+});
 
 /***/ }),
 
@@ -407,6 +420,7 @@ var menubar;
 var categorybar;
 function scrollbar() {
   var lastScrollTop = 0;
+  var scrollmenus;
   $(window).scroll(function () {
     var scrollTop = $(this).scrollTop();
     if (scrollTop > lastScrollTop) {
@@ -418,7 +432,7 @@ function scrollbar() {
     lastScrollTop = scrollTop;
   });
   if (detectmob()) {
-    new simplebar__WEBPACK_IMPORTED_MODULE_0__["default"]($('.scroll-menus')[0]);
+    var scrollmenus = new simplebar__WEBPACK_IMPORTED_MODULE_0__["default"]($('.scroll-menus')[0]);
     $(document).find('.sub-menu').each(function (i, el) {
       new simplebar__WEBPACK_IMPORTED_MODULE_0__["default"]($(el)[0]);
     });
@@ -443,6 +457,9 @@ function scrollbar() {
     $(this).parent().parent().addClass('active');
   });
   if (!detectmob()) {
+    if ($('aside.scrollbar').length > 0) {
+      new simplebar__WEBPACK_IMPORTED_MODULE_0__["default"]($('aside.scrollbar')[0]);
+    }
     $('.has-child').hover(function (e) {
       // alert('ok')
       $(this).addClass('active');
@@ -625,6 +642,7 @@ function slider() {
         direction: "horizontal",
         loop: true,
         slidesPerView: 1,
+        spaceBetween: 36,
         allowTouchMove: true,
         speed: 1000,
         centeredSlides: true,
@@ -678,6 +696,52 @@ function slider() {
       }
     });
   }
+  if ($('.swiper-reviews ').find('.swiper-slide').length > 1) {
+    var galleryTop = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"]('.swiper-reviews', {
+      slidesPerView: 1,
+      allowTouchMove: true,
+      speed: 1000,
+      centeredSlides: true,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        type: "bullets",
+        clickable: true
+      }
+    });
+  }
+  if ($('.swiper-testimonials ').find('.swiper-slide').length > 1) {
+    var galleryTop = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"]('.swiper-testimonials', {
+      slidesPerView: 3,
+      allowTouchMove: true,
+      breakpoints: {
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        // when window width is >= 480px
+        480: {
+          slidesPerView: 3,
+          spaceBetween: 30
+        },
+        // when window width is >= 640px
+        640: {
+          slidesPerView: 3,
+          spaceBetween: 40
+        }
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        type: "bullets",
+        clickable: true
+      }
+    });
+  }
   $(document).on('click', '.thumb', function () {
     var index = $('.thumb').index(this);
     // if galleryTOp is defined
@@ -728,6 +792,40 @@ function video() {
     }
     video.on('click', function () {
       video[0].play();
+    });
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+    if ("IntersectionObserver" in window) {
+      var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (video) {
+          if (video.isIntersecting) {
+            for (var source in video.target.children) {
+              var videoSource = video.target.children[source];
+              if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                videoSource.src = videoSource.dataset.src;
+              }
+            }
+            video.target.load();
+            video.target.classList.remove("lazy");
+            lazyVideoObserver.unobserve(video.target);
+          }
+        });
+      });
+      lazyVideos.forEach(function (lazyVideo) {
+        lazyVideoObserver.observe(lazyVideo);
+      });
+    }
+  });
+  var videoreview = $(document).find('#video-reviews');
+  if (videoreview.length > 0) {
+    if (videoreview[0].readyState === 4) {
+      // it's loaded
+      videoreview.prev().addClass('hide');
+      videoreview[0].play();
+    }
+    videoreview.on('click', function () {
+      videoreview[0].play();
     });
   }
   document.addEventListener("DOMContentLoaded", function () {

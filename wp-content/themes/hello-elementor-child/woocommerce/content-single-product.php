@@ -109,7 +109,7 @@ if ( post_password_required() ) {
 	<header>
 		<h2>Foire aux questions</h2>
 		<p>Si vous avez la moindre question, contactez-nous !</p>
-		<a class="faq-button" href="/contact">nous contacter</a>
+		<a class="faq-button" href="/contact">Nous contacter</a>
 	</header>
 	<?= do_shortcode( '[FAQ]');?>
 	

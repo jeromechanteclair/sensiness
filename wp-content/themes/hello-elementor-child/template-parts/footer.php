@@ -68,10 +68,18 @@ $partenaires = wp_nav_menu([
 	'logos'=>true
 ]);
 
+
+get_template_part('template-parts/popup');
+
+
+
+
 ?>
 <footer id="site-footer" class="site-footer" role="contentinfo">
 	
 <div class="container">
+	<div class="nlcontainer">
+
 		<a href="/">
 				<svg width="151" height="32" viewBox="0 0 151 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g clip-path="url(#clip0_22_1795)">
@@ -87,6 +95,10 @@ $partenaires = wp_nav_menu([
 				</svg>
 
 			</a>
+			<p class="nltitle">Incrivez vous à notre newsletter :</p>
+			<?php echo do_shortcode('[probance_newsletter]');?>
+
+	</div>
 
 		<nav class="site-navigation">
 		

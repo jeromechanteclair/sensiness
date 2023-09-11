@@ -1,11 +1,31 @@
 {
-    "key": "group_64e8b67e8990b",
-    "title": "Bloc : Bandeau défilant",
+    "key": "group_64fb3c6f29b46",
+    "title": "Bloc : Besoins",
     "fields": [
         {
-            "key": "field_64e8b67eb3140",
-            "label": "Bandeau Marquee",
-            "name": "bandeau_marquee",
+            "key": "field_64fb3ff1d99db",
+            "label": "titre",
+            "name": "title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_64fb3c78491ad",
+            "label": "Besoins",
+            "name": "highlights-besoins",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -25,11 +45,11 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_64e8b6811da2e",
-                    "label": "Contenu",
-                    "name": "content",
+                    "key": "field_64fb3c91491ae",
+                    "label": "Image",
+                    "name": "image",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -38,15 +58,37 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_64e8b67eb3140"
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_64fb3c78491ad"
                 },
                 {
-                    "key": "field_64feb9e0763a5",
+                    "key": "field_64fb3c9a491af",
+                    "label": "Lien",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_64fb3c78491ad"
+                },
+                {
+                    "key": "field_64fb3cab491b1",
                     "label": "Icone",
                     "name": "icon",
                     "aria-label": "",
@@ -69,7 +111,7 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium",
-                    "parent_repeater": "field_64e8b67eb3140"
+                    "parent_repeater": "field_64fb3c78491ad"
                 }
             ]
         }
@@ -79,7 +121,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/bandeau-marquee"
+                "value": "acf\/highlights-besoins"
             }
         ]
     ],
@@ -92,5 +134,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1694415342
+    "modified": 1694187522
 }

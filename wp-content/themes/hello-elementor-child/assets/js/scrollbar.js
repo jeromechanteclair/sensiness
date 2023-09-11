@@ -11,7 +11,7 @@ var categorybar;
 
 function scrollbar() {
     let lastScrollTop = 0;
-
+ var scrollmenus
     $(window).scroll(function () {
         const scrollTop = $(this).scrollTop();
 
@@ -26,7 +26,7 @@ function scrollbar() {
     });
     if (detectmob()) {
 
-        new SimpleBar($('.scroll-menus')[0]);
+      var scrollmenus =   new SimpleBar($('.scroll-menus')[0]);
         $(document).find('.sub-menu').each(function (i, el) {
             new SimpleBar($(el)[0]);
         })
@@ -52,7 +52,13 @@ function scrollbar() {
         $(this).parent().parent().addClass('active');
 
     })
+ 
     if (!detectmob()) {
+        if($('aside.scrollbar').length>0){
+
+            new SimpleBar($('aside.scrollbar')[0]);
+        }
+
         $('.has-child').hover(function (e) {
             // alert('ok')
             $(this).addClass('active');

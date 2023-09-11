@@ -1,0 +1,102 @@
+.highlights-pages {
+    margin-bottom: 48px;
+
+    .subtitle {
+        font-family: 'Recoleta';
+        margin: 36px auto;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 48px;
+        color: var(--black);
+        max-width: calc(var(--max-width) - 48px);
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .container {
+        max-width: calc(var(--max-width) - 48px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+
+        .highlights-pages__item {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            flex-flow: column;
+            justify-content: flex-end;
+            min-height: 522px;
+            text-decoration: none;
+            overflow: hidden;
+            border-radius: 10px;
+
+
+            &:hover {
+                .bg {
+                    img {
+
+                        transform: scale(1.1);
+                    }
+                }
+
+                p {
+                    transform: translateY(-10px);
+                }
+            }
+
+            .bg {
+                overflow: hidden;
+
+                position: absolute;
+                z-index: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: 100%;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+
+                    @include transition;
+                }
+            }
+
+
+            p {
+                @include transition;
+                position: relative;
+                font-family: "NeueHaasDisplay-Roman";
+
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px;
+                color: var(--white);
+                padding-left: 32px;
+                max-width: 60%;
+
+                &.title {
+                    color: #FFF;
+                    font-family: 'Recoleta';
+                    font-size: 40px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 48px
+                }
+            }
+            .button{
+                @include button-white;
+                position: relative;
+                width: auto;
+                  margin-left: 32px;
+                  margin-bottom: 32px;
+            }
+        }
+    }
+}

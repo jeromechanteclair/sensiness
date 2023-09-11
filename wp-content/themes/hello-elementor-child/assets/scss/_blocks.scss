@@ -16,6 +16,7 @@
          //    padding: 10px;
      }
 
+
      picture {
          width: 100%;
          display: flex;
@@ -92,6 +93,102 @@
 
          }
      }
+
+     &--centered {
+         max-width: calc(var(--max-width) - 48px);
+         margin: 64px auto;
+
+         .bandeau-container {
+             background-color: transparent;
+             align-items: center;
+
+             p {
+                 font-family: 'Recoleta';
+                 font-size: 64px;
+                 text-align: center;
+                 font-style: normal;
+                 font-weight: 300;
+                 line-height: 72px;
+                 color: var(--white)
+             }
+
+             .button {
+                 @include button-white;
+                 width: auto;
+             }
+         }
+
+         @media screen and (max-width:1024px) {
+
+             max-width: var(--max-width);
+         }
+     }
  }
+
+ /**
+* Marquee
+*
+*/
+ .bandeau-marquee {
+     background-color: var(--yellow);
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 28px 0;
+     font-family: 'Recoleta';
+     color: var(--black);
+     overflow: hidden;
+     position: relative;
+
+     &__item {
+         display: flex;
+         width: 200%;
+
+
+         position: absolute;
+         overflow: hidden;
+         gap: 24px;
+
+         animation: marquee 15s linear infinite;
+     }
+
+     span.marquee {
+         float: left;
+         display: flex;
+         align-items: center;
+         gap: 24px;
+         width: 25%;
+
+         @media screen and (max-width:640px) {
+             gap: 12px;
+             width: 50%;
+         }
+
+         span {
+             white-space: nowrap;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             gap: 12px;
+             padding-left: 12px;
+         }
+     }
+
+     @keyframes marquee {
+         0% {
+             left: 0;
+         }
+
+         100% {
+             left: -100%;
+         }
+     }
+ }
+
  @import 'hero-video';
  @import 'highlights-products';
+ @import 'highlights-besoins';
+ @import 'highlights-reviews';
+ @import 'highlights-pages';
+ @import 'highlights-testimonials';

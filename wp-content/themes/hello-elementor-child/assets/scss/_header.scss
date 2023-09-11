@@ -75,7 +75,7 @@ body.admin-bar{
                 position: unset;
                 padding-top: 24px;
                 padding-bottom: 24px;
-
+                margin-bottom: 0;
 
                 &.has-child {
                     display: flex;
@@ -172,6 +172,7 @@ body.admin-bar{
 
                             li {
                                 border: none;
+                                
                                 a{    
                                     padding-bottom: 8px;
                                         position: relative;
@@ -216,7 +217,7 @@ body.admin-bar{
                                 }
 
                                 padding-top: 8px;
-                                padding-bottom:8px;
+                                padding-bottom: 0;
                                 font-size: 16px;
                                 font-style: normal;
                                 font-weight: 400;

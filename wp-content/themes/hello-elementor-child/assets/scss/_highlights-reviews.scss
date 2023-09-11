@@ -1,0 +1,78 @@
+.highlights-reviews {
+    margin-bottom: 48px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    position: relative;
+    video {
+        position: absolute;
+   max-width: var(--max-width);
+   max-height: 100%;
+   width: 100%;
+   left: 0;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        padding: 210px 0;
+
+        .swiper {
+            max-width: 680px;
+            text-align: center;
+            padding-bottom: 40px;
+            .swiper-pagination{
+.swiper-pagination-bullet{
+           background-color: var(--white);
+           border-radius: 2px;
+    &-active{
+        background-color: var(--white);
+    }
+}
+            }
+            p {
+                text-align: center;
+                font-family: "NeueHaasDisplay-Roman";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px;
+                color: var(--white);
+
+                &.name {
+                    text-align: center;
+                    font-family: 'Recoleta';
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 32px;
+
+                }
+                &.subtitle {
+                    text-align: center;
+                    font-family: "NeueHaasDisplay-Roman";
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 16px;
+                    color: var(--white);
+                }
+            }
+        }
+    }
+
+    .h3 {
+        text-align: center;
+        font-family: 'Recoleta';
+        position: relative;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 48px;
+        color: var(--white);
+        margin-bottom: 32px;
+    }
+
+
+}

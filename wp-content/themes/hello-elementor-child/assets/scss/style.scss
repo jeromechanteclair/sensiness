@@ -12,6 +12,8 @@
 @import 'single-product';
 @import 'blocks';
 @import 'single';
+@import 'popup';
+@import 'related-posts';
 body{
     &.lock{
         overflow-y: hidden;

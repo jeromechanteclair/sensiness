@@ -1,21 +1,32 @@
 .single-post {
     background-color: white;
-font-family: "NeueHaasDisplay-Roman";
+    font-family: "NeueHaasDisplay-Roman";
+
     .woocommerce-breadcrumb {
         color: var(--black);
+        a{
+           color: var(--black); 
+        }
 
     }
 
     a {
         color: #f8b82e;
         @include transition;
+        &:hover{
+            color: #f8b82e; 
+        }
     }
-    h4,h5,h6{
-              font-family: "Recoleta";
+
+    h4,
+    h5,
+    h6 {
+        font-family: "Recoleta";
         font-style: normal;
-        font-weight: 300; 
-           color: var(--black);
+        font-weight: 300;
+        color: var(--black);
     }
+
     h2 {
 
         font-family: "Recoleta";
@@ -74,6 +85,11 @@ font-family: "NeueHaasDisplay-Roman";
             grid-template-columns: 2fr auto;
             align-items: flex-start;
             gap: 48px;
+                   max-width: calc(var(--max-width) - 48px);
+
+        @media screen and (max-width:1024px) {
+            max-width: var(--max-width);
+        }
 
             @media screen and (max-width:1200px) {
                 grid-template-columns: 1fr 1fr;
@@ -104,9 +120,12 @@ font-family: "NeueHaasDisplay-Roman";
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
-b,strong{
-        color: var(--black);
-}
+
+        b,
+        strong {
+            color: var(--black);
+        }
+
         h1 {
             margin-top: 24px;
             font-family: "Recoleta";
@@ -165,6 +184,11 @@ b,strong{
         grid-template-columns: auto 55% 20%;
         grid-template-areas:
             "aside main sticky";
+             max-width: calc(var(--max-width) - 48px);
+
+        @media screen and (max-width:1024px) {
+            max-width: var(--max-width);
+        }
 
         @media screen and (max-width:1024px) {
             grid-template-columns: 1fr;
@@ -172,9 +196,9 @@ b,strong{
         }
 
         grid-template-rows: 1fr;
-        ;
+        
         align-items: start;
-        gap: 48px;
+        gap:24px;
         margin-top: 72px;
         position: relative;
 
@@ -278,15 +302,20 @@ b,strong{
 
         aside {
             grid-area: aside;
-            // width: 25%;
+            width: 100%;
             justify-self: flex-start;
             position: sticky;
             top: 128px;
             margin-bottom: 48px;
             max-height: calc(100vh - 128px);
             padding-right: 24px;
-            overflow: auto;
-
+          
+  .simplebar-scrollbar {
+            &:before {
+                background-color: transparent;
+               
+            }
+        }
 
             @media screen and (max-width:1024px) {
                 display: none;
@@ -422,15 +451,17 @@ b,strong{
                 color: var(--black);
                 margin-top: 0;
             }
-            .subtitle{
-                                color: var(--black);
+
+            .subtitle {
+                color: var(--black);
 
             }
 
             div#probance_form_block {
-br{
-    display: none;
-}
+                br {
+                    display: none;
+                }
+
                 form {
                     margin: 0;
                     width: 100%;
@@ -682,84 +713,3 @@ br{
     }
 }
 
-.related-posts {
-    background-color: var(--beige-light);
-    padding: 48px 0;
-
-    .related-posts-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 48px;
-        grid-auto-rows: 1fr;
-
-        @media screen and (max-width:1024px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        @media screen and (max-width:640px) {
-            grid-template-columns: 1fr;
-        }
-
-        .post-preview {
-            position: relative;
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-
-            &:hover {
-                .post-preview__content .title {
-
-                    color: #f8b82e;
-                }
-            }
-
-            &__thumbnail {
-                line-height: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            &__content {
-
-                padding: 24px;
-                display: grid;
-                grid-template-rows: auto auto auto;
-                gap: 12px;
-
-                >* {
-                    margin: 0;
-                }
-
-                .title {
-                    @include transition;
-                    font-family: "Recoleta";
-                    font-style: normal;
-                    font-weight: 300;
-                    font-size: 24px;
-                    line-height: 32px;
-                    color: var(--black);
-
-                }
-
-                time {
-                    color: var(--black)
-                }
-
-                .excerpt {
-                    color: var(--black)
-                }
-
-                &__link {
-                    @include button;
-                    display: inline-flex;
-                    width: auto;
-                    justify-self: flex-end;
-                    margin-top: 12px;
-                }
-            }
-
-
-        }
-    }
-}

@@ -1,6 +1,5 @@
 <?php 
 $thumbnail_id = get_post_thumbnail_id(  );
-
 $desktop = get_the_post_thumbnail_url( $post, 'single_thumbnail' );
 $mobile = get_the_post_thumbnail_url( $post, 'single_thumbnail_mobile' );
 
@@ -14,11 +13,15 @@ $mobile = get_the_post_thumbnail_url( $post, 'single_thumbnail_mobile' );
 
 		<img src="<?=$desktop;?>" alt="<?= the_title();?>">
 	</picture>
-	<div class="post-preview__content">
+	<div class="post-preview__metas">
 		<p class="title"><?= the_title();?></p>
-		<time><?= the_date();?></time>
+		<time>Publié le <?= the_date();?></time>
+		
+	</div>
+	<div class="post-preview__content">
+	
 		<p class='excerpt'><?= get_the_excerpt();?>...</p>
-		<span class="post-preview__content__link">
+		<span class="post-preview__content__link button">
 			Lire la suite
 		</span>
 	</div>

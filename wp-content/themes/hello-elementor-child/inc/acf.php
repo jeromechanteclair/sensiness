@@ -65,6 +65,61 @@ class AcfBlocks
             'mode' => 'edit',
             'render_callback' => array($this,'acf_render'),
         ]);
+        acf_register_block_type([
+            'name' => 'highlights-besoins',
+            'title' => __('Mise en avant des besoins'),
+            'description' => __('Mise en avant des besoins'),
+            'render_template' => 'block/highlights-besoins',
+            'category' => 'blocks_sensiness',
+            'icon' => 'format-aside',
+            'keyword' => [__('Mise en avant des besoins')],
+            'mode' => 'edit',
+            'render_callback' => array($this,'acf_render'),
+        ]);
+        acf_register_block_type([
+            'name' => 'highlights-pages',
+            'title' => __('Mise en avant de pages'),
+            'description' => __('Mise en avant de pages'),
+            'render_template' => 'block/highlights-pages',
+            'category' => 'blocks_sensiness',
+            'icon' => 'format-aside',
+            'keyword' => [__('Mise en avant de pages ')],
+            'mode' => 'edit',
+            'render_callback' => array($this,'acf_render'),
+        ]);
+        acf_register_block_type([
+            'name' => 'highlights-reviews',
+            'title' => __('Mise en avant d\'avis'),
+            'description' => __('Mise en avant  d\'avis'),
+            'render_template' => 'block/highlights-reviews',
+            'category' => 'blocks_sensiness',
+            'icon' => 'format-aside',
+            'keyword' => [__('Mise en avant  d\'avis ')],
+            'mode' => 'edit',
+            'render_callback' => array($this,'acf_render'),
+        ]);
+        acf_register_block_type([
+            'name' => 'highlights-testimonials',
+            'title' => __('Témoignages'),
+            'description' => __('Témoignages'),
+            'render_template' => 'block/highlights-testimonials',
+            'category' => 'blocks_sensiness',
+            'icon' => 'format-aside',
+            'keyword' => [__('Témoignages')],
+            'mode' => 'edit',
+            'render_callback' => array($this,'acf_render'),
+        ]);
+        acf_register_block_type([
+            'name' => 'highlights-posts',
+            'title' => __('Mise en avant  d\'articles '),
+            'description' => __('Mise en avant  d\'articles'),
+            'render_template' => 'block/highlights-posts',
+            'category' => 'blocks_sensiness',
+            'icon' => 'format-aside',
+            'keyword' => [__('Mise en avant  d\'articles')],
+            'mode' => 'edit',
+            'render_callback' => array($this,'acf_render'),
+        ]);
      
     }
 
@@ -84,6 +139,11 @@ class AcfBlocks
 		$registered_blocks[]='bandeau-marquee';
 		$registered_blocks[]='hero-video';
 		$registered_blocks[]='highlights-products';
+		$registered_blocks[]='highlights-pages';
+		$registered_blocks[]='highlights-besoins';
+		$registered_blocks[]='highlights-testimonials';
+		$registered_blocks[]='highlights-reviews';
+		$registered_blocks[]='highlights-posts';
            
 
         return $registered_blocks;

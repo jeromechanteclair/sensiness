@@ -3,6 +3,32 @@
     "title": "Bloc : Bandeau",
     "fields": [
         {
+            "key": "field_64fecf7c890e3",
+            "label": "Style",
+            "name": "style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Par défaut",
+                "centered": "Centré"
+            },
+            "default_value": "default",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_64a821121f762",
             "label": "Titre",
             "name": "title",
@@ -102,5 +128,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688740206
+    "modified": 1694420903
 }

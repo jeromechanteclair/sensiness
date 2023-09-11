@@ -1,11 +1,31 @@
 {
-    "key": "group_64e8b67e8990b",
-    "title": "Bloc : Bandeau défilant",
+    "key": "group_64fed31ca0171",
+    "title": "Bloc : Mise en avant d'avis (copier)",
     "fields": [
         {
-            "key": "field_64e8b67eb3140",
-            "label": "Bandeau Marquee",
-            "name": "bandeau_marquee",
+            "key": "field_64fed31cb367e",
+            "label": "titre",
+            "name": "title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_64fed31cb7328",
+            "label": "Témoignages",
+            "name": "highlights-testimonials",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -25,11 +45,11 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_64e8b6811da2e",
+                    "key": "field_64fed31d5616a",
                     "label": "Contenu",
                     "name": "content",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -39,16 +59,16 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_64e8b67eb3140"
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0,
+                    "parent_repeater": "field_64fed31cb7328"
                 },
                 {
-                    "key": "field_64feb9e0763a5",
-                    "label": "Icone",
-                    "name": "icon",
+                    "key": "field_64fed34702a5c",
+                    "label": "Image",
+                    "name": "image",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
@@ -69,7 +89,7 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium",
-                    "parent_repeater": "field_64e8b67eb3140"
+                    "parent_repeater": "field_64fed31cb7328"
                 }
             ]
         }
@@ -79,7 +99,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/bandeau-marquee"
+                "value": "acf\/highlights-testimonials"
             }
         ]
     ],
@@ -92,5 +112,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1694415342
+    "modified": 1694421847
 }

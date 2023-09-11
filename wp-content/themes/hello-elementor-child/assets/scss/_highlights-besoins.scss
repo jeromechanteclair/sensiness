@@ -1,0 +1,94 @@
+.highlights-besoins {
+    margin-bottom: 48px;
+
+    .subtitle {
+        font-family: 'Recoleta';
+        margin: 36px auto;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 48px;
+        color: var(--black);
+        max-width: calc(var(--max-width) - 48px);
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .container {
+        max-width: calc(var(--max-width) - 48px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+
+        .highlights-besoins__item {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            min-height: 330px;
+            text-decoration: none;
+            overflow: hidden;
+            border-radius: 10px;
+
+            &:hover{
+                .bg{
+                    img{
+
+                        transform: scale(1.1);
+                    }
+                }
+                p{
+                    transform: translateX(10px);
+                }
+            }
+
+            .bg {
+                            overflow: hidden;
+
+                position: absolute;
+                z-index: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: 100%;
+             
+                img{
+                          height: 100%;
+                width: 100%;
+                    object-fit: cover;
+
+   @include transition;
+                }
+            }
+
+            .icon {
+                position: absolute;
+                z-index: 1;
+                top: 16px;
+                right: 16px;
+                background-color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
+                padding: 4px;
+            }
+
+            p {
+                  @include transition;
+                position: relative;
+                font-family: 'Recoleta';
+                text-decoration: none;
+                padding: 24px;
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 40px;
+                color: var(--white);
+            }
+        }
+    }
+}
