@@ -347,8 +347,8 @@ img{
     flex-flow: row;
     gap: 16px;
 
-    text-transform: uppercase;
     @include button;
+    text-transform: none;
 
 
 

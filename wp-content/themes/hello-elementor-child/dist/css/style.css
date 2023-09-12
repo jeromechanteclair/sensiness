@@ -2638,7 +2638,6 @@ ul.accordions span {
   align-items: center;
   flex-flow: row;
   gap: 16px;
-  text-transform: uppercase;
   font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
@@ -2652,6 +2651,7 @@ ul.accordions span {
   border-radius: 10px;
   border: none;
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  text-transform: none;
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
 }
 .file-drop:hover {
@@ -3030,6 +3030,7 @@ ul.accordions span {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+  color: var(--black);
 }
 .single-product .cart.sticky .sticky-only p {
   margin-bottom: 0;
@@ -3273,6 +3274,9 @@ ul.accordions span {
   text-align: right;
   align-items: center;
 }
+.custom-price__right del {
+  margin-right: 12px;
+}
 .custom-price__right del .woocommerce-Price-amount {
   text-decoration: line-through;
   font-family: "NeueHaasDisplay-Roman";
@@ -3318,9 +3322,9 @@ ul.accordions span {
 }
 .custom-price__right .price del {
   opacity: 1 !important;
+  color: var(--red);
 }
 .custom-price__right .price del bdi {
-  text-decoration: line-through;
   font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
