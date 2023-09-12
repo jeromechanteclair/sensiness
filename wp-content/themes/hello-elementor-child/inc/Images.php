@@ -18,6 +18,11 @@ class Images
 		// add_image_size('single_hero_mobile', '300', '168', true);
 		add_image_size('woocommerce_single', '1024', '0', false);
 		add_image_size('product_slide_thumbnail', 62, 62);
+		add_image_size('product_thumbnail_big_desktop', 920, 600);
+		add_image_size('product_thumbnail_medium_desktop', 448, 600);
+		add_image_size('product_thumbnail_normal_desktop', 400, 400);
+		add_image_size('product_thumbnail_normal_mobile', 312, 312);
+		add_image_size('product_thumbnail_normal_mobilex2', 624, 624);
 		add_image_size('product_slide', 500, 961, true);
 		add_image_size('product_slide_double', 1000, 1922, true);
 		add_image_size('banner_header', 684, 188, true);

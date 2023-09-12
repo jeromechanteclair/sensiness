@@ -21,34 +21,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $related_products ) : ?>
 
-	<section class="related products">
+	<section class="highlights-products ">
 		<div class="container">
-			<header>
+		
 				<h2>Découvrez aussi</h2>
 				<div>
 				<a class="shop-cta" href="<?=wc_get_page_permalink( 'shop' );?>">
 				Voir tous nos produits</a>
 				</div>
-			</header>
-
+			
+	</div>
 		
 		<?php woocommerce_product_loop_start(); ?>
 
-			<?php foreach ( $related_products as $related_product ) : ?>
+			<?php foreach ( $related_products as $key=> $related_product ) : ?>
 
 					<?php
 				
+$args = ['key' => $key,'product' => $related_product,'grid'=>'normal'];
+
 					$post_object = get_post( $related_product->get_id() );
 
 					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
 
-					wc_get_template_part( 'content', 'product' );
+
+get_template_part('template-parts/thumbnail-product', '', $args);
 					?>
 
 			<?php endforeach; ?>
 
 		<?php woocommerce_product_loop_end(); ?>
-		</div>
+	
 	</section>
 	<?php
 endif;

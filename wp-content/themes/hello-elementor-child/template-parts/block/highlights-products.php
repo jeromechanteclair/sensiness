@@ -8,7 +8,7 @@ $products = get_field('products');
 <?php
 
 if($products):?>
-<section class="highlights-products">
+<section class="highlights-products ">
 	<div class="container">
 		<h2>
 			<?= $title;?>
@@ -27,7 +27,7 @@ if($products):?>
 
 		// Load sub field value.
 
-		$args = ['key' => $key,'product'=>$product];
+		$args = ['key' => $key,'product'=>$product,'grid'=>'home'];
 		$product = wc_get_product($args['product']->ID);
 
 		

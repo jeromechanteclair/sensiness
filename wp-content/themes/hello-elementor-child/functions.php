@@ -45,7 +45,7 @@ add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
  *
  * @return void
  */
-add_action( 'wp_enqueue_scripts', 'hello_elementor_child_enqueue_scripts', 20 );
+add_action( 'wp_enqueue_scripts', 'hello_elementor_child_enqueue_scripts', 90 );
 // Child theme and scripts loader
 function hello_elementor_child_enqueue_scripts() {
 	// Theme

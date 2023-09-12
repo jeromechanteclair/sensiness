@@ -1,5 +1,5 @@
 <?php
-if(!is_product() && !is_checkout() && !is_cart()) {
+if(!is_product() && !is_checkout() && !is_cart() && !is_account_page()) {
     $args = array(
         'post_type' => 'popup', // Type de publication "popup"
         'posts_per_page' => 1, // Récupérer un seul post

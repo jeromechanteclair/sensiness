@@ -1779,7 +1779,7 @@ body.sensiness .categories-menu + main, body.sensiness .categories-menu + div {
   line-height: 24px;
   color: var(--green);
   width: 100%;
-  padding: 16px 24px;
+  padding: 12px 24px;
   text-transform: uppercase;
   background-color: transparent;
   border: 1px solid var(--green);
@@ -3966,7 +3966,7 @@ html {
   line-height: 24px;
   color: var(--green);
   width: 100%;
-  padding: 16px 24px;
+  padding: 12px 24px;
   text-transform: uppercase;
   background-color: transparent;
   border: 1px solid var(--green);
@@ -4571,7 +4571,7 @@ FAQ
   line-height: 24px;
   color: var(--black);
   width: 100%;
-  padding: 16px 24px;
+  padding: 12px 24px;
   text-decoration: none;
   background-color: var(--white);
   border-radius: 10px;
@@ -4770,14 +4770,14 @@ FAQ
   color: var(--white);
 }
 
-.highlights-products .container {
+.sensiness .highlights-products .container {
   max-width: calc(var(--max-width) - 48px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 64px 0 24px 0;
 }
-.highlights-products .container h2 {
+.sensiness .highlights-products .container h2 {
   font-size: 40px;
   font-style: normal;
   font-weight: 300;
@@ -4785,7 +4785,7 @@ FAQ
   font-family: "Recoleta";
   color: var(--black);
 }
-.highlights-products .container a {
+.sensiness .highlights-products .container a {
   font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
   font-weight: 450;
@@ -4806,10 +4806,10 @@ FAQ
   font-weight: 400;
   line-height: 24px;
 }
-.highlights-products .container a:hover {
+.sensiness .highlights-products .container a:hover {
   background-color: #607440;
 }
-.highlights-products .products {
+.sensiness .highlights-products .products {
   list-style: none;
   padding-left: 0;
   display: grid;
@@ -4818,19 +4818,28 @@ FAQ
   margin: 0 auto;
   gap: 24px;
 }
+.sensiness .highlights-products .products:before {
+  display: none;
+}
 @media screen and (max-width: 1024px) {
-  .highlights-products .products {
+  .sensiness .highlights-products .products {
     max-width: var(--max-width);
   }
 }
-.highlights-products .products .product {
+.sensiness .highlights-products .products .product {
   position: relative;
   margin-bottom: 24px;
+  width: 100% !important;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
 }
-.highlights-products .products .product a {
+.sensiness .highlights-products .products .product a {
   text-decoration: none;
+  display: flex;
+  flex-flow: column;
 }
-.highlights-products .products .product .title {
+.sensiness .highlights-products .products .product .title {
   color: var(--black);
   font-family: "Recoleta";
   font-size: 24px;
@@ -4839,7 +4848,7 @@ FAQ
   line-height: 32px;
   margin: 16px 0 12px 0;
 }
-.highlights-products .products .product .custom-stars {
+.sensiness .highlights-products .products .product .custom-stars {
   display: flex;
   flex-flow: row;
   align-items: center;
@@ -4847,15 +4856,17 @@ FAQ
   gap: 12px;
   color: var(--black);
 }
-.highlights-products .products .product .custom-stars .product-rating-count {
+.sensiness .highlights-products .products .product .custom-stars .product-rating-count {
   margin-bottom: 12px;
+  color: var(--black);
+  text-decoration: underline;
 }
-.highlights-products .products .product .custom-stars .star-rating {
+.sensiness .highlights-products .products .product .custom-stars .star-rating {
   color: var(--yellow);
   float: none;
   margin-bottom: 12px;
 }
-.highlights-products .products .product .price {
+.sensiness .highlights-products .products .product .price {
   display: flex;
   gap: 8px;
   margin-bottom: 24px;
@@ -4866,14 +4877,16 @@ FAQ
   font-weight: 400;
   line-height: 24px;
 }
-.highlights-products .products .product .price del {
+.sensiness .highlights-products .products .product .price ins {
+  color: var(--black);
+  text-decoration: none;
+}
+.sensiness .highlights-products .products .product .price del {
   color: var(--red);
   margin-right: 0 !important;
+  opacity: 0.5;
 }
-.highlights-products .products .product:hover .secondary-image {
-  opacity: 1;
-}
-.highlights-products .products .product .button {
+.sensiness .highlights-products .products .product .button {
   z-index: 2;
   font-family: "NeueHaasDisplay-Roman";
   font-style: normal;
@@ -4889,6 +4902,7 @@ FAQ
   border: none;
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
   width: 100%;
+  padding: 12px 16px;
   text-align: center;
   text-decoration: none;
   text-transform: none;
@@ -4901,15 +4915,28 @@ FAQ
   color: var(--black);
   border: 1px solid var(--black);
 }
-.highlights-products .products .product .button:hover {
+.sensiness .highlights-products .products .product .button:hover {
   background-color: #607440;
 }
-.highlights-products .products .product .button:hover {
+.sensiness .highlights-products .products .product .button:hover {
   color: var(--white);
   border: 1px solid #607440;
 }
-.highlights-products .products .product picture {
+.sensiness .highlights-products .products .product .pictures {
+  min-height: 448px;
+  height: 100%;
+  border-radius: 10px;
   position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+}
+.sensiness .highlights-products .products .product .pictures picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -4918,21 +4945,31 @@ FAQ
   height: 100%;
   border-radius: 10px;
 }
-.highlights-products .products .product picture img {
+.sensiness .highlights-products .products .product .pictures picture img {
+  margin-bottom: 0;
+}
+.sensiness .highlights-products .products .product .pictures picture.secondary {
+  opacity: 0;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+}
+.sensiness .highlights-products .products .product .pictures picture img {
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
   width: 100%;
 }
-.highlights-products .products .product .secondary-image {
+.sensiness .highlights-products .products .product:hover .pictures picture.secondary {
+  opacity: 1;
+}
+.sensiness .highlights-products .products .product .secondary-image {
   top: 0;
   left: 0;
   z-index: 1;
 }
-.highlights-products .products .product:nth-of-type(2) {
+.sensiness .highlights-products .products .product.second {
   margin-bottom: 0;
 }
-.highlights-products .products .product:nth-of-type(2) .button {
+.sensiness .highlights-products .products .product.second .button {
   position: absolute;
   top: 520px;
   left: 24px;
@@ -4941,19 +4978,22 @@ FAQ
   color: var(--green-med);
   border: 1px solid var(--beige-med);
 }
-.highlights-products .products .product:nth-of-type(2) .button:hover {
+.sensiness .highlights-products .products .product.second .button:hover {
   border: 1px solid #607440;
   background-color: #607440;
   color: var(--white);
 }
-.highlights-products .products .product:nth-of-type(2) picture {
+.sensiness .highlights-products .products .product.second .pictures {
+  min-height: 600px;
+}
+.sensiness .highlights-products .products .product.second picture {
   max-height: 600px;
 }
-.highlights-products .products .product:first-of-type {
+.sensiness .highlights-products .products .product.prems {
   grid-column: span 2;
   margin-bottom: 0;
 }
-.highlights-products .products .product:first-of-type .button {
+.sensiness .highlights-products .products .product.prems .button {
   position: absolute;
   top: 520px;
   left: 24px;
@@ -4962,12 +5002,15 @@ FAQ
   color: var(--green-med);
   border: 1px solid var(--beige-med);
 }
-.highlights-products .products .product:first-of-type .button:hover {
+.sensiness .highlights-products .products .product.prems .button:hover {
   border: 1px solid #607440;
   background-color: #607440;
   color: var(--white);
 }
-.highlights-products .products .product:first-of-type picture {
+.sensiness .highlights-products .products .product.prems .pictures {
+  min-height: 600px;
+}
+.sensiness .highlights-products .products .product.prems picture {
   max-height: 600px;
 }
 
@@ -5207,7 +5250,7 @@ FAQ
   line-height: 24px;
   color: var(--black);
   width: 100%;
-  padding: 16px 24px;
+  padding: 12px 24px;
   text-decoration: none;
   background-color: var(--white);
   border-radius: 10px;
@@ -5534,7 +5577,7 @@ FAQ
   line-height: 24px;
   color: var(--green);
   width: 100%;
-  padding: 16px 24px;
+  padding: 12px 24px;
   text-transform: uppercase;
   background-color: transparent;
   border: 1px solid var(--green);
@@ -5794,7 +5837,7 @@ FAQ
   line-height: 24px;
   color: var(--green);
   width: 100%;
-  padding: 16px 24px;
+  padding: 12px 24px;
   text-transform: uppercase;
   background-color: transparent;
   border: 1px solid var(--green);
@@ -6025,7 +6068,7 @@ FAQ
   line-height: 24px;
   color: var(--green);
   width: 100%;
-  padding: 16px 24px;
+  padding: 12px 24px;
   text-transform: uppercase;
   background-color: transparent;
   border: 1px solid var(--green);
@@ -6198,7 +6241,7 @@ FAQ
   line-height: 24px;
   color: var(--green);
   width: 100%;
-  padding: 16px 24px;
+  padding: 12px 24px;
   text-transform: uppercase;
   background-color: transparent;
   border: 1px solid var(--green);

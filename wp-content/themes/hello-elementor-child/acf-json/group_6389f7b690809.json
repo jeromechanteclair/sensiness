@@ -3,6 +3,31 @@
     "title": "Product Fields",
     "fields": [
         {
+            "key": "field_650079dbbba74",
+            "label": "Image alternative",
+            "name": "image_alt",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
             "key": "field_6389f7b737124",
             "label": "How to Use",
             "name": "how_to_use",
@@ -115,6 +140,7 @@
                                 "id": ""
                             },
                             "layout": "block",
+                            "parent_repeater": "field_647893aff9f8e",
                             "sub_fields": [
                                 {
                                     "key": "field_647893e3f9f90",
@@ -158,8 +184,7 @@
                                     "prepend": "",
                                     "append": ""
                                 }
-                            ],
-                            "parent_repeater": "field_647893aff9f8e"
+                            ]
                         }
                     ]
                 },
@@ -842,5 +867,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686584222
+    "modified": 1694530029
 }
