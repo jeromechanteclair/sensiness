@@ -835,6 +835,9 @@ body.admin-bar #site-header {
   gap: 24px;
   align-items: center;
 }
+#site-header .site-navigation .scroll-menus .simplebar-wrapper {
+  height: 100vh;
+}
 #site-header .site-navigation .scroll-menus .simplebar-content-wrapper {
   overflow: scroll visible !important;
 }
