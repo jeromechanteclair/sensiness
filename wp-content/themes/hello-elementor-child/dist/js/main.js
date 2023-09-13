@@ -461,7 +461,6 @@ function scrollbar() {
       new simplebar__WEBPACK_IMPORTED_MODULE_0__["default"]($('aside.scrollbar')[0]);
     }
     $('.has-child').hover(function (e) {
-      // alert('ok')
       $(this).addClass('active');
       $(this).find('.sub-menu').removeClass('hide');
       $(this).find('.sub-menu').addClass('active');
@@ -472,7 +471,7 @@ function scrollbar() {
       $(this).find('.sub-menu').css('z-index', '998');
       $(this).find('.sub-menu').addClass('hide');
       setTimeout(function () {
-        $(_this).find('.sub-menu').removeClass('active');
+        $(_this).find('.sub-menu.hide').removeClass('active');
       }, 300);
     });
   }

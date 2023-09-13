@@ -57,6 +57,11 @@ picture{
         line-height: 48px;
         color: var(--black);
         margin-bottom: 48px;
+                          @media screen and (max-width:640px) {
+                            font-size: 32px;
+
+line-height: 40px;
+                          }
     }
 
 

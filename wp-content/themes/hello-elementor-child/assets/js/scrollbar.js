@@ -60,17 +60,18 @@ function scrollbar() {
         }
 
         $('.has-child').hover(function (e) {
-            // alert('ok')
+           
             $(this).addClass('active');
             $(this).find('.sub-menu').removeClass('hide')
             $(this).find('.sub-menu').addClass('active')
             $(this).find('.sub-menu').css('z-index', '999')
         }, function () {
-               $(this).removeClass('active');
+           $(this).removeClass('active');
             $(this).find('.sub-menu').css('z-index', '998')
             $(this).find('.sub-menu').addClass('hide')
             setTimeout(() => {
-                $(this).find('.sub-menu').removeClass('active')
+             
+                $(this).find('.sub-menu.hide').removeClass('active')
 
             }, 300);
         })

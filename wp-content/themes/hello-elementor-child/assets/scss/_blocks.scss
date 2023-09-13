@@ -101,7 +101,9 @@
          .bandeau-container {
              background-color: transparent;
              align-items: center;
-
+                  @media screen and (max-width:640px) {
+                    padding: 0;
+                  }
              p {
                  font-family: 'Recoleta';
                  font-size: 64px;
@@ -109,7 +111,11 @@
                  font-style: normal;
                  font-weight: 300;
                  line-height: 72px;
-                 color: var(--white)
+                 color: var(--white);
+                  @media screen and (max-width:640px) {
+                        font-size: 48px;
+                           line-height: 56px;
+                  }
              }
 
              .button {
@@ -120,7 +126,6 @@
 
          @media screen and (max-width:1024px) {
 
-             max-width: var(--max-width);
          }
      }
  }
@@ -162,7 +167,7 @@
 
          @media screen and (max-width:640px) {
              gap: 12px;
-             width: 50%;
+             width: 100%;
          }
 
          span {
@@ -172,6 +177,10 @@
              justify-content: center;
              gap: 12px;
              padding-left: 12px;
+             img{
+                             padding-left: 12px;
+
+             }
          }
      }
 

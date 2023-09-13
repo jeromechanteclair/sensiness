@@ -9,40 +9,56 @@
         justify-content: center;
         padding: 140px;
         max-width: calc(var(--max-width) - 48px);
-         @media screen and (max-width:1024px) {
-             max-width:var(--max-width);
+
+        @media screen and (max-width:1024px) {
+            max-width: var(--max-width);
         }
+            @media screen and (max-width:767px) {
+                padding: 24px 24px 140px 24px;
+            }
+
         border-radius: 10px;
         overflow: hidden;
         gap: 24px;
-.reviews-cartouche{
-    position: absolute;
-    top: 12px;
-    border-radius: 10px;
-    right: 12px;
-    background-color: var(--black);
-    display: grid;
-    grid-template-columns: auto auto;
-    color:var(--white);
-    z-index: 1;
-    column-gap: 24px;
-    padding: 8px;
-    align-items: center;
-    .title,.total{
-        font-size: 10px;
-font-style: normal;
-font-weight: 400;
-line-height: 10px;            font-family: "NeueHaasDisplay-Roman";
 
-    }
-    .reviews{
-        font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 16px;
-font-family: "NeueHaasDisplay-Roman";
-    }
-}
+        .reviews-cartouche {
+            position: absolute;
+            top: 12px;
+            border-radius: 10px;
+            right: 12px;
+            background-color: var(--black);
+            display: grid;
+            grid-template-columns: auto auto;
+            color: var(--white);
+            z-index: 1;
+            column-gap: 24px;
+            padding: 8px;
+            align-items: center;
+             @media screen and (max-width:767px) {
+                top: unset;
+                right: unset;
+                bottom: 24px;
+             }
+
+            .title,
+            .total {
+                font-size: 10px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 10px;
+                font-family: "NeueHaasDisplay-Roman";
+
+            }
+
+            .reviews {
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 16px;
+                font-family: "NeueHaasDisplay-Roman";
+            }
+        }
+
         picture {
             z-index: 1;
 
@@ -84,6 +100,9 @@ font-family: "NeueHaasDisplay-Roman";
             font-weight: 400;
             line-height: 24px;
             font-family: "NeueHaasDisplay-Roman";
+              @media screen and (max-width:767px) {
+              max-width: 100%;
+            }
 
         }
 
@@ -94,7 +113,13 @@ font-family: "NeueHaasDisplay-Roman";
             font-style: normal;
             font-weight: 300;
             line-height: 80px;
-            margin-bottom: 0
+            margin-bottom: 0;
+                @media screen and (max-width:767px) {
+                    font-size: 40px;
+font-style: normal;
+font-weight: 300;
+line-height: 48px;
+                }
         }
 
         .button {

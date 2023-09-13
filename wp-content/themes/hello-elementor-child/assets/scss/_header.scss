@@ -579,15 +579,13 @@ body.admin-bar{
 body.sensiness {
     @media screen and (max-width:1024px) {
 
-        .categories-menu+div,
+        .categories-menu+div,.categories-menu+main ,.categories-menu+header
             {
             margin-top: 200px;
         }
     }
 
-    .categories-menu+main , .categories-menu+div{
-        margin-top: 75px;
-    }
+  
 }
 
 @media screen and (max-width:1024px) {

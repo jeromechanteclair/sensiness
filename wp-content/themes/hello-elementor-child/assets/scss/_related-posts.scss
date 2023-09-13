@@ -6,6 +6,9 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 32px;
+           @media screen and (max-width:767px) {
+            flex-flow: column;
+           }
         .button{
             @include button;
             width: auto;
@@ -24,7 +27,7 @@ line-height: 48px;
         max-width: calc(var(--max-width) - 48px);
 
         @media screen and (max-width:1024px) {
-            max-width: var(--max-width);
+            // max-width: var(--max-width);
         }
 
         margin: 0 auto;
@@ -36,13 +39,13 @@ line-height: 48px;
         gap: 32px;
         grid-auto-rows: 1fr;
 
-        @media screen and (max-width:1024px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
+        // @media screen and (max-width:1024px) {
+        //     grid-template-columns: repeat(2, 1fr);
+        // }
 
-        @media screen and (max-width:640px) {
-            grid-template-columns: 1fr;
-        }
+        // @media screen and (max-width:640px) {
+        //     grid-template-columns: 1fr;
+        // }
 
         .post-preview {
             position: relative;
@@ -55,6 +58,9 @@ line-height: 48px;
             text-decoration: none;
             padding-bottom: 32px;
             border-bottom: 1px solid #E7E4D1;
+            @media screen and (max-width:767px) {
+                  grid-template-columns: 1fr
+            }
             &:last-of-type{
                   border-bottom: 1px solid transparent;
             }

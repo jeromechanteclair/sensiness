@@ -21,31 +21,46 @@
         justify-content: space-between;
         gap: 24px;
 
+        @media screen and (max-width:820px) {
+            flex-flow: row wrap;
+        }
+
         .highlights-besoins__item {
             position: relative;
             width: 100%;
+
+            @media screen and (max-width:820px) {
+                width: calc(50% - 12px);
+            }
+
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
-            min-height: 330px;
+            min-height: calc(var(--max-width) * 0.2291);
+
+            @media screen and (max-width:640px) {
+                min-height: 144px;
+            }
+
             text-decoration: none;
             overflow: hidden;
             border-radius: 10px;
 
-            &:hover{
-                .bg{
-                    img{
+            &:hover {
+                .bg {
+                    img {
 
                         transform: scale(1.1);
                     }
                 }
-                p{
+
+                p {
                     transform: translateX(10px);
                 }
             }
 
             .bg {
-                            overflow: hidden;
+                overflow: hidden;
 
                 position: absolute;
                 z-index: 0;
@@ -54,13 +69,13 @@
                 justify-content: center;
                 height: 100%;
                 width: 100%;
-             
-                img{
-                          height: 100%;
-                width: 100%;
+
+                img {
+                    height: 100%;
+                    width: 100%;
                     object-fit: cover;
 
-   @include transition;
+                    @include transition;
                 }
             }
 
@@ -78,7 +93,7 @@
             }
 
             p {
-                  @include transition;
+                @include transition;
                 position: relative;
                 font-family: 'Recoleta';
                 text-decoration: none;
@@ -88,6 +103,14 @@
                 font-weight: 300;
                 line-height: 40px;
                 color: var(--white);
+
+                @media screen and (max-width:640px) {
+                    padding: 16px;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 24px;
+                }
             }
         }
     }
