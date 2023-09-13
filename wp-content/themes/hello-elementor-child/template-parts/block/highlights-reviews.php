@@ -7,7 +7,7 @@ $title = get_field('title');
 
 if(have_rows('highlights-reviews')): ?>
 <section class="highlights-reviews">
-	<video class="lazy" id='video-home' autoplay  playsinline preload='metadata' width='100%' height='100%' loop muted preload="none" poster="<?= $thumbnail['url'];?>">
+	<video class="lazy" id='video-home'   playsinline preload='metadata' width='100%' height='100%' loop muted preload="none" poster="<?= $thumbnail['url'];?>">
 		<source data-src="<?= $video['url'];?>" type="<?= $video['mime_type'];?>" />
 	</video>
 	<div class="container">

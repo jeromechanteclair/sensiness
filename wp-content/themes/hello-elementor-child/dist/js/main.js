@@ -807,7 +807,6 @@ function video() {
             video.target.classList.remove("lazy");
             //    console.log(  video.target)
             //    
-            console.log(video.target);
             lazyVideoObserver.unobserve(video.target);
             video.target.play();
           }
