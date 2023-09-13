@@ -452,8 +452,10 @@ function scrollbar() {
 
     var attr = $(e.target).attr('href');
     e.preventDefault();
-    if (typeof attr !== 'undefined' && attr !== false) {
-      window.location.href = attr;
+    if (!$(e.target).hasClass('firstsub')) {
+      if (typeof attr !== 'undefined' && attr !== false) {
+        window.location.href = attr;
+      }
     }
   });
   $(document).on('click', '.has-child >a', function (e) {

@@ -45,14 +45,18 @@ function scrollbar() {
     $(document).on('click', '.has-child', function (e) {
                 // alert('parent')
 
+      
 
+     
             var attr =$(e.target).attr('href');
 
 
            e.preventDefault()
+             if(!$(e.target).hasClass('firstsub')){
            if (typeof attr !== 'undefined' && attr !== false) {
               window.location.href=attr
             }
+               }
     })
     $(document).on('click', '.has-child >a', function (e) {
 
