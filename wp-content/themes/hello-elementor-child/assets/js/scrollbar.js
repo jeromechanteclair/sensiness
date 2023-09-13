@@ -55,7 +55,6 @@ function scrollbar() {
             }
     })
     $(document).on('click', '.has-child >a', function (e) {
-                   alert('ok')
 
         if (detectmob()) {
             e.preventDefault()
