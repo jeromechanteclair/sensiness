@@ -23,8 +23,9 @@ wp-content/themes/twenty*/
 
 # ignore node dependency directories
 node_modules/
-vendor/
-compose.lock
+/vendor/
+!wp-content/plugins/.gitignore
+composer.lock
 # ignore log files and databases
 *.log
 *.sql
