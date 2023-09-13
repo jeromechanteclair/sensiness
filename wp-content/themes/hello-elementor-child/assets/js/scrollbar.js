@@ -42,7 +42,21 @@ function scrollbar() {
         $(document).find('.scroll-menus .menu').first().find('li').first().toggleClass('active');
 
     })
-    $(document).on('click ', '.has-child >a', function (e) {
+    $(document).on('click', '.has-child', function (e) {
+                // alert('parent')
+
+
+            var attr =$(e.target).attr('href');
+
+
+           e.preventDefault()
+           if (typeof attr !== 'undefined' && attr !== false) {
+              window.location.href=attr
+            }
+    })
+    $(document).on('click', '.has-child >a', function (e) {
+                   alert('ok')
+
         if (detectmob()) {
             e.preventDefault()
         }

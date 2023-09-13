@@ -118,7 +118,7 @@ $class_names = $is_current ? 'current' : '';
 
 		if($depth==0){
 			$output .= '<li id="menu-item-' . $item->ID . '" class="has-child ' . $class_names . '">';
-			$output .=  '<a href="' . $item->url . '">' . $item->title . '</a>';
+			$output .=  '<a class="firstsub" href="' . $item->url . '">' . $item->title . '</a>';
 			$output .= '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<mask id="mask0_155_3613" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
 				<rect width="24" height="24" fill="#D9D9D9"/>
