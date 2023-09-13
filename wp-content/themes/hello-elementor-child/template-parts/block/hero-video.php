@@ -58,7 +58,7 @@ $total = sensiness\app\Woocommerce::get_total_review_comments();
 		</span>
 		</div>
 
-		<video class="lazy" id='video-home' autoplay  playsinline preload='metadata' width='100%' height='100%' loop muted preload="none" poster="<?= $thumbnail['url'];?>">
+		<video class="lazy" id='video-home'   playsinline preload='metadata' width='100%' height='100%' loop muted preload="none" poster="<?= $thumbnail['url'];?>">
 			<source data-src="<?= $video['url'];?>" type="<?= $video['mime_type'];?>" />
 		</video>
 		<?= $title ;?>

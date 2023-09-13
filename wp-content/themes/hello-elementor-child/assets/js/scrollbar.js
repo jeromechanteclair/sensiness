@@ -18,7 +18,7 @@ function scrollbar() {
         if (scrollTop > lastScrollTop) {
             $('.categories-menu').addClass('scroll')
         } else {
-            console.log("Scrolling up");
+           
             $('.categories-menu').removeClass('scroll')
         }
 

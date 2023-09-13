@@ -36,7 +36,7 @@ if(!is_product() && !is_checkout() && !is_cart() && !is_account_page()) {
 
             if($show_popup):
                 ?>
-	<div id="popup" class="popup" data-id="<?= $popup_id;?>" data-cookie="<?=$popup_time;?>">
+	<div id="popup" class="popup <?php if (is_product()):?> popup--product<?php endif;?>" data-id="<?= $popup_id;?>" data-cookie="<?=$popup_time;?>">
 	<div class="close-popup">
 		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<mask id="mask0_155_4097" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">

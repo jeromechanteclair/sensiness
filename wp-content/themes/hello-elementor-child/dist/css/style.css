@@ -5181,6 +5181,7 @@ FAQ
     font-style: normal;
     font-weight: 300;
     line-height: 24px;
+    margin-bottom: 0;
   }
 }
 
@@ -6134,7 +6135,7 @@ FAQ
   z-index: 999;
   position: fixed;
   left: var(--posleft);
-  bottom: 10vh;
+  bottom: 24px;
   display: grid;
   max-width: 568px;
   overflow: hidden;
@@ -6142,6 +6143,9 @@ FAQ
   opacity: 0;
   grid-template-columns: 1fr 1fr;
   background: linear-gradient(180deg, #364321 -16.07%, #EBE9E0 126.02%);
+}
+.popup--product {
+  bottom: 10vh;
 }
 .popup.show {
   animation: slide 0.8s ease-in-out forwards;
@@ -6253,6 +6257,7 @@ FAQ
 
 .sensiness #qlwapp.qlwapp-button {
   --posleft: 24px;
+  z-index: 94;
   right: var(--posleft);
 }
 .sensiness #qlwapp.qlwapp-button .qlwapp-toggle {
