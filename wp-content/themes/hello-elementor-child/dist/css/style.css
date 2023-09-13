@@ -1271,6 +1271,9 @@ body.admin-bar #site-header {
     margin-top: 200px;
   }
 }
+body.sensiness .categories-menu + div, body.sensiness .categories-menu + main, body.sensiness .categories-menu + header {
+  margin-top: 75px;
+}
 
 @media screen and (max-width: 1024px) {
   .categories-menu {
@@ -6127,7 +6130,7 @@ FAQ
 }
 
 .popup {
-  --posleft: calc(((100vw - var(--max-width))/2) + 24px);
+  --posleft:24px;
   z-index: 999;
   position: fixed;
   left: var(--posleft);
@@ -6249,7 +6252,7 @@ FAQ
 }
 
 .sensiness #qlwapp.qlwapp-button {
-  --posleft: calc(((100vw - var(--max-width))/2) + 12px);
+  --posleft: 24px;
   right: var(--posleft);
 }
 .sensiness #qlwapp.qlwapp-button .qlwapp-toggle {

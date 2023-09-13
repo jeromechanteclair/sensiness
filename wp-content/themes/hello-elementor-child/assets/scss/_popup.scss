@@ -1,5 +1,5 @@
 .popup {
-    --posleft: calc(((100vw - var(--max-width))/2) + 24px);
+    --posleft:24px;
     z-index: 999;
     position: fixed;
     left: var(--posleft);
@@ -112,7 +112,7 @@ line-height: 24px;
       
 
     #qlwapp.qlwapp-button {
-  --posleft: calc(((100vw - var(--max-width))/2) + 12px);
+  --posleft: 24px;
 
     right: var(--posleft);
     .qlwapp-toggle{
