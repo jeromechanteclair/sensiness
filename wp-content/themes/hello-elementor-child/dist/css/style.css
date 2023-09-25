@@ -1308,7 +1308,7 @@ body.sensiness .categories-menu + div, body.sensiness .categories-menu + main, b
     padding-right: 0;
   }
   .categories-menu .menu li {
-    min-width: 145px;
+    min-width: 115px;
   }
   .categories-menu .menu li:last-of-type {
     margin-right: 24px;
@@ -1327,7 +1327,7 @@ body.sensiness .categories-menu + div, body.sensiness .categories-menu + main, b
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
     padding: 14px 18px;
     overflow: hidden;
     border-radius: 12px;
@@ -1367,7 +1367,7 @@ body.sensiness .categories-menu + div, body.sensiness .categories-menu + main, b
     z-index: 1;
     text-align: center;
     color: var(--white);
-    font-size: 16px;
+    font-size: 14px;
     font-family: "NeueHaasDisplay-Roman";
     font-style: normal;
     font-weight: 400;
@@ -5085,6 +5085,9 @@ FAQ
   .sensiness .highlights-products .products .product.prems picture {
     max-height: calc(var(--max-width) * 0.4166);
   }
+}
+.sensiness .highlights-products .products .product.hide_mobile {
+  display: none;
 }
 
 .highlights-besoins {

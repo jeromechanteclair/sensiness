@@ -14,6 +14,10 @@ if($grid=='home'){
 	}
 
 }
+if(isset($args['hide_mobile']) && $args['hide_mobile']){
+$classes .= ' hide_mobile';
+
+}
 
 // Ensure visibility.
 if (empty($product) || ! $product->is_visible() ) {

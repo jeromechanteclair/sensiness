@@ -70,6 +70,28 @@
             "elements": [
                 "featured_image"
             ]
+        },
+        {
+            "key": "field_651197727f243",
+            "label": "Nombre de produits mobile",
+            "name": "limit_mobile",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -90,5 +112,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1692973794
+    "modified": 1695651794
 }

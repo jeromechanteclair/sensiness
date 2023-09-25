@@ -637,7 +637,7 @@ body.sensiness {
             padding-right: 0;
 
             li {
-                min-width: 145px;
+                min-width: 115px;
 
                 &:last-of-type {
                     margin-right: 24px;
@@ -665,7 +665,7 @@ body.sensiness {
                     flex-flow: column;
                     align-items: center;
                     justify-content: center;
-                    gap: 6px;
+                    gap: 4px;
                     padding: 14px 18px;
                     overflow: hidden;
                     border-radius: 12px;
@@ -708,7 +708,7 @@ background-color: var(--green-med);
                         z-index: 1;
                         text-align: center;
                         color: var(--white);
-                        font-size: 16px;
+                        font-size: 14px;
                         font-family: "NeueHaasDisplay-Roman";
                         font-style: normal;
                         font-weight: 400;

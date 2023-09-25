@@ -216,6 +216,7 @@
                 }
 
                 @media screen and (min-width:820px) {
+                  
                     &.second {
                         margin-bottom: 0;
 
@@ -277,6 +278,9 @@
                         }
                     }
                 }
+                  &.hide_mobile{
+                        display: none;
+                    }
             }
         }
 
