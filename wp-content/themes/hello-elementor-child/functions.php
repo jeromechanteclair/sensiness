@@ -128,9 +128,9 @@ function display_variations($attributes, $available_variations){
 
     foreach($available_variations as $key1=> $variation) {
         // remove attr if not in stock
-        if(!$variation['is_in_stock']){
-        	break;
-        }
+        // if(!$variation['is_in_stock']){
+        // 	break;
+        // }
 
 
         // if( != $attribute_value){}
