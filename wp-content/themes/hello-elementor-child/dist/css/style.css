@@ -1327,13 +1327,15 @@ body.sensiness .categories-menu + div, body.sensiness .categories-menu + main, b
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 18px 22px;
+    gap: 6px;
+    padding: 14px 18px;
     overflow: hidden;
     border-radius: 12px;
     height: 100%;
+    background-color: var(--green-med);
   }
   .categories-menu .menu li a picture {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -1858,6 +1860,9 @@ body.sensiness .categories-menu + div, body.sensiness .categories-menu + main, b
   line-height: 24px;
   color: var(--white);
 }
+#site-footer .nlcontainer .nltitle + p {
+  color: var(--white);
+}
 #site-footer .nlcontainer div#probance_form_block br {
   display: none;
 }
@@ -1868,6 +1873,9 @@ body.sensiness .categories-menu + div, body.sensiness .categories-menu + main, b
 #site-footer .nlcontainer .p-nlform-maintitle,
 #site-footer .nlcontainer .p-nlform-subtitle {
   display: none;
+}
+#site-footer .nlcontainer span.probance_msg_wrong_email, #site-footer .nlcontainer span.probance_msg_empty_email {
+  color: var(--red);
 }
 #site-footer .nlcontainer label {
   margin-bottom: 12px;
@@ -5274,10 +5282,10 @@ FAQ
 }
 @media screen and (max-width: 640px) {
   .highlights-reviews .h3 {
-    font-size: 32px;
+    font-size: 26px;
     font-style: normal;
     font-weight: 300;
-    line-height: 40px;
+    line-height: 36px;
   }
 }
 
@@ -5347,6 +5355,12 @@ FAQ
   -o-object-fit: cover;
      object-fit: cover;
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+}
+@media screen and (max-width: 640px) {
+  .highlights-pages .container .highlights-pages__item .bg img {
+    -o-object-position: right;
+       object-position: right;
+  }
 }
 .highlights-pages .container .highlights-pages__item p {
   transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
@@ -6131,7 +6145,7 @@ FAQ
 }
 
 .popup {
-  --posleft:24px;
+  --posleft: 24px;
   z-index: 999;
   position: fixed;
   left: var(--posleft);
@@ -6143,6 +6157,105 @@ FAQ
   opacity: 0;
   grid-template-columns: 1fr 1fr;
   background: linear-gradient(180deg, #364321 -16.07%, #EBE9E0 126.02%);
+}
+.popup #probance_form_block {
+  margin: 0;
+  width: 100%;
+}
+.popup #probance_form_block form {
+  display: flex;
+  flex-flow: column;
+  margin: 0;
+  width: 100%;
+}
+.popup #probance_form_block form br {
+  display: none;
+}
+.popup #probance_form_block span.probance_msg_wrong_email, .popup #probance_form_block span.probance_msg_empty_email {
+  color: var(--red);
+}
+.popup #probance_form_block .p-nlform-maintitle,
+.popup #probance_form_block .p-nlform-subtitle {
+  display: none;
+}
+.popup #probance_form_block label {
+  margin-bottom: 12px;
+  display: none;
+}
+.popup #probance_form_block .probance_message_submit {
+  padding: 12px;
+  position: relative;
+  margin-top: 12px;
+}
+.popup #probance_form_block .probance_message_submit.hidden {
+  display: none;
+}
+.popup #probance_form_block .probance_message_submit .message {
+  text-align: left;
+}
+.popup #probance_form_block input,
+.popup #probance_form_block textarea {
+  font-family: "NeueHaasDisplay-Roman";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--white);
+  width: 100%;
+  padding: 16px 24px;
+  text-decoration: none;
+  background-color: var(--green);
+  border-radius: 10px;
+  border: none;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  text-transform: none;
+  background-color: white;
+  color: var(--black);
+  border: 1px solid #364321;
+}
+.popup #probance_form_block input:hover,
+.popup #probance_form_block textarea:hover {
+  background-color: #607440;
+}
+.popup #probance_form_block input:hover,
+.popup #probance_form_block textarea:hover {
+  background-color: white;
+  color: var(--black);
+  border: 1px solid #364321;
+}
+.popup #probance_form_block .probance_message_submit {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.popup #probance_form_block input[type=submit] {
+  font-family: "NeueHaasDisplay-Roman";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--green);
+  width: 100%;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid var(--green);
+  border-radius: 10px;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s;
+  text-transform: none;
+  border-color: var(--white);
+  color: var(--white);
+  align-items: center;
+  text-align: center;
+  font-family: "Recoleta";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.popup #probance_form_block input[type=submit]:hover {
+  background-color: #607440;
+  color: white;
 }
 .popup--product {
   bottom: 10vh;

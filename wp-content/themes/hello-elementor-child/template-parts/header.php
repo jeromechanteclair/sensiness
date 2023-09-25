@@ -119,7 +119,7 @@ $categories = wp_nav_menu( [
 	</div>
 	</div>
 </header>
-	<div class="categories-menu">
+	<div class="categories-menu scroll">
 
 		
 			<?php if($categories){

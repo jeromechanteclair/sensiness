@@ -14,6 +14,7 @@ if(have_rows('highlights-pages')): ?>
 		$title = get_sub_field('title');
 		$content = get_sub_field('content');
 		$link = get_sub_field('link');
+		$target= $link['target']?$link['target']:'_self';
 		?>
 		<div class="highlights-pages__item">
 			<picture class="bg">
@@ -22,7 +23,7 @@ if(have_rows('highlights-pages')): ?>
 			</picture>
 			<p class="title"><?=$title;?></p>
 			<?=$content;?>
-			<a href="<?= $link['url'];?>" class="button">
+			<a href="<?= $link['url'];?>" class="button" target="<?=$target;?>">
 				<?= $link['title'];?>
 			</a>
 		</div>

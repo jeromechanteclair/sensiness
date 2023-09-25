@@ -63,6 +63,8 @@ class Custom_Submenu_Walker extends \Walker_Nav_Menu {
 			$title = get_the_title($banner->ID);
 			$subtitle = get_field('subtitle',$banner->ID);
 			$link = get_field('link',$banner->ID);
+			$target = $link['target'] ? $link['target'] : '_self';
+
 			$htmlbanner .='<div class="banner-item">';
 				$htmlbanner.=$src;
 				$htmlbanner .= '<div class="banner-item__container">';
@@ -71,7 +73,7 @@ class Custom_Submenu_Walker extends \Walker_Nav_Menu {
 						$htmlbanner .= '<p>'.$subtitle.'</p>';
 					$htmlbanner .='</div>';
 					$htmlbanner .= '<div class="banner-item__container__right">';
-						$htmlbanner .='<a class="button" href="'.$link['url'].'">'.$link['title'].'</a>';
+						$htmlbanner .='<a target="'.$target.'" class="button" href="'.$link['url'].'">'.$link['title'].'</a>';
 					$htmlbanner .='</div>';
 				$htmlbanner .= '</div>';
 			$htmlbanner .='</div>';

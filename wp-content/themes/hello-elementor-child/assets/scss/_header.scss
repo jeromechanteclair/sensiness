@@ -665,13 +665,15 @@ body.sensiness {
                     flex-flow: column;
                     align-items: center;
                     justify-content: center;
-                    gap: 12px;
-                    padding: 18px 22px;
+                    gap: 6px;
+                    padding: 14px 18px;
                     overflow: hidden;
                     border-radius: 12px;
                     height: 100%;
-
+background-color: var(--green-med);
                     picture {
+                        display: none;
+                        
                         position: absolute;
                         top: 0;
                         left: 0;

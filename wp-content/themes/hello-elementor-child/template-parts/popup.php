@@ -18,6 +18,7 @@ if(!is_product() && !is_checkout() && !is_cart() && !is_account_page()) {
             $title = get_the_title($popup_id);
             $content = get_the_content($popup_id);
             $link = get_field('link');
+            $newsletter = get_field('newsletter');
 
             $desktop = get_the_post_thumbnail_url($popup_id, 'single_hero');
             $mobile = get_the_post_thumbnail_url($popup_id, 'single_hero');
@@ -56,9 +57,14 @@ if(!is_product() && !is_checkout() && !is_cart() && !is_account_page()) {
 		<div class="popup__content">
 			<p class="title"><?=$title;?></p>
 			<p><?=$content;?></p>
-			<a class="button"href="<?= $link['url'];?>">
-				<?= $link['title'];?>
-			</a>
+            <?php if($newsletter):?>
+                <?php echo do_shortcode('[probance_newsletter]');?>
+
+            <?php else:?>
+                <a class="button"href="<?= $link['url'];?>">
+                    <?= $link['title'];?>
+                </a>
+            <?php endif;?>
 		</div>
 	</div>
 

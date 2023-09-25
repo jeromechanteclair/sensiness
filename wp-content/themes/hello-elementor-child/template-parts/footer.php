@@ -96,6 +96,7 @@ get_template_part('template-parts/popup');
 
 			</a>
 			<p class="nltitle">Incrivez vous à notre newsletter :</p>
+			<p > -10% sur votre première commande</p>
 			<?php echo do_shortcode('[probance_newsletter]');?>
 
 	</div>
