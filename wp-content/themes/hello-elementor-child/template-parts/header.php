@@ -87,7 +87,7 @@ $categories = wp_nav_menu( [
 		
 	</nav>
 	<?php 
-$blog = get_permalink(get_option('page_for_posts'))?get_permalink(get_option('page_for_posts')):'/blog';
+$blog =!empty(get_permalink(get_option('page_for_posts')))?get_permalink(get_option('page_for_posts')):'/blog';
 	?>
 	<div class="end-navigation">
 		<a class="blog" href="<?= $blog;?>">

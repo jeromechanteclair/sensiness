@@ -130,8 +130,8 @@ get_template_part('template-parts/popup');
 		    ?>
 		<?php endif; ?>
 			<?php
-$blog = get_permalink(get_option('page_for_posts')) ? get_permalink(get_option('page_for_posts')) : '/blog';
-?>
+			$blog = !empty(get_permalink(get_option('page_for_posts'))) ? get_permalink(get_option('page_for_posts')) : '/blog';
+			?>
 		<ul class="menu">
 			<li>
 
