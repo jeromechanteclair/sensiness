@@ -129,10 +129,13 @@ get_template_part('template-parts/popup');
 		    echo $marque_menu; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		    ?>
 		<?php endif; ?>
+			<?php
+$blog = get_permalink(get_option('page_for_posts')) ? get_permalink(get_option('page_for_posts')) : '/blog';
+?>
 		<ul class="menu">
 			<li>
 
-				<a href="<?= get_permalink(get_option('page_for_posts'));?>">
+				<a href="<?= $blog;?>">
 					<span>Notre blog</span>
 				</a>
 			</li>
