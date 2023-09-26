@@ -889,10 +889,16 @@ body.admin-bar #site-header {
   from {
     -webkit-clip-path: inset(0 0 0 0);
             clip-path: inset(0 0 0 0);
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 42px;
   }
   to {
     -webkit-clip-path: inset(0 0 100% 0);
             clip-path: inset(0 0 100% 0);
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 #site-header .site-navigation .scroll-menus ul.menu li .sub-menu {
