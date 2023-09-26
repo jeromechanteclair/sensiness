@@ -173,6 +173,11 @@ body.admin-bar{
                     &.active {
 
                         animation: clip 0.3s ease-in-out forwards;
+                         .banner{
+                            animation: clip 0s ease-in-out forwards;
+                            
+
+                        }
 
                     }
 
@@ -293,6 +298,8 @@ body.admin-bar{
                         grid-area: right;
                         padding-top: 0;
                         padding-bottom: 0;
+                        animation: reverseclip 0.3s ease-in-out forwards;
+                            animation-delay: .4s;
 
                         .banner-item {
                             position: relative;
