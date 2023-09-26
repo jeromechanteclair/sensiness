@@ -926,15 +926,19 @@ body.admin-bar #site-header {
   display: grid;
   animation: reverseclip 0.3s ease-in-out forwards;
 }
-#site-header .site-navigation .scroll-menus ul.menu li .sub-menu.hide .banner {
-  animation: reverseclip 0.3s ease-in-out forwards;
-  animation-delay: 0.4s;
+@media screen and (min-width: 1024px) {
+  #site-header .site-navigation .scroll-menus ul.menu li .sub-menu.hide .banner {
+    animation: reverseclip 0.3s ease-in-out forwards;
+    animation-delay: 0.4s;
+  }
 }
 #site-header .site-navigation .scroll-menus ul.menu li .sub-menu.active {
   animation: clip 0.3s ease-in-out forwards;
 }
-#site-header .site-navigation .scroll-menus ul.menu li .sub-menu.active .banner {
-  animation: clip 0s ease-in-out forwards;
+@media screen and (min-width: 1024px) {
+  #site-header .site-navigation .scroll-menus ul.menu li .sub-menu.active .banner {
+    animation: clip 0s ease-in-out forwards;
+  }
 }
 #site-header .site-navigation .scroll-menus ul.menu li .sub-menu .menu-list {
   align-items: center;
@@ -1030,7 +1034,11 @@ body.admin-bar #site-header {
   grid-area: right;
   padding-top: 0;
   padding-bottom: 0;
-  animation: reverseclip 0.3s ease-in-out forwards;
+}
+@media screen and (min-width: 1024px) {
+  #site-header .site-navigation .scroll-menus ul.menu li .sub-menu .banner {
+    animation: reverseclip 0.3s ease-in-out forwards;
+  }
 }
 #site-header .site-navigation .scroll-menus ul.menu li .sub-menu .banner .banner-item {
   position: relative;

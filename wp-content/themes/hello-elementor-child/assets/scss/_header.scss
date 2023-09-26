@@ -162,21 +162,27 @@ body.admin-bar{
                         display: grid;
                         animation: reverseclip 0.3s ease-in-out forwards;
                         // animation-delay: 0.4s;
+                        @media screen and (min-width: 1024px) {
+
+                    
+                                                                       
                         .banner{
                             animation: reverseclip 0.3s ease-in-out forwards;
                             animation-delay: .4s;
 
                         }
+                         }
 
                     }
 
                     &.active {
 
                         animation: clip 0.3s ease-in-out forwards;
+                         @media screen and (min-width: 1024px) {
                          .banner{
                             animation: clip 0s ease-in-out forwards;
                             
-
+                         }
                         }
 
                     }
@@ -298,8 +304,10 @@ body.admin-bar{
                         grid-area: right;
                         padding-top: 0;
                         padding-bottom: 0;
-                        animation: reverseclip 0.3s ease-in-out forwards;
+                                                                        @media screen and (min-width: 1024px) {
 
+                        animation: reverseclip 0.3s ease-in-out forwards;
+                                                                        }
                         .banner-item {
                             position: relative;
                             width: 100%;
