@@ -130,13 +130,16 @@ function cart() {
   var bodyoverlay = document.querySelector('.cart-overlay');
   var body = document.querySelector('body');
   $(document).on('click', '.toggle-cart', function () {
-    $(document).find('.cart-overlay').toggleClass('show');
-    $(document).find('.minicart-aside').toggleClass('hide');
-    $(document).find('body').addClass('lock');
-    $(document).find('.toggle-menu').removeClass('open');
-    $(document).find('.scroll-menus').removeClass('show');
-    $(document).find('.scroll-menus .menu').first().removeClass('active');
-    $(document).find('.scroll-menus .menu').first().find('li').first().removeClass('active');
+    console.log($(this).hasClass('no-touch'));
+    if (!$(this).hasClass('no-touch')) {
+      $(document).find('.cart-overlay').toggleClass('show');
+      $(document).find('.minicart-aside').toggleClass('hide');
+      $(document).find('body').addClass('lock');
+      $(document).find('.toggle-menu').removeClass('open');
+      $(document).find('.scroll-menus').removeClass('show');
+      $(document).find('.scroll-menus .menu').first().removeClass('active');
+      $(document).find('.scroll-menus .menu').first().find('li').first().removeClass('active');
+    }
   });
   $(document).on('click', '.toggle-close', function () {
     $(document).find('body').toggleClass('lock');

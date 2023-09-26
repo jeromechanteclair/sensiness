@@ -528,8 +528,12 @@ body.admin-bar{
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
-                margin-left: 6px;
-
+                padding-left: 6px;
+                // min-width: 45px;
+                min-height: 45px;
+                &.no-touch{
+                    pointer-events: none;
+                }
                 &.open {
                     .close {
                         display: none;

@@ -38,6 +38,11 @@ if(isset($args['loaded']) && $args['loaded']=='true' && $counter> 0){
 if(!is_cart() && $counter> 0){
 	$classes = ' toggle-cart';
 }
+if(is_cart()){
+	
+$classes = ' toggle-cart no-touch';
+
+}
 ?>
 
 <div class="woocart-icon <?=$classes;?>">

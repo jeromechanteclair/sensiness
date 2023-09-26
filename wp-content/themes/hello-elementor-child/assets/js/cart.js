@@ -77,16 +77,19 @@ function cart() {
 
 
     $(document).on('click', '.toggle-cart', function () {
+        console.log($(this).hasClass('no-touch'))
+        if(!$(this).hasClass('no-touch')){
 
-        $(document).find('.cart-overlay').toggleClass('show')
-        $(document).find('.minicart-aside').toggleClass('hide')
-        $(document).find('body').addClass('lock')
-        $(document).find('.toggle-menu').removeClass('open')
+        
+                    $(document).find('.cart-overlay').toggleClass('show')
+                    $(document).find('.minicart-aside').toggleClass('hide')
+                    $(document).find('body').addClass('lock')
+                    $(document).find('.toggle-menu').removeClass('open')
 
-        $(document).find('.scroll-menus').removeClass('show')
-        $(document).find('.scroll-menus .menu').first().removeClass('active');
-        $(document).find('.scroll-menus .menu').first().find('li').first().removeClass('active');
-
+                    $(document).find('.scroll-menus').removeClass('show')
+                    $(document).find('.scroll-menus .menu').first().removeClass('active');
+                    $(document).find('.scroll-menus .menu').first().find('li').first().removeClass('active');
+            }
 
 
     })

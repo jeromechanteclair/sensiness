@@ -1224,7 +1224,11 @@ body.admin-bar #site-header {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-left: 6px;
+    padding-left: 6px;
+    min-height: 45px;
+  }
+  #site-header .end-navigation .toggle-menu.no-touch {
+    pointer-events: none;
   }
   #site-header .end-navigation .toggle-menu.open .close {
     display: none;
