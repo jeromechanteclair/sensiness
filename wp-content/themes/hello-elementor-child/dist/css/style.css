@@ -926,6 +926,10 @@ body.admin-bar #site-header {
   display: grid;
   animation: reverseclip 0.3s ease-in-out forwards;
 }
+#site-header .site-navigation .scroll-menus ul.menu li .sub-menu.hide .banner {
+  animation: reverseclip 0.3s ease-in-out forwards;
+  animation-delay: 0.4s;
+}
 #site-header .site-navigation .scroll-menus ul.menu li .sub-menu.active {
   animation: clip 0.3s ease-in-out forwards;
 }

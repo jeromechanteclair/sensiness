@@ -162,6 +162,11 @@ body.admin-bar{
                         display: grid;
                         animation: reverseclip 0.3s ease-in-out forwards;
                         // animation-delay: 0.4s;
+                        .banner{
+                            animation: reverseclip 0.3s ease-in-out forwards;
+                            animation-delay: .4s;
+
+                        }
 
                     }
 
