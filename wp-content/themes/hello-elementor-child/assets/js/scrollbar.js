@@ -84,7 +84,7 @@ function scrollbar() {
             $(this).find('.sub-menu').css('z-index', '999')
         }, function () {
            $(this).removeClass('active');
-            $(this).find('.sub-menu').css('z-index', '998')
+            $(this).find('.sub-menu').css('z-index', '-1')
             $(this).find('.sub-menu').addClass('hide')
             setTimeout(() => {
              

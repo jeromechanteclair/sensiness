@@ -481,7 +481,7 @@ function scrollbar() {
     }, function () {
       var _this = this;
       $(this).removeClass('active');
-      $(this).find('.sub-menu').css('z-index', '998');
+      $(this).find('.sub-menu').css('z-index', '-1');
       $(this).find('.sub-menu').addClass('hide');
       setTimeout(function () {
         $(_this).find('.sub-menu.hide').removeClass('active');
