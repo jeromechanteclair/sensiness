@@ -876,29 +876,32 @@ body.admin-bar #site-header {
   transform: rotate(180deg);
 }
 @keyframes clip {
-  from {
+  0% {
     -webkit-clip-path: inset(0 0 100% 0);
             clip-path: inset(0 0 100% 0);
+    height: 0;
   }
-  to {
+  100% {
+    height: auto;
     -webkit-clip-path: inset(0 0 0 0);
             clip-path: inset(0 0 0 0);
   }
 }
 @keyframes reverseclip {
-  from {
+  0% {
+    height: auto;
     -webkit-clip-path: inset(0 0 0 0);
             clip-path: inset(0 0 0 0);
-    height: 100%;
-    padding-top: 30px;
-    padding-bottom: 42px;
   }
-  to {
+  99% {
+    height: auto;
     -webkit-clip-path: inset(0 0 100% 0);
             clip-path: inset(0 0 100% 0);
+  }
+  100% {
     height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    -webkit-clip-path: inset(0 0 100% 0);
+            clip-path: inset(0 0 100% 0);
   }
 }
 #site-header .site-navigation .scroll-menus ul.menu li .sub-menu {
@@ -906,6 +909,7 @@ body.admin-bar #site-header {
   padding-right: var(--innerpadding);
   -webkit-clip-path: inset(0 0 100% 0);
           clip-path: inset(0 0 100% 0);
+  height: 0;
   display: grid;
 }
 @media screen and (max-width: 1024px) {
