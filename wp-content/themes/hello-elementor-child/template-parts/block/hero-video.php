@@ -6,8 +6,16 @@ $title = get_field('title');
 $subtitle = get_field('subtitle');
 
 $link = get_field('link');
-$rating = sensiness\app\Woocommerce::get_average_review_rating();
-$total = sensiness\app\Woocommerce::get_total_review_comments();
+$avis_clients =get_field('avis_clients');
+if($avis_clients=='auto'){
+
+	$rating = sensiness\app\Woocommerce::get_average_review_rating();
+	$total = sensiness\app\Woocommerce::get_total_review_comments();
+}else{
+	$rating =get_field('note_moyenne');
+	$total =get_field('total_avis');
+
+}
 
 ?>
 <section class="hero-video">
