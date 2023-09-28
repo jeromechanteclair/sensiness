@@ -262,7 +262,7 @@
                 font-weight: 400;
                 font-size: 56px;
                 line-height: 64px;
-                color: var(--green);
+                color: var(--black);
 
                 @media screen and (max-width:640px) {
                     font-size: 48px;
@@ -304,6 +304,12 @@
 
     .product form.cart .button {
         @include button;
+        &:disabled{
+            background-color: var(--green);
+            &:hover{
+                background-color: var(--green);
+            }
+        }
     }
 
     .cart {
@@ -1933,3 +1939,21 @@ FAQ
 }
 
 .wfspb-progress {}
+.sensiness{
+    .woocommerce ul.products li.product .button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .woocommerce ul.products li.product .star-rating{
+        margin-left: 0;
+        margin-right: 0;
+        &+.product-rating-count{
+            text-align: left!important;
+        }
+    }
+    .woocommerce ul.products li.product .price{
+       font-family: 'NeueHaasDisplay-Roman';
+    }
+}
