@@ -4544,7 +4544,7 @@ FAQ
   text-align: left !important;
 }
 .sensiness .woocommerce ul.products li.product .price {
-  font-family: "NeueHaasDisplay-Roman";
+  font-family: "NeueHaasDisplay-Roman" !important;
 }
 
 .bandeau {
