@@ -6440,12 +6440,12 @@ FAQ
 .sensiness .popup.hide {
   display: none;
 }
-.sensiness .sensiness #qlwapp.qlwapp-button {
+#qlwapp.qlwapp-button {
   --posleft: 24px;
   z-index: 94;
   right: var(--posleft);
 }
-.sensiness .sensiness #qlwapp.qlwapp-button .qlwapp-toggle {
+#qlwapp.qlwapp-button .qlwapp-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6453,7 +6453,7 @@ FAQ
   padding: 20px;
   margin-right: 0;
 }
-.sensiness .sensiness #qlwapp.qlwapp-button .qlwapp-toggle .qlwapp-icon {
+#qlwapp.qlwapp-button .qlwapp-toggle .qlwapp-icon {
   margin-right: 0;
 }
 
